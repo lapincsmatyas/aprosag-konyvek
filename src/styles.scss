@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: latoBold;
+  src: url(assets/Lato_font/Lato-Black.ttf);
+}
+
+@font-face {
+  font-family: latoMedium;
+  src: url(assets/Lato_font/Lato-Medium.ttf);
+}
+
+@font-face {
+  font-family: latoSemibold;
+  src: url(assets/Lato_font/Lato-Semibold.ttf);
+}
+

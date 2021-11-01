@@ -1,0 +1,9 @@
+<svg id="Delete_Cart" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Shopicon" transform="translate(15 16)">
+    <path id="Path_1356" data-name="Path 1356" d="M23.6,5.172l-8.464,8.073L6.668,5.172,5.171,6.6l8.465,8.073L5.171,22.745l1.5,1.427L15.132,16.1,23.6,24.172l1.5-1.427-8.464-8.073L25.092,6.6Z" transform="translate(-5.171 -5.172)" fill="#565656"/>
+  </g>
+  <g id="Ellipse_8" data-name="Ellipse 8" fill="none" stroke="#565656" stroke-linejoin="round" stroke-width="3">
+    <circle cx="25" cy="25" r="25" stroke="none"/>
+    <circle cx="25" cy="25" r="23.5" fill="none"/>
+  </g>
+</svg>
