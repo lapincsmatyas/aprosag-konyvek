@@ -3,6 +3,31 @@ body {
 }
 
 @font-face {
+  font-family: latoLight;
+  src: url(assets/Lato_font/Lato-Light.ttf);
+}
+
+@font-face {
+  font-family: latoThin;
+  src: url(assets/Lato_font/Lato-Thin.ttf);
+}
+
+@font-face {
+  font-family: latoHairline;
+  src: url(assets/Lato_font/Lato-Hairline.ttf);
+}
+
+@font-face {
+  font-family: latoHairlineItalic;
+  src: url(assets/Lato_font/Lato-HairlineItalic.ttf);
+}
+
+@font-face {
+  font-family: latoThinItalic;
+  src: url(assets/Lato_font/Lato-ThinItalic.ttf);
+}
+
+@font-face {
   font-family: latoBold;
   src: url(assets/Lato_font/Lato-Black.ttf);
 }
