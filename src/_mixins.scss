@@ -1,0 +1,17 @@
+@import "variables";
+
+@mixin button {
+  background-color: $green-line;
+  font-family: latoBold, Helvetica, sans-serif;
+  border-radius: 50px;
+
+  border: none;
+  color: white;
+  width: fit-content;
+  padding: 20px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  text-transform: uppercase;
+}
