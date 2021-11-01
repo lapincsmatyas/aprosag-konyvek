@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './why-is-it-special.component.html',
   styleUrls: ['./why-is-it-special.component.scss']
 })
-export class WhyIsItSpecialComponent implements OnInit {
+export class WhyIsItSpecialComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
