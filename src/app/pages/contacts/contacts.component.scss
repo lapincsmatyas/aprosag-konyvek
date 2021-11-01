@@ -1,7 +1,65 @@
-.container{
+@import "src/variables";
+@import "src/mixins";
+
+.container {
   background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
   background-position-x: center;
   background-repeat: repeat-y;
-
+  font-family: latoBlack, Helvetica, sans-serif;
   min-height: 1000px;
+  color: $font-color;
+
+  .contacts-container {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 70px;
+
+    h1{
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .form-container {
+      display: flex;
+      margin-top: 100px;
+
+      .form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        text-align: left;
+
+        input[type='text'],
+        textarea {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          padding: 15px 30px;
+          border: 2px solid black;
+          font-size: 1.5em;
+          border-radius: 50px;
+          margin-bottom: 20px;
+        }
+
+        textarea{
+          font-size: 1.9em;
+        }
+
+        input[type='button']{
+          @include button;
+          margin-top:10px;
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+
+      .text{
+        width: 50%;
+        font-size: 1.4em;
+        padding-left: 100px;
+        text-align: left;
+      }
+    }
+  }
 }
