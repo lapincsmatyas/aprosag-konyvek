@@ -1,0 +1,36 @@
+@import "src/variables";
+
+.container{
+  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
+  background-position-x: center;
+  background-repeat: repeat-y;
+  font-family: latoBlack, Helvetica, sans-serif;
+  min-height: 1000px;
+  color: $font-color;
+
+  .about-us-container {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 1.4em;
+    padding-top: 40px;
+    text-align: center;
+
+    .about-us-text{
+      padding: 0 10px;
+    }
+
+    .person-container {
+      display: flex;
+      text-align: left;
+      margin-top: 120px;
+
+      .person{
+        margin: 0 20px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

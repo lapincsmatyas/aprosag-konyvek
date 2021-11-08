@@ -1,0 +1,63 @@
+@import "src/variables";
+@import "src/mixins";
+
+.container{
+  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
+  background-position-x: center;
+  background-repeat: repeat-y;
+
+
+  .special-container{
+
+    font-family: latoBlack, Helvetica, sans-serif;
+    color: $font-color;
+    width: 60%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+
+    padding-top: 50px;
+
+    h1{
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .paragraph{
+      font-size: 1.3em;
+      display: flex;
+      margin-bottom: 40px;
+
+      &.with-button{
+        flex-direction: column;
+
+        .button-container{
+          margin-top: 100px;
+          margin-bottom: 100px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+
+
+      .text{
+        padding-right: 30px;
+      }
+
+      img{
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+    .button{
+      @include button;
+    }
+  }
+
+}

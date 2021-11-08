@@ -1,0 +1,51 @@
+@import "src/variables";
+
+.footer-container{
+  background-color: $footer-green;
+  width: 100%;
+  color: white;
+  bottom: 0;
+  padding-top: 80px;
+
+  .top{
+    display: flex;
+    justify-content: center;
+    font-family: latoLight, Helvetica, sans-serif;
+
+    .left{
+      border-right: 2px solid white;
+      padding-right: 100px;
+      .contract-link{
+        display: block;
+        width: auto;
+        margin-bottom: 18px;
+      }
+    }
+
+    .center{
+      font-family: latoHairlineItalic, Helvetica, sans-serif;
+      margin: 0 100px;
+      .text{
+        margin-bottom: 18px;
+
+        &.space{
+          margin-bottom: 50px;
+        }
+      }
+    }
+
+    .right{
+      font-family: latoHairlineItalic, Helvetica, sans-serif;
+      padding-left: 80px;
+      .text{
+        margin-bottom: 18px;
+      }
+    }
+
+  }
+
+  .bottom{
+    padding: 30px 0;
+    text-align: center;
+  }
+}
