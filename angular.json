@@ -112,6 +112,16 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "aprosag-konyvek:build:production",
+            "firebaseProject": "aprosag-konyvek",
+            "firebaseHostingSite": "aprosag-konyvek"
+          }
         }
       }
     }

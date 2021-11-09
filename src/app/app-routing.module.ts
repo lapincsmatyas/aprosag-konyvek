@@ -6,6 +6,7 @@ import {ContactsComponent} from "./pages/contacts/contacts.component";
 import {WhyIsItSpecialComponent} from "./pages/why-is-it-special/why-is-it-special.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'items', pathMatch: 'full'},
   {path: 'items', component: ItemsComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contacts', component: ContactsComponent},
