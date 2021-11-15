@@ -8,41 +8,27 @@ install_dependencies:
   stage: dependencies
   script:
     - npm install
-  cache:
-    key:
-      files:
-        - package-lock.json
+  artifacts:
     paths:
       - node_modules
 
 lint:
   image: node:12-alpine
   stage: test
+  dependencies:
+    - install_dependencies
   script:
     - npm link @angular/cli
     - ng lint
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules/
-    policy: pull
-
 
 build_image:
   image: node:12-alpine
   stage: build
+  dependencies:
+    - install_dependencies
   script:
     - npm link @angular/cli
     - npm run build
   artifacts:
     paths:
       - $CI_PROJECT_DIR/dist
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules
-    policy: pull
