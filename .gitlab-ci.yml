@@ -8,8 +8,6 @@ install_dependencies:
   stage: dependencies
   script:
     - npm install
-  only:
-    - merge_requests
   cache:
     key:
       files:
@@ -28,7 +26,7 @@ lint:
       files:
         - package-lock.json
     paths:
-      - node_modules
+      - node_modules/
     policy: pull
 
 
