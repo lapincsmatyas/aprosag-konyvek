@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Apróságok az udvar körül",
+    "subtitle": "Verses gyermekkönyv",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "image_urls": ["gs://aprosag-konyvek.appspot.com/items/product_01/01.jpg", "gs://aprosag-konyvek.appspot.com/items/product_01/02.jpg", "gs://aprosag-konyvek.appspot.com/items/product_01/03.jpg", "gs://aprosag-konyvek.appspot.com/items/product_01/04.jpg"]
+  },
+  {
+    "title": "Apróságok az udvar körül - Színező",
+    "subtitle": "Fogalkoztató kifestőfüzet",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_percentage": 0.5,
+    "image_urls": ["gs://aprosag-konyvek.appspot.com/items/product_02/01.jpg", "gs://aprosag-konyvek.appspot.com/items/product_02/02.jpg", "gs://aprosag-konyvek.appspot.com/items/product_02/03.jpg", "gs://aprosag-konyvek.appspot.com/items/product_02/04.jpg"]
+  },
+  {
+    "title": "Kártyapakli",
+    "subtitle": "Fejlesztő kártyajáték",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_price": 2990,
+    "image_urls": ["gs://aprosag-konyvek.appspot.com/items/product_03/01.jpg", "gs://aprosag-konyvek.appspot.com/items/product_03/02.jpg", "gs://aprosag-konyvek.appspot.com/items/product_03/03.jpg","gs://aprosag-konyvek.appspot.com/items/product_03/04.jpg"]
+  }
+]

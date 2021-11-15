@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ItemsService} from "../../services/items.service";
+import {Observable} from "rxjs";
+import {Item} from "../../model/item.model";
 
 @Component({
   selector: 'aprosag-items',
@@ -6,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent {
+  public items$: Observable<Item[]>
 
-  constructor() { }
+  constructor(private itemsService: ItemsService) {
+    this.items$ = itemsService.getAllItems();
+  }
 
 }

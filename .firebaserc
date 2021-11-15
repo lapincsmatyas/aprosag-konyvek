@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "aprosag-konyvek": {
+      "hosting": {
+        "aprosag-konyvek": [
+          "aprosag-konyvek"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aprosag-konyvek"
+  }
+}
