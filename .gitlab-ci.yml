@@ -7,6 +7,7 @@ install_dependencies:
   image: node:latest
   stage: dependencies
   script:
+    - npm cache clean --force
     - npm install
   artifacts:
     paths:
@@ -28,7 +29,7 @@ build_image:
     - install_dependencies
   script:
     - npm link @angular/cli
-    - ng build
+    - ng build --verbose --progress --aot
   artifacts:
     paths:
       - $CI_PROJECT_DIR/dist
