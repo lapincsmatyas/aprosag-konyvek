@@ -1,5 +1,5 @@
-<div class="item-card-container">
-  <img *ngIf="item.image_urls" class="item-card-image" [src]="item.image_urls[0] | async">
+<div class="item-card-container" (click)="openItem()">
+  <img *ngIf="item.image_urls" class="item-card-image" [src]="imageUrl">
   <div class="title">{{item.title}}</div>
   <div class="subtitle">{{item.subtitle}}</div>
   <div class="prices" *ngIf="item.price">

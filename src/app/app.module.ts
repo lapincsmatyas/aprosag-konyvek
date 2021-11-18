@@ -18,13 +18,16 @@ import { ItemCardComponent } from './pages/items/item-card/item-card.component';
 import {getStorage, provideStorage} from "@angular/fire/storage";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NewsletterComponent } from './shared/newsletter/newsletter.component';
+import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ItemComponent} from "./pages/item/item.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    ItemComponent,
     ItemsComponent,
     AboutUsComponent,
     ContactsComponent,
@@ -34,6 +37,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -43,6 +47,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

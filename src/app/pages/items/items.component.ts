@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ItemsService} from "../../services/items.service";
 import {Observable} from "rxjs";
 import {Item} from "../../model/item.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'aprosag-items',

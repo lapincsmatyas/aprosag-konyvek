@@ -4,8 +4,10 @@ export enum COVER_TYPE {
 }
 
 export interface Item {
+  id?: string,
   title?: string,
   subtitle?: string,
+  common_id?: string,
   description?: string,
   page_count?: number,
   cover_type?: COVER_TYPE,
