@@ -16,6 +16,9 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ItemCardComponent } from './pages/items/item-card/item-card.component';
 import {getStorage, provideStorage} from "@angular/fire/storage";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NewsletterComponent } from './shared/newsletter/newsletter.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,16 +29,20 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
     AboutUsComponent,
     ContactsComponent,
     WhyIsItSpecialComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    NewsletterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideStorage( () => getStorage()),
+    provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
