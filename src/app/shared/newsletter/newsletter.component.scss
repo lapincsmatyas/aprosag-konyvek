@@ -1,0 +1,43 @@
+@import "src/variables";
+@import "src/mixins";
+
+.newsletter-container{
+  height: 300px;
+  background-image: url("/assets/Product_1/_0018_Product_1b.jpg");
+  background-repeat: no-repeat;
+  background-position-x: -150px;
+  background-position-y: -150px;
+  background-size: 700px auto;
+  background-color: rgb(255, 235, 237);
+  width: 100%;
+
+  .newsletter{
+    width: 70%;
+    margin: 0 auto;
+    background-color: blue;
+    position: relative;
+
+    .inner-container{
+      margin: 2em;
+      position: absolute;
+      margin-left: 30%;
+
+      .title{
+        font-size: 1.3em;
+        color: $font-color;
+        font-family: latoBold, Helvetica, sans-serif;
+      }
+
+      .subtitle{
+        margin-top: 20px;
+        font-size: 1em;
+        color: $font-color;
+        font-family: latoMedium, Helvetica, sans-serif;
+      }
+
+      .subscribe{
+        @include button();
+      }
+    }
+  }
+}
