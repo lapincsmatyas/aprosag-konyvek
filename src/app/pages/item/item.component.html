@@ -1,0 +1,48 @@
+<div class="item-page-container" *ngIf="(item$ | async) as item">
+  <div class="item-container">
+    <div class="images">
+      <div class="main-image-container">
+        <fa-icon class="arrow left" [icon]="faArrowAltCircleLeft" (click)="previousImage()"></fa-icon>
+        <fa-icon class="arrow right" [icon]="faArrowAltCircleRight" (click)="nextImage()"></fa-icon>
+        <img class="main-image" [src]="imageUrls[selectedImageIndex]"/>
+      </div>
+
+      <div class="small-images">
+        <span *ngFor="let image of imageUrls, let i = index">
+          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="image" (click)="selectImage(i)"/>
+        </span>
+      </div>
+    </div>
+    <div class="details">
+      <div class="title">
+        {{item.title}}
+      </div>
+      <div class="subtitle">
+        {{item.subtitle}}
+      </div>
+      <div class="description">
+        {{item.description}}
+      </div>
+      <div class="details-container">
+        <div class="page-number">Oldalak száma: {{item.page_count}} </div>
+        <div class="cover-type">Borító: {{item.cover_type}} </div>
+        <div class="isbn">ISBN: {{item.ISBN}} </div>
+        <div class="weight">Súly: {{item.weight}} </div>
+        <div class="publication-date">Kiadás éve: {{item.publication_date}} </div>
+      </div>
+      <div class="stock-container">
+        Raktáron: {{item.storage_amount}} db
+      </div>
+      <div class="price-container" *ngIf="item.price">
+        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
+        <span *ngIf="item.discount_percentage"
+              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+        <span class="original_price"
+              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+      </div>
+    </div>
+  </div>
+  <div id="related-items-container">
+
+  </div>
+</div>
