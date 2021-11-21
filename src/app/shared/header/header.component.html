@@ -9,5 +9,16 @@
       <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
     </span>
+    <span class="item-list">
+      <a routerLink="login"><fa-icon [icon]="faUser" ></fa-icon></a>
+    </span>
+    <span class="item-list">
+      <fa-icon [icon]="faSignOutAlt" (click)="logout()"></fa-icon>
+    </span>
+
   </span>
+
 </div>
+<span class="userTemp">
+      {{(authService.user$ | async)?.email}}
+    </span>

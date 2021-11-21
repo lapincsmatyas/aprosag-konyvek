@@ -12,7 +12,6 @@ import { WhyIsItSpecialComponent } from './pages/why-is-it-special/why-is-it-spe
 import {environment} from "../environments/environment";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ItemCardComponent } from './pages/items/item-card/item-card.component';
 import {getStorage, provideStorage} from "@angular/fire/storage";
@@ -21,6 +20,9 @@ import { NewsletterComponent } from './shared/newsletter/newsletter.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ItemComponent} from "./pages/item/item.component";
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,10 @@ import {ItemComponent} from "./pages/item/item.component";
     ContactsComponent,
     WhyIsItSpecialComponent,
     ItemCardComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,6 @@ import {ItemComponent} from "./pages/item/item.component";
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
-    provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,
     FormsModule,

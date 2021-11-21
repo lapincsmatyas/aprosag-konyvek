@@ -14,7 +14,6 @@ export class ItemsService {
   itemsData: any = (itemsJson as any).default;
   private collection: CollectionReference<Item>;
 
-
   constructor(private fireStore: Firestore, private fireStorage: Storage) {
     this.collection = collection(this.fireStore, 'items');
   }
