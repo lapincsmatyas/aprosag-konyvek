@@ -1,0 +1,10 @@
+<form [formGroup]="loginForm">
+  <div>
+   Email cím: <input type="email" formControlName="email"/>
+  </div>
+  <div>
+    Jelszó: <input type="password" formControlName="password"/>
+  </div>
+  <button type="submit" (click)="signUp()">Bejelentkezés</button>
+  <button type="button" (click)="goToSignup()">Regisztráció</button>
+</form>
