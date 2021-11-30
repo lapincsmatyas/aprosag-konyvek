@@ -2,30 +2,43 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {User} from "../model/user.model";
 import {first, map, switchMap, take} from "rxjs/operators";
-import {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "@angular/fire/auth";
-import {collection, doc, docData, Firestore, setDoc} from "@angular/fire/firestore";
+import {
+  Auth,
+  authState,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword
+} from "@angular/fire/auth";
+import {collection, doc, docData, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
 import {CollectionReference} from "@firebase/firestore";
-import {DocumentData} from "@angular/fire/compat/firestore";
+import {DocumentData, DocumentReference} from "@angular/fire/compat/firestore";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user$: Observable<User | null>;
+
+  // @ts-ignore
+  userDocument$;
+
   usersCollection: CollectionReference<User>;
 
-  constructor(private auth: Auth, private fireStore: Firestore) {
+  constructor(private auth: Auth, private fireStore: Firestore, private router: Router) {
     this.usersCollection = collection(this.fireStore, 'users');
 
     this.user$ = authState(auth).pipe(
       switchMap(data => {
         if (data) {
-          const document = doc(this.usersCollection, data.uid);
-          return docData(document).pipe(
+          console.log(data);
+          this.userDocument$ = doc(this.usersCollection, data.uid);
+          return docData(this.userDocument$).pipe(
             take(1),
             map((document: any) => {
-              console.log("document", document);
-              return document as User;
+              const temp: User = document as User;
+              temp.emailVerified = data.emailVerified;
+              return temp;
             })
           );
         } else {
@@ -35,9 +48,23 @@ export class AuthService {
     );
   }
 
+  sendEmailVerification() {
+    return authState(this.auth).pipe(
+      switchMap((user) => {
+        if (user) {
+          return of(sendEmailVerification(user));
+        } else {
+          return of(null);
+        }
+      })
+    );
+  }
+
   signup(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password).then((credential) => {
-        this.updateUserData(credential.user)
+        sendEmailVerification(credential.user).then((result) => {
+          this.updateUserData(credential.user)
+        })
       }
     );
   }
@@ -47,18 +74,26 @@ export class AuthService {
   }
 
   logout() {
-    return this.auth.signOut();
+    return this.auth.signOut().then(() => {
+      this.router.navigateByUrl('login');
+    });
   }
 
   private updateUserData(user: User) {
     // @ts-ignore
-    const userRef = doc(this.usersCollection, user.uid);
-    setDoc(userRef, {
-      email: user.email,
+    this.userDocument$ = doc(this.usersCollection, user.uid);
+    setDoc(this.userDocument$, {
       uid: user.uid,
+      email: user.email,
       roles: {
         user: true
       }
+    });
+  }
+
+  updateProfile(value: any) {
+    return updateDoc(this.userDocument$, {
+      ...value
     });
   }
 }

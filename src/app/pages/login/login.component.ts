@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {FormBuilder, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'aprosag-login',
@@ -14,18 +15,18 @@ export class LoginComponent {
     password: ['', [Validators.required]]
   })
 
-  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder) {
+  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder, private toastr: ToastrService) {
   }
 
   goToSignup() {
     this.router.navigateByUrl('signup');
   }
 
-  signUp() {
+  login() {
     this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
-      console.log(result);
+      this.router.navigateByUrl('profile');
     }, (error) => {
-      console.error(error);
+      this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
     })
   }
 }

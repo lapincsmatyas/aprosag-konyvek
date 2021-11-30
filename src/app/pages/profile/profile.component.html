@@ -1,0 +1,77 @@
+<div class="profile-page-container">
+
+<div class="profile-page">
+  <div class="title">
+    <h1>Fiókom</h1>
+  </div>
+  <div class="content-container">
+    <div class="side-menu">
+      <div class="nav-item selected">Adataim</div>
+      <div class="nav-item">Rendeléseim</div>
+      <div class="nav-item">Kedvenceim</div>
+      <div class="nav-item" (click)="logout()">Kijelentkezés</div>
+    </div>
+    <form [formGroup]="profileForm">
+      <div class="form-container">
+        <div class="form-block">
+          <div class="form-field-container">
+            <span class="label">Email cím</span>
+            <input class="input-field" formControlName="email"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Jelszó</span>
+            <input class="input-field" disabled />
+          </div>
+        </div>
+        <div class="email-verification-container" *ngIf="!(user | async)?.emailVerified">
+          Az email-címed még nincs megerősítve. Kérlek kattints az emailben kapott linkre.
+          Kattints <span class="link" (click)="resendVerificationEmail()">ide</span> az email újraküldéséhez.
+        </div>
+        <div class="divider"></div>
+        <div class="form-block">
+          <div class="form-field-container">
+            <span class="label">Vezetéknév</span>
+            <input class="input-field" formControlName="lastName"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Keresztnév</span>
+            <input class="input-field" formControlName="firstName"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Cégnév (nem kötelező)</span>
+            <input class="input-field" formControlName="companyName"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
+            <input class="input-field" formControlName="taxNumber"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Ország</span>
+            <input class="input-field" formControlName="country"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Város</span>
+            <input class="input-field" formControlName="city"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Utca, házszám</span>
+            <input class="input-field" formControlName="address"/>
+          </div>
+          <div class="form-field-container">
+            <span class="label">Irányítószám</span>
+            <input class="input-field" formControlName="zipCode"/>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="form-block">
+          <div class="form-field-container">
+            <span class="label">Telefonszám</span>
+            <input class="input-field" formControlName="phoneNumber"/>
+          </div>
+        </div>
+      </div>
+      <button class="save-button" type="submit" (click)="saveData()">Mentés</button>
+    </form>
+  </div>
+</div>
+</div>

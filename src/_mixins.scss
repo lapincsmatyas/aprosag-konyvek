@@ -1,18 +1,29 @@
 @import "variables";
 
-@mixin button {
-  background-color: $green-line;
+@mixin button($background-color: $green-line, $color: white) {
+  background-color: $background-color;
   font-family: latoBold, Helvetica, sans-serif;
   border-radius: 50px;
 
   border: none;
   cursor: pointer;
-  color: white;
+  color: $color;
   width: fit-content;
-  padding: 20px 70px;
+  padding: 15px 70px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 1em;
   text-transform: uppercase;
+  box-shadow: 0 0 13px -5px #000000;
+}
+
+@mixin input-field {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 15px;
+  border: 2px solid gray;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 30px;
 }

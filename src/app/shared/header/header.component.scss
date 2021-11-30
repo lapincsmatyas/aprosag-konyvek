@@ -38,12 +38,24 @@
         text-transform: uppercase;
 
         &.active{
+          &.profile {
+            color: $green-line;
+          }
           border-bottom: 4px solid $green-line;
         }
       }
     }
   }
+
+  .icon {
+    cursor: pointer;
+    color: $font-color;
+    &.logout {
+      margin-left: 30px;
+    }
+  }
 }
+
 
 .userTemp{
   background-color: red;

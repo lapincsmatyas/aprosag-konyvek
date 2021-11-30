@@ -1,12 +1,22 @@
-<form [formGroup]="registerForm">
-  <div>
-    Email cím: <input type="email" formControlName="email"/>
+<div class="signup-page-container">
+  <div class="signup-page">
+    <h1>Regisztráció</h1>
+    <form [formGroup]="registerForm">
+      <div>
+        <input type="email" formControlName="email" placeholder="Email cím"/>
+      </div>
+      <div>
+        <input type="password" name="password" formControlName="password" placeholder="Jelszó"/>
+      </div>
+      <div>
+        <input type="password" name="confirmPassword" formControlName="confirmPassword" placeholder="Jelszó mégegyszer"/>
+      </div>
+      <button class="button signup-button" type="submit" (click)="signup()">Regisztráció</button>
+      <div>
+        <div class="signup-text">Van már fiókod?</div>
+        <button class="button login-button" type="button" (click)="goToLogin()">Bejelentkezés</button>
+      </div>
+    </form>
   </div>
-  <div>
-    Jelszó: <input type="password" name="password" formControlName="password"/>
-  </div>
-  <div>
-    Jelszó mégegyszer: <input type="password" name="confirmPassword" formControlName="confirmPassword"/>
-  </div>
-  <button type="submit" (click)="signup()">Regisztráció</button>
-</form>
+</div>
+
