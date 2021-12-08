@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {faCartPlus, faUser} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'aprosag-header',
@@ -10,6 +10,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class HeaderComponent{
   faUser = faUser;
+  faCart = faCartPlus;
   faSignOutAlt = faSignOutAlt;
 
   constructor(public authService: AuthService) { }
@@ -20,5 +21,9 @@ export class HeaderComponent{
     }, (error) => {
       console.error(error);
     })
+  }
+
+  openCartModal() {
+
   }
 }

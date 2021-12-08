@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemsService} from "../../services/items.service";
+import {ItemsService} from "../../services/item/items.service";
 import {Observable} from "rxjs";
 import {Item} from "../../model/item.model";
 import {ActivatedRoute} from "@angular/router";

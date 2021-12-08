@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 import {User} from "../../model/user.model";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
