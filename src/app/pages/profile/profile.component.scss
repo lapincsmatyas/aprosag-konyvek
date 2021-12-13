@@ -1,0 +1,99 @@
+@import "src/variables";
+@import "src/mixins";
+
+.link {
+  color: $green-line;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.profile-page-container {
+  background-image: url("../../../assets/Backgrounds/Account_BG.jpg");
+  background-position-x: center;
+  background-repeat: repeat-y;
+  color: $font-color;
+
+  .profile-page {
+    font-family: latoMedium, Helvetica, serif;
+
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 1000px;
+
+    .content-container {
+      display: flex;
+    }
+
+    .side-menu {
+      background-color: white;
+      padding: 20px;
+      width: 25%;
+      height: fit-content;
+      font-family: latoBold, Helvetica, serif;
+
+
+      .nav-item {
+        width: fit-content;
+        cursor: pointer;
+        font-size: 1.1em;
+        padding-bottom: 5px;
+        margin-bottom: 30px;
+
+
+        &.selected {
+          color: $green-line;
+          border-bottom: 4px solid $green-line;
+        }
+      }
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .form-container {
+      padding: 0 50px;
+
+      .email-verification-container {
+        margin: 0 15px;
+      }
+
+      .form-block {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        column-gap: 20px;
+
+        .form-field-container {
+          color: $font-color;
+          margin: 0 15px 15px 15px;
+
+          .label {
+            font-size: 15px;
+            display: block;
+          }
+
+          .input-field {
+            @include input-field;
+          }
+        }
+      }
+
+      .divider {
+        width: 100%;
+        grid-column: 0 / 2;
+        border-bottom: 1px solid $font-color;
+        margin: 15px;
+      }
+
+    }
+
+
+    .save-button {
+      float: right;
+      margin-right: 50px;
+      @include button()
+    }
+  }
+}

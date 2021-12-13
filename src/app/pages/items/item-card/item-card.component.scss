@@ -1,0 +1,44 @@
+@import "src/variables";
+@import "src/mixins";
+
+.item-card-container{
+  color: $font-color;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  min-height: 400px;
+  cursor: pointer;
+
+  .title{
+    margin-top:20px;
+    font-size: 1.2em;
+  }
+  .subtitle{
+    margin-top: 20px;
+    font-family: latoSemibold, Helvetica, serif;
+    font-size: 1em;
+  }
+
+  .item-card-image{
+    width: 100%;
+  }
+
+  .prices {
+    flex-grow: 1;
+
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-family: latoMedium, Helvetica, serif;
+    .original_price.invalid {
+      margin-left: 50px;
+      text-decoration: line-through;
+    }
+    .discount{
+      color: $red-text;
+    }
+  }
+}

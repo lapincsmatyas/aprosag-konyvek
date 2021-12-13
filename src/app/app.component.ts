@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import {ItemsService} from "./services/item/items.service";
 
 @Component({
-  selector: 'app-root',
+  selector: 'aprosag-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'aprosag-konyvek';
+  constructor(private itemsService: ItemsService) {
+    itemsService.initializeItems();
+  }
 }

@@ -1,0 +1,9 @@
+<div>
+  <div *ngIf="cartService.count == 0">
+    A kosár üres
+  </div>
+  <div class="cart-item" *ngFor="let item of cartService.items">
+    {{item.item.title}} - {{item.amount}}
+  </div>
+  <button mat-button mat-raised-button color="primary" (click)="openCart()">Tovább a kosárhoz</button>
+</div>

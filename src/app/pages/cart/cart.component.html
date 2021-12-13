@@ -1,0 +1,25 @@
+<div class="cart-page-container">
+  <h1>Kosár</h1>
+  <div class="cart-table-container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Kép</th>
+        <th scope="col">Termék</th>
+        <th scope="col">Ár</th>
+        <th scope="col">Mennyiség</th>
+        <th scope="col">Részösszeg</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of cartService.items">
+        <td>X</td>
+        <td>{{item.item.title}}</td>
+        <td>{{item.item.price}} Ft</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.item.price}} Ft</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

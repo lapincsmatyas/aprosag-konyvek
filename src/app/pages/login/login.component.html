@@ -1,0 +1,22 @@
+<div class="login-page-container">
+  <div class="login-page">
+    <h1>Bejelentkezés</h1>
+    <form [formGroup]="loginForm">
+      <div>
+        <input type="email" formControlName="email" placeholder="Email cím"/>
+      </div>
+      <div>
+        <input type="password" formControlName="password" placeholder="Jelszó"/>
+      </div>
+      <div>
+        <button class="button login-button" type="submit" (click)="login()">Bejelentkezés</button>
+      </div>
+      <div>
+        <div class="signup-text">Nincs még fiókod?</div>
+        <button class="button signup-button" type="button" (click)="goToSignup()">Regisztráció</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

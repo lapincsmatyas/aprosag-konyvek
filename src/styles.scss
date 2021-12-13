@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding-right: 0 !important;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
+
+@font-face {
+  font-family: latoLight;
+  src: url(assets/Lato_font/Lato-Light.ttf);
+}
+
+@font-face {
+  font-family: latoThin;
+  src: url(assets/Lato_font/Lato-Thin.ttf);
+}
+
+@font-face {
+  font-family: latoHairline;
+  src: url(assets/Lato_font/Lato-Hairline.ttf);
+}
+
+@font-face {
+  font-family: latoHairlineItalic;
+  src: url(assets/Lato_font/Lato-HairlineItalic.ttf);
+}
+
+@font-face {
+  font-family: latoThinItalic;
+  src: url(assets/Lato_font/Lato-ThinItalic.ttf);
+}
+
+@font-face {
+  font-family: latoBold;
+  src: url(assets/Lato_font/Lato-Black.ttf);
+}
+
+@font-face {
+  font-family: latoMedium;
+  src: url(assets/Lato_font/Lato-Medium.ttf);
+}
+
+@font-face {
+  font-family: latoSemibold;
+  src: url(assets/Lato_font/Lato-Semibold.ttf);
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -2,51 +2,34 @@ stages:
   - dependencies
   - test
   - build
-  - deploy
 
 install_dependencies:
-    image: node:14.18.1
-    stage: dependencies
-    script:
-        - npm install
-    only:
-        - merge_requests
-    artifacts:
-        paths:
-            - node_modules
+  image: node:latest
+  stage: dependencies
+  script:
+    - npm cache clean --force
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
 
 lint:
-    image: node:14.18.1
-    stage: test
-    dependencies: 
-        - install_dependencies
-    only:
-        - merge_requests
-    script:
-        - npm link @angular/cli
-        - ng lint
+  image: node:latest
+  stage: test
+  dependencies:
+    - install_dependencies
+  script:
+    - npm link @angular/cli
+    - ng lint
 
-test:
-    image: markhobson/node-chrome:latest
-    stage: test
-    dependencies:
-        - install_dependencies
-    only:
-        - merge_requests
-    script:
-        - npm link @angular/cli
-        - npm test -- --browsers=ChromeHeadless --watch=false
-
-build:
-    image: node:14.18.1
-    stage: build
-    dependencies: 
-        - install_dependencies
-    only:
-        - merge_requests
-    script:
-        - npm link @angular/cli
-        - npm run build
-    artifacts:
-        paths:
-            - $CI_PROJECT_DIR/dist
+build_image:
+  image: node:latest
+  stage: build
+  dependencies:
+    - install_dependencies
+  script:
+    - npm link @angular/cli
+    - ng build --verbose --progress --aot
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/dist

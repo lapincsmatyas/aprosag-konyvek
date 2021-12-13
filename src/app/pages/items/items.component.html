@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="logo-container">
+    <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_2_black.svg"/>
+  </div>
+  <div class="items-container">
+    <span *ngFor="let item of items$ | async">
+      <aprosag-item-card [item]="item"></aprosag-item-card>
+    </span>
+  </div>
+</div>
+<aprosag-newsletter>n</aprosag-newsletter>

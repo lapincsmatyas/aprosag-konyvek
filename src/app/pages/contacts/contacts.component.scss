@@ -1,0 +1,64 @@
+@import "src/variables";
+@import "src/mixins";
+
+.container {
+  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
+  background-position-x: center;
+  background-repeat: repeat-y;
+  font-family: latoBlack, Helvetica, sans-serif;
+  min-height: 1000px;
+  color: $font-color;
+
+  .contacts-container {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 70px;
+
+    h1{
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .form-container {
+      display: flex;
+      margin-top: 50px;
+
+      .form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        text-align: left;
+
+        input[type='text'],
+        textarea {
+          @include input-field;
+        }
+
+        input[type='button']{
+          @include button;
+          margin-top:30px;
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+
+      .data-protection-container{
+        margin-top: 20px;
+
+        #checkbox {
+          border-radius: 20px;
+          background-color: red;
+        }
+      }
+
+      .text{
+        width: 50%;
+        font-size: 1.4em;
+        padding-left: 100px;
+        text-align: left;
+      }
+    }
+  }
+}
