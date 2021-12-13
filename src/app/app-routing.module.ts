@@ -10,6 +10,7 @@ import {RegisterComponent} from "./pages/register/register.component";
 import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {CartComponent} from "./pages/cart/cart.component";
+import {CashDeskComponent} from "./pages/cash-desk/cash-desk.component";
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'items', component: ItemsComponent},
   {path: 'items/:id', component: ItemComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'cash-desk', component: CashDeskComponent},
   {path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToProfile)},
   {path: 'profile', component: ProfileComponent, ...canActivate(redirectUnauthorizedToLogin)},
   {path: 'signup', component: RegisterComponent},

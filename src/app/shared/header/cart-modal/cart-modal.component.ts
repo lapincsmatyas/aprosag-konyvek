@@ -1,5 +1,5 @@
 import {Component, ElementRef, NgModule, OnInit} from '@angular/core';
-import {CartService} from "../../services/cart/cart.service";
+import {CartService} from "../../../services/cart/cart.service";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 

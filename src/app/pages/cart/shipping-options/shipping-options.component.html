@@ -1,0 +1,12 @@
+<div class="shipping-options-container">
+  <div class="shipping-options">
+    <div *ngFor="let option of cartService.shippingTypes">
+      <input type="radio" id="{{option.name}}" name="option" [value]="option" [(ngModel)]="cartService.selectedShippingType"
+             checked>
+      <label for="{{option.name}}">{{option.name}} {{option.value}} Ft</label>
+    </div>
+  </div>
+  <div class="cart-summary">
+    Kosár összesen: <span>{{cartSummary}} Ft</span>
+  </div>
+</div>
