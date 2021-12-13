@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {addDoc, collection, collectionData, doc, docData, Firestore, getDoc} from "@angular/fire/firestore";
 import { Storage} from "@angular/fire/storage";
 import {Observable, of} from "rxjs";
-import {Item} from "../model/item.model";
+import {Item} from "../../model/item.model";
 import {CollectionReference} from "@firebase/firestore";
 import * as itemsJson from "./items.json"
 import {take} from "rxjs/operators";
@@ -34,6 +34,7 @@ export class ItemsService {
   }
 
   getItemById(id: string): Observable<Item> {
+    console.log(id);
     const document = doc(this.collection, id);
     return docData(document).pipe(
       take(1)

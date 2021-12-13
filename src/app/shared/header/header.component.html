@@ -10,6 +10,7 @@
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
       <span class="icon">
       <a class="menu-item profile" routerLink="profile" routerLinkActive="active"><fa-icon [icon]="faUser" ></fa-icon></a>
+      <a class="menu-item cart" (click)="openCartModal()"><fa-icon [icon]="faCart"></fa-icon></a>
     </span>
     </span>
 
@@ -19,3 +20,8 @@
 <span class="userTemp">
       {{(authService.user$ | async)?.email}}
     </span>
+
+
+<ng-template class="cart-modal">
+  <aprosag-cart-modal></aprosag-cart-modal>
+</ng-template>

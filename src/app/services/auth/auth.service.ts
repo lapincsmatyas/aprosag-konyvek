@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {User} from "../model/user.model";
+import {User} from "../../model/user.model";
 import {first, map, switchMap, take} from "rxjs/operators";
 import {
   Auth,

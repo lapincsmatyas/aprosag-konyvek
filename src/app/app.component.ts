@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ItemsService} from "./services/items.service";
+import {ItemsService} from "./services/item/items.service";
 
 @Component({
   selector: 'aprosag-root',
