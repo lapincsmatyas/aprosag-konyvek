@@ -1,0 +1,17 @@
+::ng-deep .modal-dialog  {
+  margin-top: 70px !important;
+  margin-right: 30px;
+}
+
+.page{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .content {
+    overflow-y: scroll;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+}

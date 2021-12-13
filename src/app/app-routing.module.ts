@@ -9,6 +9,7 @@ import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {ProfileComponent} from "./pages/profile/profile.component";
+import {CartComponent} from "./pages/cart/cart.component";
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'items', pathMatch: 'full'},
   {path: 'items', component: ItemsComponent},
   {path: 'items/:id', component: ItemComponent},
+  {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToProfile)},
   {path: 'profile', component: ProfileComponent, ...canActivate(redirectUnauthorizedToLogin)},
   {path: 'signup', component: RegisterComponent},

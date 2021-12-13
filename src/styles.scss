@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  overflow-y: scroll;
+  padding-right: 0 !important;
   scrollbar-width: thin;
 }
 
@@ -56,3 +56,9 @@ body {
   src: url(assets/Lato_font/Lato-Semibold.ttf);
 }
 
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

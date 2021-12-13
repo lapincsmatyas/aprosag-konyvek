@@ -4,52 +4,70 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position:sticky;
+  position: sticky;
   top: 0;
   background-color: white;
-  z-index: 9999;
+  z-index: 1051;
 
   font-family: latoBold, Helvetica, sans-serif;
   margin: 0;
   height: 65px;
-  box-shadow: 0 6px 6px -5px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 6px -5px rgba(0, 0, 0, 0.2);
   padding: 5px 130px;
 
   .logo-container {
     cursor: pointer;
     display: inline-block;
+
     .logo {
       height: 69px;
     }
   }
 
   .button-container {
-    .button-list {
-      display: inline-block;
-      padding: 0;
-      margin: 0;
+    display: flex;
+    align-items: center;
 
-      .menu-item {
-        text-decoration: none;
-        margin: 0 30px;
-        padding-bottom: 5px;
-        font-size: 0.95em;
-        color: $font-color;
-        text-transform: uppercase;
+    .menu-item {
+      text-decoration: none;
+      margin: 0 30px;
+      font-size: 0.95em;
+      color: $font-color;
+      text-transform: uppercase;
+      padding: 10px;
 
-        &.active{
-          &.profile {
-            color: $green-line;
-          }
-          border-bottom: 4px solid $green-line;
+      &.active {
+        &.profile {
+          color: $green-line;
+        }
+
+        border-bottom: 4px solid $green-line;
+      }
+
+      &.cart {
+        position: relative;
+
+        .counter {
+          position: absolute;
+          background-color: rgba(red, 0.5);
+          padding: 0 8px;
+          color: white;
+          font-size: 8px;
+          display: block;
+          border-radius: 10px;
+          top: 0;
+          right: 0;
         }
       }
     }
   }
 
+
+
   .icon {
     cursor: pointer;
     color: $font-color;
+
     &.logout {
       margin-left: 30px;
     }
@@ -57,7 +75,7 @@
 }
 
 
-.userTemp{
+.userTemp {
   background-color: red;
   color: white;
   font-weight: bold;
@@ -66,3 +84,8 @@
   right: 0;
   z-index: 100000;
 }
+
+.customBackgrop {
+  background-color: red;
+}
+
