@@ -1,4 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, NgModule, OnInit} from '@angular/core';
+import {CartService} from "../../services/cart/cart.service";
+import {Router} from "@angular/router";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'aprosag-cart-modal',
@@ -7,16 +10,14 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 })
 export class CartModalComponent implements OnInit {
 
-  constructor(private el: ElementRef) { }
+  constructor(public cartService: CartService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.el.nativeElement('click', () => {
-      this.close();
-    });
   }
 
-  close(){
-    this.el.nativeElement.classList.remove('sshow');
-    this.el.nativeElement.classList.add('hhidden');
+  openCart() {
+    //TODO: solve with self reference modal
+    this.modalService.dismissAll();
+    this.router.navigateByUrl('cart');
   }
 }

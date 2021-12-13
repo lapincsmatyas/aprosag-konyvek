@@ -34,9 +34,8 @@ export class ItemsService {
   }
 
   getItemById(id: string): Observable<Item> {
-    console.log(id);
     const document = doc(this.collection, id);
-    return docData(document).pipe(
+    return docData(document, {idField: 'id'}).pipe(
       take(1)
     );
   }

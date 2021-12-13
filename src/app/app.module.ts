@@ -26,6 +26,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { CartModalComponent } from './shared/cart-modal/cart-modal.component';
+import {NgbModal, NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from "@angular/material/button";
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,8 @@ import { CartModalComponent } from './shared/cart-modal/cart-modal.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CartModalComponent
+    CartModalComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +63,12 @@ import { CartModalComponent } from './shared/cart-modal/cart-modal.component';
     provideFirestore(() => getFirestore()),
     FontAwesomeModule,
     FormsModule,
+    MatBadgeModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    NgbModule,
+    NgbModalModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
