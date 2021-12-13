@@ -4,6 +4,7 @@
     <table class="table">
       <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">Kép</th>
         <th scope="col">Termék</th>
         <th scope="col">Ár</th>
@@ -13,6 +14,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of cartService.items">
+        <td><button class="button" (click)="removeItemFromCart(item)">-</button></td>
         <td>X</td>
         <td>{{item.item.title}}</td>
         <td>{{item.item.price}} Ft</td>
@@ -22,4 +24,6 @@
       </tbody>
     </table>
   </div>
+  <aprosag-shipping-options></aprosag-shipping-options>
+  <button class="button" (click)="goToDesk()">Tovább a pénztárhoz</button>
 </div>

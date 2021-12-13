@@ -5,5 +5,8 @@
   <div class="cart-item" *ngFor="let item of cartService.items">
     {{item.item.title}} - {{item.amount}}
   </div>
+  <div class="sum-container">
+    Részösszeg: {{cartService.value}} Ft
+  </div>
   <button mat-button mat-raised-button color="primary" (click)="openCart()">Tovább a kosárhoz</button>
 </div>
