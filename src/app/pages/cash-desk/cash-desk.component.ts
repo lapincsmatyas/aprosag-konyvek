@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {OrderService} from "../../services/order/order.service";
@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class CashDeskComponent implements OnInit {
   profileForm = this.fb.group({
+      uid: [''],
       email: [''],
       lastName: [''],
       firstName: [''],
@@ -27,8 +28,9 @@ export class CashDeskComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private orderService: OrderService, private toastr: ToastrService, private router: Router) {
     authService.user$.subscribe((user) => {
-      if(user){
+      if (user) {
         this.profileForm.patchValue({
+          uid: user.uid,
           email: user.email,
           lastName: user.lastName,
           firstName: user.firstName,

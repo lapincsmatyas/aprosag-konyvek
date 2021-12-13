@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Order, OrderState, PaymentType} from "../../model/order.model";
-import {addDoc, collection, Firestore} from "@angular/fire/firestore";
-import {CollectionReference} from "@firebase/firestore";
+import {addDoc, collection, collectionData, Firestore, query, where} from "@angular/fire/firestore";
+import {CollectionReference, Timestamp} from "@firebase/firestore";
 import {User} from "../../model/user.model";
 import {CartService} from "../cart/cart.service";
 
@@ -30,7 +30,6 @@ export class OrderService {
     this.selectedPaymentType = this.paymentTypes[0];
 
     this.collection = collection(this.fireStore, 'orders');
-
   }
 
   placeOrder(user: User) {
@@ -39,8 +38,9 @@ export class OrderService {
 
     return addDoc(this.collection, {
       user,
-      date: new Date(),
+      date: Timestamp.fromDate(new Date()),
       state: OrderState.SENT,
+      price: this.cartService.value + this.cartService.selectedShippingType.value,
       cart: this.cartService.items,
       shippingType: this.cartService.selectedShippingType,
       paymentType: this.selectedPaymentType
@@ -48,5 +48,10 @@ export class OrderService {
       this.cartService.emptyCart();
       return result;
     });
+  }
+
+  getOrdersForUser(user: User){
+    const q = query(this.collection, where("user.uid","==", user.uid));
+    return collectionData(q, {idField: "orderNumber"});
   }
 }

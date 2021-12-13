@@ -8,6 +8,7 @@ import {Item} from "../../model/item.model";
 import {ImageCacheService} from "../../services/image-cache/image-cache.service";
 import {faArrowAltCircleLeft, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {CartService} from "../../services/cart/cart.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'aprosag-item',
@@ -26,6 +27,7 @@ export class ItemComponent implements OnInit {
   constructor(private itemService: ItemsService,
               private cartService: CartService,
               private imageCache: ImageCacheService,
+              private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
 
     this.activatedRoute.params.pipe(
@@ -73,6 +75,7 @@ export class ItemComponent implements OnInit {
   addItemToCart() {
     if (this.item) {
       this.cartService.addItemToCart(this.item, this.amount);
+      this.toastr.success(`Sikeresen hozzáadtál ${this.amount} terméket a kosárhoz!`);
       this.amount = 0;
     }
   }

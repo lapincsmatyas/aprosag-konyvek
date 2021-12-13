@@ -5,6 +5,8 @@ import {User} from "../../model/user.model";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {ToastrService} from "ngx-toastr";
+import {OrderService} from "../../services/order/order.service";
+import {Order} from "../../model/order.model";
 
 @Component({
   selector: 'aprosag-profile',
@@ -12,6 +14,9 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  menus: string[] = ["Adataim","Rendeléseim","Kedvenceim","Kijelentkezés"]
+  selectedMenu = this.menus[0];
+
   profileForm = this.fb.group({
       email: [''],
       username: [''],
@@ -27,16 +32,20 @@ export class ProfileComponent implements OnInit {
     }
   )
 
-  public user: Observable<User | null>;
+  public user: User | null = null;
+  public orders: Order[] = [];
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService) {
-    this.user = this.authService.user$.pipe(
-      tap((value) => {
-        if (value) {
-          this.profileForm.patchValue(value);
-        }
-      })
-    );
+  constructor(private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService, private orderService: OrderService) {
+    this.authService.user$.subscribe((user) => {
+      if(user) {
+        this.user = user;
+        console.log(this.user);
+        this.profileForm.patchValue(user);
+        orderService.getOrdersForUser(user).subscribe((orders) => {
+          this.orders = orders;
+        })
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -51,14 +60,27 @@ export class ProfileComponent implements OnInit {
   }
 
   resendVerificationEmail() {
-    this.authService.sendEmailVerification().subscribe((result) => {
-      console.log(result);
+    const verificationRef = this.authService.sendEmailVerification().subscribe((result) => {
+      this.toastr.success("Megerősítő Email elküldve!");
+      verificationRef.unsubscribe();
+    }, (error) => {
+      this.toastr.error("Kérjük, próbáld meg később!","Hiba történt a megerősítő Email elküldése közben!")
+      verificationRef.unsubscribe();
     })
   }
 
   logout() {
     this.authService.logout().then(() => {
-
     })
+  }
+
+  changeMenu(menu: string) {
+    if(menu == "Kijelentkezés")
+      this.logout();
+
+    if(menu == "Kedvenceim")
+      return;
+
+    this.selectedMenu = menu;
   }
 }

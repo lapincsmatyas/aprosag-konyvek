@@ -1,8 +1,11 @@
 @import "src/variables";
 @import "src/mixins";
 
+:host {
+  flex: 1;
+}
+
 .item-page-container {
-  min-height: 1000px;
   width: 70%;
   margin: 50px auto;
 
