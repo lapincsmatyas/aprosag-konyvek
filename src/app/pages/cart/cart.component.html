@@ -21,9 +21,14 @@
         <td>{{item.amount}}</td>
         <td>{{item.item.price}} Ft</td>
       </tr>
+      <tr *ngIf="cartService.count == 0">
+        <td colspan="6">A kosarad üres</td>
+      </tr>
       </tbody>
     </table>
   </div>
-  <aprosag-shipping-options></aprosag-shipping-options>
-  <button class="button" (click)="goToDesk()">Tovább a pénztárhoz</button>
+  <div *ngIf="cartService.count > 0">
+    <aprosag-shipping-options></aprosag-shipping-options>
+    <button class="button" (click)="goToDesk()">Tovább a pénztárhoz</button>
+  </div>
 </div>
