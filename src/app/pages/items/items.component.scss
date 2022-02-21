@@ -13,7 +13,8 @@
   }
 
   .items-container{
-    font-family: latoBold, Helvetica, sans-serif;
+    font-family: lato, Helvetica, sans-serif;
+    font-weight: bold;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 50px;

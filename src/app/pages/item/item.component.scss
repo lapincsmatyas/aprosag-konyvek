@@ -68,35 +68,38 @@
 
       .title {
         font-size: 3em;
-        font-family: latoBold, Helvetica, sans-serif;
-      }
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: 900;      }
 
       .subtitle {
         margin-top:20px;
         font-size: 1.5em;
         color: $font-color;
-        font-family: latoBold, Helvetica, sans-serif;
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: bold;
       }
 
       .description, .details-container, .stock-container, .price-container {
         margin-top: 20px;
         font-size: 1.2em;
-        font-family: latoMedium, Helvetica, sans-serif;
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: 600;
       }
 
       .stock-container{
-        font-family: latoBold, Helvetica, sans-serif;
-
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: bold;
       }
 
       .discount{
-        font-family: latoBold, Helvetica, sans-serif;
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: bold;
         color: $red-text;
       }
 
       .original_price{
-        font-family: latoBold, Helvetica, sans-serif;
-
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: bold;
         &.invalid {
           opacity: 0.6;
         margin-left: 50px;

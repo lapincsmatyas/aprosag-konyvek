@@ -15,7 +15,8 @@
   color: $font-color;
 
   .profile-page {
-    font-family: latoMedium, Helvetica, serif;
+    font-family: lato, Helvetica, sans-serif;
+    font-weight: 600;
 
     width: 70%;
     max-width: 1000px;
@@ -31,8 +32,8 @@
       padding: 20px;
       width: 25%;
       height: fit-content;
-      font-family: latoBold, Helvetica, serif;
-
+      font-family: lato, Helvetica, sans-serif;
+      font-weight: bold;
 
       .nav-item {
         width: fit-content;

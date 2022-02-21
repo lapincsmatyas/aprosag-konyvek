@@ -2,14 +2,15 @@
 
 @mixin button($background-color: $green-line, $color: white) {
   background-color: $background-color;
-  font-family: latoBold, Helvetica, sans-serif;
+  font-family: lato, Helvetica, sans-serif;
+  font-weight: bold;
   border-radius: 50px;
 
   border: none;
   cursor: pointer;
   color: $color;
-  width: fit-content;
-  padding: 15px 70px;
+  width:100%;
+  padding: 10px 70px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
