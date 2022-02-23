@@ -1,23 +1,13 @@
 import {User} from "./user.model";
-import {CartItem, ShippingType} from "./cart-item.model";
-import {Timestamp} from "@firebase/firestore";
+import {CartItem} from "./cart-item.model";
 
 export enum OrderState {
   SENT= "SENT"
 }
 
 export interface Order {
-  orderNumber?: number;
-  user?: User;
-  date?: Timestamp;
-  state?: OrderState;
-  cart?: CartItem[];
-  price?: number;
-  shippingType?: ShippingType;
-  paymentType?: PaymentType;
-}
-
-export interface PaymentType {
-  name: string;
-  description: string;
+  user: User;
+  date: Date;
+  state: OrderState;
+  cart: CartItem[];
 }
