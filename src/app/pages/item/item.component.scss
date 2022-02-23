@@ -1,11 +1,8 @@
 @import "src/variables";
 @import "src/mixins";
 
-:host {
-  flex: 1;
-}
-
 .item-page-container {
+  min-height: 1000px;
   width: 70%;
   margin: 50px auto;
 
@@ -68,38 +65,35 @@
 
       .title {
         font-size: 3em;
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: 900;      }
+        font-family: latoBold, Helvetica, sans-serif;
+      }
 
       .subtitle {
         margin-top:20px;
         font-size: 1.5em;
         color: $font-color;
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: bold;
+        font-family: latoBold, Helvetica, sans-serif;
       }
 
       .description, .details-container, .stock-container, .price-container {
         margin-top: 20px;
         font-size: 1.2em;
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: 600;
+        font-family: latoMedium, Helvetica, sans-serif;
       }
 
       .stock-container{
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: bold;
+        font-family: latoBold, Helvetica, sans-serif;
+
       }
 
       .discount{
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: bold;
+        font-family: latoBold, Helvetica, sans-serif;
         color: $red-text;
       }
 
       .original_price{
-        font-family: lato, Helvetica, sans-serif;
-        font-weight: bold;
+        font-family: latoBold, Helvetica, sans-serif;
+
         &.invalid {
           opacity: 0.6;
         margin-left: 50px;

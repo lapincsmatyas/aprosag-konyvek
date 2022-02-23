@@ -16,8 +16,7 @@
   }
   .subtitle{
     margin-top: 20px;
-    font-family: lato, Helvetica, sans-serif;
-    font-weight: 600;
+    font-family: latoSemibold, Helvetica, serif;
     font-size: 1em;
   }
 
@@ -33,8 +32,7 @@
     align-items: flex-end;
     margin-top: 20px;
     font-size: 1.3em;
-    font-family: lato, Helvetica, sans-serif;
-    font-weight: 600;
+    font-family: latoMedium, Helvetica, serif;
     .original_price.invalid {
       margin-left: 50px;
       text-decoration: line-through;
