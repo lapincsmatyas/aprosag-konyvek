@@ -10,7 +10,8 @@
   .top{
     display: flex;
     justify-content: center;
-    font-family: latoLight, Helvetica, sans-serif;
+    font-family: lato, Helvetica, sans-serif;
+    font-width: 300;
 
     .left{
       border-right: 2px solid white;
@@ -23,7 +24,8 @@
     }
 
     .center{
-      font-family: latoHairlineItalic, Helvetica, sans-serif;
+      font-family: lato, Helvetica, sans-serif;
+      font-weight: 100;
       margin: 0 100px;
       .text{
         margin-bottom: 18px;
@@ -35,7 +37,8 @@
     }
 
     .right{
-      font-family: latoHairlineItalic, Helvetica, sans-serif;
+      font-family: lato, Helvetica, sans-serif;
+      font-weight: 100;
       padding-left: 80px;
       .text{
         margin-bottom: 18px;

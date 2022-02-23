@@ -1,0 +1,49 @@
+<div class="cart-modal-container">
+  <div class="cart-modal-header">
+    <span>Kosarad tartalma</span>
+    <span>{{this.cartService.count}} termék</span>
+  </div>
+  <div *ngIf="this.cartService.count > 0">
+    <div class="cart-modal-item-list">
+      <ng-container *ngFor="let item of cartService.items">
+        <div class="cart-item-container">
+          <div class="cart-item">
+            <div class="cart-item-image-container">
+              <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+            </div>
+            <div class="cart-text-container">
+              <div class="title-container">
+                <div class="titles">
+                  <div class="title">{{item.item.title}}</div>
+                  <div class="subtitle">{{item.item.subtitle}}</div>
+                </div>
+                <fa-icon class="delete-button" [icon]="faTimesCircle" (click)="deleteItemFromCart(item)"></fa-icon>
+              </div>
+              <div class="price-container">
+                <div class="amount">
+                  <span class="times">{{item.amount}}x</span>
+                  <span> {{item.item.price}} Ft</span>
+                </div>
+                <div class="sum-price">{{item.item.price ? item.amount * item.item.price : "0"}} Ft</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </ng-container>
+
+    </div>
+    <div class="cart-modal-footer">
+      <div class="footer-content">
+        <div class="price-container">
+          <span>Részösszeg</span>
+          <span class="price">{{this.cartService.value}} Ft</span>
+        </div>
+        <button class="button" mat-button mat-raised-button color="primary" (click)="openCart()">Tovább a kosárhoz
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

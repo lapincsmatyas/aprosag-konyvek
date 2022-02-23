@@ -5,7 +5,8 @@
   background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
   background-position-x: center;
   background-repeat: repeat-y;
-  font-family: latoMedium, Helvetica, serif;
+  font-family: lato, Helvetica, sans-serif;
+  font-weight: 600;
   color: $font-color;
 
   .login-page{
@@ -22,8 +23,8 @@
     .signup-text{
       margin-top: 50px;
       font-size: 1.1em;
-      font-family: latoBold, Helvetica, serif;
-
+      font-family: lato, Helvetica, sans-serif;
+      font-weight: bold;
     }
 
     .button{

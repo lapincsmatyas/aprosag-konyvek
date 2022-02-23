@@ -1,7 +1,10 @@
 import {Component, ElementRef, NgModule, OnInit} from '@angular/core';
-import {CartService} from "../../services/cart/cart.service";
+import {CartService} from "../../../services/cart/cart.service";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
+import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
+import {CartItem} from "../../../model/cart-item.model";
 
 @Component({
   selector: 'aprosag-cart-modal',
@@ -9,6 +12,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./cart-modal.component.scss']
 })
 export class CartModalComponent implements OnInit {
+  faTimesCircle = faTimesCircle;
 
   constructor(public cartService: CartService, private router: Router, private modalService: NgbModal) { }
 
@@ -19,5 +23,9 @@ export class CartModalComponent implements OnInit {
     //TODO: solve with self reference modal
     this.modalService.dismissAll();
     this.router.navigateByUrl('cart');
+  }
+
+  deleteItemFromCart(item: CartItem) {
+    this.cartService.removeAllOfTypeFromCart(item);
   }
 }
