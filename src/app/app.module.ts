@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ItemsComponent } from './pages/items/items.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { WhyIsItSpecialComponent } from './pages/why-is-it-special/why-is-it-special.component';
 import {environment} from "../environments/environment";
@@ -33,6 +32,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ShippingOptionsComponent } from './pages/cart/shipping-options/shipping-options.component';
 import { CashDeskComponent } from './pages/cash-desk/cash-desk.component';
 import { PaymentOptionsComponent } from './pages/cash-desk/payment-options/payment-options.component';
+import {AboutUsComponent} from "./pages/about-us/about-us.component";
 
 @NgModule({
   declarations: [

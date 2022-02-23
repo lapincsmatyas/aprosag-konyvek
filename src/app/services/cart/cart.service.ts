@@ -84,6 +84,8 @@ export class CartService {
       return;
 
     this.cart.delete(id);
+
+    this.updateStorage();
   }
 
   removeItemCart(item: CartItem) {
