@@ -1,22 +1,30 @@
 <div class="cart-page-container">
-  <h1>Kosár</h1>
+  <h1 class="title">Kosár</h1>
   <div class="cart-table-container">
     <table class="table">
-      <thead>
+      <thead class="table-header">
       <tr>
-        <th scope="col"></th>
-        <th scope="col">Kép</th>
-        <th scope="col">Termék</th>
-        <th scope="col">Ár</th>
-        <th scope="col">Mennyiség</th>
-        <th scope="col">Részösszeg</th>
+        <th class="header-text" scope="col"></th>
+        <th class="header-text" scope="col">Kép</th>
+        <th class="header-text" scope="col">Termék</th>
+        <th class="header-text" scope="col">Ár</th>
+        <th class="header-text" scope="col">Mennyiség</th>
+        <th class="header-text" scope="col">Részösszeg</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let item of cartService.items">
-        <td><button class="button" (click)="removeItemFromCart(item)">-</button></td>
-        <td>X</td>
-        <td>{{item.item.title}}</td>
+        <td>
+           <span class="delete-icon-container" (click)="removeItemFromCart(item)">
+
+          </span>
+        <td>
+
+        </td>
+        <td>
+          <div class="item-title">{{item.item.title}}</div>
+          <div>{{item.item.subtitle}}</div>
+        </td>
         <td>{{item.item.price}} Ft</td>
         <td>{{item.amount}}</td>
         <td>{{item.item.price}} Ft</td>

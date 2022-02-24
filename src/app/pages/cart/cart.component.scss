@@ -1,3 +1,51 @@
+@import "src/variables";
+
+
 :host {
   flex: 1;
+  background-color: rgba(235, 247, 241);
+
+}
+
+.cart-page-container{
+  color: $font-color !important;
+  margin: 50px auto;
+  width: 80%;
+
+  font-family: lato, Helvetica, serif;
+
+  .title{
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .cart-table-container{
+    background-color: white;
+
+
+    .table{
+      color: $font-color !important;
+      font-size: 16px;
+
+
+      .table-header{
+        color: white;
+        background-color: $green-line;
+
+        th{
+          height: 60px;
+          vertical-align: middle;
+        }
+
+        .header-text{
+          font-weight: bold;
+
+        }
+      }
+
+      .item-title{
+        font-weight: 900;
+      }
+    }
+  }
 }
