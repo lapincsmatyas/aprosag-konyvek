@@ -1,0 +1,15 @@
+<div class="stepper-container">
+
+  <span class="arrow left" (click)="changeValue(-1)" >
+      <fa-icon class="left-arrow" [icon]="faArrowLeft"></fa-icon>
+  </span>
+
+  <span class="content-container">
+    {{value}}
+  </span>
+
+  <span class="arrow right" (click)="changeValue(1)">
+    <fa-icon class="right-arrow"  [icon]="faArrowRight"></fa-icon>
+  </span>
+
+</div>
