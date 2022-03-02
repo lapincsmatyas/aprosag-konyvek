@@ -1,0 +1,29 @@
+.option{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+
+  .input-field{
+    display: flex;
+    align-items: center;
+  }
+
+  .option-label{
+    margin: 0;
+    margin-left: 20px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    .label-name{
+      max-width: 180px;
+    }
+
+    .label-value{
+      width: 80px;
+      text-align: right;
+    }
+  }
+}

@@ -1,13 +1,12 @@
 @import "src/variables";
 
 .container{
-  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
-  background-position-x: center;
-  background-repeat: repeat-y;
   font-family: lato, Helvetica, sans-serif;
   font-weight: 900;
-  min-height: 1000px;
   color: $font-color;
+
+  $content-max-width: 1000px;
+  $content-percentage-width: 70%;
 
   .about-us-container {
     width: 60%;

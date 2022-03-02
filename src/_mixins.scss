@@ -6,15 +6,18 @@
   font-weight: bold;
   border-radius: 50px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $button-height;
+
   border: none;
   cursor: pointer;
   color: $color;
   width:100%;
-  padding: 10px 70px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 1em;
+  font-size: 16px !important;
   text-transform: uppercase;
   box-shadow: 0 0 13px -5px #000000;
 }

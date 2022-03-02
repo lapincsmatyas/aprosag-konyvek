@@ -2,17 +2,15 @@
 @import "src/mixins";
 
 .container{
-  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
-  background-position-x: center;
-  background-repeat: repeat-y;
-
+  font-family: lato, Helvetica, sans-serif;
+  font-weight: 900;
+  color: $font-color;
 
   .special-container{
 
-    font-family: lato, Helvetica, sans-serif;
-    font-weight: 900;    color: $font-color;
-    width: 60%;
-    max-width: 1000px;
+    width: $content-percentage-width;
+    max-width: $content-max-width;
+
     margin: 0 auto;
     padding-bottom: 100px;
 

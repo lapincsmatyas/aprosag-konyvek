@@ -9,10 +9,6 @@ import {CartService} from "../../../services/cart/cart.service";
 })
 export class ShippingOptionsComponent implements OnInit {
 
-  get cartSummary(): number {
-    return this.cartService.value + this.cartService.selectedShippingType.value;
-  }
-
   constructor(public cartService: CartService) {
 
   }

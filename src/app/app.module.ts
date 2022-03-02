@@ -33,6 +33,7 @@ import { ShippingOptionsComponent } from './pages/cart/shipping-options/shipping
 import { CashDeskComponent } from './pages/cash-desk/cash-desk.component';
 import { PaymentOptionsComponent } from './pages/cash-desk/payment-options/payment-options.component';
 import {AboutUsComponent} from "./pages/about-us/about-us.component";
+import { StepperComponent } from './shared/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {AboutUsComponent} from "./pages/about-us/about-us.component";
     CartComponent,
     ShippingOptionsComponent,
     CashDeskComponent,
-    PaymentOptionsComponent
+    PaymentOptionsComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule,
