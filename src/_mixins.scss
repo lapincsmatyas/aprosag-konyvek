@@ -14,20 +14,19 @@
   border: none;
   cursor: pointer;
   color: $color;
-  width:100%;
   text-align: center;
   text-decoration: none;
-  font-size: 16px !important;
+  font-size: 14px !important;
   text-transform: uppercase;
   box-shadow: 0 0 13px -5px #000000;
 }
 
 @mixin input-field {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 15px;
   border: 2px solid gray;
-  padding: 12px 20px;
+  padding: 6px 15px;
   box-sizing: border-box;
   border-radius: 30px;
 }

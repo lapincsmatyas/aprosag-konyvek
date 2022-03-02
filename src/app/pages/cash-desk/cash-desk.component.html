@@ -1,56 +1,75 @@
-<div class="cash-desk-page-container">
-  <div class="personal-data">
-    <form [formGroup]="profileForm">
-      <div class="form-container">
-        <div class="form-block">
-          <div class="form-field-container">
-            <span class="label">Vezetéknév</span>
-            <input class="input-field" formControlName="lastName"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Keresztnév</span>
-            <input class="input-field" formControlName="firstName"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Cégnév (nem kötelező)</span>
-            <input class="input-field" formControlName="companyName"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
-            <input class="input-field" formControlName="taxNumber"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Ország</span>
-            <input class="input-field" formControlName="country"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Város</span>
-            <input class="input-field" formControlName="city"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Utca, házszám</span>
-            <input class="input-field" formControlName="address"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Irányítószám</span>
-            <input class="input-field" formControlName="zipCode"/>
-          </div>
-        </div>
-        <div class="divider"></div>
-        <div class="form-block">
-          <div class="form-field-container">
-            <span class="label">Telefonszám</span>
-            <input class="input-field" formControlName="phoneNumber"/>
-          </div>
-          <div class="form-field-container">
-            <span class="label">Email cím</span>
-            <input class="input-field" formControlName="email"/>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  <aprosag-payment-options></aprosag-payment-options>
-  <button class="save-button" type="submit" (click)="sendOrder()">Rendelés leadása</button>
+<!--
 
+
+  <button class="save-button" type="submit" (click)="sendOrder()">Rendelés leadása</button>
+</div>
+-->
+<div class="cash-desk-page-container">
+  <mat-stepper linear #stepper>
+    <mat-step class="step">
+      <ng-template matStepLabel>Azonosítás</ng-template>
+      <div class="button-container">
+        <button mat-button class="button" matStepperNext>Tovább a számlázási adatokhoz</button>
+      </div>
+    </mat-step>
+    <mat-step class="step">
+      <form>
+        <ng-template matStepLabel>Számlázási adatok</ng-template>
+        <div class="personal-data">
+          <form [formGroup]="profileForm">
+            <div class="form-container">
+              <div class="form-field-container">
+                <span class="label">Vezetéknév</span>
+                <input class="input-field" formControlName="lastName"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Keresztnév</span>
+                <input class="input-field" formControlName="firstName"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Cégnév (nem kötelező)</span>
+                <input class="input-field" formControlName="companyName"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
+                <input class="input-field" formControlName="taxNumber"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Ország</span>
+                <input class="input-field" formControlName="country"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Város</span>
+                <input class="input-field" formControlName="city"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Utca, házszám</span>
+                <input class="input-field" formControlName="address"/>
+              </div>
+              <div class="form-field-container">
+                <span class="label">Irányítószám</span>
+                <input class="input-field" formControlName="zipCode"/>
+              </div>
+              <div class="form-field-container span-2">
+                <span class="label">Megjegyzés</span>
+                <input class="input-field" formControlName="comment"/>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="button-container">
+          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+          <button mat-button class="button" matStepperNext>Tovább a fizetési módokhoz</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step class="step">
+      <ng-template matStepLabel>Fizetési módok</ng-template>
+      <aprosag-payment-options></aprosag-payment-options>
+      <div class="button-container">
+        <button mat-button class="button back" matStepperPrevious>Vissza</button>
+        <button mat-button class="button" matStepperNext>Rendelés megerősítése</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>

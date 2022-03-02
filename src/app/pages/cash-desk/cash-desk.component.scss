@@ -1,0 +1,120 @@
+@import "src/variables";
+@import "src/mixins";
+
+:host {
+  flex: 1;
+  background-color: rgba(235, 247, 241);
+}
+
+.cash-desk-page-container {
+
+  font-family: lato, Helvetica, sans-serif;
+  color: $font-color !important;
+  margin: 50px auto;
+  width: 80%;
+  max-width: $content-max-width;
+
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+
+    .form-field-container {
+      margin: 0 16px;
+      flex: 45%;
+      display: flex;
+      flex-direction: column;
+
+      .input-field{
+        @include input-field;
+      }
+
+      &.span-2{
+        flex-grow: 2;
+      }
+    }
+
+
+  }
+
+  .button-container{
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+    justify-content: space-between;
+
+    .button{
+      @include button;
+
+      width: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+
+      &.back{
+        @include button($font-color);
+      }
+    }
+  }
+
+}
+
+::ng-deep .mat-horizontal-content-container {
+  margin: 16px;
+  min-height: 600px;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  background-color: $ligth-green;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+
+  .mat-step-header {
+    width: 100%;
+    height: auto;
+    padding: 12px 36px;
+    color: $font-color;
+
+    .mat-step-icon {
+      margin-right: 16px;
+
+      color: white;
+      background-color: $font-color;
+    }
+
+
+    .mat-step-label {
+      font-weight: 500;
+      color: $font-color !important;
+
+      &.mat-step-label-active {
+        color: white;
+      }
+    }
+
+    &[aria-selected="true"] {
+      color: white;
+      background-color: $base-green;
+
+      .mat-step-label {
+        font-weight: 500;
+        color: white !important;
+      }
+
+      .mat-step-icon {
+        color: $base-green;
+        font-weight: 700;
+        background-color: white;
+      }
+    }
+  }
+
+  .mat-stepper-horizontal-line {
+    display: none;
+  }
+
+  ::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+  }
+}

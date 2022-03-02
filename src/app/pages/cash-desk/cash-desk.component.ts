@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {OrderService} from "../../services/order/order.service";
 import {ToastrService} from "ngx-toastr";
@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./cash-desk.component.scss']
 })
 export class CashDeskComponent implements OnInit {
+
+
   profileForm = this.fb.group({
       uid: [''],
       email: [''],
@@ -25,6 +27,10 @@ export class CashDeskComponent implements OnInit {
       phoneNumber: ['']
     }
   )
+
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  isEditable = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private orderService: OrderService, private toastr: ToastrService, private router: Router) {
     authService.user$.subscribe((user) => {
@@ -44,9 +50,13 @@ export class CashDeskComponent implements OnInit {
         })
       }
     })
-  }
 
-  ngOnInit(): void {
+    this.firstFormGroup = this.fb.group({
+      firstCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this.fb.group({
+      secondCtrl: ['', Validators.required],
+    });
   }
 
   sendOrder() {
@@ -56,5 +66,11 @@ export class CashDeskComponent implements OnInit {
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")
     });
+  }
+
+
+
+  ngOnInit() {
+
   }
 }

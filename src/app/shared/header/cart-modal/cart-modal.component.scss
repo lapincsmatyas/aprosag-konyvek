@@ -94,6 +94,7 @@
 
       .button {
         @include button();
+        width: 100%;
       }
     }
 
