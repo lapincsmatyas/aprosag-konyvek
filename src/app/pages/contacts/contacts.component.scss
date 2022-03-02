@@ -2,12 +2,14 @@
 @import "src/mixins";
 
 .container {
-  background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
-  background-position-x: center;
-  background-repeat: repeat-y;
   font-family: lato, Helvetica, sans-serif;
-  font-weight: 900;  min-height: 1000px;
+  font-weight: 900;
   color: $font-color;
+
+  margin-bottom: 50px;
+
+  $content-max-width: 1000px;
+  $content-percentage-width: 70%;
 
   .contacts-container {
     text-align: center;

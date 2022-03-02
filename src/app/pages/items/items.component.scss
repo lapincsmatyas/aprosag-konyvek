@@ -1,7 +1,12 @@
+@import "src/variables";
+
+
 .container{
-  //background-image: url("../../../assets/Backgrounds/Special_page_BG_clipped.jpg");
   background-position-x: center;
   background-repeat: repeat-y;
+
+  width: $content-percentage-width;
+  max-width: $content-max-width;
 
   .logo-container{
     width: 100%;

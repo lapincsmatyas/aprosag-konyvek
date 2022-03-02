@@ -1,12 +1,16 @@
 @import "src/variables";
 
+:host{
+  display: block;
+}
+
 .stepper-container{
   background-color: whitesmoke;
   height: 50px;
   color: $font-color;
   display: flex;
-  width: fit-content;
   align-items: center;
+  justify-content: space-between ;
   user-select: none;
 
   font-family: lato, Helvetica sans-serif;

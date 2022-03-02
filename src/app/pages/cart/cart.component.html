@@ -5,10 +5,10 @@
       <thead class="table-header">
       <tr>
         <th class="header-text" scope="col"></th>
-        <th class="header-text" scope="col">Kép</th>
+        <th class="header-text image" scope="col">Kép</th>
         <th class="header-text" scope="col">Termék</th>
         <th class="header-text" scope="col">Ár</th>
-        <th class="header-text" scope="col">Mennyiség</th>
+        <th class="header-text amount" scope="col">Mennyiség</th>
         <th class="header-text" scope="col">Részösszeg</th>
       </tr>
       </thead>
@@ -16,18 +16,23 @@
       <tr *ngFor="let item of cartService.items">
         <td>
            <span class="delete-icon-container" (click)="removeItemFromCart(item)">
+                <fa-icon class="delete-button" [icon]="faTimesCircle"></fa-icon>
 
           </span>
         <td>
-
+        <div class="cart-item-image-container">
+          <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+        </div>
         </td>
         <td>
           <div class="item-title">{{item.item.title}}</div>
           <div>{{item.item.subtitle}}</div>
         </td>
         <td>{{item.item.price}} Ft</td>
-        <td>{{item.amount}}</td>
-        <td>{{item.item.price}} Ft</td>
+        <td class="amount">
+          <aprosag-stepper [allowZero]="false" [value]="item.amount" (valueChange)="amountChanged($event, item)"></aprosag-stepper>
+        </td>
+        <td>{{item.item.price ? item.item.price * item.amount : 0}} Ft</td>
       </tr>
       <tr *ngIf="cartService.count == 0">
         <td colspan="6">A kosarad üres</td>
@@ -35,8 +40,32 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="cartService.count > 0">
-    <aprosag-shipping-options></aprosag-shipping-options>
-    <button class="button" (click)="goToDesk()">Tovább a pénztárhoz</button>
+  <div class="button-container">
+    <button class="button back-to-shop" (click)="goToDesk()">Vásárlás folytatása</button>
+  </div>
+  <div class="newsletter-and-shipping">
+    <div class="shipping-options-container">
+      <div class="header">
+        <span class="text">Kosár összesen</span>
+      </div>
+      <div class="content">
+        <div class="table-row">
+          <span class="table-title">Részösszeg</span>
+          <span>{{cartService.value}} Ft</span>
+        </div>
+        <div class="table-row">
+          <span class="table-title">Szállítás</span>
+          <aprosag-shipping-options></aprosag-shipping-options>
+        </div>
+        <div class="table-row">
+          <span class="table-title">Összeg</span>
+          <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-container" *ngIf="cartService.count > 0">
+    <button class="button to-the-cashdesk" (click)="goToDesk()">Tovább a pénztárhoz</button>
   </div>
 </div>

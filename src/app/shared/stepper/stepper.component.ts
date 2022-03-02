@@ -13,11 +13,15 @@ export class StepperComponent implements OnInit {
   @Input()
   value: number;
 
+  @Input()
+  allowZero: boolean;
+
   @Output()
   valueChange = new EventEmitter<number>();
 
   constructor() {
-    this.value = 0;
+    this.allowZero = false;
+    this.value = this.allowZero ? 0 : 1;
   }
 
   ngOnInit(): void {
@@ -26,7 +30,12 @@ export class StepperComponent implements OnInit {
 
   changeValue(amount: number){
     this.value += amount;
-    if(this.value < 0) this.value = 0;
+
+    if(this.allowZero && this.value < 0){
+      this.value = 0;
+    } else if(!this.allowZero && this.value < 1){
+      this.value = 1;
+    }
 
     this.valueChange.emit(this.value);
   }
