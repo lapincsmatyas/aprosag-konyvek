@@ -7,17 +7,11 @@
 <div class="cash-desk-page-container">
   <mat-stepper linear #stepper>
     <mat-step class="step">
-      <ng-template matStepLabel>Azonosítás</ng-template>
-      <div class="button-container">
-        <button mat-button class="button" matStepperNext>Tovább a számlázási adatokhoz</button>
-      </div>
-    </mat-step>
-    <mat-step class="step">
       <form>
         <ng-template matStepLabel>Számlázási adatok</ng-template>
-        <div class="personal-data">
-          <form [formGroup]="profileForm">
-            <div class="form-container">
+        <div class="form-container">
+          <form class="personal-data" [formGroup]="profileForm">
+            <div class="profile-container" formGroupName="profile">
               <div class="form-field-container">
                 <span class="label">Vezetéknév</span>
                 <input class="input-field" formControlName="lastName"/>
@@ -50,7 +44,9 @@
                 <span class="label">Irányítószám</span>
                 <input class="input-field" formControlName="zipCode"/>
               </div>
-              <div class="form-field-container span-2">
+            </div>
+            <div class="span-2">
+              <div class="form-field-container">
                 <span class="label">Megjegyzés</span>
                 <input class="input-field" formControlName="comment"/>
               </div>
@@ -58,18 +54,65 @@
           </form>
         </div>
         <div class="button-container">
-          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+          <span></span>
           <button mat-button class="button" matStepperNext>Tovább a fizetési módokhoz</button>
         </div>
       </form>
     </mat-step>
     <mat-step class="step">
       <ng-template matStepLabel>Fizetési módok</ng-template>
+      <div class="title">Fizetési módok</div>
       <aprosag-payment-options></aprosag-payment-options>
       <div class="button-container">
         <button mat-button class="button back" matStepperPrevious>Vissza</button>
-        <button mat-button class="button" matStepperNext>Rendelés megerősítése</button>
+        <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
       </div>
     </mat-step>
+    <!--
+    <mat-step class="step">
+      <ng-template matStepLabel>Azonosítás</ng-template>
+      <div class="button-container">
+        <button mat-button class="button back" matStepperPrevious>Vissza</button>
+        <button mat-button class="button" matStepperNext>Tovább a számlázási adatokhoz</button>
+      </div>
+    </mat-step>
+    -->
+
   </mat-stepper>
+
+  <div class="summary-container">
+    <div class="header">
+      <span class="text">Kosár összesen</span>
+    </div>
+    <div class="content">
+      <div class="table-row" *ngFor="let item of cartService.items">
+        <span class="amount">{{item.amount}}x</span>
+        <span class="cart-item-image-container">
+              <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+        </span>
+        <span class="right">
+          <span class="cart-item-text-container">
+              <div>{{item.item.title}}</div>
+              <div class="price">{{item.item.price}} Ft</div>
+            </span>
+        <span class="price">
+              {{(item.item.price || 0) * item.amount}} Ft
+            </span>
+        </span>
+
+      </div>
+      <div class="table-row">
+        <span class="table-title">Szállítás</span>
+        <span class="right">
+          <span>{{cartService.selectedShippingType.name}}</span>
+        <span>{{cartService.selectedShippingType.value}} Ft</span>
+        </span>
+
+      </div>
+      <div class="table-row">
+        <span class="table-title">Összeg</span>
+        <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
+      </div>
+    </div>
+  </div>
 </div>
