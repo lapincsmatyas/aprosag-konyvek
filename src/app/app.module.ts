@@ -34,6 +34,10 @@ import { CashDeskComponent } from './pages/cash-desk/cash-desk.component';
 import { PaymentOptionsComponent } from './pages/cash-desk/payment-options/payment-options.component';
 import {AboutUsComponent} from "./pages/about-us/about-us.component";
 import { StepperComponent } from './shared/stepper/stepper.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -76,7 +80,11 @@ import { StepperComponent } from './shared/stepper/stepper.component';
     FontAwesomeModule,
     NgbModule,
     NgbModalModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

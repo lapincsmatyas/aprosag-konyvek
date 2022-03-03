@@ -1,9 +1,18 @@
 <div class="shipping-options-container">
   <div class="shipping-options">
-    <div *ngFor="let option of orderService.paymentTypes">
-      <input type="radio" id="{{option.name}}" name="option" [value]="option" [(ngModel)]="orderService.selectedPaymentType"
-             checked>
-      <label for="{{option.name}}">{{option.name}}</label>
+    <div class="option" *ngFor="let option of orderService.paymentTypes">
+      <div class="input-container">
+        <input class="radio-button" type="radio" id="{{option.name}}" name="option" [value]="option" [(ngModel)]="selectedPaymentType"
+               checked>
+        <label class="label" for="{{option.name}}">
+          <span class="name">{{option.name}}</span>
+        </label>
+      </div>
+      <div class="description-container">
+        <span class="placeholder"></span>
+        <span class="description">{{option.description}}</span>
+
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderService} from "../../../services/order/order.service";
 import {CartService} from "../../../services/cart/cart.service";
+import {PaymentType} from "../../../model/order.model";
 
 @Component({
   selector: 'aprosag-payment-options',
@@ -8,8 +9,14 @@ import {CartService} from "../../../services/cart/cart.service";
   styleUrls: ['./payment-options.component.scss']
 })
 export class PaymentOptionsComponent implements OnInit {
+  selectedPaymentType: PaymentType;
 
-  constructor(public cartService: CartService, public orderService: OrderService) { }
+  constructor(public cartService: CartService,
+              public orderService: OrderService) {
+    this.selectedPaymentType = orderService.paymentTypes[0];
+
+    console.log(this.selectedPaymentType);
+  }
 
   ngOnInit(): void {
 

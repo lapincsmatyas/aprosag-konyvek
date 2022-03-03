@@ -32,7 +32,7 @@ export class OrderService {
     this.collection = collection(this.fireStore, 'orders');
   }
 
-  placeOrder(user: User) {
+  placeOrder(user: User, comment: string) {
     if(this.cartService.count == 0)
       return;
 
