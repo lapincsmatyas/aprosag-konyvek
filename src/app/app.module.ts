@@ -38,6 +38,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {SidebarModule} from "primeng/sidebar";
 
 @NgModule({
   declarations: [
@@ -84,7 +87,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatFormFieldModule,
     MatStepperModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule,
+    MatSidenavModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

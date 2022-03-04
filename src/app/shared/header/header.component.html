@@ -1,27 +1,43 @@
 <div class="header-container">
-  <span class="logo-container" routerLink="items">
+  <div class="header desktop-header">
+      <span class="logo-container" routerLink="items">
     <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
-  </span>
-  <span class="button-container">
+    </span>
+    <span class="button-container">
       <a class="menu-item" routerLink="items" routerLinkActive="active">Termékeink</a>
       <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active">Mitől különleges</a>
       <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
-      <span class="icon">
-      <a class="menu-item profile" routerLink="profile" routerLinkActive="active"><fa-icon
-        [icon]="faUser"></fa-icon></a>
+      <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
+        <fa-icon [icon]="faUser"></fa-icon></a>
       <a class="menu-item cart" (click)="openCartModal(content)">
         <span class="counter">{{cartService.count}}</span>
         <fa-icon [icon]="faCart"></fa-icon>
       </a>
     </span>
+  </div>
+  <div class="header mobile-header">
+    <fa-icon class="menu-opener" [icon]="faBars" (click)="openMenu()"></fa-icon>
+    <span class="logo-container" routerLink="items">
+    <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
     </span>
+    <a class="cart" (click)="openCartModal(content)">
+      <span class="counter">{{cartService.count}}</span>
+      <fa-icon [icon]="faCart"></fa-icon>
+    </a>
+
+  </div>
 </div>
-<!--
-<span class="userTemp">
-      {{(authService.user$ | async)?.email}}
+
+<p-sidebar [(visible)]="visible" [baseZIndex]="10000" class="menu">
+  <span class="button-container">
+      <a class="menu-item" routerLink="items" routerLinkActive="active">Termékeink</a>
+      <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active">Mitől különleges</a>
+      <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
+      <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
+
     </span>
--->
+</p-sidebar>
 
 <ng-template #content let-modal class="cart-modal">
   <aprosag-cart-modal></aprosag-cart-modal>
