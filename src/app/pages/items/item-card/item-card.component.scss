@@ -6,13 +6,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 100%;
-  min-height: 400px;
   cursor: pointer;
 
   .title{
     margin-top:20px;
-    font-size: 1.2em;
+    font-size: 18px;
   }
   .subtitle{
     margin-top: 20px;
@@ -26,13 +24,11 @@
   }
 
   .prices {
-    flex-grow: 1;
-
     display: flex;
     width: 100%;
     align-items: flex-end;
-    margin-top: 20px;
-    font-size: 1.3em;
+    margin-top: 50px;
+    font-size: 20px;
     font-family: lato, Helvetica, sans-serif;
     font-weight: 600;
     .original_price.invalid {
