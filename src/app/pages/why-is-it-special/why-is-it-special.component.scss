@@ -1,60 +1,115 @@
 @import "src/variables";
 @import "src/mixins";
 
-.container{
+
+:host {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(251,240,241) 0%, rgba(255,255,255) 60%);;
+}
+
+.special-page-container{
   font-family: lato, Helvetica, sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   color: $font-color;
 
   .special-container{
-
     width: $content-percentage-width;
     max-width: $content-max-width;
 
     margin: 0 auto;
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+    }
+
     padding-bottom: 100px;
 
-    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
-    h1{
-      font-size: 2.5em;
+
+    .title{
+      font-size: 36px;
       text-align: center;
+      margin: 48px;
+      line-height: 1;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
     }
 
     .paragraph{
-      font-size: 1.3em;
+      font-size: 16px;
       display: flex;
-      margin-bottom: 40px;
+      margin-bottom: 56px !important;
 
-      &.with-button{
+      @media (max-width: $breakpoint-md) {
+        margin: 36px;
         flex-direction: column;
-
-        .button-container{
-          margin-top: 100px;
-          margin-bottom: 100px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        img{
-          width: 100%;
-          height: auto;
-        }
+        align-items: center;
       }
 
+      font-weight: normal;
 
-      .text{
-        padding-right: 30px;
+      .sub-title{
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 28px;
       }
 
-      img{
+      .left{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 50%;
-        height: 50%;
+        gap: 36px;
+
+
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+          margin-bottom: 16px;
+        }
+
+        .text{
+          padding-right: 30px;
+        }
+
+        .button{
+          @include button();
+          max-width: 50%;
+        }
+      }
+
+      .right{
+        width: 50%;
+
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+          max-width: 500px;
+        }
+
+        .image{
+          height: auto;
+          width: 100%;
+        }
       }
     }
 
-    .button{
-      @include button;
+    .button-container{
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: center;
+      .button{
+        @include button();
+
+        width: 50%;
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+        }
+      }
     }
   }
 

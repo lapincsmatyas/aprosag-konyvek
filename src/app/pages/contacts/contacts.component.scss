@@ -1,34 +1,52 @@
 @import "src/variables";
 @import "src/mixins";
 
-.container {
+:host {
+  background: linear-gradient(180deg, rgba(251, 240, 241) 0%, rgba(255, 255, 255) 60%);;
+}
+
+.contacts-page-container {
   font-family: lato, Helvetica, sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   color: $font-color;
 
-  margin-bottom: 50px;
-
-  $content-max-width: 1000px;
-  $content-percentage-width: 70%;
-
   .contacts-container {
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-    padding-top: 70px;
+    width: $content-percentage-width;
+    max-width: $content-max-width;
 
-    h1{
+    margin: 0 auto;
+    margin-bottom: 180px;
+
+    .title {
       font-size: 2.5em;
+      line-height: 1;
       text-align: center;
+      margin: 48px;
     }
 
-    .form-container {
+    .content-container{
       display: flex;
-      margin-top: 50px;
+      gap: 50px;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 1.5;
 
-      .form {
-        width: 50%;
+
+      @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+      }
+
+      .left {
         display: flex;
+        gap: 20px;
+
+        width: 50%;
+
+
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+        }
+
         flex-direction: column;
         margin-right: 5px;
         text-align: left;
@@ -38,29 +56,49 @@
           @include input-field;
         }
 
-        input[type='button']{
+        .data-protection-container {
+          display: flex;
+          align-items: center;
+
+          label{
+            margin: 0;
+          }
+
+          input {
+            width: 50px;
+            height: 1.5em;
+          }
+        }
+
+        input[type='button'] {
           @include button;
-          margin-top:30px;
-          margin-left: auto;
+          width: 50%;
           margin-right: 0;
+          margin-left: auto;
         }
       }
 
-      .data-protection-container{
-        margin-top: 20px;
-
-        #checkbox {
-          border-radius: 20px;
-          background-color: red;
-        }
-      }
-
-      .text{
+      .right{
         width: 50%;
-        font-size: 1.4em;
-        padding-left: 100px;
-        text-align: left;
+
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+        }
+
+        .subtitle{
+          font-weight: 900;
+          margin: 18px 0;
+        }
+
+        .email{
+          margin: 18px 0;
+          a {
+            color: $font-color !important;
+          }
+        }
       }
     }
+
+
   }
 }
