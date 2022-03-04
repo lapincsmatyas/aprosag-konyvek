@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faCartPlus, faUser} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../services/auth/auth.service";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {CartService} from "../../services/cart/cart.service";
@@ -15,7 +16,10 @@ import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-
 export class HeaderComponent {
   faUser = faUser;
   faCart = faCartPlus;
+  faBars = faBars;
   faSignOutAlt = faSignOutAlt;
+
+  visible = false;
 
   constructor(public authService: AuthService, private modalService: NgbModal, public cartService: CartService, private router: Router) {
     router.events.subscribe((event) => {
@@ -42,5 +46,9 @@ export class HeaderComponent {
         //console.error(error.message);
       })
     }
+  }
+
+  openMenu() {
+    this.visible = true;
   }
 }
