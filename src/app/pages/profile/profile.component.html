@@ -1,7 +1,7 @@
 <div class="profile-page-container">
-  <div class="profile-page">
+  <div class="profile-container">
     <div class="title">
-      <h1>Fiókom</h1>
+      <div>Fiókom</div>
     </div>
     <div class="content-container">
       <div class="side-menu">
@@ -22,10 +22,12 @@
                   <input class="input-field" disabled/>
                 </div>
               </div>
+              <!--
               <div class="email-verification-container" *ngIf="!user.emailVerified">
                 Az email-címed még nincs megerősítve. Kérlek kattints az emailben kapott linkre.
                 Kattints <span class="link" (click)="resendVerificationEmail()">ide</span> az email újraküldéséhez.
               </div>
+              -->
               <div class="divider"></div>
               <div class="form-block">
                 <div class="form-field-container">
@@ -69,13 +71,12 @@
                 </div>
               </div>
             </div>
-            <button class="save-button" type="submit" (click)="saveData()">Mentés</button>
+            <button class="button save-button" type="submit" (click)="saveData()">Mentés</button>
           </form>
         </div>
-        <div *ngSwitchCase="'Rendeléseim'">
-          Rendeléseim
+        <div class="orders-container" *ngSwitchCase="'Rendeléseim'">
           <table class="table">
-            <thead>
+            <thead class="header">
             <tr>
               <th scope="col">Rendelésszám</th>
               <th scope="col">Rendelés dátuma</th>
@@ -83,7 +84,7 @@
               <th scope="col">Összeg</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="content">
             <tr *ngFor="let order of orders">
               <td>#{{order.orderNumber?.toString()?.slice(0,4)}}</td>
               <td>{{order.date?.toDate() | date}}</td>
@@ -97,9 +98,6 @@
           Kedvenceim
         </div>
       </div>
-    </div>
-    <div>
-
     </div>
   </div>
 </div>
