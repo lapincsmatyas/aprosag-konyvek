@@ -65,18 +65,15 @@ export class ItemComponent implements OnInit {
       this.selectedImageIndex = this.imageUrls.length - 1;
   }
 
-  changeAmount(number: number) {
-    this.amount += number;
-
-    if (this.amount < 0)
-      this.amount = 0;
-  }
-
   addItemToCart() {
     if (this.item) {
       this.cartService.addItemToCart(this.item, this.amount);
       this.toastr.success(`Sikeresen hozzáadtál ${this.amount} terméket a kosárhoz!`);
       this.amount = 0;
     }
+  }
+
+  amountChanged(amount: number) {
+    this.amount = amount;
   }
 }

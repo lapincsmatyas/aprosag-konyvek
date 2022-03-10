@@ -19,6 +19,15 @@
   font-size: 14px !important;
   text-transform: uppercase;
   box-shadow: 0 0 13px -5px #000000;
+
+  &:disabled{
+    background-color: $disabled-button;
+    cursor: default;
+  }
+
+  &:active {
+    box-shadow: 0 0 13px -8px #000000;
+  }
 }
 
 @mixin input-field {
@@ -29,4 +38,18 @@
   padding: 6px 15px;
   box-sizing: border-box;
   border-radius: 30px;
+}
+
+@mixin title{
+  line-height: 1;
+  font-size: $title-size;
+  font-weight: 900;
+}
+
+@mixin subtitle{
+  line-height: 1;
+  font-size: $subtitle-size;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }

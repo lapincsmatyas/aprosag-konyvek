@@ -1,25 +1,37 @@
 <div class="item-page-container" *ngIf="item">
   <div class="item-container">
-    <div class="images">
-      <div class="main-image-container">
-        <fa-icon class="arrow left" [icon]="faArrowAltCircleLeft" (click)="previousImage()"></fa-icon>
-        <fa-icon class="arrow right" [icon]="faArrowAltCircleRight" (click)="nextImage()"></fa-icon>
-        <img class="main-image" [src]="imageUrls[selectedImageIndex]"/>
-      </div>
-
-      <div class="small-images">
-        <span *ngFor="let image of imageUrls, let i = index">
-          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="image" (click)="selectImage(i)"/>
-        </span>
-      </div>
-    </div>
-    <div class="details">
+    <div class="mobile-title-container">
       <div class="title">
         {{item.title}}
       </div>
       <div class="subtitle">
         {{item.subtitle}}
       </div>
+    </div>
+    <div class="images">
+      <div class="main-image-container">
+          <img class="arrow left" src="assets/Icons/Left_Arrow_Grey.svg" (click)="previousImage()"/>
+          <img class="arrow right" src="assets/Icons/Right_Arrow_Grey.svg" (click)="nextImage()"/>
+        <img class="main-image" [src]="imageUrls[selectedImageIndex]"/>
+      </div>
+
+      <div class="small-images">
+        <span *ngFor="let image of imageUrls, let i = index">
+          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="image"
+               (click)="selectImage(i)"/>
+        </span>
+      </div>
+    </div>
+    <div class="details">
+      <span class="title-container">
+          <div class="title">
+        {{item.title}}
+      </div>
+      <div class="subtitle">
+        {{item.subtitle}}
+      </div>
+      </span>
+
       <div class="description">
         {{item.description}}
       </div>
@@ -41,12 +53,9 @@
               [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
       </div>
 
-      <div class="cart-container" >
-        <button class="button decrease-amount" type="button" (click)="changeAmount(-1)">-</button>
-        {{amount}}
-        <button class="button increase-amount" type="button" (click)="changeAmount(1)">+</button>
-        <button class="button add-to-cart" type="button" (click)="addItemToCart()">Kosárba</button>
-
+      <div class="cart-container">
+        <aprosag-stepper [allowZero]="true" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
+        <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba</button>
       </div>
     </div>
   </div>

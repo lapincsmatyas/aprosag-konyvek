@@ -31,11 +31,10 @@
 
 <p-sidebar [(visible)]="visible" [baseZIndex]="10000" class="menu">
   <span class="button-container">
-      <a class="menu-item" routerLink="items" routerLinkActive="active">Termékeink</a>
-      <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active">Mitől különleges</a>
-      <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
-      <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
-
+      <a class="menu-item" routerLink="items" routerLinkActive="active" (click)="visible = false">Termékeink</a>
+      <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active" (click)="visible = false">Mitől különleges</a>
+      <a class="menu-item" routerLink="about-us" routerLinkActive="active" (click)="visible = false">Rólunk</a>
+      <a class="menu-item" routerLink="contacts" routerLinkActive="active" (click)="visible = false">Kapcsolat</a>
     </span>
 </p-sidebar>
 
