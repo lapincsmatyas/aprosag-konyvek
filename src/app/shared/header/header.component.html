@@ -9,10 +9,11 @@
       <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
       <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
-        <fa-icon [icon]="faUser"></fa-icon></a>
+        <img src="assets/Icons/Profile.svg" height="15px"/>
+      </a>
       <a class="menu-item cart" (click)="openCartModal(content)">
         <span class="counter">{{cartService.count}}</span>
-        <fa-icon [icon]="faCart"></fa-icon>
+        <img src="assets/Icons/Cart.svg" height="15px"/>
       </a>
     </span>
   </div>
