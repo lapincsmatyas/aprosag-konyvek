@@ -1,7 +1,7 @@
 stages:
   - dependencies
-  - test
   - build
+  - host
 
 install_dependencies:
   image: node:latest
@@ -13,15 +13,6 @@ install_dependencies:
     paths:
       - node_modules
 
-lint:
-  image: node:latest
-  stage: test
-  dependencies:
-    - install_dependencies
-  script:
-    - npm link @angular/cli
-    - ng lint
-
 build_image:
   image: node:latest
   stage: build
@@ -30,6 +21,17 @@ build_image:
   script:
     - npm link @angular/cli
     - ng build --verbose --progress --aot
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/dist
+
+host_app:
+  image: node:latest
+  stage: host
+  dependencies:
+    - install_dependencies
+  script:
+    - npm run host
   artifacts:
     paths:
       - $CI_PROJECT_DIR/dist
