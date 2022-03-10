@@ -13,6 +13,10 @@
     font-family: lato, Helvetica, sans-serif;
     font-width: 300;
 
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+
     .left{
       border-right: 2px solid white;
       padding-right: 100px;
