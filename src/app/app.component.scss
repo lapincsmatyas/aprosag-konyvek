@@ -12,11 +12,20 @@
   flex-direction: column;
   height: 100vh;
 
+  .header-container{
+    position: fixed;
+    width: 100vw;
+    z-index: 999999;
+  }
+
   .content {
-    overflow-y: scroll;
+    margin-top: 69px;
     display: flex;
     flex: 1;
     flex-direction: column;
 
+    @media (max-width: 1225px) and (min-width: 816px) {
+      margin-top: 123px !important;
+    }
   }
 }

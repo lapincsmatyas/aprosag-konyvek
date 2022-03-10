@@ -1,54 +1,77 @@
 @import "src/variables";
 
-.footer-container{
-  background-color: $footer-green;
-  width: 100%;
+
+:host {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(251, 240, 241) 0%, rgba(255, 255, 255) 60%);;
+}
+
+.footer-container {
+  font-family: lato, Helvetica, sans-serif;
   color: white;
-  bottom: 0;
-  padding-top: 80px;
+  background-color: $footer-green;
+  padding-top: 50px;
 
-  .top{
+  .top {
+    width: $content-percentage-width;
+    max-width: $content-max-width;
+
+    margin: 0 auto;
+
     display: flex;
-    justify-content: center;
-    font-family: lato, Helvetica, sans-serif;
-    font-width: 300;
+    justify-content: space-between;
+    gap: 20px;
 
-    @media (max-width: $breakpoint-md) {
-      display: none;
+    @media (max-width: $breakpoint-sm) {
+     flex-direction: column;
     }
 
     .left{
-      border-right: 2px solid white;
-      padding-right: 100px;
-      .contract-link{
-        display: block;
-        width: auto;
-        margin-bottom: 18px;
-      }
-    }
+      width: 100%;
+      .link-container{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 80%;
+        border-right: 2px solid white;
+        font-weight: bold;
 
-    .center{
-      font-family: lato, Helvetica, sans-serif;
-      font-weight: 100;
-      margin: 0 100px;
-      .text{
-        margin-bottom: 18px;
+        @media (max-width: $breakpoint-sm) {
+          border-right: 0;
+          border-bottom: 2px solid white;
+          padding-bottom: 20px;
+        }
 
-        &.space{
-          margin-bottom: 50px;
+        a{
+          color: white;
+          cursor: pointer;
         }
       }
     }
 
-    .right{
-      font-family: lato, Helvetica, sans-serif;
-      font-weight: 100;
-      padding-left: 80px;
-      .text{
-        margin-bottom: 18px;
+
+    .center{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      @media (max-width: $breakpoint-sm) {
+        padding-bottom: 20px;
+      }
+
+      .space{
+        margin-bottom: 20px;
       }
     }
 
+    .right {
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
   }
 
   .bottom{
