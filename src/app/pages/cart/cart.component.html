@@ -14,10 +14,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of cartService.items">
-        <td>
-           <span class="delete-icon-container" (click)="removeItemFromCart(item)">
-                <fa-icon class="delete-button" [icon]="faTimesCircle"></fa-icon>
-
+        <td class="delete-icon-container">
+           <span class="delete-icon" (click)="removeItemFromCart(item)">
+             <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
           </span>
         <td>
         <div class="cart-item-image-container">

@@ -32,6 +32,9 @@
       height: 150px;
       overflow: hidden;
 
+      .delete-item{
+        cursor: pointer;
+      }
       .cart-item {
         display: flex;
         padding: 20px;
