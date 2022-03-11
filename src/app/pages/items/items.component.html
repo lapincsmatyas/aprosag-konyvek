@@ -3,6 +3,20 @@
     <div class="logo-container">
       <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_2_black.svg"/>
     </div>
+    <div class="gallery-container">
+      <div class="image-container">
+        <img class="image" [src]="'assets/' + sliderImages[actImage]">
+        <img class="arrow left" (click)="prevImage()" src="assets/Icons/Left_Arrow_White.svg" height="50px"/>
+        <img class="arrow right" (click)="nextImage()" src="assets/Icons/Right_Arrow_White.svg" height="50px"/>
+      </div>
+      <div class="buttons-container">
+        <div class="buttons">
+          <div *ngFor="let button of sliderImages; let i = index" class="button-outer">
+            <div class="button-inner" [class.active]="i === actImage"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="items">
     <span class="item" *ngFor="let item of items$ | async">
       <aprosag-item-card [item]="item"></aprosag-item-card>
