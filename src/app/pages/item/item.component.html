@@ -13,9 +13,6 @@
         <img class="arrow left" src="assets/Icons/Left_Arrow_Grey.svg" (click)="previousImage()"/>
         <img class="arrow right" src="assets/Icons/Right_Arrow_Grey.svg" (click)="nextImage()"/>
         <img class="main-image" [src]="'assets/' + item.image_urls[selectedImageIndex]"/>
-
-        {{selectedImageIndex}}
-        {{item.image_urls[selectedImageIndex]}}
       </div>
 
       <div class="small-images">
