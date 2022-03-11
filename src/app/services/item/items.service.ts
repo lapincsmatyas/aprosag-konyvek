@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {addDoc, collection, collectionData, doc, docData, Firestore, getDoc} from "@angular/fire/firestore";
-import { Storage} from "@angular/fire/storage";
+import {Storage} from "@angular/fire/storage";
 import {Observable, of} from "rxjs";
 import {Item} from "../../model/item.model";
 import {CollectionReference} from "@firebase/firestore";
 import * as itemsJson from "./items.json"
-import {take} from "rxjs/operators";
+import {map, take} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class ItemsService {
 
   getAllItems(): Observable<Item[]> {
     return collectionData(this.collection, {idField: 'id'});
-  }
+  };
 
   getItemById(id: string): Observable<Item> {
     const document = doc(this.collection, id);
