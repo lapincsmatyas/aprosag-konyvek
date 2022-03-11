@@ -10,8 +10,8 @@
     </div>
     <div class="images">
       <div class="main-image-container"  *ngIf="item.image_urls">
-        <img class="arrow left" src="assets/Icons/Left_Arrow_Grey.svg" (click)="previousImage()"/>
-        <img class="arrow right" src="assets/Icons/Right_Arrow_Grey.svg" (click)="nextImage()"/>
+        <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg" (click)="previousImage()"/>
+        <img class="arrow right" src="assets/Icons/Arrow_Line_Item.svg" (click)="nextImage()"/>
         <img class="main-image" [src]="'assets/' + item.image_urls[selectedImageIndex]"/>
       </div>
 
@@ -54,7 +54,7 @@
       </div>
 
       <div class="cart-container">
-        <aprosag-stepper [allowZero]="true" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
+        <aprosag-stepper [allowZero]="false" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
         <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba
         </button>
       </div>

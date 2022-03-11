@@ -20,9 +20,8 @@ export class ItemComponent implements OnInit {
   faArrowAltCircleRight = faArrowAltCircleRight;
 
   public item: Item | undefined;
-  public imageUrls: string[] = [];
   public selectedImageIndex = 0;
-  amount = 0;
+  amount = 1;
 
   constructor(private itemService: ItemsService,
               private cartService: CartService,
