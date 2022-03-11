@@ -10,10 +10,33 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent {
-  public items$: Observable<Item[]>
+  public items$: Observable<Item[]>;
+
+  sliderImages: string[] = [
+    'Product_1/4.jpg',
+    'Product_2/4.jpg',
+    'Product_3/4.jpg',
+    'Product_4/4.jpg',
+  ];
+
+  actImage: number = 0;
 
   constructor(private itemsService: ItemsService) {
     this.items$ = itemsService.getAllItems();
+  }
+
+  nextImage(){
+    this.actImage++;
+    if(this.actImage >= this.sliderImages.length){
+      this.actImage = 0;
+    }
+  }
+
+  prevImage(){
+    this.actImage--;
+    if(this.actImage < 0){
+      this.actImage = this.sliderImages.length - 1;
+    }
   }
 
 }
