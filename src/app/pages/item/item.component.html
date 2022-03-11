@@ -9,15 +9,18 @@
       </div>
     </div>
     <div class="images">
-      <div class="main-image-container">
-          <img class="arrow left" src="assets/Icons/Left_Arrow_Grey.svg" (click)="previousImage()"/>
-          <img class="arrow right" src="assets/Icons/Right_Arrow_Grey.svg" (click)="nextImage()"/>
-        <img class="main-image" [src]="imageUrls[selectedImageIndex]"/>
+      <div class="main-image-container"  *ngIf="item.image_urls">
+        <img class="arrow left" src="assets/Icons/Left_Arrow_Grey.svg" (click)="previousImage()"/>
+        <img class="arrow right" src="assets/Icons/Right_Arrow_Grey.svg" (click)="nextImage()"/>
+        <img class="main-image" [src]="'assets/' + item.image_urls[selectedImageIndex]"/>
+
+        {{selectedImageIndex}}
+        {{item.image_urls[selectedImageIndex]}}
       </div>
 
       <div class="small-images">
-        <span *ngFor="let image of imageUrls, let i = index">
-          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="image"
+        <span *ngFor="let image of item.image_urls, let i = index">
+          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="'assets/' + image"
                (click)="selectImage(i)"/>
         </span>
       </div>
@@ -55,7 +58,8 @@
 
       <div class="cart-container">
         <aprosag-stepper [allowZero]="true" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
-        <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba</button>
+        <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba
+        </button>
       </div>
     </div>
   </div>
