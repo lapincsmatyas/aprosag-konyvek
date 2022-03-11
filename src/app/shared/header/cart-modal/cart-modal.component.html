@@ -8,8 +8,8 @@
       <ng-container *ngFor="let item of cartService.items">
         <div class="cart-item-container">
           <div class="cart-item">
-            <div class="cart-item-image-container">
-              <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+            <div class="cart-item-image-container" *ngIf="item.item.image_urls">
+              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
             </div>
             <div class="cart-text-container">
               <div class="title-container">

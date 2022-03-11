@@ -87,8 +87,8 @@
     <div class="content">
       <div class="table-row" *ngFor="let item of cartService.items">
         <span class="amount">{{item.amount}}x</span>
-        <span class="cart-item-image-container">
-              <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+        <span class="cart-item-image-container" *ngIf="item.item.image_urls">
+              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
         </span>
         <span class="right">
           <span class="cart-item-text-container">

@@ -14,15 +14,10 @@ export class ItemCardComponent implements OnInit{
   @Input()
   public item: Item = {};
 
-  public imageUrl: string = "";
-
-  constructor(public imageCache: ImageCacheService, private router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    this.imageCache.getImage(this.item.image_urls?.[0]).then((imageUrl) => {
-      this.imageUrl = imageUrl;
-    })
   }
 
   openItem() {

@@ -19,8 +19,8 @@
              <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
           </span>
         <td>
-        <div class="cart-item-image-container">
-          <img class="cart-item-image" src="assets/Product_1/_0015_Product_1e.jpg"/>
+        <div class="cart-item-image-container" *ngIf="item.item.image_urls">
+          <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
         </div>
         </td>
         <td>

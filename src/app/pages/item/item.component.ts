@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ItemsService} from "../../services/item/items.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
@@ -26,23 +26,15 @@ export class ItemComponent implements OnInit {
 
   constructor(private itemService: ItemsService,
               private cartService: CartService,
-              private imageCache: ImageCacheService,
+              private cdRef: ChangeDetectorRef,
               private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
 
-    this.activatedRoute.params.pipe(
-      switchMap((params) => {
-        return this.itemService.getItemById(params['id'])
-      }),
-      map((item: Item) => {
-        item.image_urls?.forEach((imageUrl) => {
-          this.imageCache.getImage(imageUrl).then((url) => {
-            this.imageUrls.push(url);
-          })
-        })
-        console.log(item);
+    this.activatedRoute.params.subscribe(params => {
+      this.itemService.getItemById(params['id']).subscribe(item => {
         this.item = item;
-      })).subscribe();
+      })
+    });
   }
 
   ngOnInit(): void {
@@ -55,14 +47,15 @@ export class ItemComponent implements OnInit {
 
   nextImage() {
     this.selectedImageIndex++;
-    if (this.selectedImageIndex >= this.imageUrls.length)
+    console.log(this.selectedImageIndex)
+    if (this.selectedImageIndex >= (this.item?.image_urls ? this.item?.image_urls.length : 0))
       this.selectedImageIndex = 0;
   }
 
   previousImage() {
     this.selectedImageIndex--;
     if (this.selectedImageIndex < 0)
-      this.selectedImageIndex = this.imageUrls.length - 1;
+      this.selectedImageIndex = (this.item?.image_urls ? this.item?.image_urls.length - 1 : 0);
   }
 
   addItemToCart() {

@@ -16,6 +16,7 @@ export class ItemsService {
 
   constructor(private fireStore: Firestore, private fireStorage: Storage) {
     this.collection = collection(this.fireStore, 'items');
+    //this.initializeItems();
   }
 
   initializeItems() {
