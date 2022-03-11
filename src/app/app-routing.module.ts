@@ -11,13 +11,14 @@ import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {CashDeskComponent} from "./pages/cash-desk/cash-desk.component";
+import {ItemsResolverResolver} from "./shared/resolvers/items-resolver.resolver";
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
-  {path: '', redirectTo: 'items', pathMatch: 'full'},
-  {path: 'items', component: ItemsComponent},
+  {path: '', redirectTo: 'items', pathMatch: 'full', resolve: {items: ItemsResolverResolver}},
+  {path: 'items', component: ItemsComponent, resolve: {items: ItemsResolverResolver}},
   {path: 'items/:id', component: ItemComponent},
   {path: 'cart', component: CartComponent},
   {path: 'cash-desk', component: CashDeskComponent},

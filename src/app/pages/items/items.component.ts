@@ -9,8 +9,8 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss']
 })
-export class ItemsComponent {
-  public items$: Observable<Item[]>;
+export class ItemsComponent implements OnInit{
+  public items: Item[] = [];
 
   sliderImages: string[] = [
     'Product_1/4.jpg',
@@ -21,9 +21,16 @@ export class ItemsComponent {
 
   actImage: number = 0;
 
-  constructor(private itemsService: ItemsService) {
-    this.items$ = itemsService.getAllItems();
+  constructor(private activatedRoute: ActivatedRoute) {
   }
+
+
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe((result) => {
+      this.items = result['items'];
+    });
+  }
+
 
   nextImage(){
     this.actImage++;

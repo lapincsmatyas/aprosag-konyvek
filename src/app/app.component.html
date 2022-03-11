@@ -4,9 +4,15 @@
   </div>
   <div class="content">
     <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
     <aprosag-footer class="footer"></aprosag-footer>
   </div>
-  <div class="footer"></div>
+
+  <div class="loading-screen" *ngIf="loading">
+    <img class="animatino" src="assets/Loading_anim.gif">
+  </div>
+
 </div>
 
 
