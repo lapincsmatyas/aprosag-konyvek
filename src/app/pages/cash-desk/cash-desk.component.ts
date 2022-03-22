@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {OrderService} from "../../services/order/order.service";
@@ -12,7 +12,7 @@ import {MatStepper} from "@angular/material/stepper";
   templateUrl: './cash-desk.component.html',
   styleUrls: ['./cash-desk.component.scss']
 })
-export class CashDeskComponent implements OnInit {
+export class CashDeskComponent implements  AfterViewInit {
   @ViewChild(MatStepper)
     stepper!: MatStepper;
 
@@ -81,10 +81,5 @@ export class CashDeskComponent implements OnInit {
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")
     });
-  }
-
-
-  ngOnInit() {
-
   }
 }

@@ -17,7 +17,7 @@
 
       <div class="small-images">
         <span *ngFor="let image of item.image_urls, let i = index">
-          <img class="small-image" [ngClass]="{inactive: selectedImageIndex != i}" [src]="'assets/' + image"
+          <img class="small-image" [ngClass]="{inactive: selectedImageIndex !== i}" [src]="'assets/' + image"
                (click)="selectImage(i)"/>
         </span>
       </div>

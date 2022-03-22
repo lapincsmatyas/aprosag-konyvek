@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {OrderService} from "../../../services/order/order.service";
 import {CartService} from "../../../services/cart/cart.service";
 import {PaymentType} from "../../../model/order.model";
@@ -8,7 +8,7 @@ import {PaymentType} from "../../../model/order.model";
   templateUrl: './payment-options.component.html',
   styleUrls: ['./payment-options.component.scss']
 })
-export class PaymentOptionsComponent implements OnInit {
+export class PaymentOptionsComponent  {
   selectedPaymentType: PaymentType;
 
   constructor(public cartService: CartService,
@@ -18,8 +18,6 @@ export class PaymentOptionsComponent implements OnInit {
     console.log(this.selectedPaymentType);
   }
 
-  ngOnInit(): void {
 
-  }
 
 }

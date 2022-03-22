@@ -5,7 +5,7 @@
     </div>
     <div class="content-container">
       <div class="side-menu">
-        <div *ngFor="let menu of menus" class="nav-item" [ngClass]="{'selected': menu == selectedMenu}"
+        <div *ngFor="let menu of menus" class="nav-item" [ngClass]="{'selected': menu === selectedMenu}"
              (click)="changeMenu(menu)">{{menu}}</div>
       </div>
       <div [ngSwitch]="selectedMenu" class="content">

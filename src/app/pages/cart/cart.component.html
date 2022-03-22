@@ -33,7 +33,7 @@
         </td>
         <td>{{item.item.price ? item.item.price * item.amount : 0}} Ft</td>
       </tr>
-      <tr *ngIf="cartService.count == 0">
+      <tr *ngIf="cartService.count === 0">
         <td colspan="6">A kosarad üres</td>
       </tr>
       </tbody>
