@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {User} from "../../model/user.model";
@@ -13,7 +13,7 @@ import {Order} from "../../model/order.model";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent  {
   menus: string[] = ["Adataim","Rendeléseim","Kedvenceim"]
   selectedMenu = this.menus[0];
 
@@ -48,8 +48,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+
 
   saveData() {
     this.authService.updateProfile(this.profileForm.value).then(() => {

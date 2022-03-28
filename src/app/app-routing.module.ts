@@ -11,7 +11,7 @@ import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {CashDeskComponent} from "./pages/cash-desk/cash-desk.component";
-import {ItemsResolverResolver} from "./shared/resolvers/items-resolver.resolver";
+import { ItemsResolverResolver } from './shared/resolvers/items-resolver.resolver';
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);

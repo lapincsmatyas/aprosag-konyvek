@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgModule, OnInit} from '@angular/core';
+import {Component, ElementRef, NgModule} from '@angular/core';
 import {CartService} from "../../../services/cart/cart.service";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -11,13 +11,10 @@ import {CartItem} from "../../../model/cart-item.model";
   templateUrl: './cart-modal.component.html',
   styleUrls: ['./cart-modal.component.scss']
 })
-export class CartModalComponent implements OnInit {
+export class CartModalComponent  {
   faTimesCircle = faTimesCircle;
 
   constructor(public cartService: CartService, private router: Router, private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-  }
 
   openCart() {
     //TODO: solve with self reference modal

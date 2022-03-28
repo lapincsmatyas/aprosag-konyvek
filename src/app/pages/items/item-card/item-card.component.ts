@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Item} from "../../../model/item.model";
 import {ImageCacheService} from "../../../services/image-cache/image-cache.service";
 import {of} from "rxjs";
@@ -10,15 +10,14 @@ import {Router} from "@angular/router";
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })
-export class ItemCardComponent implements OnInit{
+export class ItemCardComponent {
   @Input()
   public item: Item = {};
 
   constructor(private router: Router) {
   }
 
-  ngOnInit(): void {
-  }
+
 
   openItem() {
     this.router.navigate(['/items',this.item.id]);

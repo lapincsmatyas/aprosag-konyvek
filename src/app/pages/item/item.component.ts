@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {ItemsService} from "../../services/item/items.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
@@ -15,7 +15,7 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent  {
   faArrowAltCircleLeft = faArrowAltCircleLeft;
   faArrowAltCircleRight = faArrowAltCircleRight;
 
@@ -34,10 +34,6 @@ export class ItemComponent implements OnInit {
         this.item = item;
       })
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
   selectImage(i: number) {

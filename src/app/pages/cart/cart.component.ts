@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {CartService} from "../../services/cart/cart.service";
 import {ImageCacheService} from "../../services/image-cache/image-cache.service";
 import {Item} from "../../model/item.model";
@@ -12,14 +12,10 @@ import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent  {
   faTimesCircle = faTimesCircle;
 
   constructor(public cartService: CartService, public imageCache: ImageCacheService, private router: Router) { }
-
-  ngOnInit(): void {
-
-  }
 
   removeItemFromCart(item: CartItem) {
     this.cartService.removeAllOfTypeFromCart(item);

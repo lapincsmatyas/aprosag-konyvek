@@ -33,7 +33,39 @@
         </td>
         <td>{{item.item.price ? item.item.price * item.amount : 0}} Ft</td>
       </tr>
-      <tr *ngIf="cartService.count == 0">
+      <tr *ngIf="cartService.count === 0">
+        <td colspan="6">A kosarad üres</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="mobile-table">
+      <thead class="table-header">
+      <tbody>
+      <tr *ngFor="let item of cartService.items">
+        <td class="delete-icon-container">
+           <span class="delete-icon" (click)="removeItemFromCart(item)">
+             <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
+          </span>
+        <td>
+        <div class="cart-item-image-container" *ngIf="item.item.image_urls">
+          <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
+        </div>
+        </td>
+        <td class="item-details-container">
+          <div class="item-title">{{item.item.title}}</div>
+          <div>{{item.item.subtitle}}</div>
+
+          <div class="stepper-container">
+            <aprosag-stepper [allowZero]="false" [value]="item.amount" (valueChange)="amountChanged($event, item)"></aprosag-stepper>
+          </div>
+          <div class="price-container">
+            <span>{{item.amount}}x {{item.item.price}} Ft</span><span>
+              {{item.item.price ? item.item.price * item.amount : 0}} Ft
+            </span></div>
+        </td>
+      </tr>
+      <tr *ngIf="cartService.count === 0">
         <td colspan="6">A kosarad üres</td>
       </tr>
       </tbody>
@@ -53,7 +85,7 @@
           <span>{{cartService.value}} Ft</span>
         </div>
         <div class="table-row">
-          <span class="table-title">Szállítás</span>
+          <div class="table-title shipment">Szállítás</div>
           <aprosag-shipping-options></aprosag-shipping-options>
         </div>
         <div class="table-row">

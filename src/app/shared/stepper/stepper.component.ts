@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -6,7 +6,7 @@ import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit {
+export class StepperComponent  {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
 
@@ -22,10 +22,6 @@ export class StepperComponent implements OnInit {
   constructor() {
     this.allowZero = false;
     this.value = this.allowZero ? 0 : 1;
-  }
-
-  ngOnInit(): void {
-
   }
 
   changeValue(amount: number){
