@@ -20,6 +20,11 @@ export class CashDeskComponent implements  AfterViewInit {
     this.stepper._getIndicatorType = () => 'number';
   }
 
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  })
+
   profileForm = this.fb.group({
       profile: this.fb.group({
         uid: [''],
@@ -43,7 +48,7 @@ export class CashDeskComponent implements  AfterViewInit {
   isEditable = false;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              public authService: AuthService,
               private orderService: OrderService,
               private toastr: ToastrService,
               private router: Router,
@@ -81,5 +86,17 @@ export class CashDeskComponent implements  AfterViewInit {
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")
     });
+  }
+
+  goToSignup() {
+    this.router.navigateByUrl('signup');
+  }
+
+  login() {
+
+    this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
+    }, (error) => {
+      this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
+    })
   }
 }

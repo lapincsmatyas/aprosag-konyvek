@@ -14,7 +14,7 @@ import {Order} from "../../model/order.model";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent  {
-  menus: string[] = ["Adataim","Rendeléseim","Kedvenceim"]
+  menus: string[] = ["Adataim","Rendeléseim","Kedvenceim", "Kijelentkezés"]
   selectedMenu = this.menus[0];
 
   profileForm = this.fb.group({
