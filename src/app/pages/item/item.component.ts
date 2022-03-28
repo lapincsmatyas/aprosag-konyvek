@@ -36,8 +36,6 @@ export class ItemComponent  {
     });
   }
 
-
-
   selectImage(i: number) {
     this.selectedImageIndex = i;
   }

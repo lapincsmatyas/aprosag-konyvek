@@ -6,7 +6,7 @@
   background-color: rgba(235, 247, 241);
 }
 
-.cart-page-container{
+.cart-page-container {
   color: $font-color !important;
   margin: 50px auto;
   width: 80%;
@@ -14,13 +14,15 @@
 
   font-family: lato, Helvetica, serif;
 
-  .title{
+  .title {
     font-weight: 700;
     font-size: 30px;
   }
 
-  .cart-table-container{
+  .cart-table-container {
     background-color: white;
+    display: flex;
+    justify-content: center;
 
     .cart-item-image-container {
       width: 100%;
@@ -29,123 +31,160 @@
       }
     }
 
+    .mobile-table {
+      display: none;
+      width: auto;
+      justify-content: center;
 
-    .table{
+      @media (max-width: 750px) {
+        display:block;
+      }
+
+      .item-details-container {
+        padding: 15px;
+      }
+
+      .price-container{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .item-title {
+        font-weight: bold;
+      }
+
+      .delete-icon-container {
+        padding: 15px;
+      }
+
+      .cart-item-image-container {
+        max-width: 150px;
+      }
+
+      .stepper-container {
+        margin: 15px 0;
+        max-width: 150px;
+      }
+    }
+
+    .table {
+
+      @media (max-width: 750px) {
+        display: none;
+      }
+
+
       color: $font-color !important;
       font-size: 16px;
 
-      td{
+      td {
         vertical-align: middle;
 
         padding-top: 25px;
         padding-bottom: 25px;
       }
 
-      tr{
-      }
-
-
-      .table-header{
+      .table-header {
         color: white;
         background-color: $green-line;
         text-align: left;
 
-        th{
+        th {
           height: 60px;
           vertical-align: middle;
 
-          &.amount{
+          &.amount {
             text-align: center;
             width: 150px;
           }
 
-          &.image{
+          &.image {
             width: 150px;
           }
         }
 
-        .header-text{
+        .header-text {
           font-weight: bold;
-
         }
       }
 
-      .delete-icon-container{
+      .delete-icon-container {
         color: $font-color;
         text-align: center;
-        .delete-button{
-
+        .delete-button {
           font-weight: 300;
           font-size: 20px;
         }
       }
 
-
-      .item-title{
+      .item-title {
         font-weight: 900;
       }
     }
   }
 
-  .button-container{
+  .button-container {
     display: flex;
     justify-content: flex-end;
 
-    .button{
+    .button {
       margin: 40px 0;
       flex-basis: 50%;
-      &.back-to-shop{
+      &.back-to-shop {
         @include button($font-color);
       }
 
-      &.to-the-cashdesk{
+      &.to-the-cashdesk {
         @include button();
-
       }
     }
   }
 
-  .newsletter-and-shipping{
+  .newsletter-and-shipping {
     font-weight: 700;
 
     display: flex;
     justify-content: flex-end;
 
-    .shipping-options-container{
+    .shipping-options-container {
       background-color: white;
       flex-basis: 50%;
 
-      .header{
+      .header {
         padding: 15px 25px;
         color: white;
         background-color: $base-green;
 
-        .text{
+        .text {
           font-size: 16px;
         }
       }
 
-      .content{
+      .content {
         padding: 0 25px;
 
-        .table-row{
+        .table-row {
           display: flex;
           justify-content: space-between;
 
           border-bottom: 1px solid black;
           padding: 20px 0;
 
-          &:last-of-type{
+          .table-title.shipment{
+            @media (max-width: 1000px) {
+              display: none;
+            }
+          }
+
+          &:last-of-type {
             border-bottom: none;
           }
 
-          .table-title{
+          .table-title {
             font-weight: 700;
           }
         }
       }
-
     }
   }
-
 }
