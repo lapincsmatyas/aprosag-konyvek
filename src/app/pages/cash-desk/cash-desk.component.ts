@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
 import {OrderService} from "../../services/order/order.service";
@@ -6,6 +6,9 @@ import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {CartService} from "../../services/cart/cart.service";
 import {MatStepper} from "@angular/material/stepper";
+import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {SuccessfulOrderComponent} from "../../shared/popups/successful-order/successful-order.component";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -52,6 +55,7 @@ export class CashDeskComponent implements  AfterViewInit {
               private orderService: OrderService,
               private toastr: ToastrService,
               private router: Router,
+              private modalService: NgbModal,
               public cartService: CartService) {
     authService.user$.subscribe((user) => {
       if (user) {
@@ -81,8 +85,20 @@ export class CashDeskComponent implements  AfterViewInit {
 
   sendOrder() {
     this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)?.then((result) => {
-      this.toastr.success("Rendelés leadása sikeres!");
-      this.router.navigateByUrl("items");
+
+      const modalRef = this.modalService.open(SuccessfulOrderComponent, {
+        backdrop: true,
+        backdropClass: 'modal-dialog-backdrop',
+        modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
+      });
+      modalRef.componentInstance.orderNumber = result.id;
+
+      modalRef.result.then((result) => {
+        console.log(result);
+      }, (error) => {
+        //console.error(error.message);
+      })
+
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")
     });
@@ -99,4 +115,5 @@ export class CashDeskComponent implements  AfterViewInit {
       this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
     })
   }
+
 }

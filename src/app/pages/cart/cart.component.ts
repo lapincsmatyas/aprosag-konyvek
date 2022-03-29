@@ -29,4 +29,8 @@ export class CartComponent  {
   amountChanged(newValue: number, item: CartItem) {
     item.amount = newValue;
   }
+
+  continueShopping() {
+    this.router.navigateByUrl("items");
+  }
 }

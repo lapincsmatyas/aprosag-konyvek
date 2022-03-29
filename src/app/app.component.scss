@@ -24,8 +24,8 @@
   .modal-content{
     border-radius: 30px;
   }
-    .added-to-cart-dialog{
-      max-width: min(60%, 800px);
+    .added-to-cart-dialog, .successful-order-dialog{
+      max-width: min(70%, 800px);
 
       @media (max-width: 600px) {
         margin-left: 20px;

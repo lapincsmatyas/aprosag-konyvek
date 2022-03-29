@@ -42,6 +42,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {SidebarModule} from "primeng/sidebar";
 import { AddedToCartComponent } from './shared/popups/added-to-cart/added-to-cart.component';
+import { SuccessfulOrderComponent } from './shared/popups/successful-order/successful-order.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AddedToCartComponent } from './shared/popups/added-to-cart/added-to-car
     CashDeskComponent,
     PaymentOptionsComponent,
     StepperComponent,
-    AddedToCartComponent
+    AddedToCartComponent,
+    SuccessfulOrderComponent
   ],
   imports: [
     BrowserModule,
