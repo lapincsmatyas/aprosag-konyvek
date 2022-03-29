@@ -18,7 +18,6 @@ export class ItemsResolverResolver implements Resolve<Item[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Item[]> {
     return this.itemService.getAllItems().pipe(
-      delay(1000),
       take(1)
     );
   }
