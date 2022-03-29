@@ -2,10 +2,7 @@
 
 .header-container {
   position: sticky;
-  top: 0;
   background-color: white;
-  z-index: 1051;
-
 
   font-family: lato, Helvetica, sans-serif;
   font-weight: bold;
@@ -153,10 +150,6 @@
   top: 0;
   right: 0;
   z-index: 100000;
-}
-
-.customBackgrop {
-  background-color: red;
 }
 
 .menu{
