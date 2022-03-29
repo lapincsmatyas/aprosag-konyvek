@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ItemsService} from "../../services/item/items.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, switchMap} from "rxjs/operators";
@@ -9,13 +9,15 @@ import {ImageCacheService} from "../../services/image-cache/image-cache.service"
 import {faArrowAltCircleLeft, faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {CartService} from "../../services/cart/cart.service";
 import {ToastrService} from "ngx-toastr";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
 
 @Component({
   selector: 'aprosag-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent  {
+export class ItemComponent implements OnInit {
   faArrowAltCircleLeft = faArrowAltCircleLeft;
   faArrowAltCircleRight = faArrowAltCircleRight;
 
@@ -25,6 +27,7 @@ export class ItemComponent  {
 
   constructor(private itemService: ItemsService,
               private cartService: CartService,
+              private modalService: NgbModal,
               private cdRef: ChangeDetectorRef,
               private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
@@ -34,6 +37,9 @@ export class ItemComponent  {
         this.item = item;
       })
     });
+  }
+
+  ngOnInit(): void {
   }
 
   selectImage(i: number) {
@@ -56,8 +62,22 @@ export class ItemComponent  {
   addItemToCart() {
     if (this.item) {
       this.cartService.addItemToCart(this.item, this.amount);
-      this.toastr.success(`Sikeresen hozzáadtál ${this.amount} terméket a kosárhoz!`);
-      this.amount = 0;
+
+      const modalRef = this.modalService.open(AddedToCartComponent, {
+        backdrop: true,
+        backdropClass: 'modal-dialog-backdrop',
+        modalDialogClass: 'modal-dialog-centered added-to-cart-dialog'
+      });
+      modalRef.componentInstance.item = this.item;
+      modalRef.componentInstance.amount = this.amount;
+
+      modalRef.result.then((result) => {
+        console.log(result);
+      }, (error) => {
+        //console.error(error.message);
+      })
+
+      this.amount = 1;
     }
   }
 

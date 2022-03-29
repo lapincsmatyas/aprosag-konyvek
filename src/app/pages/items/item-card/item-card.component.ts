@@ -17,8 +17,6 @@ export class ItemCardComponent {
   constructor(private router: Router) {
   }
 
-
-
   openItem() {
     this.router.navigate(['/items',this.item.id]);
   }

@@ -45,6 +45,7 @@
   line-height: 1;
   font-size: $title-size;
   font-weight: 900;
+  color: $font-color;
 }
 
 @mixin subtitle{
@@ -53,4 +54,6 @@
   font-weight: bold;
   margin-top: 25px;
   margin-bottom: 25px;
+  color: $font-color;
+
 }

@@ -11,7 +11,7 @@
       <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
         <img src="assets/Icons/Profile.svg" height="15px"/>
       </a>
-      <a class="menu-item cart" (click)="openCartModal(content)">
+      <a class="menu-item cart" (click)="openCartModal()">
         <span class="counter">{{cartService.count}}</span>
         <img src="assets/Icons/Cart.svg" height="15px"/>
       </a>
@@ -22,7 +22,7 @@
     <span class="logo-container" routerLink="items">
     <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
     </span>
-    <a class="cart" (click)="openCartModal(content)">
+    <a class="cart" (click)="openCartModal()">
       <span class="counter">{{cartService.count}}</span>
       <fa-icon [icon]="faCart"></fa-icon>
     </a>
@@ -37,8 +37,4 @@
       <a class="menu-item" routerLink="about-us" routerLinkActive="active" (click)="visible = false">Rólunk</a>
       <a class="menu-item" routerLink="contacts" routerLinkActive="active" (click)="visible = false">Kapcsolat</a>
     </span>
-</p-sidebar>
-
-<ng-template #content let-modal class="cart-modal">
-  <aprosag-cart-modal></aprosag-cart-modal>
-</ng-template>
+</p-sidebar>n

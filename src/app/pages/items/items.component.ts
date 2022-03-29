@@ -24,7 +24,6 @@ export class ItemsComponent implements OnInit{
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
-
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((result) => {
       this.items = result['items'];
