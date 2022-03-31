@@ -162,6 +162,10 @@
     }
   }
 
+  .price{
+    text-align: right;
+  }
+
   .content {
     padding: 0 25px;
 
@@ -169,11 +173,126 @@
       padding: 0;
     }
 
+    .order-number{
+      color: $green-line;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+
+
     .table-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-weight: 700;
+
+      border-bottom: 1px solid black;
+      padding: 20px 0;
+
+      overflow: hidden;
+
+
+
+      .right {
+        display: flex;
+        justify-content: space-between;
+        width: 60%
+      }
+
+      .cart-item-image-container {
+        height: 100px;
+
+        .cart-item-image {
+          height: 100%;
+        }
+
+        .cart-text-container {
+          flex-direction: column;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-left: 40px;
+          font-size: 18px;
+
+          .title-container {
+            display: flex;
+            justify-content: space-between;
+
+            .title {
+              font-weight: bold;
+            }
+
+            .delete-button {
+              font-size: 25px;
+            }
+          }
+
+          .price-container {
+            display: flex;
+            justify-content: space-between;
+
+            .times {
+              color: rgb(180, 180, 180);
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      .table-title {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.content-title{
+  background-color: $disabled-button;
+  color: white;
+  vertical-align: center;
+  padding: 20px;
+
+  .title{
+    display: flex;
+    justify-content: space-between;
+
+    .close-icon{
+      color: white;
+    }
+  }
+}
+.order-content-container {
+  font-family: lato, Helvetica, sans-serif;
+
+  background-color: #F6F7F6;
+  max-width: 60%;
+  margin: 50px auto;
+  font-weight: bold;
+
+  .header {
+    padding: 15px 25px;
+    color: white;
+    background-color: $base-green;
+
+    .text {
+      font-size: 16px;
+    }
+  }
+
+  .content {
+    padding: 0 25px;
+
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+
 
       border-bottom: 1px solid black;
       padding: 20px 0;
