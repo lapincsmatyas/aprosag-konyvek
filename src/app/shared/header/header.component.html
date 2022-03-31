@@ -11,7 +11,7 @@
       <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
         <img src="assets/Icons/Profile.svg" height="15px"/>
       </a>
-      <a class="menu-item cart" (click)="openCartModal()">
+      <a class="menu-item cart" [ngClass]="{disabled: router.url === '/cart' ||router.url === '/cash-desk'}"  (click)="openCartModal()">
         <span class="counter">{{cartService.count}}</span>
         <img src="assets/Icons/Cart.svg" height="15px"/>
       </a>
@@ -22,7 +22,7 @@
     <span class="logo-container" routerLink="items">
     <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
     </span>
-    <a class="cart" (click)="openCartModal()">
+    <a class="cart"(click)="openCartModal()">
       <span class="counter">{{cartService.count}}</span>
       <fa-icon [icon]="faCart"></fa-icon>
     </a>

@@ -33,7 +33,7 @@ export class OrderService {
   }
 
   placeOrder(user: User, comment: string) {
-    if(this.cartService.count == 0)
+    if(this.cartService.count == 0 || !this.cartService.selectedShippingType)
       return;
 
     return addDoc(this.collection, {
@@ -46,6 +46,7 @@ export class OrderService {
       paymentType: this.selectedPaymentType
     }).then((result) => {
       this.cartService.emptyCart();
+      this.cartService.selectedShippingType = null;
       return result;
     });
   }

@@ -18,10 +18,14 @@ export class CartService {
 
   public shippingTypes: ShippingType[] = [];
 
-  public selectedShippingType: ShippingType;
+  public selectedShippingType: ShippingType | null;
 
   get items(): CartItem[] {
     return Array.from(this.cart.values());
+  }
+
+  get valid() : boolean{
+    return this.selectedShippingType != null && this.count > 0;
   }
 
   get count(): number {
@@ -51,7 +55,7 @@ export class CartService {
       this.cart = new Map<string, CartItem>();
 
     this.shippingTypes = shippingTypes;
-    this.selectedShippingType = this.shippingTypes[0];
+    this.selectedShippingType = null;
   }
 
   addItemToCart(item: Item, amount: number) {

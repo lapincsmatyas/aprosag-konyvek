@@ -5,7 +5,7 @@ import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../services/auth/auth.service";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {CartService} from "../../services/cart/cart.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-view-model";
 import {AddedToCartComponent} from "../popups/added-to-cart/added-to-cart.component";
 import {CartModalComponent} from "./cart-modal/cart-modal.component";
@@ -23,7 +23,11 @@ export class HeaderComponent {
 
   visible = false;
 
-  constructor(public authService: AuthService, private modalService: NgbModal, public cartService: CartService, private router: Router) {
+  constructor(public authService: AuthService,
+              private modalService: NgbModal,
+              public cartService: CartService,
+              private activatedRoute: ActivatedRoute,
+              public router: Router) {
     router.events.subscribe((event) => {
       this.modalService.dismissAll();
     })
@@ -38,6 +42,9 @@ export class HeaderComponent {
   }
 
   openCartModal() {
+    if(this.router.url === '/cart' || this.router.url === '/cash-desk')
+      return;
+
     if (this.modalService.hasOpenModals()) {
       this.modalService.dismissAll();
     } else {

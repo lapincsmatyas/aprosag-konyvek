@@ -120,7 +120,7 @@
         </span>
 
       </div>
-      <div class="table-row">
+      <div class="table-row"  *ngIf="cartService.selectedShippingType">
         <span class="table-title">Szállítás</span>
         <span class="right">
           <span>{{cartService.selectedShippingType.name}}</span>
@@ -128,7 +128,7 @@
         </span>
 
       </div>
-      <div class="table-row">
+      <div class="table-row"  *ngIf="cartService.selectedShippingType">
         <span class="table-title">Összeg</span>
         <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
       </div>

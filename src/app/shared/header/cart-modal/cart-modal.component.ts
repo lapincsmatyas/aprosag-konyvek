@@ -1,6 +1,6 @@
 import {Component, ElementRef, NgModule} from '@angular/core';
 import {CartService} from "../../../services/cart/cart.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
@@ -14,7 +14,10 @@ import {CartItem} from "../../../model/cart-item.model";
 export class CartModalComponent  {
   faTimesCircle = faTimesCircle;
 
-  constructor(public cartService: CartService, private router: Router, private modalService: NgbModal) { }
+  constructor(public cartService: CartService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private modalService: NgbModal) { }
 
   openCart() {
     //TODO: solve with self reference modal
@@ -24,5 +27,8 @@ export class CartModalComponent  {
 
   deleteItemFromCart(item: CartItem) {
     this.cartService.removeAllOfTypeFromCart(item);
+    if(this.cartService.count == 0){
+      this.router.navigateByUrl('items');
+    }
   }
 }
