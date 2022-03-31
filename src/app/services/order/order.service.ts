@@ -52,7 +52,7 @@ export class OrderService {
   }
 
   getOrdersForUser(user: User){
-    const q = query(this.collection, where("user.uid","==", user.uid));
+    const q = query(this.collection, where("user.profile.uid","==", user.uid));
     return collectionData(q, {idField: "orderNumber"});
   }
 }

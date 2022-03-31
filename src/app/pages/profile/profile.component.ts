@@ -33,16 +33,15 @@ export class ProfileComponent  {
   )
 
   public user: User | null = null;
-  public orders: Order[] = [];
+  public orders: {order: Order, open: boolean}[] = [];
 
   constructor(private fb: FormBuilder, private authService: AuthService, private toastr: ToastrService, private orderService: OrderService) {
     this.authService.user$.subscribe((user) => {
       if(user) {
         this.user = user;
-        console.log(this.user);
         this.profileForm.patchValue(user);
         orderService.getOrdersForUser(user).subscribe((orders) => {
-          this.orders = orders;
+          this.orders = orders.map((order) => {return {order, open: false}});
         })
       }
     })

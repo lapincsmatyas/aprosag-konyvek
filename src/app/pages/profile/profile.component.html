@@ -81,16 +81,64 @@
               <th scope="col">Rendelésszám</th>
               <th scope="col">Rendelés dátuma</th>
               <th scope="col">Státusz</th>
-              <th scope="col">Összeg</th>
+              <th class="price" scope="col">Összeg</th>
             </tr>
             </thead>
             <tbody class="content">
-            <tr *ngFor="let order of orders">
-              <td>#{{order.orderNumber?.toString()?.slice(0,4)}}</td>
-              <td>{{order.date?.toDate() | date}}</td>
-              <td>{{order.state}}</td>
-              <td>x</td>
-            </tr>
+            <ng-container *ngFor="let order of orders">
+              <tr>
+                <td>
+                  <span class="order-number" >
+                    <a (click)="order.open = !order.open"> #{{order.order.orderNumber?.toString()?.slice(0, 4)}}</a>
+                  </span>
+                </td>
+                <td>{{order.order.date?.toDate() | date}}</td>
+                <td>{{order.order.state}}</td>
+                <td class="price" *ngIf="order.order.shippingType && order.order.price">{{order.order.price + order.order.shippingType.value}} Ft</td>
+              </tr>
+              <ng-container *ngIf="order.open">
+                <tr class="content-title">
+                  <td colspan="4">
+                    <div class="title-text">
+                      <span>Rendelés tartalma</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="order-content-container">
+                  <td colspan="4">
+                    <div class="content">
+                      <div class="table-row" *ngFor="let item of order.order.cart">
+                        <span class="amount">{{item.amount}}x</span>
+                        <span class="cart-item-image-container" *ngIf="item.item.image_urls">
+                          <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
+                        </span>
+                        <span class="right">
+                          <span class="cart-item-text-container">
+                              <div>{{item.item.title}}</div>
+                              <div class="price">{{item.item.price}} Ft</div>
+                          </span>
+                        <span class="price">
+                              {{(item.item.price || 0) * item.amount}} Ft
+                            </span>
+                        </span>
+                      </div>
+                      <div class="table-row" *ngIf="order.order.shippingType">
+                        <span class="table-title">Szállítás</span>
+                        <span class="right">
+                          <span>{{order.order.shippingType.name}}</span>
+                          <span>{{order.order.shippingType.value}} Ft</span>
+                        </span>
+                      </div>
+                      <div class="table-row" *ngIf="order.order.shippingType && order.order.price">
+                        <span class="table-title">Összeg</span>
+                        <span>{{order.order.price + order.order.shippingType.value}} Ft</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+
             </tbody>
           </table>
         </div>
