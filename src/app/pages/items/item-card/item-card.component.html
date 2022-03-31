@@ -1,10 +1,25 @@
-<div class="item-card-container" (click)="openItem()">
-  <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
-  <div class="title">{{item.title}}</div>
-  <div class="subtitle">{{item.subtitle}}</div>
-  <div class="prices" *ngIf="item.price">
-    <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-    <span *ngIf="item.discount_percentage" class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
-    <span class="original_price" [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+<div class="item-card-container">
+  <div class="item-card">
+    <div class="item" (click)="openItem()">
+      <div class="image-container">
+        <div class="view-overlay">
+          <div class="view-text">Megnézem</div>
+        </div>
+        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
+      </div>
+      <div class="title">{{item.title}}</div>
+      <div class="subtitle">{{item.subtitle}}</div>
+      <div class="prices" *ngIf="item.price">
+        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
+        <span *ngIf="item.discount_percentage"
+              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+        <span class="original_price"
+              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button class="button" (click)="addItemToCart()">Kosárba</button>
+    </div>
   </div>
 </div>

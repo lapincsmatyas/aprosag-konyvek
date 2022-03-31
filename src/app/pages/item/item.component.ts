@@ -71,12 +71,6 @@ export class ItemComponent implements OnInit {
       modalRef.componentInstance.item = this.item;
       modalRef.componentInstance.amount = this.amount;
 
-      modalRef.result.then((result) => {
-        console.log(result);
-      }, (error) => {
-        //console.error(error.message);
-      })
-
       this.amount = 1;
     }
   }
