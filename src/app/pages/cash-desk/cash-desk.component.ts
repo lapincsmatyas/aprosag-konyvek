@@ -85,19 +85,13 @@ export class CashDeskComponent implements  AfterViewInit {
 
   sendOrder() {
     this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)?.then((result) => {
-
       const modalRef = this.modalService.open(SuccessfulOrderComponent, {
-        backdrop: true,
+        backdrop: 'static',
+        keyboard: false,
         backdropClass: 'modal-dialog-backdrop',
         modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
       });
       modalRef.componentInstance.orderNumber = result.id;
-
-      modalRef.result.then((result) => {
-        console.log(result);
-      }, (error) => {
-        //console.error(error.message);
-      })
 
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")

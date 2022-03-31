@@ -12,6 +12,7 @@ import {ProfileComponent} from "./pages/profile/profile.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {CashDeskComponent} from "./pages/cash-desk/cash-desk.component";
 import { ItemsResolverResolver } from './shared/resolvers/items-resolver.resolver';
+import {CashDeskGuardGuard} from "./shared/guards/cash-desk-guard.guard";
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'items', component: ItemsComponent, resolve: {items: ItemsResolverResolver}},
   {path: 'items/:id', component: ItemComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'cash-desk', component: CashDeskComponent},
+  {path: 'cash-desk', component: CashDeskComponent, canActivate: [CashDeskGuardGuard]},
   {path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToProfile)},
   {path: 'profile', component: ProfileComponent, ...canActivate(redirectUnauthorizedToLogin)},
   {path: 'signup', component: RegisterComponent},

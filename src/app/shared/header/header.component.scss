@@ -28,6 +28,11 @@
       font-size: 18px;
       cursor: pointer;
 
+      &.disabled{
+        cursor: auto;
+        opacity: 0.5;
+      }
+
       .counter {
         position: absolute;
         background-color: $base-green;
