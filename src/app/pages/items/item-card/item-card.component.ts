@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../../model/item.model";
 import {ImageCacheService} from "../../../services/image-cache/image-cache.service";
 import {of} from "rxjs";
@@ -7,21 +7,34 @@ import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart/cart.service";
 import {AddedToCartComponent} from "../../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'aprosag-item-card',
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })
-export class ItemCardComponent {
+export class ItemCardComponent implements OnInit{
   @Input()
   public item: Item = {};
 
-  constructor(private router: Router, private cartService: CartService, private modalService: NgbModal) {
+  isFavourite = false;
+
+  constructor(private router: Router,
+              public userService: AuthService,
+              private cartService: CartService,
+              private modalService: NgbModal) {
+  }
+
+  ngOnInit(){
+    this.userService.user$.subscribe((user) => {
+      if(user?.favourites?.includes(this.item.id || ""))
+        this.isFavourite = true;
+    })
   }
 
   openItem() {
-    this.router.navigate(['/items',this.item.id]);
+    this.router.navigate(['/items', this.item.id]);
   }
 
   addItemToCart() {
@@ -34,5 +47,9 @@ export class ItemCardComponent {
     });
     modalRef.componentInstance.item = this.item;
     modalRef.componentInstance.amount = 1;
+  }
+
+  addItemToFavourites() {
+    this.userService.addItemToFavourites(this.item).then(result => console.log(result));
   }
 }
