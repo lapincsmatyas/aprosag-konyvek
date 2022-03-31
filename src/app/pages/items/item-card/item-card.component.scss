@@ -8,6 +8,52 @@
   align-items: flex-start;
   cursor: pointer;
 
+  .view-overlay{
+    opacity: 0;
+  }
+
+
+
+  .item-card{
+    .image-container{
+      position: relative;
+    }
+
+    .button-container{
+      opacity: 0;
+      transition: opacity 0.2s;
+
+    }
+
+    .view-overlay{
+      opacity: 0;
+      transition: opacity 0.2s;
+      position: absolute;
+      width: 100%;
+      height: 70px;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(black, 0.4);
+
+      .view-text {
+        font-weight: 400;
+        color: white;
+      }
+    }
+
+    &:hover {
+      .view-overlay{
+        opacity: 1;
+      }
+      .button-container{
+        opacity: 1;
+      }
+    }
+  }
+
   .title{
     margin-top:20px;
     font-size: 18px;
@@ -39,4 +85,15 @@
       color: $red-text;
     }
   }
+
+  .button-container{
+    width: 100%;
+    margin-top: 35px;
+    .button{
+      @include button;
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
 }
