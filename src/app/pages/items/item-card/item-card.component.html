@@ -11,7 +11,7 @@
         <div>
           {{item.title}}
         </div>
-        <img *ngIf="userService.user$ | async" (click)="addItemToFavourites()" class="favourite"
+        <img *ngIf="userService.user | async" (click)="addItemToFavourites()" class="favourite"
              [src]="!isFavourite ? 'assets/Icons/Favourite.svg' : 'assets/Icons/Favourite_added.svg'" height="20px">
       </div>
       <div class="subtitle">{{item.subtitle}}</div>

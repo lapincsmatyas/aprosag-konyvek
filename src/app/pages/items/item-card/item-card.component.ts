@@ -8,28 +8,28 @@ import {CartService} from "../../../services/cart/cart.service";
 import {AddedToCartComponent} from "../../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AuthService} from "../../../services/auth/auth.service";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-item-card',
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })
-export class ItemCardComponent implements OnInit{
+export class ItemCardComponent implements OnInit {
   @Input()
   public item: Item = {};
 
   isFavourite = false;
 
   constructor(private router: Router,
-              public userService: AuthService,
+              public userService: UserService,
               private cartService: CartService,
               private modalService: NgbModal) {
   }
 
-  ngOnInit(){
-    this.userService.user$.subscribe((user) => {
-      if(user?.favourites?.includes(this.item.id || ""))
-        this.isFavourite = true;
+  ngOnInit() {
+    this.userService.user.subscribe((user) => {
+      this.isFavourite = !!user?.favorites?.includes(this.item.id || "");
     })
   }
 
@@ -50,6 +50,6 @@ export class ItemCardComponent implements OnInit{
   }
 
   addItemToFavourites() {
-    this.userService.addItemToFavourites(this.item).then(result => console.log(result));
+    this.userService.addOrRemoveItemAsFavorite(this.item);
   }
 }
