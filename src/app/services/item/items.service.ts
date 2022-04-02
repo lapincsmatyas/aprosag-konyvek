@@ -5,7 +5,8 @@ import {Observable, of} from "rxjs";
 import {Item} from "../../model/item.model";
 import {CollectionReference} from "@firebase/firestore";
 import * as itemsJson from "./items.json"
-import {delay, map, take} from "rxjs/operators";
+import {delay, filter, map, take} from "rxjs/operators";
+import {flatMap} from "rxjs/internal/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class ItemsService {
   }
 
   getAllItems(): Observable<Item[]> {
-    if(this.items) {
+    if (this.items) {
       return of(this.items);
     } else {
       return collectionData(this.collection, {idField: 'id'}).pipe(
@@ -50,6 +51,17 @@ export class ItemsService {
     const document = doc(this.collection, id);
     return docData(document, {idField: 'id'}).pipe(
       take(1)
+    );
+  }
+
+  getItemsByIds(ids: string[] | null): Observable<Item[]> {
+    if(ids === null){
+      return of([]);
+    }
+    return this.getAllItems().pipe(
+      map(items => {
+        return items.filter((item) => ids.includes(item.id || ""));
+      })
     );
   }
 }

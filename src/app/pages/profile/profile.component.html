@@ -143,7 +143,9 @@
           </table>
         </div>
         <div *ngSwitchCase="'Kedvenceim'">
-          Kedvenceim
+          <div class="favorites-container">
+            <aprosag-item-card *ngFor="let item of favorites" [item]="item"></aprosag-item-card>
+          </div>
         </div>
       </div>
     </div>
