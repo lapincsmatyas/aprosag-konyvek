@@ -9,6 +9,7 @@ import {MatStepper} from "@angular/material/stepper";
 import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SuccessfulOrderComponent} from "../../shared/popups/successful-order/successful-order.component";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -51,13 +52,14 @@ export class CashDeskComponent implements  AfterViewInit {
   isEditable = false;
 
   constructor(private fb: FormBuilder,
-              public authService: AuthService,
               private orderService: OrderService,
+              public userService: UserService,
               private toastr: ToastrService,
               private router: Router,
+              private authService: AuthService,
               private modalService: NgbModal,
               public cartService: CartService) {
-    authService.user$.subscribe((user) => {
+    userService.user.subscribe((user) => {
       if (user) {
         this.profileForm.get('profile')?.patchValue({
           uid: user.uid,
@@ -103,7 +105,6 @@ export class CashDeskComponent implements  AfterViewInit {
   }
 
   login() {
-
     this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
     }, (error) => {
       this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
