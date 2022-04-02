@@ -12,11 +12,15 @@
     opacity: 0;
   }
 
-
-
   .item-card{
     .image-container{
       position: relative;
+    }
+
+    .title-container{
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
     }
 
     .button-container{

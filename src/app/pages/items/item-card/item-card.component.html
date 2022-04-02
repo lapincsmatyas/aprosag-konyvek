@@ -5,11 +5,14 @@
         <div class="view-overlay">
           <div class="view-text">Megnézem</div>
         </div>
-        <img  *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
+        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
       </div>
-      <div class="title">
-        {{item.title}}
-        <img (click)="addItemToFavourites()" class="favourite" [src]="!isFavourite ? 'assets/Icons/Favourite.svg' : 'assets/Icons/Favourite_added.svg'" height="20px">
+      <div class="title-container">
+        <div>
+          {{item.title}}
+        </div>
+        <img *ngIf="userService.user$ | async" (click)="addItemToFavourites()" class="favourite"
+             [src]="!isFavourite ? 'assets/Icons/Favourite.svg' : 'assets/Icons/Favourite_added.svg'" height="20px">
       </div>
       <div class="subtitle">{{item.subtitle}}</div>
       <div class="prices" *ngIf="item.price">
