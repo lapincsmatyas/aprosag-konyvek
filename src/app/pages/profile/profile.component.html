@@ -10,7 +10,7 @@
       </div>
       <div [ngSwitch]="selectedMenu" class="content">
         <div *ngSwitchCase="'Adataim'">
-          <form [formGroup]="profileForm" *ngIf="user">
+          <form [formGroup]="profileForm" *ngIf="userService.user">
             <div class="form-container">
               <div class="form-block">
                 <div class="form-field-container">

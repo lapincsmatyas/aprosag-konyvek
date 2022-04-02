@@ -4,6 +4,9 @@ import {addDoc, collection, collectionData, Firestore, query, where} from "@angu
 import {CollectionReference, Timestamp} from "@firebase/firestore";
 import {User} from "../../model/user.model";
 import {CartService} from "../cart/cart.service";
+import {UserDto} from "../../model/dto/user.dto";
+import {UserService} from "../user/user.service";
+import {throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,9 @@ export class OrderService {
 
   selectedPaymentType: PaymentType;
 
-  constructor(private fireStore: Firestore, private cartService: CartService) {
+  constructor(private fireStore: Firestore,
+              private cartService: CartService,
+              private userService: UserService) {
     this.paymentTypes = [{
       name: "Banki átutalás",
       description: "OTP Bank (SWIFT/BIC köd: OTPVHUHB)\n" +
@@ -51,8 +56,12 @@ export class OrderService {
     });
   }
 
-  getOrdersForUser(user: User){
-    const q = query(this.collection, where("user.profile.uid","==", user.uid));
-    return collectionData(q, {idField: "orderNumber"});
+  getOrders(){
+    if(this.userService.user.value) {
+      const q = query(this.collection, where("user.profile.uid", "==", this.userService.user.value.uid));
+      return collectionData(q, {idField: "orderNumber"});
+    } else {
+      throw throwError('User not found');
+    }
   }
 }

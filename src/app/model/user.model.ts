@@ -1,19 +1,19 @@
 import {Roles} from "./roles.model";
 
-export interface User {
-  uid?: string | null;
-  email?: string | null;
-  roles?: Roles;
-  password?: string | null;
-  username?: string | null;
-  lastName?: string | null;
-  firstName?: string | null;
-  companyName?: string | null;
-  taxNumber?: string | null;
-  country?: string | null;
-  city?: string | null;
-  address?: string | null;
-  zipCode?: string | null;
-  phoneNumber?: string | null;
-  emailVerified?: boolean | null;
+export class User {
+  uid: string = "";
+  email: string = "";
+  roles: Roles = {user: true};
+  password: string = "";
+  username: string = "";
+  lastName: string = "";
+  firstName: string = "";
+  companyName: string = "";
+  taxNumber: string = "";
+  country: string = "";
+  city: string = "";
+  address: string = "";
+  zipCode: string = "";
+  phoneNumber: string = "";
+  emailVerified: boolean = false;
 }
