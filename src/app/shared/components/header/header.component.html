@@ -1,7 +1,7 @@
 <div class="header-container">
   <div class="header desktop-header">
       <span class="logo-container" routerLink="items">
-    <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
+    <img class="logo" src="../../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
     </span>
     <span class="button-container">
       <a class="menu-item" routerLink="items" routerLinkActive="active">Termékeink</a>
@@ -9,18 +9,18 @@
       <a class="menu-item" routerLink="about-us" routerLinkActive="active">Rólunk</a>
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
       <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
-        <img src="assets/Icons/Profile.svg" height="15px"/>
+        <img src="../../../../assets/Icons/Profile.svg" height="15px"/>
       </a>
       <a class="menu-item cart" [ngClass]="{disabled: router.url === '/cart' ||router.url === '/cash-desk'}"  (click)="openCartModal()">
         <span class="counter">{{cartService.count}}</span>
-        <img src="assets/Icons/Cart.svg" height="15px"/>
+        <img src="../../../../assets/Icons/Cart.svg" height="15px"/>
       </a>
     </span>
   </div>
   <div class="header mobile-header">
     <fa-icon class="menu-opener" [icon]="faBars" (click)="openMenu()"></fa-icon>
     <span class="logo-container" routerLink="items">
-    <img class="logo" src="../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
+    <img class="logo" src="../../../../assets/Logo/Aprosag_konyvek_logo_1_black.svg"/>
     </span>
     <a class="cart"(click)="openCartModal()">
       <span class="counter">{{cartService.count}}</span>

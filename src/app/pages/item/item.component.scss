@@ -34,7 +34,13 @@
       }
 
       .title {
-        @include title;
+        display: flex;
+        justify-content: space-between;
+
+        .title-text {
+          @include title;
+        }
+
       }
 
       .subtitle {
@@ -100,7 +106,7 @@
             opacity: 0.5;
           }
 
-          &:hover{
+          &:hover {
             opacity: 1;
           }
         }
@@ -117,9 +123,14 @@
         width: 100%;
       }
 
-      .title-container{
+      .title-container {
         .title {
-          @include title;
+          display: flex;
+          justify-content: space-between;
+
+          .title-text {
+            @include title;
+          }
         }
 
         .subtitle {
@@ -130,7 +141,6 @@
           display: none;
         }
       }
-
 
 
       .description {

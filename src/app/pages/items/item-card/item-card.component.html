@@ -1,6 +1,6 @@
 <div class="item-card-container">
   <div class="item-card">
-    <div class="item">
+    <div class="item" (click)="openItem()">
       <div class="image-container">
         <div class="view-overlay">
           <div class="view-text">Megnézem</div>
@@ -11,8 +11,7 @@
         <div>
           {{item.title}}
         </div>
-        <img *ngIf="userService.user | async" (click)="addItemToFavourites()" class="favourite"
-             [src]="!isFavourite ? 'assets/Icons/Favourite.svg' : 'assets/Icons/Favourite_added.svg'" height="20px">
+        <aprosag-favorite [item]="item"></aprosag-favorite>
       </div>
       <div class="subtitle">{{item.subtitle}}</div>
       <div class="prices" *ngIf="item.price">

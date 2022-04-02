@@ -15,22 +15,15 @@ import {UserService} from "../../../services/user/user.service";
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })
-export class ItemCardComponent implements OnInit {
+export class ItemCardComponent {
   @Input()
   public item: Item = {};
 
   isFavourite = false;
 
   constructor(private router: Router,
-              public userService: UserService,
               private cartService: CartService,
               private modalService: NgbModal) {
-  }
-
-  ngOnInit() {
-    this.userService.user.subscribe((user) => {
-      this.isFavourite = !!user?.favorites?.includes(this.item.id || "");
-    })
   }
 
   openItem() {
@@ -49,7 +42,4 @@ export class ItemCardComponent implements OnInit {
     modalRef.componentInstance.amount = 1;
   }
 
-  addItemToFavourites() {
-    this.userService.addOrRemoveItemAsFavorite(this.item);
-  }
 }

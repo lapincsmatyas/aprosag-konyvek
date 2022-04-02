@@ -1,10 +1,10 @@
 import {Component, ElementRef, NgModule} from '@angular/core';
-import {CartService} from "../../../services/cart/cart.service";
+import {CartService} from "../../../../services/cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
-import {CartItem} from "../../../model/cart-item.model";
+import {CartItem} from "../../../../model/cart-item.model";
 
 @Component({
   selector: 'aprosag-cart-modal',
