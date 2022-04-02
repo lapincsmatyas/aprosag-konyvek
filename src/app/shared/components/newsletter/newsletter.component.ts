@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {NewsletterService} from "../../services/newsletter/newsletter.service";
+import {NewsletterService} from "../../../services/newsletter/newsletter.service";
 import {Firestore} from "@angular/fire/firestore";
 
 @Component({

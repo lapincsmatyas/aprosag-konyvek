@@ -16,4 +16,5 @@ export class User {
   zipCode: string = "";
   phoneNumber: string = "";
   emailVerified: boolean = false;
+  favorites: string[] = [];
 }

@@ -17,7 +17,7 @@ import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-c
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
   faArrowAltCircleLeft = faArrowAltCircleLeft;
   faArrowAltCircleRight = faArrowAltCircleRight;
 
@@ -37,9 +37,6 @@ export class ItemComponent implements OnInit {
         this.item = item;
       })
     });
-  }
-
-  ngOnInit(): void {
   }
 
   selectImage(i: number) {

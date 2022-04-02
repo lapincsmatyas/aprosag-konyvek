@@ -9,6 +9,8 @@ import {OrderService} from "../../services/order/order.service";
 import {Order} from "../../model/order.model";
 import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../../services/user/user.service";
+import {ItemsService} from "../../services/item/items.service";
+import {Item} from "../../model/item.model";
 
 @Component({
   selector: 'aprosag-profile',
@@ -37,9 +39,12 @@ export class ProfileComponent implements OnInit {
   public user: User | null = null;
   public orders: { order: Order, open: boolean }[] = [];
 
+  public favorites: Item[] = [];
+
   constructor(private fb: FormBuilder,
               public userService: UserService,
               private toastr: ToastrService,
+              public itemService: ItemsService,
               private authService: AuthService,
               private orderService: OrderService) {
   }
@@ -53,10 +58,13 @@ export class ProfileComponent implements OnInit {
             return {order, open: false}
           });
         });
+
+        this.itemService.getItemsByIds(user.favorites).subscribe((result) => {
+          this.favorites = result;
+        });
       }
     })
   }
-
 
   saveData() {
     this.userService.updateUserData(this.profileForm.value).then(() => {
@@ -84,9 +92,6 @@ export class ProfileComponent implements OnInit {
   changeMenu(menu: string) {
     if (menu == "Kijelentkezés")
       this.logout();
-
-    if (menu == "Kedvenceim")
-      return;
 
     this.selectedMenu = menu;
   }

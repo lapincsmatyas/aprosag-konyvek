@@ -16,9 +16,9 @@ import {UserService} from "../../services/user/user.service";
   templateUrl: './cash-desk.component.html',
   styleUrls: ['./cash-desk.component.scss']
 })
-export class CashDeskComponent implements  AfterViewInit {
+export class CashDeskComponent implements AfterViewInit {
   @ViewChild(MatStepper)
-    stepper!: MatStepper;
+  stepper!: MatStepper;
 
   ngAfterViewInit() {
     this.stepper._getIndicatorType = () => 'number';

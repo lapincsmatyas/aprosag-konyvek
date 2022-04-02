@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {faCartPlus, faUser} from "@fortawesome/free-solid-svg-icons";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {AuthService} from "../../services/auth/auth.service";
+import {AuthService} from "../../../services/auth/auth.service";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {CartService} from "../../services/cart/cart.service";
+import {CartService} from "../../../services/cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-view-model";
-import {AddedToCartComponent} from "../popups/added-to-cart/added-to-cart.component";
+import {AddedToCartComponent} from "../../popups/added-to-cart/added-to-cart.component";
 import {CartModalComponent} from "./cart-modal/cart-modal.component";
 
 @Component({
