@@ -16,7 +16,6 @@ export class AppComponent {
               private router: Router,
               private userService: UserService
   ) {
-
     this.router.events.subscribe((event) => {
       switch (true) {
         case event instanceof NavigationStart: {

@@ -93,7 +93,7 @@ export class CashDeskComponent implements AfterViewInit {
         backdropClass: 'modal-dialog-backdrop',
         modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
       });
-      modalRef.componentInstance.orderNumber = result.id;
+      modalRef.componentInstance.orderNumber = result;
 
     }, (error) => {
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")

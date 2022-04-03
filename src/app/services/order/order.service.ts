@@ -38,11 +38,23 @@ export class OrderService {
   }
 
   placeOrder(user: User, comment: string) {
-    if(this.cartService.count == 0 || !this.cartService.selectedShippingType)
+    if (this.cartService.count == 0 || !this.cartService.selectedShippingType)
       return;
+
+    const date = new Date();
+    const randomId = Math.floor(Math.random() * 100) + 100;
+    const orderNumber =
+      date.getFullYear().toString().slice(-2) + '' +
+      ('00' + date.getMonth().toString()).slice(-2) + '' +
+      ('00' + date.getDate().toString()).slice(-2) + '' +
+      ('00' + date.getHours().toString()).slice(-2) + '' +
+      ('00' + date.getMinutes().toString()).slice(-2) + '' +
+      date.getMilliseconds().toString().slice(-2) + '' +
+      randomId;
 
     return addDoc(this.collection, {
       user,
+      orderNumber: +orderNumber,
       date: Timestamp.fromDate(new Date()),
       state: OrderState.SENT,
       price: this.cartService.value + this.cartService.selectedShippingType.value,
@@ -52,14 +64,14 @@ export class OrderService {
     }).then((result) => {
       this.cartService.emptyCart();
       this.cartService.selectedShippingType = null;
-      return result;
+      return orderNumber;
     });
   }
 
-  getOrders(){
-    if(this.userService.user.value) {
+  getOrders() {
+    if (this.userService.user.value) {
       const q = query(this.collection, where("user.profile.uid", "==", this.userService.user.value.uid));
-      return collectionData(q, {idField: "orderNumber"});
+      return collectionData(q, {idField: "orderId"});
     } else {
       throw throwError('User not found');
     }

@@ -7,6 +7,7 @@ export enum OrderState {
 }
 
 export interface Order {
+  orderId?: string;
   orderNumber?: number;
   user?: User;
   date?: Timestamp;
