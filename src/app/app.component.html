@@ -9,7 +9,7 @@
     <aprosag-footer class="footer"></aprosag-footer>
   </div>
 
-  <div class="loading-screen" *ngIf="loading">
+  <div class="loading-screen" [ngClass]="{transparent: loadingService.transparent}" *ngIf="(loadingService.loading | async)">
     <img class="animation" src="assets/Loading_anim.gif">
   </div>
 

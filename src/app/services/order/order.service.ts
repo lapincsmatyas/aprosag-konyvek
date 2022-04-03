@@ -62,10 +62,13 @@ export class OrderService {
       shippingType: this.cartService.selectedShippingType,
       paymentType: this.selectedPaymentType
     }).then((result) => {
-      this.cartService.emptyCart();
-      this.cartService.selectedShippingType = null;
-      return orderNumber;
-    });
+      return new Promise((resolve) => setTimeout(resolve, 2000))
+    })
+      .then((result) => {
+        this.cartService.emptyCart();
+        this.cartService.selectedShippingType = null;
+        return orderNumber;
+      });
   }
 
   getOrders() {

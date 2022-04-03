@@ -3,6 +3,7 @@ import {ItemsService} from "./services/item/items.service";
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
 import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-view-model";
 import {UserService} from "./services/user/user.service";
+import {LoadingService} from "./services/loading/loading.service";
 
 @Component({
   selector: 'aprosag-root',
@@ -14,19 +15,19 @@ export class AppComponent {
 
   constructor(private itemsService: ItemsService,
               private router: Router,
-              private userService: UserService
+              public loadingService: LoadingService
   ) {
     this.router.events.subscribe((event) => {
       switch (true) {
         case event instanceof NavigationStart: {
-          this.loading = true;
+          this.loadingService.addProcess('navigation_start');
           break;
         }
 
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.loading = false;
+          this.loadingService.removeProcess('navigation_start');
           break;
         }
         default: {

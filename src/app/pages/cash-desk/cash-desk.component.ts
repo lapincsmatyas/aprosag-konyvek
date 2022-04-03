@@ -10,6 +10,7 @@ import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-c
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SuccessfulOrderComponent} from "../../shared/popups/successful-order/successful-order.component";
 import {UserService} from "../../services/user/user.service";
+import {LoadingService} from "../../services/loading/loading.service";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -54,6 +55,7 @@ export class CashDeskComponent implements AfterViewInit {
   constructor(private fb: FormBuilder,
               private orderService: OrderService,
               public userService: UserService,
+              private loadingService: LoadingService,
               private toastr: ToastrService,
               private router: Router,
               private authService: AuthService,
@@ -86,13 +88,16 @@ export class CashDeskComponent implements AfterViewInit {
   }
 
   sendOrder() {
+    this.loadingService.addProcess('send-order', {transparent: true});
     this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)?.then((result) => {
+      this.loadingService.removeProcess('send-order');
       const modalRef = this.modalService.open(SuccessfulOrderComponent, {
         backdrop: 'static',
         keyboard: false,
         backdropClass: 'modal-dialog-backdrop',
         modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
       });
+
       modalRef.componentInstance.orderNumber = result;
 
     }, (error) => {
