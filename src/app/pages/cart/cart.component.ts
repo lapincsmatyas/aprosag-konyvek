@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {CartService} from "../../services/cart/cart.service";
 import {ImageCacheService} from "../../services/image-cache/image-cache.service";
-import {Item} from "../../model/item.model";
 import {CartItem} from "../../model/cart-item.model";
 import {Router} from "@angular/router";
 
