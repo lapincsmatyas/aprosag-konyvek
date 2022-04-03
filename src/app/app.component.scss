@@ -73,7 +73,12 @@
   justify-content: center;
   align-items: center;
 
+  &.transparent{
+    background-color: rgba(white, 0.8);
+  }
+
   .animation{
+    border-radius: 100px;
     width: 200px;
   }
 }
