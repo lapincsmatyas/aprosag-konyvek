@@ -1,36 +1,38 @@
 @import "src/variables";
 @import "src/mixins";
 
-.item-card-container{
+.item-card-container {
   color: $font-color;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   cursor: pointer;
+  height: 100%;
 
-  .view-overlay{
+
+  .view-overlay {
     opacity: 0;
   }
 
-  .item-card{
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 25px;
 
-    .image-container{
+    .image-container {
       position: relative;
     }
 
-    .title-container{
+    .title-container {
       margin-top: 25px;
       display: flex;
+      gap: 10px;
       justify-content: space-between;
     }
 
-    .button-container{
-      opacity: 0;
-      transition: opacity 0.2s;
-
-    }
-
-    .view-overlay{
+    .view-overlay {
       opacity: 0;
       transition: opacity 0.2s;
       position: absolute;
@@ -48,56 +50,67 @@
         color: white;
       }
     }
-
-    &:hover {
-      .view-overlay{
-        opacity: 1;
-      }
-      .button-container{
-        opacity: 1;
-      }
-    }
   }
 
-  .title{
-    margin-top:20px;
+  .title {
+    margin-top: 20px;
     font-size: 18px;
   }
-  .subtitle{
+
+  .subtitle {
     margin-top: 20px;
     font-family: lato, Helvetica, sans-serif;
     font-weight: 600;
     font-size: 1em;
   }
 
-  .item-card-image{
+  .item-card-image {
     width: 100%;
   }
 
-  .prices {
+  .bottom-container {
     display: flex;
-    width: 100%;
-    align-items: flex-end;
-    margin-top: 50px;
-    font-size: 20px;
-    font-family: lato, Helvetica, sans-serif;
-    font-weight: 600;
-    .original_price.invalid {
-      margin-left: 50px;
-      text-decoration: line-through;
-    }
-    .discount{
-      color: $red-text;
-    }
-  }
-
-  .button-container{
-    width: 100%;
+    flex-direction: column;
+    gap: 25px;
     margin-top: 35px;
-    .button{
-      @include button;
-      width: 80%;
-      margin: 0 auto;
+
+    .prices-container {
+      .prices {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        width: 100%;
+        gap: 35px;
+        font-size: 20px;
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: 600;
+
+        @media (max-width: $breakpoint-lg){
+          font-size: 18px;
+        }
+
+        @media (max-width: $breakpoint-md){
+          font-size: 16px;
+        }
+
+        .original_price.invalid {
+          text-decoration: line-through;
+        }
+
+        .discount {
+          color: $red-text;
+        }
+      }
+    }
+
+    .button-container {
+      width: 100%;
+
+      .button {
+        @include button;
+        width: 80%;
+        margin: 0 auto;
+      }
     }
   }
 

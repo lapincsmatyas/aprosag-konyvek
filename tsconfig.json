@@ -19,7 +19,11 @@
     "module": "es2020",
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "es5",
+      "es2015.promise",
+      "es6",
+      "es7"
     ]
   },
   "angularCompilerOptions": {

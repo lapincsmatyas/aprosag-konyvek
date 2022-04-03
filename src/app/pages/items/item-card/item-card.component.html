@@ -14,17 +14,21 @@
         <aprosag-favorite [item]="item"></aprosag-favorite>
       </div>
       <div class="subtitle">{{item.subtitle}}</div>
-      <div class="prices" *ngIf="item.price">
-        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-        <span *ngIf="item.discount_percentage"
-              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
-        <span class="original_price"
-              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
-      </div>
-    </div>
 
-    <div class="button-container">
-      <button class="button" (click)="addItemToCart()">Kosárba</button>
+    </div>
+    <div class="bottom-container">
+      <div class="prices-container">
+        <div class="prices" *ngIf="item.price">
+          <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
+          <span *ngIf="item.discount_percentage"
+                class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+          <span class="original_price"
+                [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="button" (click)="addItemToCart()">Kosárba</button>
+      </div>
     </div>
   </div>
 </div>
