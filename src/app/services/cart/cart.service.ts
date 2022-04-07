@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {CartItem, ShippingType} from "../../model/cart-item.model";
 import {Item} from "../../model/item.model";
+import {UserService} from "../user/user.service";
+import {CartItemDto} from "../../model/dto/cart.dto";
+import {ItemsService} from "../item/items.service";
 
 const CART_KEY = 'aprosag_cart';
 
-const shippingTypes : ShippingType[] = [
+const shippingTypes: ShippingType[] = [
   {name: "Házhozszállítás GLS-sel", value: 1490},
   {name: "Foxspost csomagautomata", value: 700},
   {name: "Személyes átvétel Mosonmagyaróváron", value: 0}
@@ -24,7 +27,7 @@ export class CartService {
     return Array.from(this.cart.values());
   }
 
-  get valid() : boolean{
+  get valid(): boolean {
     return this.selectedShippingType != null && this.count > 0;
   }
 
@@ -47,8 +50,7 @@ export class CartService {
     return sum;
   }
 
-  constructor() {
-
+  constructor(private itemService: ItemsService) {
     if (localStorage.getItem(CART_KEY))
       this.cart = new Map(JSON.parse(localStorage.getItem(CART_KEY) || ""));
     else

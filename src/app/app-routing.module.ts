@@ -18,8 +18,8 @@ const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
-  {path: '', redirectTo: 'items', pathMatch: 'full', resolve: {items: ItemsResolverResolver}},
-  {path: 'items', component: ItemsComponent, resolve: {items: ItemsResolverResolver}},
+  {path: '', redirectTo: 'items', pathMatch: 'full'},
+  {path: 'items', component: ItemsComponent},
   {path: 'items/:id', component: ItemComponent},
   {path: 'cart', component: CartComponent},
   {path: 'cash-desk', component: CashDeskComponent, canActivate: [CashDeskGuardGuard]},

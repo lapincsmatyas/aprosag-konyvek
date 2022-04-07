@@ -33,9 +33,7 @@ export class ItemComponent {
               private activatedRoute: ActivatedRoute) {
 
     this.activatedRoute.params.subscribe(params => {
-      this.itemService.getItemById(params['id']).subscribe(item => {
-        this.item = item;
-      })
+      this.item = this.itemService.getItemById(params['id']);
     });
   }
 

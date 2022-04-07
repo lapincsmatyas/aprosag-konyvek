@@ -6,6 +6,7 @@ import {UserDto} from "../../model/dto/user.dto";
 import {BehaviorSubject, Observable, throwError} from "rxjs";
 import {Item} from "../../model/item.model";
 import {user} from "@angular/fire/auth";
+import {CartService} from "../cart/cart.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
   user: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private authService: AuthService,
+              private cartService: CartService,
               private firestore: Firestore) {
     authService.user$.subscribe((user) => {
       if (user !== null) {
@@ -22,11 +24,9 @@ export class UserService {
           if (data === undefined) {
             this.createUserData(user).then(result => {
               this.user.next(JSON.parse(JSON.stringify(result)));
-              console.log("new user: ", this.user);
             })
           } else {
             this.user.next(JSON.parse(JSON.stringify(data)));
-            console.log("user: ", this.user);
           }
         })
       }

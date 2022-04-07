@@ -59,9 +59,7 @@ export class ProfileComponent implements OnInit {
           });
         });
 
-        this.itemService.getItemsByIds(user.favorites).subscribe((result) => {
-          this.favorites = result;
-        });
+        this.favorites = this.itemService.getItemsByIds(user.favorites);
       }
     })
   }

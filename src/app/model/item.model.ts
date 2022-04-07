@@ -3,20 +3,19 @@ export enum COVER_TYPE {
   SOFT_COVER
 }
 
-export interface Item {
-  id?: string,
-  title?: string,
-  subtitle?: string,
-  common_id?: string,
-  description?: string,
-  page_count?: number,
-  cover_type?: COVER_TYPE,
-  ISBN?: string,
-  weight?: number,
-  publication_date?: number,
-  storage_amount?: number,
-  price?: number,
-  discount_price?: number,
-  discount_percentage?: number,
-  image_urls?: any[]
+export class Item {
+  id: string = "";
+  title: string = "";
+  subtitle: string = "";
+  description: string = "";
+  page_count: number = -0;
+  cover_type: COVER_TYPE = COVER_TYPE.HARD_COVER;
+  ISBN: string = "";
+  weight: number = -1;
+  publication_date: number = -1;
+  storage_amount: number = -1;
+  price: number = -1;
+  discount_price: number = -1;
+  discount_percentage: number = -1;
+  image_urls: any[] = [];
 }
