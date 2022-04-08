@@ -37,7 +37,6 @@ export class UserService {
   }
 
   refreshData(user: User) {
-    debugger;
     getDoc<UserDto>(doc(this.firestore, `users/${user.uid}`)).then((userDocument) => {
       const data = userDocument.data();
       if (data !== undefined) {
@@ -70,7 +69,7 @@ export class UserService {
       throw throwError('User not found');
     }
 
-   const alreadyFavorite = this.user.value?.favorites.includes(item.id || "");
+   const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       favorites: alreadyFavorite ? arrayRemove(item.id || "") : arrayUnion(item.id)
