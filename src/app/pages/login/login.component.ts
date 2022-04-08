@@ -24,7 +24,7 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
-      this.router.navigateByUrl('profile');
+      this.router.navigateByUrl('items');
     }, (error) => {
       this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
     })

@@ -4,6 +4,7 @@ import {Item} from "../../model/item.model";
 import {UserService} from "../user/user.service";
 import {CartItemDto} from "../../model/dto/cart.dto";
 import {ItemsService} from "../item/items.service";
+import {AuthService} from "../auth/auth.service";
 
 const CART_KEY = 'aprosag_cart';
 
@@ -50,7 +51,7 @@ export class CartService {
     return sum;
   }
 
-  constructor(private itemService: ItemsService) {
+  constructor(private userService: UserService, private authService: AuthService) {
     if (localStorage.getItem(CART_KEY))
       this.cart = new Map(JSON.parse(localStorage.getItem(CART_KEY) || ""));
     else
@@ -58,25 +59,36 @@ export class CartService {
 
     this.shippingTypes = shippingTypes;
     this.selectedShippingType = null;
+
+    this.userService.user.subscribe((user) => {
+      if(user){
+        console.log(user.cart);
+        this.initCart(user.cart);
+      }
+    })
   }
 
-  addItemToCart(item: Item, amount: number) {
-    const id = item.id;
+  initCart(cartItems: CartItem[] = []){
+    cartItems.forEach((cartItem) => {
+      this.cart.set(cartItem.item.id, cartItem);
+    })
+  }
 
-    console.log(id);
+  addItemToCart(item: Item, amount: number): CartItem {
+    let cartItem = this.cart.get(item.id);
 
-    if (!id)
-      return;
-
-    let cartItem = this.cart.get(id);
-
-    if (cartItem != undefined) {
-      this.cart.set(id, {item: item, amount: cartItem.amount + amount});
-    } else if (amount > 0) {
-      this.cart.set(id, {item: item, amount: amount});
+    if(cartItem === undefined){
+      cartItem = {item, amount}
+    } else {
+      cartItem = {item, amount: cartItem.amount + amount};
     }
+    this.cart.set(item.id, cartItem);
 
     this.updateStorage();
+    this.updateUserCart();
+
+
+    return cartItem;
   }
 
   removeAllOfTypeFromCart(item: CartItem) {
@@ -92,34 +104,42 @@ export class CartService {
     this.cart.delete(id);
 
     this.updateStorage();
+    this.updateUserCart();
   }
 
-  removeItemCart(item: CartItem) {
-    const id = item.item.id;
-    if (!id)
-      return;
+  removeItemCart(item: CartItem): CartItem | null {
+    let cartItem = this.cart.get(item.item.id);
+    if (cartItem === undefined)
+      return null;
 
-    let cartItem = this.cart.get(id)
-
-    if (!cartItem)
-      return;
-
-    if (cartItem.amount == 1)
-      this.cart.delete(id);
-
-    this.cart.set(id, {item: item.item, amount: cartItem.amount - 1});
+    cartItem.amount = cartItem.amount - 1;
+    if (cartItem.amount == 0) {
+      this.cart.delete(item.item.id);
+    } else {
+      this.cart.set(item.item.id, cartItem);
+    }
 
     this.updateStorage();
+    this.updateUserCart();
+
+    return cartItem;
   }
 
   emptyCart() {
     this.cart.clear();
-
     this.updateStorage();
   }
 
   updateStorage() {
-    console.log(this.cart);
     localStorage.setItem(CART_KEY, JSON.stringify(Array.from(this.cart.entries())));
+  }
+
+  updateUserCart(){
+    if(this.userService.user.value) {
+      const cartItems: CartItem[] = Array.from(this.cart.values());
+      this.userService.updateCart(cartItems).then(() => {
+        console.log("updated");
+      })
+    }
   }
 }

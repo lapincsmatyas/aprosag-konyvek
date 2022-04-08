@@ -34,7 +34,7 @@ export class ItemsService {
   }
 
   getItemsByIds(ids: string[]): Item[] {
-    if (ids.length === 0)
+    if (ids?.length === 0)
       return [];
 
     return this.items.value.filter((item) => ids?.includes(item.id || ""));
