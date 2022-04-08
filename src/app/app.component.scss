@@ -7,6 +7,11 @@
       margin-top: 140px !important;
     }
 
+    @media (max-width: 816px) and (min-width: 600px) {
+      margin-top: 140px !important;
+
+    }
+
     @media (max-width: 600px) {
       margin-left: 20px;
       margin-right: 20px;
@@ -14,12 +19,7 @@
     }
   }
 
-  .modal-dialog-backdrop{
-    z-index: 1052 !important;
-  }
-
   ngb-modal-window {
-    z-index: 1053 !important;
 
   .modal-content{
     border-radius: 30px;
@@ -41,19 +41,15 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  overflow-y: scroll;
 
   .header-container {
-    position: sticky;
-    top: 0;
     width: 100%;
-    z-index: 1051;
   }
 
   .content {
     display: flex;
-    flex: 1;
     flex-direction: column;
+    overflow-y: scroll;
   }
 }
 

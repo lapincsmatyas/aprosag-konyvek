@@ -12,9 +12,6 @@
     font-weight: 900;
     position: relative;
     font-size: 18px;
-
-    z-index: 2;
-
     padding: 20px;
 
     box-shadow: 0 6px 6px -5px rgba(0, 0, 0, 0.2);
@@ -26,7 +23,6 @@
     min-height: 150px;
     max-height: 452px;
     overflow-y: auto;
-    z-index: 1;
 
     .cart-item-container {
       overflow: hidden;
@@ -94,7 +90,6 @@
   }
 
   .cart-modal-footer {
-    z-index: 2;
     position: relative;
     font-size: 18px;
 

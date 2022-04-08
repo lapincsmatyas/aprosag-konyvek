@@ -5,10 +5,12 @@
   </div>
   <div class="content">
     <router-outlet></router-outlet>
+
+    <div class="footer">
+      <aprosag-footer class="footer"></aprosag-footer>
+    </div>
   </div>
-  <div class="footer">
-    <aprosag-footer class="footer"></aprosag-footer>
-  </div>
+
 
   <div class="loading-screen" [ngClass]="{transparent: loadingService.transparent}" *ngIf="(loadingService.loading | async)">
     <img class="animation" src="assets/Loading_anim.gif">

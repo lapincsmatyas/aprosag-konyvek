@@ -4,6 +4,8 @@
   position: sticky;
   background-color: white;
 
+  z-index: 1051;
+
   font-family: lato, Helvetica, sans-serif;
   font-weight: bold;
 
@@ -160,17 +162,6 @@
       }
     }
   }
-}
-
-
-.userTemp {
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 100000;
 }
 
 .menu{
