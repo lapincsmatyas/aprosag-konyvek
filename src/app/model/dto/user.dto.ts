@@ -1,4 +1,5 @@
 import {Roles} from "../roles.model";
+import {CartItemDto} from "./cart.dto";
 
 export interface UserDto {
   uid?: string | null;
@@ -16,4 +17,5 @@ export interface UserDto {
   zipCode?: string | null;
   phoneNumber?: string | null;
   emailVerified?: boolean | null;
+  cart?: CartItemDto[] | null;
 }

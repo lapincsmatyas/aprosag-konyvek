@@ -1,14 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../../model/item.model";
-import {ImageCacheService} from "../../../services/image-cache/image-cache.service";
-import {of} from "rxjs";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart/cart.service";
 import {AddedToCartComponent} from "../../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {AuthService} from "../../../services/auth/auth.service";
-import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-item-card',
@@ -17,13 +12,14 @@ import {UserService} from "../../../services/user/user.service";
 })
 export class ItemCardComponent {
   @Input()
-  public item: Item = {};
+  public item: Item;
 
   isFavourite = false;
 
   constructor(private router: Router,
               private cartService: CartService,
               private modalService: NgbModal) {
+    this.item = new Item();
   }
 
   openItem() {

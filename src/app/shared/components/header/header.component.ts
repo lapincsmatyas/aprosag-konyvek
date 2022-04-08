@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-view-model";
 import {AddedToCartComponent} from "../../popups/added-to-cart/added-to-cart.component";
 import {CartModalComponent} from "./cart-modal/cart-modal.component";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-header',
@@ -26,7 +27,7 @@ export class HeaderComponent {
   constructor(public authService: AuthService,
               private modalService: NgbModal,
               public cartService: CartService,
-              private activatedRoute: ActivatedRoute,
+              public userService: UserService,
               public router: Router) {
     router.events.subscribe((event) => {
       this.modalService.dismissAll();
