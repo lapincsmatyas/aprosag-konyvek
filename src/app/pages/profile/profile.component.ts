@@ -11,6 +11,7 @@ import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../../services/user/user.service";
 import {ItemsService} from "../../services/item/items.service";
 import {Item} from "../../model/item.model";
+import {CartService} from "../../services/cart/cart.service";
 
 @Component({
   selector: 'aprosag-profile',
@@ -46,6 +47,7 @@ export class ProfileComponent implements OnInit {
               private toastr: ToastrService,
               public itemService: ItemsService,
               private authService: AuthService,
+              private cartService: CartService,
               private orderService: OrderService) {
   }
 
@@ -59,9 +61,7 @@ export class ProfileComponent implements OnInit {
           });
         });
 
-        this.itemService.getItemsByIds(user.favorites).subscribe((result) => {
-          this.favorites = result;
-        });
+        this.favorites = this.itemService.getItemsByIds(user.favorites);
       }
     })
   }
@@ -86,7 +86,8 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     this.authService.logout().then(() => {
-    })
+      this.cartService.emptyCart();
+    });
   }
 
   changeMenu(menu: string) {

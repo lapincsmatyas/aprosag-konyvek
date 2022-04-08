@@ -20,13 +20,19 @@ export class CartComponent  {
     this.cartService.removeAllOfTypeFromCart(item);
   }
 
-
   goToDesk() {
     this.router.navigateByUrl("cash-desk");
   }
 
-  amountChanged(newValue: number, item: CartItem) {
-    item.amount = newValue;
+  amountChanged(newValue: number, item: CartItem | null) {
+    if(!item)
+      return;
+
+    if(item.amount > newValue){
+      item = this.cartService.removeItemCart(item);
+    } else {
+      item = this.cartService.addItemToCart(item.item, 1);
+    }
   }
 
   continueShopping() {

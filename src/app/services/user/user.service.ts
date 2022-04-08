@@ -5,7 +5,7 @@ import {arrayRemove, arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc} from
 import {UserDto} from "../../model/dto/user.dto";
 import {BehaviorSubject, Observable, throwError} from "rxjs";
 import {Item} from "../../model/item.model";
-import {user} from "@angular/fire/auth";
+import {CartItem} from "../../model/cart-item.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +15,23 @@ export class UserService {
 
   constructor(private authService: AuthService,
               private firestore: Firestore) {
-    authService.user$.subscribe((user) => {
-      if (user !== null) {
-        getDoc<UserDto>(doc(firestore, `users/${user.uid}`)).then((userDocument) => {
+    authService.user$.subscribe((userDto) => {
+      if (userDto !== null) {
+        getDoc<UserDto>(doc(firestore, `users/${userDto.uid}`)).then((userDocument) => {
           const data = userDocument.data();
           if (data === undefined) {
-            this.createUserData(user).then(result => {
-              this.user.next(JSON.parse(JSON.stringify(result)));
-              console.log("new user: ", this.user);
+            this.createUserData(userDto).then(result => {
+              let user: User = JSON.parse(JSON.stringify(result));
+              this.user.next(user);
             })
           } else {
             this.user.next(JSON.parse(JSON.stringify(data)));
-            console.log("user: ", this.user);
+            console.log("wtf");
+
           }
         })
+      } else {
+        this.user.next(null);
       }
     })
   }
@@ -66,7 +69,7 @@ export class UserService {
       throw throwError('User not found');
     }
 
-   const alreadyFavorite = this.user.value?.favorites.includes(item.id || "");
+   const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       favorites: alreadyFavorite ? arrayRemove(item.id || "") : arrayUnion(item.id)
@@ -75,5 +78,15 @@ export class UserService {
         this.refreshData(this.user.value);
     })
 
+  }
+
+  updateCart(cartItem: CartItem[]) {
+    if (this.user.value === null) {
+      throw throwError('User not found');
+    }
+
+    return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
+      cart: cartItem
+    }).then(() => {})
   }
 }
