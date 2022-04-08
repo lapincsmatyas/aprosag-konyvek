@@ -11,6 +11,7 @@ import {CartService} from "../../services/cart/cart.service";
 import {ToastrService} from "ngx-toastr";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-item',

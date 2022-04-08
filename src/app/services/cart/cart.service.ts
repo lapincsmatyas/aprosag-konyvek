@@ -61,9 +61,15 @@ export class CartService {
     this.selectedShippingType = null;
 
     this.userService.user.subscribe((user) => {
+      console.log("wtf");
+
       if(user){
-        console.log(user.cart);
-        this.initCart(user.cart);
+        if(this.cart.size > 0){
+          this.initCart(Array.from(this.cart.values()))
+          this.updateUserCart();
+        } else {
+          this.initCart(user.cart);
+        }
       }
     })
   }
@@ -138,7 +144,6 @@ export class CartService {
     if(this.userService.user.value) {
       const cartItems: CartItem[] = Array.from(this.cart.values());
       this.userService.updateCart(cartItems).then(() => {
-        console.log("updated");
       })
     }
   }

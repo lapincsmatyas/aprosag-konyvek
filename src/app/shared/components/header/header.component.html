@@ -10,7 +10,7 @@
       <a class="menu-item" routerLink="contacts" routerLinkActive="active">Kapcsolat</a>
       <div class="actions">
          <a class="menu-item profile" routerLink="profile" routerLinkActive="active">
-        <img src="../../../../assets/Icons/Profile.svg" height="15px"/>
+        <img [src]="(userService.user | async) ? '../../../../assets/Icons/Profile_selected.svg' : '../../../../assets/Icons/Profile.svg'" height="15px"/>
       </a>
       <a class="menu-item cart" [ngClass]="{disabled: router.url === '/cart' ||router.url === '/cash-desk'}"  (click)="openCartModal()">
         <span class="counter">{{cartService.count}}</span>

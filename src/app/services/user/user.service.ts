@@ -26,6 +26,8 @@ export class UserService {
             })
           } else {
             this.user.next(JSON.parse(JSON.stringify(data)));
+            console.log("wtf");
+
           }
         })
       } else {
@@ -35,6 +37,7 @@ export class UserService {
   }
 
   refreshData(user: User) {
+    debugger;
     getDoc<UserDto>(doc(this.firestore, `users/${user.uid}`)).then((userDocument) => {
       const data = userDocument.data();
       if (data !== undefined) {
@@ -85,9 +88,6 @@ export class UserService {
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       cart: cartItem
-    }).then(() => {
-      if (this.user.value)
-        this.refreshData(this.user.value);
-    })
+    }).then(() => {})
   }
 }
