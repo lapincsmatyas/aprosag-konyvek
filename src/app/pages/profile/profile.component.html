@@ -1,15 +1,13 @@
 <div class="profile-page-container">
   <div class="profile-container">
-    <div class="title">
-      <div>Fiókom</div>
-    </div>
+    <div class="title">Fiókom</div>
     <div class="content-container">
       <div class="side-menu">
         <div *ngFor="let menu of menus" class="nav-item" [ngClass]="{'selected': menu === selectedMenu}"
              (click)="changeMenu(menu)">{{menu}}</div>
       </div>
       <div [ngSwitch]="selectedMenu" class="content">
-        <div *ngSwitchCase="'Adataim'">
+        <div class="data-container" *ngSwitchCase="'Adataim'">
           <form [formGroup]="profileForm" *ngIf="userService.user">
             <div class="form-container">
               <div class="form-block">
@@ -70,8 +68,10 @@
                   <input class="input-field" formControlName="phoneNumber"/>
                 </div>
               </div>
+
+              <button class="button save-button" type="submit" (click)="saveData()">Mentés</button>
+
             </div>
-            <button class="button save-button" type="submit" (click)="saveData()">Mentés</button>
           </form>
         </div>
         <div class="orders-container" *ngSwitchCase="'Rendeléseim'">

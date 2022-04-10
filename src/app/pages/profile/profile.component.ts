@@ -19,7 +19,7 @@ import {CartService} from "../../services/cart/cart.service";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  menus: string[] = ["Adataim", "Rendeléseim", "Kedvenceim", "Kijelentkezés"]
+  menus: string[] = ["Adataim", "Rendeléseim", "Kedvenceim"]
   selectedMenu = this.menus[0];
 
   profileForm = this.fb.group({
