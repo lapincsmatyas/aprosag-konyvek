@@ -76,7 +76,7 @@ import { FavoriteComponent } from './shared/components/favorite/favorite.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
+      positionClass: 'toast-top-right'
     }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

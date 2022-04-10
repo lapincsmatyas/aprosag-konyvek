@@ -5,7 +5,6 @@ import {LoadingService} from "./services/loading/loading.service";
 import {AppService} from "./services/app/app.service";
 import {UserService} from "./services/user/user.service";
 import {AuthService} from "./services/auth/auth.service";
-import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'aprosag-root',
@@ -13,7 +12,6 @@ import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public loading: boolean = false;
   public openMenu: boolean = false;
 
   constructor(private itemsService: ItemsService,

@@ -69,7 +69,7 @@ export class UserService {
       throw throwError('User not found');
     }
 
-   const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
+    const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       favorites: alreadyFavorite ? arrayRemove(item.id || "") : arrayUnion(item.id)
@@ -77,7 +77,6 @@ export class UserService {
       if (this.user.value)
         this.refreshData(this.user.value);
     })
-
   }
 
   updateCart(cartItem: CartItem[]) {
@@ -87,6 +86,7 @@ export class UserService {
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       cart: cartItem
-    }).then(() => {})
+    }).then(() => {
+    })
   }
 }

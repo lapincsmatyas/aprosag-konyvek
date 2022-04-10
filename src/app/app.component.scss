@@ -2,6 +2,19 @@
 @import "src/mixins";
 
 ::ng-deep {
+
+  .toast-top-right {
+    top: 80px;
+
+    @media (max-width: 1225px) and (min-width: 816px) {
+      top: 140px;
+    }
+
+    @media (max-width: 816px) and (min-width: 600px) {
+      top: 140px;
+    }
+  }
+
   .cart-dialog {
     margin-top: 80px !important;
     margin-right: 30px;
