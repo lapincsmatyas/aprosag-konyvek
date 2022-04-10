@@ -46,10 +46,15 @@
     width: 100%;
   }
 
-  .content {
+  .content-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
     overflow-y: scroll;
+
+    .content{
+      flex: 1;
+    }
   }
 }
 

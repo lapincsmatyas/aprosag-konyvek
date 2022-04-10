@@ -2,42 +2,70 @@
 @import "src/mixins";
 
 .signup-page-container {
-  background-position-x: center;
-  background-repeat: repeat-y;
+  color: $font-color !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 35px;
+
+  @include background('/assets/Backgrounds/Special_BG.svg');
+
   font-family: lato, Helvetica, sans-serif;
-  font-weight: 600;
-  color: $font-color;
 
   .signup-page {
-    min-height: 700px;
+    width: $content-percentage-width;
+    max-width: $content-max-width;
 
-    text-align: center;
-    max-width: 25%;
-    margin: 50px auto;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
 
-    input {
-      @include input-field;
+    .title {
+      @include title;
     }
 
-    .signup-text {
-      margin-top: 50px;
-      font-size: 1.1em;
-      font-family: lato, Helvetica, sans-serif;
-      font-weight: bold;
-    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+      width: 500px;
 
-    .button {
-      margin-top: 20px;
+      form {
+        width: 100%;
 
-      &.login-button {
-        @include button($font-color);
+        input {
+          @include input-field;
+          margin-bottom: 20px;
+        }
+
+        .signup-text {
+          text-align: center;
+          font-size: 16px;
+          font-weight: 700;
+          margin-top: 50px;
+        }
+
+        .button {
+          margin: 20px auto;
+
+          &.signup-button {
+            @include button;
+
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+          &.login-button {
+            @include button($font-color);
+
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
       }
-
-      &.signup-button {
-        @include button;
-      }
     }
-
-
   }
 }
