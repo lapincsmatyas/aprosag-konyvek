@@ -114,8 +114,12 @@
 
       padding: 20px;
 
-      .email-verification-container {
+      .email-verification-container{
         margin: 0 15px;
+        .link{
+          color: $base-green;
+          cursor: pointer;
+        }
       }
 
       .form-block {
@@ -129,12 +133,18 @@
           column-gap: 0;
         }
 
+
+
         .form-field-container {
           color: $font-color;
 
           .label {
             font-size: 15px;
             display: block;
+
+            .verified{
+              color: $base-green;
+            }
           }
 
           .input-field {

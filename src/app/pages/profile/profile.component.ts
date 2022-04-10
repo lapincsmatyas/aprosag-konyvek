@@ -12,6 +12,7 @@ import {UserService} from "../../services/user/user.service";
 import {ItemsService} from "../../services/item/items.service";
 import {Item} from "../../model/item.model";
 import {CartService} from "../../services/cart/cart.service";
+import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'aprosag-profile',
@@ -19,6 +20,8 @@ import {CartService} from "../../services/cart/cart.service";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  faCheckCircle = faCheckCircle;
+
   menus: string[] = ["Adataim", "Rendeléseim", "Kedvenceim"]
   selectedMenu = this.menus[0];
 
@@ -46,7 +49,7 @@ export class ProfileComponent implements OnInit {
               public userService: UserService,
               private toastr: ToastrService,
               public itemService: ItemsService,
-              private authService: AuthService,
+              public authService: AuthService,
               private cartService: CartService,
               private orderService: OrderService) {
   }

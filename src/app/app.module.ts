@@ -20,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ItemComponent} from "./pages/item/item.component";
 import {LoginComponent} from './pages/login/login.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {RegisterComponent} from './pages/register/register.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {ToastrModule} from "ngx-toastr";
@@ -75,6 +76,7 @@ import { FavoriteComponent } from './shared/components/favorite/favorite.compone
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTooltipModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     }),
