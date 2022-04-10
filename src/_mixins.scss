@@ -69,7 +69,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   list.nth($background-images, random(4)),
   list.nth($background-images, random(4)),
   list.nth($background-images, random(4));
-  background-size: cover, 500px, 500px, 500px, 500px;
+  background-size: auto, 500px, 500px, 500px, 500px;
   background-position: top left, left -130px top 30px, right 20px top 400px, left -130px top 2000px, right -150px top 3000px;
   background-repeat: no-repeat;
 }
