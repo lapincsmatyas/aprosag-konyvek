@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {LoadingService} from "../../services/loading/loading.service";
 
 @Component({
   selector: 'aprosag-register',
@@ -17,16 +18,35 @@ export class RegisterComponent {
   })
 
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) { }
+  constructor(private authService: AuthService,
+              private fb: FormBuilder,
+              private router: Router,
+              private toastr: ToastrService,
+              private loadingService: LoadingService) {
+  }
 
   signup() {
-    if(this.registerForm.get('email')?.valid && this.registerForm.get('password')?.value == this.registerForm.get('confirmPassword')?.value)
+    if (!this.registerForm.get('email')?.valid) {
+      this.toastr.error('Hibás email cím!');
+      return;
+    } else if (this.registerForm.get('password')?.value !== this.registerForm.get('confirmPassword')?.value) {
+      this.toastr.error('A két jelszó nem egyezik meg!');
+      return;
+    } else if(this.registerForm.get('password')?.value.length < 6){
+      this.toastr.error('A jelszónak legalább 6 karakter hosszúnak kell lennie!');
+      return;
+    }
+
+
+    this.loadingService.addProcess('register');
     this.authService.signup(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value).then((result) => {
+      this.loadingService.removeProcess('register');
       this.toastr.success('Sikeres regisztráció!');
       this.router.navigateByUrl('items');
     }, (error) => {
+      console.log(error);
+      this.loadingService.removeProcess('register');
       this.toastr.error('Sajnáljuk, valami hiba történt :(');
-      console.error(error);
     })
   }
 

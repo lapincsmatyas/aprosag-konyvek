@@ -40,4 +40,9 @@ export class AppComponent {
       }
     })
   }
+
+  logoutUser() {
+    this.appService.openMenu();
+    this.authService.logout();
+  }
 }

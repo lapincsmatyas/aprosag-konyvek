@@ -41,12 +41,12 @@
         </span>
         <div class="divider"></div>
         <div class="user-container">
-          <ng-container *ngIf="(userService.user | async)">
+          <ng-container *ngIf="(authService.user$ | async)">
             <a class="menu-item" routerLink="profile" routerLinkActive="active"
                (click)="appService.openMenu()">Profil</a>
-            <a class="menu-item" (click)="authService.logout()">Kijelentkezés</a>
+            <a class="menu-item" (click)="logoutUser()">Kijelentkezés</a>
           </ng-container>
-          <ng-container *ngIf="!(userService.user | async)">
+          <ng-container *ngIf="!(authService.user$ | async)">
             <a class="menu-item" routerLink="login" routerLinkActive="active" (click)="appService.openMenu()">Bejelentkezés</a>
             <a class="menu-item" routerLink="signup" routerLinkActive="active" (click)="appService.openMenu()">Regisztráció</a>
           </ng-container>
