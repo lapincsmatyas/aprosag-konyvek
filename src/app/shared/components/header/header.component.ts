@@ -10,6 +10,7 @@ import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-
 import {AddedToCartComponent} from "../../popups/added-to-cart/added-to-cart.component";
 import {CartModalComponent} from "./cart-modal/cart-modal.component";
 import {UserService} from "../../../services/user/user.service";
+import {AppService} from "../../../services/app/app.service";
 
 @Component({
   selector: 'aprosag-header',
@@ -17,16 +18,14 @@ import {UserService} from "../../../services/user/user.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  faUser = faUser;
-  faCart = faCartPlus;
   faBars = faBars;
-  faSignOutAlt = faSignOutAlt;
 
   visible = false;
 
   constructor(public authService: AuthService,
               private modalService: NgbModal,
               public cartService: CartService,
+              private appService: AppService,
               public userService: UserService,
               public router: Router) {
     router.events.subscribe((event) => {
@@ -59,6 +58,6 @@ export class HeaderComponent {
   }
 
   openMenu() {
-    this.visible = true;
+    this.appService.openMenu();
   }
 }
