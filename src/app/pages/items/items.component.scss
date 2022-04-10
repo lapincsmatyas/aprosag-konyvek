@@ -1,18 +1,16 @@
 @import "src/variables";
-
-
-:host {
-  background: linear-gradient(180deg, #ebf7f1 0%, rgba(255, 255, 255) 60%);
-}
+@import "src/mixins";
 
 .items-page-container {
   font-family: lato, Helvetica, sans-serif;
   font-weight: 800;
   color: $font-color;
+  padding-top: 35px;
+
+  @include background('/assets/Backgrounds/Home_BG.svg');
 
   .logo-container {
     width: 100%;
-    margin-top: 35px;
 
     .logo {
       width: 10em;
