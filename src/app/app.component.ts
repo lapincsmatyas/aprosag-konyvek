@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {ItemsService} from "./services/item/items.service";
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
-import {NavigationEvent} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-view-model";
-import {UserService} from "./services/user/user.service";
 import {LoadingService} from "./services/loading/loading.service";
+import {AppService} from "./services/app/app.service";
+import {UserService} from "./services/user/user.service";
+import {AuthService} from "./services/auth/auth.service";
+import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'aprosag-root',
@@ -11,10 +13,14 @@ import {LoadingService} from "./services/loading/loading.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  loading: boolean = false;
+  public loading: boolean = false;
+  public openMenu: boolean = false;
 
   constructor(private itemsService: ItemsService,
               private router: Router,
+              public userService: UserService,
+              public authService: AuthService,
+              public appService: AppService,
               public loadingService: LoadingService
   ) {
     this.router.events.subscribe((event) => {
