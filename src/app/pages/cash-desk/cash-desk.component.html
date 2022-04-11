@@ -2,7 +2,7 @@
   <div class="cash-desk-page">
 
     <mat-stepper linear #stepper>
-      <mat-step *ngIf="(userService.user | async) === null" class="step">
+      <mat-step *ngIf="(authService.user$ | async) === null" class="step">
         <ng-template matStepLabel>Azonosítás</ng-template>
         <div class="auth-container">
           <div class="login-form-container">
@@ -85,7 +85,7 @@
           </div>
           <div class="button-container">
             <button mat-button class="button" matStepperNext>Tovább a fizetési módokhoz</button>
-            <button *ngIf="(userService.user | async) === null" mat-button class="button back" matStepperPrevious>Vissza az azonosításhoz</button>
+            <button *ngIf="(authService.user$ | async) === null" mat-button class="button back" matStepperPrevious>Vissza az azonosításhoz</button>
           </div>
         </form>
       </mat-step>

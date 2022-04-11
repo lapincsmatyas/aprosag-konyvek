@@ -6,6 +6,7 @@ import {UserDto} from "../../model/dto/user.dto";
 import {BehaviorSubject, Observable, throwError} from "rxjs";
 import {Item} from "../../model/item.model";
 import {CartItem} from "../../model/cart-item.model";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
   user: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private authService: AuthService,
+              private toastr: ToastrService,
               private firestore: Firestore) {
     authService.user$.subscribe((userDto) => {
       if (userDto !== null) {
@@ -21,12 +23,13 @@ export class UserService {
           const data = userDocument.data();
           if (data === undefined) {
             this.createUserData(userDto).then(result => {
-              let user: User = JSON.parse(JSON.stringify(result));
-              this.user.next(user);
+              this.user.next(result);
+            }).catch(() =>{
+              this.toastr.error('Valami hiba történt a regisztráció során!')
             })
           } else {
-            this.user.next(JSON.parse(JSON.stringify(data)));
-            console.log("wtf");
+            let user = JSON.parse(JSON.stringify(data));
+            this.user.next(user);
 
           }
         })
@@ -46,22 +49,39 @@ export class UserService {
   }
 
   createUserData(user: UserDto) {
+    const userData = {
+      uid: user.uid,
+      email: user.email,
+      roles: {
+        user: true
+      }
+    };
+
     return setDoc(doc(this.firestore, `users/${user.uid}`), {
       uid: user.uid,
       email: user.email,
       roles: {
         user: true
       }
+    }).then(() => {
+      let user: User = new User();
+      user.uid = userData.uid || "";
+      user.email = userData.email || "";
+      user.roles = userData.roles;
+      return user;
     });
   }
 
   updateUserData(data: User) {
+    debugger;
     if (this.user.value) {
-      return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {...data});
+      return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {...data}).then(result => {
+        this.user.next({...data, uid: this.user.value?.uid || ""});
+        return result;
+      });
     } else {
       throw throwError('User not found');
     }
-
   }
 
   addOrRemoveItemAsFavorite(item: Item) {
@@ -69,7 +89,7 @@ export class UserService {
       throw throwError('User not found');
     }
 
-   const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
+    const alreadyFavorite = this.user.value?.favorites?.includes(item.id || "");
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       favorites: alreadyFavorite ? arrayRemove(item.id || "") : arrayUnion(item.id)
@@ -77,7 +97,6 @@ export class UserService {
       if (this.user.value)
         this.refreshData(this.user.value);
     })
-
   }
 
   updateCart(cartItem: CartItem[]) {
@@ -87,6 +106,7 @@ export class UserService {
 
     return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {
       cart: cartItem
-    }).then(() => {})
+    }).then(() => {
+    })
   }
 }

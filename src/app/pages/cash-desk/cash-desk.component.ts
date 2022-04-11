@@ -58,7 +58,7 @@ export class CashDeskComponent implements AfterViewInit {
               private loadingService: LoadingService,
               private toastr: ToastrService,
               private router: Router,
-              private authService: AuthService,
+              public authService: AuthService,
               private modalService: NgbModal,
               public cartService: CartService) {
     userService.user.subscribe((user) => {
@@ -99,8 +99,8 @@ export class CashDeskComponent implements AfterViewInit {
       });
 
       modalRef.componentInstance.orderNumber = result;
-
     }, (error) => {
+      this.loadingService.removeProcess('send-order');
       this.toastr.error("Valami hiba történt a rendelés leadásakor!")
     });
   }

@@ -20,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ItemComponent} from "./pages/item/item.component";
 import {LoginComponent} from './pages/login/login.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {RegisterComponent} from './pages/register/register.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {ToastrModule} from "ngx-toastr";
@@ -81,8 +82,9 @@ import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTooltipModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
+      positionClass: 'toast-top-right'
     }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

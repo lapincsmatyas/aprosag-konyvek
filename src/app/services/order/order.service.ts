@@ -7,6 +7,7 @@ import {CartService} from "../cart/cart.service";
 import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../user/user.service";
 import {throwError} from "rxjs";
+import {LoadingService} from "../loading/loading.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class OrderService {
 
   constructor(private fireStore: Firestore,
               private cartService: CartService,
+              private loadingService: LoadingService,
               private userService: UserService) {
     this.paymentTypes = [{
       name: "Banki átutalás",
@@ -61,6 +63,8 @@ export class OrderService {
       cart: this.cartService.items,
       shippingType: this.cartService.selectedShippingType,
       paymentType: this.selectedPaymentType
+    }).catch((error) => {
+      this.loadingService.removeProcess('send-order');
     }).then((result) => {
       return new Promise((resolve) => setTimeout(resolve, 2000))
     })

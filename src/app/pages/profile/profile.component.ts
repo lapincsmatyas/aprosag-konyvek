@@ -27,7 +27,7 @@ export class ProfileComponent {
   constructor(private fb: FormBuilder,
               public userService: UserService,
               private toastr: ToastrService,
-              private authService: AuthService,
+              public authService: AuthService,
               private cartService: CartService) {
   }
 

@@ -6,6 +6,8 @@ import {Order} from "../../../model/order.model";
 import {FormBuilder} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../services/auth/auth.service";
+import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+
 
 @Component({
   selector: 'aprosag-personal-data',
@@ -13,6 +15,8 @@ import {AuthService} from "../../../services/auth/auth.service";
   styleUrls: ['./personal-data.component.scss']
 })
 export class PersonalDataComponent implements OnInit {
+  faCheckCircle = faCheckCircle;
+
   profileForm = this.fb.group({
       email: [''],
       username: [''],
@@ -35,7 +39,7 @@ export class PersonalDataComponent implements OnInit {
 
   constructor(public userService: UserService,
               private fb: FormBuilder,
-              private authService: AuthService,
+              public authService: AuthService,
               private orderService: OrderService,
               private toastr: ToastrService
               ) { }
@@ -72,6 +76,4 @@ export class PersonalDataComponent implements OnInit {
       verificationRef.unsubscribe();
     })
   }
-
-
 }

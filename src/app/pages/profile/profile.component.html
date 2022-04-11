@@ -1,15 +1,15 @@
 <div class="profile-page-container">
   <div class="profile-container">
-    <div class="title">
-      <div>Fiókom</div>
-    </div>
+    <div class="title">Fiókom</div>
     <div class="content-container">
       <div class="side-menu">
-        <div *ngFor="let menu of menus" class="nav-item" routerLinkActive="selected" [routerLink]="menu.url">{{menu.text}}</div>
+        <div *ngFor="let menu of menus" class="nav-item" routerLinkActive="selected"
+             [routerLink]="menu.url">{{menu.text}}</div>
+        <div class="nav-item" (click)="authService.logout()">Kijelentkezés</div>
       </div>
       <div class="content">
-          <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+
       </div>
     </div>
   </div>
-</div>
