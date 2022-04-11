@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppService {
-  menuOpen: boolean = true;
+  menuOpen: boolean = false;
 
   constructor() { }
 
