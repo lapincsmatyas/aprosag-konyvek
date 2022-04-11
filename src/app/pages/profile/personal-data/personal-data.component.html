@@ -2,7 +2,11 @@
   <div class="form-container">
     <div class="form-block">
       <div class="form-field-container">
-        <span class="label">Email cím</span>
+                  <span class="label">Email cím
+                    <span class="verified" matTooltip="Email-cím megerősítve" *ngIf="(authService.user$ | async)?.emailVerified">
+                      <fa-icon [icon]="faCheckCircle"></fa-icon>
+                    </span>
+                    </span>
         <input class="input-field" formControlName="email"/>
       </div>
       <div class="form-field-container">
@@ -10,12 +14,10 @@
         <input class="input-field" disabled/>
       </div>
     </div>
-    <!--
-    <div class="email-verification-container" *ngIf="!user.emailVerified">
-      Az email-címed még nincs megerősítve. Kérlek kattints az emailben kapott linkre.
-      Kattints <span class="link" (click)="resendVerificationEmail()">ide</span> az email újraküldéséhez.
+    <div class="email-verification-container" *ngIf="(!(authService.user$ | async)?.emailVerified)">
+      <span>Figyelem!</span> Rendelés leadásához erősítsd meg email-címedet! Kérlek kattints az emailben kapott linkre, majd frissítsd az oldalt.
+      <br/>Ha nem találod a linket, akkor kattints <span class="link" (click)="resendVerificationEmail()">ide</span> az email újraküldéséhez.
     </div>
-    -->
     <div class="divider"></div>
     <div class="form-block">
       <div class="form-field-container">

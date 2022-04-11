@@ -18,8 +18,8 @@
          *ngIf="(loadingService.loading | async)">
       <img class="animation" src="assets/Loading_anim.gif">
     </div>
-
   </div>
+
   <div class="navigation" *ngIf="appService.menuOpen">
     <div class="page-scrim" (click)="appService.openMenu()"></div>
     <div class="side-navigation">
@@ -44,7 +44,7 @@
           <ng-container *ngIf="(authService.user$ | async)">
             <a class="menu-item" routerLink="profile" routerLinkActive="active"
                (click)="appService.openMenu()">Profil</a>
-            <a class="menu-item" (click)="logoutUser()">Kijelentkezés</a>
+            <a class="menu-item" (click)="authService.logout()">Kijelentkezés</a>
           </ng-container>
           <ng-container *ngIf="!(authService.user$ | async)">
             <a class="menu-item" routerLink="login" routerLinkActive="active" (click)="appService.openMenu()">Bejelentkezés</a>

@@ -27,7 +27,7 @@ export class ProfileComponent {
   constructor(private fb: FormBuilder,
               public userService: UserService,
               private toastr: ToastrService,
-              private authService: AuthService,
+              public authService: AuthService,
               private cartService: CartService) {
   }
 
@@ -35,22 +35,5 @@ export class ProfileComponent {
     this.authService.logout().then(() => {
       this.cartService.emptyCart();
     });
-  }
-
-  changeMenu(menu: string) {
-    if (menu == "Kijelentkezés")
-      this.logout();
-
-    this.selectedMenu = menu;
-  }
-
-  resendVerificationEmail() {
-    const verificationRef = this.authService.sendEmailVerification().subscribe((result) => {
-      this.toastr.success("Megerősítő Email elküldve!");
-      verificationRef.unsubscribe();
-    }, (error) => {
-      this.toastr.error("Kérjük, próbáld meg később!", "Hiba történt a megerősítő Email elküldése közben!")
-      verificationRef.unsubscribe();
-    })
   }
 }

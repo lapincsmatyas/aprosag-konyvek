@@ -26,6 +26,7 @@
 
   .content {
     padding: 0 25px;
+    background-color: white;
 
     @media (max-width: $breakpoint-sm) {
       padding: 0;
@@ -143,7 +144,6 @@
   }
 
   .content {
-    padding: 0 25px;
 
     .table-row {
       display: flex;
