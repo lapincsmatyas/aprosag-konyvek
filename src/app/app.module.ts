@@ -44,6 +44,9 @@ import {SidebarModule} from "primeng/sidebar";
 import {AddedToCartComponent} from './shared/popups/added-to-cart/added-to-cart.component';
 import {SuccessfulOrderComponent} from './shared/popups/successful-order/successful-order.component';
 import { FavoriteComponent } from './shared/components/favorite/favorite.component';
+import { FavoritesComponent } from './pages/profile/favorites/favorites.component';
+import { OrdersComponent } from './pages/profile/orders/orders.component';
+import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data.component";
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import { FavoriteComponent } from './shared/components/favorite/favorite.compone
     StepperComponent,
     AddedToCartComponent,
     SuccessfulOrderComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    FavoritesComponent,
+    OrdersComponent,
+    PersonalDataComponent
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,6 @@ import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public loading: boolean = false;
-  public openMenu: boolean = false;
 
   constructor(private itemsService: ItemsService,
               private router: Router,
