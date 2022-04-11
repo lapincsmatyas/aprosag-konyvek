@@ -1,179 +1,14 @@
 @import "src/variables";
 @import "src/mixins";
 
-
-.profile-page-container {
-  font-family: lato, Helvetica, sans-serif;
-  color: $font-color;
-  height: 100%;
-  min-height: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @include background('/assets/Backgrounds/Home_BG.svg');
-
-  .profile-container {
-    width: $content-percentage-width;
-    max-width: $content-max-width;
-
-
-    @media (max-width: $breakpoint-sm) {
-      width: 100%;
-      flex-direction: column;
-      margin-top: 0;
-    }
-
-    .title{
-      font-size: 36px;
-      text-align: center;
-      font-weight: 800;
-      margin: 48px;
-      line-height: 1;
-
-      @media (max-width: $breakpoint-md) {
-        font-size: 24px;
-        margin-bottom: 24px;
-      }
-    }
-
-    .content-container {
-      display: flex;
-
-      @media (max-width: $breakpoint-sm) {
-        flex-direction: column;
-      }
-
-      .content {
-        padding-left: 20px;
-        padding-right: 20px;
-
-        @media (max-width: $breakpoint-sm) {
-          padding: 0;
-        }
-
-        width: 100%;
-
-        @media (max-width: $breakpoint-sm) {
-          margin-top: 20px;
-        }
-      }
-    }
-
-    .side-menu {
-      background-color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      width: 30%;
-      height: fit-content;
-      font-weight: bold;
-
-      @media (max-width: $breakpoint-sm) {
-        width: 100%;
-        flex-direction: row;
-        padding: 10px;
-      }
-
-      .nav-item {
-        width: fit-content;
-        cursor: pointer;
-        font-size: 1.1em;
-        padding-bottom: 5px;
-        margin-bottom: 30px;
-
-        @media (max-width: $breakpoint-sm) {
-          width: 100%;
-          margin: 5px;
-          text-align: center;
-        }
-
-        .link {
-          color: $green-line;
-          font-weight: bold;
-          cursor: pointer;
-
-        }
-
-        &.selected {
-          color: $green-line;
-          border-bottom: 4px solid $green-line;
-        }
-      }
-    }
-
-    form {
-      width: 100%;
-    }
-
-    .form-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      padding: 20px;
-
-      .email-verification-container{
-        margin: 0 15px;
-        .link{
-          color: $base-green;
-          cursor: pointer;
-        }
-      }
-
-      .form-block {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        column-gap: 20px;
-        row-gap: 20px;
-
-        @media (max-width: $breakpoint-md) {
-          grid-template-columns: 100%;
-          column-gap: 0;
-        }
-
-
-
-        .form-field-container {
-          color: $font-color;
-
-          .label {
-            font-size: 15px;
-            display: block;
-
-            .verified{
-              color: $base-green;
-            }
-          }
-
-          .input-field {
-            @include input-field;
-          }
-        }
-      }
-    }
-
-    .button {
-      @include button;
-      width: 180px;
-
-      align-self: end;
-    }
-
-    .divider{
-      width: 99%;
-      height: 2px;
-      align-self: center;
-      background-color: rgba(black, 0.1);
-    }
-  }
-}
-
-
 .orders-container {
-  background-color: white;
   font-weight: bold;
-  padding: 10px;
+
+  .no-orders{
+    text-align: center;
+    font-size: 16px;
+    padding-top: 35px;
+  }
 
   .header {
     padding: 15px 25px;
@@ -185,6 +20,9 @@
     }
   }
 
+  .price {
+    text-align: right;
+  }
 
   .content {
     padding: 0 25px;
@@ -269,6 +107,7 @@
   }
 }
 
+
 .content-title {
   background-color: $disabled-button;
   color: white;
@@ -283,10 +122,6 @@
       color: white;
     }
   }
-}
-
-.data-container{
-  padding-bottom: 35px;
 }
 
 .order-content-container {
@@ -379,14 +214,3 @@
   }
 }
 
-.favorites-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
-  padding: 10px;
-
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr 1fr;
-  }
-}

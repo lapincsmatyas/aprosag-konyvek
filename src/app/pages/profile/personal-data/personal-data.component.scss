@@ -1,0 +1,50 @@
+@import "src/variables";
+@import "src/mixins";
+
+.form-container {
+  .email-verification-container {
+    margin: 0 15px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .form-block {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 20px;
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 100%;
+      column-gap: 0;
+    }
+
+    .form-field-container {
+      color: $font-color;
+      margin: 0 15px 15px 15px;
+
+      .label {
+        font-size: 15px;
+        display: block;
+      }
+
+      .input-field {
+        @include input-field;
+      }
+    }
+  }
+
+  .divider {
+    width: calc(100% - 15px);
+    border-bottom: 1px solid $font-color;
+    margin: 15px;
+  }
+
+}
+
+.button {
+  @include button;
+  float: right;
+  width: 180px;
+}

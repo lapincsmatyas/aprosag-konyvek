@@ -5,6 +5,7 @@ import {LoadingService} from "./services/loading/loading.service";
 import {AppService} from "./services/app/app.service";
 import {UserService} from "./services/user/user.service";
 import {AuthService} from "./services/auth/auth.service";
+import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'aprosag-root',
@@ -12,7 +13,6 @@ import {AuthService} from "./services/auth/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public openMenu: boolean = false;
 
   constructor(private itemsService: ItemsService,
               private router: Router,
@@ -39,10 +39,5 @@ export class AppComponent {
         }
       }
     })
-  }
-
-  logoutUser() {
-    this.appService.openMenu();
-    this.authService.logout();
   }
 }

@@ -3,9 +3,13 @@
     <div class="title">Fiókom</div>
     <div class="content-container">
       <div class="side-menu">
-        <div *ngFor="let menu of menus" class="nav-item" [ngClass]="{'selected': menu === selectedMenu}"
-             (click)="changeMenu(menu)">{{menu}}</div>
+        <div *ngFor="let menu of menus" class="nav-item" routerLinkActive="selected" [routerLink]="menu.url">{{menu.text}}</div>
       </div>
+
+
+
+      <div class="content">
+          <router-outlet></router-outlet>
       <div [ngSwitch]="selectedMenu" class="content">
         <div class="data-container" *ngSwitchCase="'Adataim'">
           <form [formGroup]="profileForm" *ngIf="userService.user">
@@ -150,6 +154,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
