@@ -21,10 +21,7 @@
     flex-direction: column;
 
     .title {
-      font-size: 36px;
-      text-align: center;
-      margin: 48px;
-      line-height: 1;
+      @include title();
     }
 
     .about-us-text {
@@ -41,7 +38,7 @@
       font-weight: normal;
       font-size: 18px;
 
-      @media (max-width: $breakpoint-md) {
+      @media (max-width: 800px) {
         flex-direction: column;
       }
 

@@ -27,16 +27,7 @@
 
 
     .title{
-      font-size: 36px;
-      text-align: center;
-      font-weight: 800;
-      margin: 48px;
-      line-height: 1;
-
-      @media (max-width: $breakpoint-md) {
-        font-size: 24px;
-        margin-bottom: 24px;
-      }
+      @include title();
     }
 
     .paragraph{

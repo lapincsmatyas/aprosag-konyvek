@@ -50,6 +50,12 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   font-size: $title-size;
   font-weight: 900;
   color: $font-color;
+  margin: 35px 0;
+  text-align: center;
+
+  @media (max-width: $breakpoint-lg) {
+    margin: 15px 0;
+  }
 }
 
 @mixin subtitle{
