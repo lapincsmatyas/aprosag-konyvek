@@ -48,6 +48,8 @@ import { FavoriteComponent } from './shared/components/favorite/favorite.compone
 import { FavoritesComponent } from './pages/profile/favorites/favorites.component';
 import { OrdersComponent } from './pages/profile/orders/orders.component';
 import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data.component";
+import { GalleryComponent } from './pages/items/gallery/gallery.component';
+import {SwiperModule} from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -75,11 +77,13 @@ import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data
     FavoriteComponent,
     FavoritesComponent,
     OrdersComponent,
-    PersonalDataComponent
+    PersonalDataComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    SwiperModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTooltipModule,
