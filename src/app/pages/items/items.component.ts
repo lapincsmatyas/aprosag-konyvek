@@ -11,14 +11,6 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ItemsComponent{
 
-  sliderImages: string[] = [
-    'Product_1/4.jpg',
-    'Product_2/4.jpg',
-    'Product_3/4.jpg',
-    'Product_4/4.jpg',
-  ];
-
-  actImage: number = 0;
 
   public items: Item[] = [];
 
@@ -27,19 +19,4 @@ export class ItemsComponent{
       this.items = items;
     })
   }
-
-  nextImage(){
-    this.actImage++;
-    if(this.actImage >= this.sliderImages.length){
-      this.actImage = 0;
-    }
-  }
-
-  prevImage(){
-    this.actImage--;
-    if(this.actImage < 0){
-      this.actImage = this.sliderImages.length - 1;
-    }
-  }
-
 }
