@@ -20,6 +20,11 @@
       @include title;
     }
 
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+      padding: 0 15px;
+    }
+
     .cart-table-container {
       background-color: white;
       display: flex;
@@ -35,38 +40,50 @@
 
       .mobile-table {
         display: none;
-        width: auto;
-        justify-content: center;
-
         @media (max-width: 750px) {
-          display: block;
-        }
-
-        .item-details-container {
-          padding: 15px;
-        }
-
-        .price-container {
+          width: 100%;
           display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .item-row{
+          display: flex;
+          align-items: center;
           justify-content: space-between;
-        }
-
-        .item-title {
-          font-weight: bold;
-        }
-
-        .delete-icon-container {
+          gap: 15px;
           padding: 15px;
+          background-color: white;
+
+          .cart-item-image-container{
+            width: 100px;
+          }
+
+          .item-details-container{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+
+            .item-title{
+              font-weight: 800;
+              font-size: 1.1rem;
+            }
+
+            .stepper-container{
+              max-width: 150px;
+            }
+
+            .price-container{
+              display: flex;
+              justify-content: space-between;
+              .sum-price{
+                font-weight: 800;
+              }
+            }
+          }
         }
 
-        .cart-item-image-container {
-          max-width: 150px;
-        }
-
-        .stepper-container {
-          margin: 15px 0;
-          max-width: 150px;
-        }
       }
 
       .table {
@@ -129,10 +146,20 @@
     .button-container {
       display: flex;
       justify-content: flex-end;
+      margin: 25px 0;
+
+      @media (max-width: 750px) {
+        display: block;
+      }
 
       .button {
-        margin: 40px 0;
         flex-basis: 50%;
+        width: 100%;
+
+        @media (max-width: 750px) {
+          width: 80%;
+          margin: 0 auto;
+        }
 
         &.back-to-shop {
           @include button($font-color);
@@ -149,6 +176,11 @@
 
       display: flex;
       justify-content: flex-end;
+
+
+      @media (max-width: 750px) {
+        display: block;
+      }
 
       .shipping-options-container {
         background-color: white;
