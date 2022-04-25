@@ -2,10 +2,10 @@
   <div class="item-card">
     <div class="item" (click)="openItem()">
       <div class="image-container">
+        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
         <div class="view-overlay">
           <div class="view-text">Megnézem</div>
         </div>
-        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
       </div>
       <div class="title-container">
         <div>
@@ -14,7 +14,6 @@
         <aprosag-favorite [item]="item"></aprosag-favorite>
       </div>
       <div class="subtitle">{{item.subtitle}}</div>
-
     </div>
     <div class="bottom-container">
       <div class="prices-container">
