@@ -6,12 +6,13 @@
   font-family: lato, Helvetica, sans-serif;
   color: $font-color;
 
-  @include background('/assets/Backgrounds/Special_BG.svg');
 
+  @include background('/assets/Backgrounds/Special_BG.svg');
 
   .special-container{
     width: $content-percentage-width;
     max-width: $content-max-width;
+
 
     margin: 0 auto;
 
@@ -21,94 +22,59 @@
 
     padding-bottom: 100px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
 
     .title{
-      font-size: 36px;
-      text-align: center;
-      font-weight: 800;
-      margin: 48px;
-      line-height: 1;
-
-      @media (max-width: $breakpoint-md) {
-        font-size: 24px;
-        margin-bottom: 24px;
-      }
+      @include title;
     }
 
-    .paragraph{
-      font-size: 16px;
+    .paragraphs{
+
       display: flex;
-      margin-bottom: 56px !important;
+      flex-direction: column;
+      gap: 50px;
 
-      @media (max-width: $breakpoint-md) {
-        margin: 36px;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      font-weight: normal;
-
-      .sub-title{
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 28px;
-      }
-
-      .left{
+      .paragraph{
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 50%;
-        gap: 36px;
+        gap: 25px;
+        justify-content: center;
+        align-items: center;
 
-
-        @media (max-width: $breakpoint-md) {
+        img{
           width: 100%;
-          margin-bottom: 16px;
+
         }
 
-        .text{
-          padding-right: 30px;
+        .subtitle{
+          @include subtitle;
         }
 
-        .button{
-          @include button();
-          max-width: 50%;
+        .image-container {
+          width: 40%;
+        }
+
+        .text-container {
+          width: 60%;
+
+          &.standalone{
+            width: 100%;
+          }
         }
       }
 
-      .right{
-        width: 50%;
-
-        @media (max-width: $breakpoint-md) {
-          width: 100%;
-          max-width: 500px;
-        }
+      .standalone-image-container{
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
 
         .image{
-          height: auto;
           width: 100%;
         }
       }
     }
 
-    .button-container{
-      margin-bottom: 36px;
-      display: flex;
-      justify-content: center;
-      .button{
-        @include button();
 
-        width: 50%;
-        @media (max-width: $breakpoint-md) {
-          width: 100%;
-        }
-      }
-    }
   }
-
 }

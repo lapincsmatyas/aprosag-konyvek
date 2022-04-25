@@ -21,10 +21,7 @@
     flex-direction: column;
 
     .title {
-      font-size: 36px;
-      text-align: center;
-      margin: 48px;
-      line-height: 1;
+      @include title;
     }
 
     .about-us-text {

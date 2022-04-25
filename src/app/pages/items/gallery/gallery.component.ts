@@ -23,10 +23,10 @@ export class GalleryComponent {
   };
 
   sliderImages: string[] = [
-    'Product_1/4.jpg',
-    'Product_2/4.jpg',
-    'Product_3/4.jpg',
-    'Product_4/4.jpg',
+    'Slider/Slider_1.jpg',
+    'Slider/Slider_2.jpg',
+    'Slider/Slider_3.jpg',
+    'Slider/Slider_4.jpg',
   ];
 
   actImage: number = 0;

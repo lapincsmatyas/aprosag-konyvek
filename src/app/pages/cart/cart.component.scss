@@ -17,10 +17,6 @@
     max-width: $content-max-width;
 
     .title {
-      font-size: 2.5em;
-      line-height: 1;
-      text-align: center;
-      margin: 48px;
       @include title;
     }
 
