@@ -21,6 +21,9 @@
   <div class="navigation" [@navigationBarAnimation] *ngIf="appService.menuOpen">
     <div class="page-scrim"  (click)="appService.openMenu()"></div>
     <div class="side-navigation" >
+      <div class="header-container">
+        <img (click)="appService.openMenu()" height="25px" src="assets/Icons/Delete_Cart.svg">
+      </div>
       <div class="buttons-container">
         <span>
           <a class="menu-item" routerLink="items" routerLinkActive="active"

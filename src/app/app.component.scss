@@ -93,6 +93,11 @@
       z-index: 9999;
       padding: 20px;
 
+      .header-container{
+        text-align: right;
+        cursor: pointer;
+      }
+
       .buttons-container {
         margin-top: 20px;
         display: flex;

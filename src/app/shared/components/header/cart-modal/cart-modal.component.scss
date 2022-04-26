@@ -24,6 +24,10 @@
     max-height: 452px;
     overflow-y: auto;
 
+    @media (max-width: $breakpoint-sm) {
+      max-height: 300px;
+    }
+
     .cart-item-container {
       overflow: hidden;
 
