@@ -4,7 +4,6 @@
     <aprosag-header class="header"></aprosag-header>
   </div>
   <div class="page">
-
     <div class="content-container" [ngClass]="{'open': appService.menuOpen}">
       <div class="content">
         <router-outlet></router-outlet>
@@ -14,16 +13,14 @@
         <aprosag-footer class="footer"></aprosag-footer>
       </div>
     </div>
-
     <div class="loading-screen" [ngClass]="{transparent: loadingService.transparent}"
          *ngIf="(loadingService.loading | async)">
       <img class="animation" src="assets/Loading_anim.gif">
     </div>
   </div>
-
-  <div class="navigation" *ngIf="appService.menuOpen">
-    <div class="page-scrim" (click)="appService.openMenu()"></div>
-    <div class="side-navigation">
+  <div class="navigation" [@navigationBarAnimation] *ngIf="appService.menuOpen">
+    <div class="page-scrim"  (click)="appService.openMenu()"></div>
+    <div class="side-navigation" >
       <div class="buttons-container">
         <span>
           <a class="menu-item" routerLink="items" routerLinkActive="active"
@@ -52,8 +49,6 @@
             <a class="menu-item" routerLink="signup" routerLinkActive="active" (click)="appService.openMenu()">Regisztráció</a>
           </ng-container>
         </div>
-
-
       </div>
     </div>
   </div>
