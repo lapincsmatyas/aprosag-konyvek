@@ -45,13 +45,17 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   border-radius: 30px;
 }
 
-@mixin title{
+@mixin title {
   line-height: 1;
   font-size: $title-size;
   font-weight: 900;
   color: $font-color;
   text-align: center;
   padding: 36px 0;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: $title-size-mobile;
+  }
 }
 
 @mixin subtitle{
