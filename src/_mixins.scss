@@ -79,3 +79,11 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   background-position: top left, left -20px top 10px, right 20px top 400px, left -20px top 2000px, right -20px top 3000px;
   background-repeat: no-repeat;
 }
+
+@mixin pagesize(){
+  width: $content-percentage-width;
+  max-width: $content-max-width;
+  @media (max-width: $breakpoint-sm) {
+    width: $content-percentage-width-mobile;
+  }
+}
