@@ -67,11 +67,8 @@
           }
         }
 
-        input[type='button'] {
+        .button {
           @include button;
-          width: 50%;
-          margin-right: 0;
-          margin-left: auto;
         }
       }
 

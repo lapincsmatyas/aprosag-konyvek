@@ -13,8 +13,7 @@
   font-family: lato, Helvetica, serif;
 
   .cart-container {
-    width: $content-percentage-width;
-    max-width: $content-max-width;
+    @include pagesize;
 
     .title {
       @include title;
@@ -26,6 +25,7 @@
       justify-content: center;
 
       .cart-item-image-container {
+        padding: 0;
         width: 100%;
 
         .cart-item-image {
@@ -134,6 +134,10 @@
         margin: 40px 0;
         flex-basis: 50%;
 
+        @media (max-width: $breakpoint-md) {
+          flex-basis: 100%;
+        }
+
         &.back-to-shop {
           @include button($font-color);
         }
@@ -154,6 +158,10 @@
         background-color: white;
         flex-basis: 50%;
 
+        @media (max-width: $breakpoint-md) {
+          flex-basis: 100%;
+        }
+
         .header {
           padding: 15px 25px;
           color: white;
@@ -170,15 +178,17 @@
           .table-row {
             display: flex;
             justify-content: space-between;
+            gap: 25px;
+
+            &.shipping {
+              @media (max-width: $breakpoint-md) {
+                flex-direction: column;
+              }
+            }
 
             border-bottom: 1px solid black;
             padding: 20px 0;
 
-            .table-title.shipment {
-              @media (max-width: 1000px) {
-                display: none;
-              }
-            }
 
             &:last-of-type {
               border-bottom: none;

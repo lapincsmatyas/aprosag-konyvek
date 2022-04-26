@@ -55,6 +55,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
 
   @media (max-width: $breakpoint-sm) {
     font-size: $title-size-mobile;
+    padding: 50px 0;
   }
 }
 

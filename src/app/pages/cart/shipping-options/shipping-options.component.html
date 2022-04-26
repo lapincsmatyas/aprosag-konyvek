@@ -2,7 +2,7 @@
   <div class="shipping-options">
     <div class="option" *ngFor="let option of cartService.shippingTypes">
       <div class="input-field">
-        <input class="radion-button" type="radio" id="{{option.name}}" name="option" [value]="option"
+        <input class="radio-button" type="radio" id="{{option.name}}" name="option" [value]="option"
                [(ngModel)]="cartService.selectedShippingType"
                checked>
       </div>

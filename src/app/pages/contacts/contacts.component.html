@@ -3,14 +3,16 @@
     <div class="title">Kapcsolat</div>
     <div class="content-container">
       <div class="left">
-        <input id="name" type="text" placeholder="Név"/>
-        <input id="email" type="text" placeholder="Email cím"/>
-        <textarea id="text" placeholder="Szöveg" rows="10"></textarea>
+        <form [formGroup]="contactForm">
+          <input id="name" type="text" formControlName="name" placeholder="Név"/>
+          <input id="email" type="text" formControlName="email" placeholder="Email cím"/>
+          <textarea id="text" placeholder="Szöveg" formControlName="text"  rows="10"></textarea>
+        </form>
         <span class="data-protection-container">
           <input id="data-protection" type="checkbox" value="Adatvédelmi"/>
           <label for="data-protection"> Elfogadom az Adatvédelmi tájékoztatót</label>
         </span>
-        <input type="button" value="Küldés"/>
+        <button class="button" (click)="sendEmail()">Küldés</button>
       </div>
       <div class="right">
         <div>Ha rendeléssel kapcsolatos kérdésed van, vagy csak szeretnéd velünk felvenni a kapcsolatot, keress minket
@@ -20,6 +22,5 @@
         <div>Molnár Nikoletta: +36 30 907 9536<br/>(hétköznap 9-16 óráig)</div>
       </div>
     </div>
-
   </div>
 </div>
