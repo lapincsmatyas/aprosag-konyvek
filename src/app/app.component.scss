@@ -54,6 +54,14 @@
 }
 
 .app-container {
+
+  .header-container {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1052;
+  }
+
   .navigation {
     width: 100%;
     height: 100%;
@@ -132,9 +140,6 @@
       height: 100%;
 
 
-      .header-container {
-        width: 100%;
-      }
 
       .content-container {
         display: flex;

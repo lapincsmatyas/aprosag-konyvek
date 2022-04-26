@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="app.component.scss">
 <div class="app-container">
+  <div class="header-container">
+    <aprosag-header class="header"></aprosag-header>
+  </div>
   <div class="page">
-    <div class="header-container">
-      <aprosag-header class="header"></aprosag-header>
-    </div>
+
     <div class="content-container" [ngClass]="{'open': appService.menuOpen}">
       <div class="content">
         <router-outlet></router-outlet>
