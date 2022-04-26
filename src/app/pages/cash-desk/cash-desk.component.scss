@@ -8,7 +8,6 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding-top: 35px;
 
   @include background('/assets/Backgrounds/Home_BG.svg');
 
@@ -18,14 +17,17 @@
     width: $content-percentage-width;
     max-width: $content-max-width;
 
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      padding: 0 15px;
+    }
+
     display: flex;
-    gap: 25px;
     flex-direction: column;
     align-items: center;
 
     .title {
-      font-weight: 900;
-      margin: 24px 0;
+      @include title;
     }
 
     .auth-container {
@@ -33,20 +35,24 @@
 
       @media (max-width: $breakpoint-md) {
         flex-direction: column;
-
       }
 
       gap: 25px;
 
       .login-form-container {
+
+        margin: 25px;
         @media (min-width: $breakpoint-md) {
           width: 50%;
         }
-        margin: 25px;
+        @media (max-width: $breakpoint-md) {
+          margin: 0;
+        }
 
 
         .title {
           @include subtitle;
+          padding: 15px 0 !important;
         }
 
         .forgotten-password-container {
@@ -155,66 +161,110 @@
 
   }
 
-  ::ng-deep .mat-horizontal-content-container {
-    margin: 16px;
-  }
+  mat-stepper {
+    width: 100%;
 
-  ::ng-deep .mat-horizontal-stepper-header-container {
-    background-color: $light-green;
-    color: white;
-    display: flex;
-    justify-content: space-between;
+    &::ng-deep {
+      .mat-vertical-content-container {
+        margin: 0;
 
-    .mat-step-header {
-      width: 100%;
-      height: auto;
-      padding: 12px 36px;
-      color: $font-color;
-      font-size: 16px;
-
-
-      .mat-step-icon {
-        margin-right: 16px;
-
-        color: white;
-        background-color: $font-color;
+        &::before{
+          display: none;
+        }
       }
 
+      .mat-vertical-stepper-header {
+        background-color: $light-green;
+        color: white;
+        height: auto;
+        pointer-events: none !important;
+        padding: 15px;
 
-      .mat-step-label {
-        font-weight: 500;
-        font-size: 16px;
-
-        color: $font-color !important;
-
-        &.mat-step-label-active {
+        &[aria-selected="true"] {
           color: white;
+          background-color: $base-green;
+
+          .mat-step-label {
+            font-weight: 500;
+            color: white !important;
+          }
+
+          .mat-step-icon {
+            color: $base-green;
+            font-weight: 700;
+            background-color: white;
+          }
         }
       }
 
-      &[aria-selected="true"] {
+      .mat-vertical-content-container {
+
+        .mat-vertical-content {
+          margin: 15px;
+          padding: 0;
+        }
+      }
+
+
+      .mat-horizontal-content-container {
+        margin: 16px;
+      }
+
+      .mat-horizontal-stepper-header-container {
+        background-color: $light-green;
         color: white;
-        background-color: $base-green;
+        display: flex;
+        justify-content: space-between;
 
-        .mat-step-label {
-          font-weight: 500;
-          color: white !important;
+        .mat-step-header {
+          width: 100%;
+          height: auto;
+          padding: 12px 36px;
+          color: $font-color;
+          font-size: 16px;
+
+
+          .mat-step-icon {
+            margin-right: 16px;
+
+            color: white;
+            background-color: $font-color;
+          }
+
+
+          .mat-step-label {
+            font-weight: 500;
+            font-size: 16px;
+
+            color: $font-color !important;
+
+            &.mat-step-label-active {
+              color: white;
+            }
+          }
+
+          &[aria-selected="true"] {
+            color: white;
+            background-color: $base-green;
+
+            .mat-step-label {
+              font-weight: 500;
+              color: white !important;
+            }
+
+            .mat-step-icon {
+              color: $base-green;
+              font-weight: 700;
+              background-color: white;
+            }
+          }
         }
 
-        .mat-step-icon {
-          color: $base-green;
-          font-weight: 700;
-          background-color: white;
+
+        .mat-horizontal-stepper-header {
+          pointer-events: none !important;
         }
       }
-    }
-
-    .mat-stepper-horizontal-line {
-      display: none;
-    }
-
-    ::ng-deep .mat-horizontal-stepper-header {
-      pointer-events: none !important;
     }
   }
 
@@ -223,9 +273,15 @@
     font-family: lato, Helvetica, sans-serif;
 
     background-color: white;
-    max-width: 60%;
+    max-width: 80%;
+    width: 700px;
     margin: 50px auto;
     font-weight: bold;
+
+    @media (max-width: $breakpoint-md) {
+      width: auto;
+      max-width: 100%;
+    }
 
     .header {
       padding: 15px 25px;
@@ -245,6 +301,7 @@
         justify-content: space-between;
         align-items: center;
         font-weight: 700;
+        gap: 25px;
 
 
         border-bottom: 1px solid black;
@@ -254,8 +311,25 @@
 
         .right {
           display: flex;
+          flex-direction: column;
           justify-content: space-between;
-          width: 60%
+          width: 60%;
+
+          .cart-item-text-container{
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 25px;
+          }
+
+          .summary-title{
+            font-weight: 800;
+          }
+
+          .price-container{
+            display: flex;
+            gap: 25px;
+          }
         }
 
         .cart-item-image-container {

@@ -5,12 +5,15 @@ import {OrderService} from "../../services/order/order.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {CartService} from "../../services/cart/cart.service";
-import {MatStepper} from "@angular/material/stepper";
+import {MatStepper, StepperOrientation} from "@angular/material/stepper";
 import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SuccessfulOrderComponent} from "../../shared/popups/successful-order/successful-order.component";
 import {UserService} from "../../services/user/user.service";
 import {LoadingService} from "../../services/loading/loading.service";
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -52,6 +55,8 @@ export class CashDeskComponent implements AfterViewInit {
   secondFormGroup: FormGroup;
   isEditable = false;
 
+  stepperOrientation: Observable<StepperOrientation>;
+
   constructor(private fb: FormBuilder,
               private orderService: OrderService,
               public userService: UserService,
@@ -60,7 +65,13 @@ export class CashDeskComponent implements AfterViewInit {
               private router: Router,
               public authService: AuthService,
               private modalService: NgbModal,
+              public breakpointObserver: BreakpointObserver,
               public cartService: CartService) {
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+
+
     userService.user.subscribe((user) => {
       if (user) {
         this.profileForm.get('profile')?.patchValue({
