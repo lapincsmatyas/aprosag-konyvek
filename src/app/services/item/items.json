@@ -11,10 +11,12 @@
     "storage_amount": 71,
     "price": 3490,
     "image_urls": [
-      "Product_1/1.jpg",
-      "Product_1/2.jpg",
-      "Product_1/3.jpg",
-      "Product_1/4.jpg"]
+        "Products/Product_1a.jpg",
+        "Products/Product_1b.jpg",
+        "Products/Product_1c.jpg",
+        "Products/Product_1d.jpg",
+        "Products/Product_1e.jpg"
+      ]
   },
   {
     "title": "Apróságok az udvar körül - Színező",
@@ -29,10 +31,11 @@
     "price": 3490,
     "discount_percentage": 0.5,
     "image_urls": [
-      "Product_2/1.jpg",
-      "Product_2/2.jpg",
-      "Product_2/3.jpg",
-      "Product_2/4.jpg"
+      "Products/Product_2a.jpg",
+      "Products/Product_2b.jpg",
+      "Products/Product_2c.jpg",
+      "Products/Product_2d.jpg",
+      "Products/Product_2e.jpg"
     ]
   },
   {
@@ -48,10 +51,51 @@
     "price": 3490,
     "discount_price": 2990,
     "image_urls": [
-      "Product_3/1.jpg",
-      "Product_3/2.jpg",
-      "Product_3/3.jpg",
-      "Product_3/4.jpg"
+      "Products/Product_3a.jpg",
+      "Products/Product_3b.jpg",
+      "Products/Product_3c.jpg",
+      "Products/Product_3d.jpg",
+      "Products/Product_3e.jpg"
+    ]
+  },
+  {
+    "title": "Kártyapakli",
+    "subtitle": "Fejlesztő kártyajáték",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_price": 2990,
+    "image_urls": [
+      "Products/Product_3a.jpg",
+      "Products/Product_3b.jpg",
+      "Products/Product_3c.jpg",
+      "Products/Product_3d.jpg",
+      "Products/Product_3e.jpg"
+    ]
+  },
+  {
+    "title": "Kártyapakli",
+    "subtitle": "Fejlesztő kártyajáték",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_price": 2990,
+    "image_urls": [
+      "Products/Product_6a.jpg",
+      "Products/Product_6b.jpg",
+      "Products/Product_6c.jpg",
+      "Products/Product_6d.jpg",
+      "Products/Product_6e.jpg"
     ]
   }
 ]

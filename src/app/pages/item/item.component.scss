@@ -89,8 +89,8 @@
         width: 100%;
         margin-top: 10px;
         grid-template-columns: repeat(4, calc(25% - 10px));
-        display: grid;
-        column-gap: 5px;
+        display: flex;
+        gap: 5px;
 
         justify-content: space-between;
 
@@ -127,9 +127,12 @@
         .title {
           display: flex;
           justify-content: space-between;
+          gap: 15px;
 
           .title-text {
             @include title;
+            text-align: left;
+            padding: 0;
           }
         }
 
