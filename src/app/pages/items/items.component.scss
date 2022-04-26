@@ -7,6 +7,10 @@
   color: $font-color;
   padding-top: 35px;
 
+  @media (max-width: $breakpoint-md) {
+    padding-top: 0;
+  }
+
   @include background('/assets/Backgrounds/Home_BG.svg');
 
   .logo-container {

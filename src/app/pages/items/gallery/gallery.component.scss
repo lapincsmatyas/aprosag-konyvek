@@ -6,9 +6,18 @@
   width: 100%;
   max-width: 1280px;
 
+  @media (max-width: $breakpoint-sm) {
+    margin: 0 auto;
+  }
 
   ::ng-deep {
     swiper {
+      .swiper-pagination-bullet:not(.swiper-pagination-bullet-active){
+        border: 1px solid white;
+      }
+      .swiper-pagination-bullet-active{
+        background-color: $base-green;
+      }
       .swiper-button-next {
         background-image: url("/assets/Icons/Arrow_Line_Item.svg");
         background-repeat: no-repeat;
@@ -19,6 +28,13 @@
         &::after{
           content: "";
         }
+
+        @media (max-width: $breakpoint-md) {
+          width:33px;
+          height: 33px;
+          margin-top: -15px;
+
+        }
       }
 
       .swiper-button-prev {
@@ -28,6 +44,12 @@
         background-size: contain;
         width:50px;
         height: 50px;
+
+        @media (max-width: $breakpoint-md) {
+          margin-top: -15px;
+          width:33px;
+          height: 33px;
+        }
 
         &::after{
           content: "";
@@ -46,18 +68,13 @@
     flex-direction: row;
     align-items: center;
 
-    &::ng-deep {
-      .swiper-pagination {
-        position: absolute;
-        bottom: -40px;
-      }
+    @media (max-width: $breakpoint-sm) {
+      padding-top: 0;
     }
 
     @media (max-width: $breakpoint-md) {
-      max-height: 200px;
+      max-height: 250px;
     }
-
-
 
     .image {
       width: 100%;

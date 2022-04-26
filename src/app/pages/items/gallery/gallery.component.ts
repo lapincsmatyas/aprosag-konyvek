@@ -15,6 +15,8 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 export class GalleryComponent {
   config: SwiperOptions = {
     navigation: true,
+    spaceBetween: 30,
+    pagination: { clickable: true },
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
@@ -29,12 +31,5 @@ export class GalleryComponent {
     'Slider/Slider_4.jpg',
   ];
 
-  actImage: number = 0;
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
-
-  imageChanged([swiper]: Swiper[]) {
-    this.actImage = swiper.activeIndex;
-    this.changeDetectorRef.detectChanges();
-  }
+  constructor() { }
 }

@@ -22,12 +22,12 @@
     #swiper
     class="image-container"
     [config]="config"
-    (activeIndexChange)="imageChanged($event)"
   >
     <ng-template swiperSlide *ngFor="let image of sliderImages">
       <img class="image" [src]="'assets/' + image"/>
     </ng-template>
   </swiper>
+  <!--
   <div class="buttons-container">
     <div class="buttons">
       <div *ngFor="let button of sliderImages; let i = index" class="button-outer">
@@ -35,4 +35,5 @@
       </div>
     </div>
   </div>
+  -->
 </div>

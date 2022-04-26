@@ -2,7 +2,7 @@
   <div class="item-card">
     <div class="item" (click)="openItem()">
       <div class="image-container">
-        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls[0]">
+        <img *ngIf="item.image_urls" class="item-card-image" [src]="'assets/' + item.image_urls.sort()[0]">
         <div class="view-overlay">
           <div class="view-text">Megnézem</div>
         </div>

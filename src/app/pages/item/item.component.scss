@@ -88,17 +88,14 @@
       .small-images {
         width: 100%;
         margin-top: 10px;
-        grid-template-columns: repeat(4, calc(25% - 10px));
         display: flex;
         gap: 5px;
-
-        justify-content: space-between;
 
 
         .small-image {
           width: 100%;
           cursor: pointer;
-
+          max-height: 94px;
           transition: opacity 0.3s;
 
 

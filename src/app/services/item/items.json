@@ -71,11 +71,31 @@
     "price": 3490,
     "discount_price": 2990,
     "image_urls": [
-      "Products/Product_3a.jpg",
-      "Products/Product_3b.jpg",
-      "Products/Product_3c.jpg",
-      "Products/Product_3d.jpg",
-      "Products/Product_3e.jpg"
+      "Products/Product_4a.jpg",
+      "Products/Product_4b.jpg",
+      "Products/Product_4c.jpg",
+      "Products/Product_4d.jpg",
+      "Products/Product_4e.jpg"
+    ]
+  },
+  {
+    "title": "Kártyapakli",
+    "subtitle": "Fejlesztő kártyajáték",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_price": 2990,
+    "image_urls": [
+      "Products/Product_5a.jpg",
+      "Products/Product_5b.jpg",
+      "Products/Product_5c.jpg",
+      "Products/Product_5d.jpg",
+      "Products/Product_5e.jpg"
     ]
   },
   {
@@ -96,6 +116,26 @@
       "Products/Product_6c.jpg",
       "Products/Product_6d.jpg",
       "Products/Product_6e.jpg"
+    ]
+  },
+  {
+    "title": "Kártyapakli",
+    "subtitle": "Fejlesztő kártyajáték",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim leo non sapien iaculis convallis. Nunc consectetur auctor nunc, ut commodo magna eleifend sed. Proin ut lacus libero. Aliquam eu turpis quam. Vivamus laoreet viverra justo ut aliquet.",
+    "page_count": 84,
+    "cover_type": "HARD_COVER",
+    "ISBN": "978-615-00-9602-5",
+    "weight": 450,
+    "publication_date": 2020,
+    "storage_amount": 71,
+    "price": 3490,
+    "discount_price": 2990,
+    "image_urls": [
+      "Products/Product_7a.jpg",
+      "Products/Product_7b.jpg",
+      "Products/Product_7c.jpg",
+      "Products/Product_7d.jpg",
+      "Products/Product_7e.jpg"
     ]
   }
 ]
