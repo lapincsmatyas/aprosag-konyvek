@@ -4,7 +4,7 @@
 .gallery-container {
   margin: 30px auto;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1500px;
 
   @media (max-width: $breakpoint-sm) {
     margin: 0 auto;
@@ -73,7 +73,7 @@
   .image-container {
     overflow-y: hidden;
     height: auto;
-    max-height: 400px;
+    max-height: 550px;
 
     display: flex;
     flex-direction: row;
