@@ -27,27 +27,6 @@
       padding: $base-padding;
     }
 
-    .mobile-title-container {
-      display: none;
-      @media (max-width: $breakpoint-sm) {
-        display: block;
-      }
-
-      .title {
-        display: flex;
-        justify-content: space-between;
-
-        .title-text {
-          @include title;
-        }
-
-      }
-
-      .subtitle {
-        @include subtitle;
-        margin-bottom: 10px;
-      }
-    }
 
     .images {
       width: 50%;
@@ -121,6 +100,10 @@
       }
 
       .title-container {
+        @media (max-width: $breakpoint-md) {
+          margin-top: 35px;
+        }
+
         .title {
           display: flex;
           justify-content: space-between;
@@ -128,8 +111,8 @@
 
           .title-text {
             @include title;
-            text-align: left;
-            padding: 0;
+            padding: 0 !important;
+
           }
         }
 
@@ -137,8 +120,8 @@
           @include subtitle;
         }
 
-        @media (max-width: $breakpoint-sm) {
-          display: none;
+        .favorite-icon{
+          cursor: pointer;
         }
       }
 
@@ -163,6 +146,19 @@
 
       .price-container {
         margin-bottom: 25px;
+
+        &.mobile{
+          display: none;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+          display: none;
+
+          &.mobile{
+            display: block;
+            font-size: 1.2em;
+          }
+        }
 
         .discount {
           font-weight: bold;

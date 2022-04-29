@@ -1,4 +1,7 @@
-<div class="favorite-container">
-  <img *ngIf="userService.user | async" (click)="addItemToFavourites($event)" class="favourite"
-       [src]="!isFavorite ? 'assets/Icons/Favourite.svg' : 'assets/Icons/Favourite_added.svg'" height="20px">
+<div class="favorite-container" *ngIf="userService.user | async">
+  <img  (click)="addItemToFavourites($event)" class="favourite"
+       src="assets/Icons/Favourite.svg" height="20px">
+
+  <img (click)="addItemToFavourites($event)" class="favourite" [ngClass]="{hidden: !isFavorite}"
+       src="assets/Icons/Favourite_added.svg" height="20px">
 </div>
