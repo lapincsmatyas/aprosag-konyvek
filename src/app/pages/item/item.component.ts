@@ -32,7 +32,6 @@ export class ItemComponent {
               private cdRef: ChangeDetectorRef,
               private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
-
     this.activatedRoute.params.subscribe(params => {
       this.item = this.itemService.getItemById(params['id']);
     });

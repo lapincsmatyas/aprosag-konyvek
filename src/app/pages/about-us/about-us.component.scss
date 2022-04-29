@@ -49,8 +49,7 @@
         min-width: calc(33% - 3* 15px);
 
         .subtitle {
-          margin: 28px 0;
-          font-weight: 900;
+          @include subtitle;
         }
 
         .image {

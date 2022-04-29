@@ -24,7 +24,6 @@
 
     .title {
       @include title;
-      text-align: center;
     }
 
     .content-container{
@@ -86,8 +85,7 @@
         }
 
         .subtitle{
-          font-weight: 900;
-          margin: 18px 0;
+          @include subtitle
         }
 
         .email{

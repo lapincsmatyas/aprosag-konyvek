@@ -17,6 +17,7 @@ export class ItemsService {
 
   constructor(private firestore: Firestore, private loadingService: LoadingService) {
     this.initializeItems();
+
     loadingService.addProcess('get-items');
     getDocs<ItemDto>(collection(firestore, `items`)).then((items) => {
       loadingService.removeProcess('get-items');
@@ -31,6 +32,7 @@ export class ItemsService {
   }
 
   getItemById(id: string): Item | undefined {
+
     return this.items.value.find((item) => item.id === id);
   }
 
