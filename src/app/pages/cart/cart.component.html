@@ -1,6 +1,6 @@
 <div class="cart-page-container">
   <div class="cart-container">
-    <h1 class="title">Kosár</h1>
+    <div class="title">Kosár</div>
     <div class="cart-table-container">
       <table class="table">
         <thead class="table-header">
@@ -98,8 +98,7 @@
     </div>
 
     <div class="button-container" *ngIf="cartService.count > 0">
-      <button [disabled]="!cartService.selectedShippingType" class="button to-the-cashdesk" (click)="goToDesk()">Tovább
-        a pénztárhoz
+      <button [disabled]="!cartService.selectedShippingType" class="button to-the-cashdesk" (click)="goToDesk()">Tovább a pénztárhoz
       </button>
     </div>
   </div>
