@@ -89,6 +89,10 @@
           @include button;
           width: 35%;
           min-width: 325px;
+
+          @media (max-width: $breakpoint-md) {
+            width: 80%;
+          }
         }
       }
 
@@ -108,7 +112,5 @@
         }
       }
     }
-
-
   }
 }
