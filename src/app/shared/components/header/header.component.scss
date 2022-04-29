@@ -67,6 +67,8 @@
     }
 
     &.mobile-header{
+      height: 70px;
+
       .menu-opener{
         cursor: pointer;
         position: absolute;
@@ -105,15 +107,15 @@
     }
 
     .logo-container {
+      height: 100%;
+      padding: 6px 0 0 0;
+      display: flex;
+      align-items: baseline;
       cursor: pointer;
-      display: inline-block;
 
-      @media (min-width: $breakpoint-md) {
-        margin-right: 50px;
-      }
-
-      .logo {
-        height: 69px;
+      .logo{
+        width: auto;
+        height: 100%;
       }
     }
 
