@@ -40,8 +40,6 @@
       gap: 25px;
 
       .login-form-container {
-
-        margin: 25px;
         @media (min-width: $breakpoint-md) {
           width: 50%;
         }
@@ -66,21 +64,23 @@
 
         .login-button-container {
           display: flex;
+          gap: 25px;
           justify-content: space-between;
           flex-direction: row-reverse;
-        }
 
-        .button {
-          @include button;
+          .button {
+            @include button;
+            width: 100%;
 
-          display: inline-block;
-          padding-left: 24px;
-          padding-right: 24px;
+            display: inline-block;
 
-          &.back {
-            @include button($font-color);
+            &.back {
+              @include button($font-color);
+            }
           }
         }
+
+
       }
 
       .guest-container {
@@ -158,7 +158,6 @@
         }
       }
     }
-
   }
 
   mat-stepper {
@@ -268,6 +267,23 @@
     }
   }
 
+  .back-button-container{
+    width: 100%;
+    padding: 25px 0 25px 40px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 16px;
+    }
+
+    .button{
+      width: 25%;
+      @include button($font-color);
+
+      @media (max-width: $breakpoint-md) {
+        width: 50%;
+      }
+    }
+  }
 
   .summary-container {
     font-family: lato, Helvetica, sans-serif;
@@ -275,7 +291,7 @@
     background-color: white;
     max-width: 80%;
     width: 700px;
-    margin: 50px auto;
+    margin: 25px auto;
     font-weight: bold;
 
     @media (max-width: $breakpoint-md) {
