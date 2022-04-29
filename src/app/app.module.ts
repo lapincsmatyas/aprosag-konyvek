@@ -51,6 +51,7 @@ import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data
 import { GalleryComponent } from './pages/items/gallery/gallery.component';
 import {SwiperModule} from "swiper/angular";
 import {EmailSentComponent} from "./pages/contacts/email-sent/email-sent.component";
+import { ConfirmationComponent } from './shared/popups/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {EmailSentComponent} from "./pages/contacts/email-sent/email-sent.compone
     OrdersComponent,
     PersonalDataComponent,
     EmailSentComponent,
-    GalleryComponent
+    GalleryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   height: $button-height;
 
   border: none;
+  outline: none;
   cursor: pointer;
   color: $color;
   text-align: center;
@@ -23,13 +24,13 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   text-transform: uppercase;
   box-shadow: 0 0 13px -5px #000000;
 
+
   &:disabled{
     background-color: $disabled-button;
     cursor: default;
   }
 
   &:active {
-    border: none;
     box-shadow: 0 0 13px -8px #000000;
   }
 }

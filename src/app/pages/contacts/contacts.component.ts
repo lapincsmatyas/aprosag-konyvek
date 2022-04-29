@@ -15,7 +15,8 @@ export class ContactsComponent {
   contactForm = this.fb.group({
     name: [''],
     email: [''],
-    text: ['']
+    text: [''],
+    dataProtection: false
   });
 
   constructor(private loadingService: LoadingService,
@@ -33,6 +34,7 @@ export class ContactsComponent {
         modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
       });
       modalRef.closed.subscribe(() => {
+        console.log(this.contactForm.value);
         this.contactForm.reset();
       })
     }, (error: any) => {

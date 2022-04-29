@@ -20,11 +20,11 @@
              <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
           </span>
           <td>
-            <div class="cart-item-image-container" *ngIf="item.item.image_urls">
+            <div class="cart-item-image-container" (click)="openItemPage(item.item)" *ngIf="item.item.image_urls">
               <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
             </div>
           </td>
-          <td>
+          <td class="item-title-container" (click)="openItemPage(item.item)">
             <div class="item-title">{{item.item.title}}</div>
             <div>{{item.item.subtitle}}</div>
           </td>
@@ -48,7 +48,7 @@
              <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
           </span>
           </div>
-          <div class="cart-item-image-container" *ngIf="item.item.image_urls">
+          <div class="cart-item-image-container" (click)="openItemPage(item.item)" *ngIf="item.item.image_urls">
             <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
           </div>
           <div class="item-details-container">

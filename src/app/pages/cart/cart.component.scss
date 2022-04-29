@@ -31,6 +31,7 @@
 
       .cart-item-image-container {
         padding: 0;
+        cursor: pointer;
         width: 100%;
 
         .cart-item-image {
@@ -103,6 +104,10 @@
           padding-bottom: 25px;
         }
 
+        .item-title-container{
+          cursor: pointer;
+        }
+
         .table-header {
           color: white;
           background-color: $green-line;
@@ -131,7 +136,8 @@
           color: $font-color;
           text-align: center;
 
-          .delete-button {
+          .delete-icon {
+            cursor: pointer;
             font-weight: 300;
             font-size: 20px;
           }

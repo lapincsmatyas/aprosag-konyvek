@@ -7,11 +7,13 @@
           <input id="name" type="text" formControlName="name" placeholder="Név"/>
           <input id="email" type="text" formControlName="email" placeholder="Email cím"/>
           <textarea id="text" placeholder="Szöveg" formControlName="text"  rows="10"></textarea>
-        </form>
-        <span class="data-protection-container">
-          <input id="data-protection" type="checkbox" value="Adatvédelmi"/>
+
+          <span class="data-protection-container">
+          <input id="data-protection" type="checkbox" formControlName="dataProtection"/>
           <label for="data-protection"> Elfogadom az Adatvédelmi tájékoztatót</label>
         </span>
+        </form>
+
         <button class="button" (click)="sendEmail()">Küldés</button>
       </div>
       <div class="right">

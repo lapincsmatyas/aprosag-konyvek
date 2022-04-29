@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {debug} from "util";
 
 @Component({
   selector: 'aprosag-stepper',
@@ -7,14 +8,14 @@ import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent  {
-  faArrowLeft = faArrowLeft;
-  faArrowRight = faArrowRight;
-
   @Input()
   value: number;
 
   @Input()
   allowZero: boolean;
+
+  @Input()
+  maxValue: number | undefined;
 
   @Output()
   valueChange = new EventEmitter<number>();
@@ -25,7 +26,12 @@ export class StepperComponent  {
   }
 
   changeValue(amount: number){
+    console.log(this.maxValue);
+
     this.value += amount;
+    if(this.maxValue && this.value > this.maxValue){
+      this.value = this.maxValue;
+    }
 
     if(this.allowZero && this.value < 0){
       this.value = 0;
