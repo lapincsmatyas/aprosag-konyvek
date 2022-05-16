@@ -67,6 +67,7 @@ export class CashDeskComponent implements AfterViewInit {
               private modalService: NgbModal,
               public breakpointObserver: BreakpointObserver,
               public cartService: CartService) {
+
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
@@ -100,20 +101,22 @@ export class CashDeskComponent implements AfterViewInit {
 
   sendOrder() {
     this.loadingService.addProcess('send-order', {transparent: true});
-    this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)?.then((result) => {
-      this.loadingService.removeProcess('send-order');
-      const modalRef = this.modalService.open(SuccessfulOrderComponent, {
-        backdrop: 'static',
-        keyboard: false,
-        backdropClass: 'modal-dialog-backdrop',
-        modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
-      });
 
-      modalRef.componentInstance.orderNumber = result;
-    }, (error) => {
-      this.loadingService.removeProcess('send-order');
-      this.toastr.error("Valami hiba történt a rendelés leadásakor!")
-    });
+    this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)
+      ?.then((result) => {
+        this.loadingService.removeProcess('send-order');
+        const modalRef = this.modalService.open(SuccessfulOrderComponent, {
+          backdrop: 'static',
+          keyboard: false,
+          backdropClass: 'modal-dialog-backdrop',
+          modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
+        });
+
+        modalRef.componentInstance.orderNumber = result;
+      }, (error) => {
+        this.loadingService.removeProcess('send-order');
+        this.toastr.error("Valami hiba történt a rendelés leadásakor!")
+      });
   }
 
   goToSignup() {

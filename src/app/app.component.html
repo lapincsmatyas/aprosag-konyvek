@@ -18,6 +18,8 @@
       <img class="animation" src="assets/Loading_anim.gif">
     </div>
   </div>
+
+
   <div class="navigation" [@navigationBarAnimation] *ngIf="appService.menuOpen">
     <div class="page-scrim"  (click)="appService.openMenu()"></div>
     <div class="side-navigation" >
@@ -25,18 +27,18 @@
         <img (click)="appService.openMenu()" height="25px" src="assets/Icons/Delete_Cart.svg">
       </div>
       <div class="buttons-container">
-        <span>
+        <span class="menu-item-container" >
           <a class="menu-item" routerLink="items" routerLinkActive="active"
              (click)="appService.openMenu()">Termékeink</a>
         </span>
-        <span>
+        <span class="menu-item-container">
         <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active" (click)="appService.openMenu()">Mitől
           különleges</a>
         </span>
-        <span>
+        <span class="menu-item-container">
         <a class="menu-item" routerLink="about-us" routerLinkActive="active" (click)="appService.openMenu()">Rólunk</a>
         </span>
-        <span>
+        <span class="menu-item-container">
         <a class="menu-item" routerLink="contacts" routerLinkActive="active"
            (click)="appService.openMenu()">Kapcsolat</a>
         </span>
@@ -47,7 +49,7 @@
                (click)="appService.openMenu()">Profil</a>
             <a class="menu-item" (click)="authService.logout()">Kijelentkezés</a>
           </ng-container>
-          <ng-container *ngIf="!(authService.user$ | async)">
+          <ng-container *ngIf="(authService.user$ | async) === false">
             <a class="menu-item" routerLink="login" routerLinkActive="active" (click)="appService.openMenu()">Bejelentkezés</a>
             <a class="menu-item" routerLink="signup" routerLinkActive="active" (click)="appService.openMenu()">Regisztráció</a>
           </ng-container>

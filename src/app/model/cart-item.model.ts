@@ -5,7 +5,8 @@ export interface ShippingType {
   value: number
 }
 
-export interface CartItem {
-  item: Item;
-  amount: number;
-}
+  export interface CartItem {
+    item: Item;
+    amount: number;
+  }
+

@@ -32,6 +32,7 @@ export class CartModalComponent  {
       modalDialogClass: 'modal-dialog-centered'
     });
     modalRef.componentInstance.text = "Biztos törlöd a terméket a kosárból?";
+
     modalRef.closed.subscribe(result => {
       if(!result) return;
       this.cartService.removeAllOfTypeFromCart(item);
