@@ -1,0 +1,82 @@
+<div class="item-container">
+  <ng-container *ngIf="itemForm">
+    <form [formGroup]="itemForm">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="title" pInputText formControlName="title">
+            <label for="title">Cím</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="subtitle" pInputText formControlName="subtitle">
+            <label for="subtitle">Alcím</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <textarea id="description" pInputTextarea formControlName="description"></textarea>
+            <label for="description">Leírás</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="price" pInputText formControlName="price">
+            <label for="price">Ár</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="discount_price" pInputText formControlName="discount_price">
+            <label for="discount_price">Akciós ár</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="discount_percentage" pInputText formControlName="discount_percentage">
+            <label for="discount_percentage">Akció százaléka</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="isbn" pInputText formControlName="isbn">
+            <label for="isbn">ISBN</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="cover_type" pInputText formControlName="cover_type">
+            <label for="cover_type">Borító típusa</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="page_count" pInputText formControlName="page_count">
+            <label for="page_count">Oldalszám</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="publication_date" pInputText formControlName="publication_date">
+            <label for="publication_date">Kiadás dátuma</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="weight" pInputText formControlName="weight">
+            <label for="weight">Súly</label>
+          </span>
+        </div>
+        <div class="field col-12 md:col-4">
+          <span class="p-float-label">
+            <input type="text" id="image_urls" pInputText formControlName="image_urls">
+            <label for="image_urls">Képek neve</label>
+          </span>
+        </div>
+      </div>
+      <button pButton (click)="saveItem()">Mentés</button><br/>
+      <button pButton (click)="deleteItem()">Törlés</button>
+    </form>
+  </ng-container>
+</div>

@@ -1,0 +1,17 @@
+<p-table [value]="orders" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Rendelésszám</th>
+      <th>Állapot</th>
+      <th>Műveletek</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-order>
+    <tr>
+      <td>{{order.orderNumber}}</td>
+      <td>{{order.state}}</td>
+      <td><button (click)="openOrder(order.id)">Megnyitás</button></td>
+    </tr>
+  </ng-template>
+</p-table>
+<router-outlet></router-outlet>

@@ -1,0 +1,22 @@
+<button pButton (click)="creatItem()">Hozzáadás</button>
+<p-table [value]="items" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Cím</th>
+      <th>Alcím</th>
+      <th>Ár</th>
+      <th>Műveletek</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>{{product.title}}</td>
+      <td>{{product.subtitle}}</td>
+      <td>{{product.price}} Ft</td>
+      <td><button (click)="selectItem(product)">Megnyitás</button></td>
+    </tr>
+  </ng-template>
+</p-table>
+<ng-container *ngIf="selectedItem">
+  <app-item [item]="selectedItem" (newItem)="saveItem($event)"></app-item>
+</ng-container>
