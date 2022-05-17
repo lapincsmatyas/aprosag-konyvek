@@ -1,0 +1,401 @@
+@import "projects/aprosag-webshop/src/variables";
+@import "projects/aprosag-webshop/src/mixins";
+
+
+.cash-desk-page-container {
+  color: $font-color !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  @include background('/assets/Backgrounds/Home_BG.svg');
+
+  font-family: lato, Helvetica, sans-serif;
+
+  .cash-desk-page {
+    width: $content-percentage-width;
+    max-width: $content-max-width;
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      @include title;
+    }
+
+    .auth-container {
+      display: flex;
+
+      @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+      }
+
+      gap: 25px;
+
+      .login-form-container {
+        @media (min-width: $breakpoint-md) {
+          width: 50%;
+        }
+        @media (max-width: $breakpoint-md) {
+          margin: 0;
+        }
+
+
+        .title {
+          @include subtitle;
+          padding: 15px 0 !important;
+        }
+
+        .forgotten-password-container {
+          text-align: right;
+          margin: 15px 0;
+        }
+
+        input {
+          @include input-field;
+        }
+
+        .login-button-container {
+          display: flex;
+          gap: 25px;
+          justify-content: space-between;
+          flex-direction: row-reverse;
+
+          .button {
+            @include button;
+            width: 100%;
+
+            display: inline-block;
+
+            &.back {
+              @include button($font-color);
+            }
+          }
+        }
+
+
+      }
+
+      .guest-container {
+        @media (min-width: $breakpoint-md) {
+          width: 50%;
+        }
+        padding: 25px;
+
+
+        background-color: #D9E9E2;
+
+        .title {
+          @include subtitle;
+        }
+
+        .button-container {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+
+        .button {
+          @include button;
+
+          display: inline-block;
+          padding-left: 24px;
+          padding-right: 24px;
+
+          &.back {
+            @include button($font-color);
+          }
+        }
+      }
+    }
+
+    .form-container {
+      .profile-container {
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        margin-bottom: 20px;
+      }
+
+      .form-field-container {
+        margin: 0 16px;
+        flex: 45%;
+        display: flex;
+        flex-direction: column;
+
+        .input-field {
+          @include input-field;
+        }
+      }
+
+
+    }
+
+    .button-container {
+      margin-top: 48px;
+      display: flex;
+      gap: 48px;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+
+      .button {
+        @include button;
+
+        width: auto;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        &.back {
+          @include button($font-color);
+        }
+      }
+    }
+  }
+
+  mat-stepper {
+    width: 100%;
+
+    &::ng-deep {
+      .mat-vertical-content-container {
+        margin: 0;
+
+        &::before{
+          display: none;
+        }
+      }
+
+      .mat-vertical-stepper-header {
+        background-color: $light-green;
+        color: white;
+        height: auto;
+        pointer-events: none !important;
+        padding: 15px;
+
+        &[aria-selected="true"] {
+          color: white;
+          background-color: $base-green;
+
+          .mat-step-label {
+            font-weight: 500;
+            color: white !important;
+          }
+
+          .mat-step-icon {
+            color: $base-green;
+            font-weight: 700;
+            background-color: white;
+          }
+        }
+      }
+
+      .mat-vertical-content-container {
+
+        .mat-vertical-content {
+          margin: 15px;
+          padding: 0;
+        }
+      }
+
+
+      .mat-horizontal-content-container {
+        margin: 16px;
+      }
+
+      .mat-horizontal-stepper-header-container {
+        background-color: $light-green;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+
+        .mat-step-header {
+          width: 100%;
+          height: auto;
+          padding: 12px 36px;
+          color: $font-color;
+          font-size: 16px;
+
+
+          .mat-step-icon {
+            margin-right: 16px;
+
+            color: white;
+            background-color: $font-color;
+          }
+
+
+          .mat-step-label {
+            font-weight: 500;
+            font-size: 16px;
+
+            color: $font-color !important;
+
+            &.mat-step-label-active {
+              color: white;
+            }
+          }
+
+          &[aria-selected="true"] {
+            color: white;
+            background-color: $base-green;
+
+            .mat-step-label {
+              font-weight: 500;
+              color: white !important;
+            }
+
+            .mat-step-icon {
+              color: $base-green;
+              font-weight: 700;
+              background-color: white;
+            }
+          }
+        }
+
+
+        .mat-horizontal-stepper-header {
+          pointer-events: none !important;
+        }
+      }
+    }
+  }
+
+  .back-button-container{
+    width: 100%;
+    padding: 25px 0 25px 40px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 16px;
+    }
+
+    .button{
+      width: 25%;
+      @include button($font-color);
+
+      @media (max-width: $breakpoint-md) {
+        width: 50%;
+      }
+    }
+  }
+
+  .summary-container {
+    font-family: lato, Helvetica, sans-serif;
+
+    background-color: white;
+    max-width: 80%;
+    width: 700px;
+    margin: 25px auto;
+    font-weight: bold;
+
+    @media (max-width: $breakpoint-md) {
+      width: auto;
+      max-width: 100%;
+    }
+
+    .header {
+      padding: 15px 25px;
+      color: white;
+      background-color: $base-green;
+
+      .text {
+        font-size: 16px;
+      }
+    }
+
+    .content {
+      padding: 0 25px;
+
+      .table-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        gap: 25px;
+
+
+        border-bottom: 1px solid black;
+        padding: 20px 0;
+
+        overflow: hidden;
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 60%;
+
+          .cart-item-text-container{
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 25px;
+          }
+
+          .summary-title{
+            font-weight: 800;
+          }
+
+          .price-container{
+            display: flex;
+            gap: 25px;
+          }
+        }
+
+        .cart-item-image-container {
+          height: 100px;
+
+          .cart-item-image {
+            height: 100%;
+          }
+
+          .cart-text-container {
+            flex-direction: column;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-left: 40px;
+            font-size: 18px;
+
+            .title-container {
+              display: flex;
+              justify-content: space-between;
+
+              .title {
+                font-weight: bold;
+              }
+
+              .delete-button {
+                font-size: 25px;
+              }
+            }
+
+            .price-container {
+              display: flex;
+              justify-content: space-between;
+
+              .times {
+                color: rgb(180, 180, 180);
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        .table-title {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

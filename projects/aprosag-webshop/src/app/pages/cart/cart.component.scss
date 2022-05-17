@@ -1,0 +1,243 @@
+@import "projects/aprosag-webshop/src/variables";
+@import "projects/aprosag-webshop/src/mixins";
+
+
+.cart-page-container {
+  color: $font-color !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include background('/assets/Backgrounds/Contact_BG.svg');
+
+  font-family: lato, Helvetica, serif;
+
+  .cart-container {
+    @include pagesize;
+
+    .title {
+      @include title;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    .cart-table-container {
+      background-color: white;
+      display: flex;
+      justify-content: center;
+
+      .cart-item-image-container {
+        padding: 0;
+        cursor: pointer;
+        width: 100%;
+
+        .cart-item-image {
+          width: 100%;
+        }
+      }
+
+      .mobile-table {
+        display: none;
+        @media (max-width: 750px) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .item-row{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 15px;
+          padding: 15px;
+          background-color: white;
+
+          .cart-item-image-container{
+            width: 100px;
+          }
+
+          .item-details-container{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+
+            .item-title{
+              font-weight: 800;
+              font-size: 1.1rem;
+            }
+
+            .stepper-container{
+              max-width: 150px;
+            }
+
+            .price-container{
+              display: flex;
+              justify-content: space-between;
+              .sum-price{
+                font-weight: 800;
+              }
+            }
+          }
+        }
+
+      }
+
+      .table {
+
+        @media (max-width: 750px) {
+          display: none;
+        }
+
+
+        color: $font-color !important;
+        font-size: 16px;
+
+        td {
+          vertical-align: middle;
+
+          padding-top: 25px;
+          padding-bottom: 25px;
+        }
+
+        .item-title-container{
+          cursor: pointer;
+        }
+
+        .table-header {
+          color: white;
+          background-color: $green-line;
+          text-align: left;
+
+          th {
+            height: 60px;
+            vertical-align: middle;
+
+            &.amount {
+              text-align: center;
+              width: 150px;
+            }
+
+            &.image {
+              width: 150px;
+            }
+          }
+
+          .header-text {
+            font-weight: bold;
+          }
+        }
+
+        .delete-icon-container {
+          color: $font-color;
+          text-align: center;
+
+          .delete-icon {
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 20px;
+          }
+        }
+
+        .item-title {
+          font-weight: 900;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin: 25px 0 80px;
+
+      @media (max-width: 750px) {
+        display: block;
+      }
+
+      .button {
+        flex-basis: 50%;
+        width: 100%;
+
+        @media (max-width: 750px) {
+          width: 80%;
+          margin: 0 auto;
+        }
+
+        @media (max-width: $breakpoint-md) {
+          flex-basis: 100%;
+        }
+
+        &.back-to-shop {
+          @include button($font-color);
+        }
+
+        &.to-the-cashdesk {
+          @include button();
+        }
+      }
+    }
+
+    .newsletter-and-shipping {
+      font-weight: 700;
+
+      display: flex;
+      justify-content: flex-end;
+
+
+      @media (max-width: 750px) {
+        display: block;
+      }
+
+      .shipping-options-container {
+        background-color: white;
+        flex-basis: 50%;
+
+        @media (max-width: $breakpoint-md) {
+          flex-basis: 100%;
+        }
+
+        .header {
+          padding: 15px 25px;
+          color: white;
+          background-color: $base-green;
+
+          .text {
+            font-size: 16px;
+          }
+        }
+
+        .content {
+          padding: 0 25px;
+
+          .table-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+
+            &.shipping {
+              @media (max-width: $breakpoint-md) {
+                flex-direction: column;
+              }
+            }
+
+            border-bottom: 1px solid black;
+            padding: 20px 0;
+
+
+            &:last-of-type {
+              border-bottom: none;
+            }
+
+            .table-title {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}

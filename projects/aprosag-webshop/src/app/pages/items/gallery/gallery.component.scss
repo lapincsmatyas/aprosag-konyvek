@@ -1,0 +1,137 @@
+@import "projects/aprosag-webshop/src/variables";
+@import "projects/aprosag-webshop/src/mixins";
+
+.gallery-container {
+  margin: 30px auto;
+  width: 100%;
+  max-width: 1500px;
+
+  @media (max-width: $breakpoint-sm) {
+    margin: 0 auto;
+  }
+
+  ::ng-deep {
+    swiper {
+      .swiper-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+
+          &.swiper-pagination-bullet-active {
+            background-color: $base-green;
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+
+      .swiper-button-next {
+        background-image: url("/assets/Icons/Arrow_Line_Item.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+
+        &::after {
+          content: "";
+        }
+
+        @media (max-width: $breakpoint-md) {
+          width: 33px;
+          height: 33px;
+          margin-top: -15px;
+
+        }
+      }
+
+      .swiper-button-prev {
+        background-image: url("/assets/Icons/Arrow_Line_Item.svg");
+        transform: rotate(180deg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+
+        @media (max-width: $breakpoint-md) {
+          margin-top: -15px;
+          width: 33px;
+          height: 33px;
+        }
+
+        &::after {
+          content: "";
+        }
+      }
+    }
+  }
+
+
+  .image-container {
+    overflow-y: hidden;
+    height: auto;
+    max-height: 550px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-top: 0;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      max-height: 250px;
+    }
+
+    .image {
+      cursor: pointer;
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  .buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+
+      .button-outer {
+        width: 15px;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button-inner {
+          width: 80%;
+          height: 80%;
+          background-color: $disabled-button;
+          border-radius: 100px;
+
+
+          &.active {
+            width: 100%;
+            height: 100%;
+            background-color: $base-green;
+
+          }
+        }
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,206 @@
+@import "projects/aprosag-webshop/src/variables";
+
+.header-container {
+  position: sticky;
+  background-color: white;
+
+  z-index: 1051;
+
+  font-family: lato, Helvetica, sans-serif;
+  font-weight: bold;
+
+  box-shadow: 0 6px 6px -5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: $breakpoint-lg) {
+    padding-bottom: 10px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-bottom: 0;
+  }
+
+  display: flex;
+  align-items: center;
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1280px;
+    width: 80%;
+    margin: 0 auto;
+
+    height: 60px;
+    @media (max-width: $breakpoint-lg) {
+      height: 100px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 20px;
+
+      .menu-item.cart {
+        position: relative;
+        font-size: 18px;
+        cursor: pointer;
+
+        &.disabled {
+          cursor: auto;
+          opacity: 0.5;
+        }
+
+        .counter {
+          position: absolute;
+          background-color: $base-green;
+          opacity: 0.8;
+          padding: 0 7px;
+          color: white;
+          font-size: 10px;
+          display: block;
+          border-radius: 10px;
+          top: 0;
+          right: 0;
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      flex-direction: column;
+      width: 90%;
+    }
+
+    .logo-container {
+      height: 100%;
+      width: auto;
+      padding: 6px 0;
+      cursor: pointer;
+
+      @media (max-width: $breakpoint-lg) {
+        height: 60%;
+        padding: 10px 0;
+      }
+      @media (max-width: $breakpoint-sm) {
+        padding: 0
+      }
+      .logo{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      gap: 35px;
+
+      @media (max-width: $breakpoint-lg) {
+        justify-content: space-between;
+        gap: 0px;
+      }
+
+      .menu-item {
+        white-space: nowrap;
+        text-decoration: none;
+        font-size: 0.95em;
+        color: $font-color;
+        text-transform: uppercase;
+        padding: 10px;
+
+        &.profile{
+          font-size: 18px;
+        }
+
+        &.active {
+          &.profile {
+            color: $green-line;
+          }
+
+          border-bottom: 4px solid $green-line;
+        }
+
+
+      }
+
+      .icon {
+        cursor: pointer;
+        color: $font-color;
+
+        &.logout {
+          margin-left: 30px;
+        }
+      }
+    }
+
+    &.desktop-header {
+      @media (max-width: $breakpoint-sm) {
+        display: none;
+      }
+    }
+
+    &.mobile-header{
+      height: 60px;
+      justify-content: center;
+
+      .menu-opener{
+        cursor: pointer;
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .cart{
+        color: $font-color;
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .counter {
+          position: absolute;
+          background-color: $base-green;
+          opacity: 0.8;
+          padding: 0 7px;
+          color: white;
+          font-size: 10px;
+          display: block;
+          border-radius: 10px;
+          top: -10px;
+          right: -10px;
+        }
+      }
+
+      align-items: center;
+
+      @media (min-width: $breakpoint-sm) {
+        display: none;
+      }
+    }
+  }
+}
+
+.menu{
+  .button-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-item {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: $font-color;
+    margin-right: 30px;
+    text-transform: uppercase;
+    padding: 10px;
+
+    &.active {
+      border-bottom: 4px solid $green-line;
+    }
+
+  }
+}
