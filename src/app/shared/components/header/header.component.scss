@@ -14,17 +14,27 @@
   @media (max-width: $breakpoint-lg) {
     padding-bottom: 10px;
   }
+
   @media (max-width: $breakpoint-sm) {
     padding-bottom: 0;
   }
+
+  display: flex;
+  align-items: center;
 
   .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     max-width: 1280px;
     width: 80%;
     margin: 0 auto;
+
+    height: 60px;
+    @media (max-width: $breakpoint-lg) {
+      height: 100px;
+    }
 
     .actions {
       display: flex;
@@ -60,60 +70,22 @@
       width: 90%;
     }
 
-    &.desktop-header {
-      @media (max-width: $breakpoint-sm) {
-        display: none;
-      }
-    }
-
-    &.mobile-header{
-      .menu-opener{
-        cursor: pointer;
-        position: absolute;
-        left: 30px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .cart{
-        color: $font-color;
-        cursor: pointer;
-        position: absolute;
-        right: 30px;
-        top: 50%;
-        transform: translateY(-50%);
-
-        .counter {
-          position: absolute;
-          background-color: $base-green;
-          opacity: 0.8;
-          padding: 0 7px;
-          color: white;
-          font-size: 10px;
-          display: block;
-          border-radius: 10px;
-          top: -10px;
-          right: -10px;
-        }
-      }
-
-      align-items: center;
-
-      @media (min-width: $breakpoint-sm) {
-        display: none;
-      }
-    }
-
     .logo-container {
+      height: 100%;
+      width: auto;
+      padding: 6px 0;
       cursor: pointer;
-      display: inline-block;
 
-      @media (min-width: $breakpoint-md) {
-        margin-right: 50px;
+      @media (max-width: $breakpoint-lg) {
+        height: 60%;
+        padding: 10px 0;
       }
-
-      .logo {
-        height: 69px;
+      @media (max-width: $breakpoint-sm) {
+        padding: 0
+      }
+      .logo{
+        width: 100%;
+        height: 100%;
       }
     }
 
@@ -159,6 +131,53 @@
         &.logout {
           margin-left: 30px;
         }
+      }
+    }
+
+    &.desktop-header {
+      @media (max-width: $breakpoint-sm) {
+        display: none;
+      }
+    }
+
+    &.mobile-header{
+      height: 60px;
+      justify-content: center;
+
+      .menu-opener{
+        cursor: pointer;
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .cart{
+        color: $font-color;
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .counter {
+          position: absolute;
+          background-color: $base-green;
+          opacity: 0.8;
+          padding: 0 7px;
+          color: white;
+          font-size: 10px;
+          display: block;
+          border-radius: 10px;
+          top: -10px;
+          right: -10px;
+        }
+      }
+
+      align-items: center;
+
+      @media (min-width: $breakpoint-sm) {
+        display: none;
       }
     }
   }

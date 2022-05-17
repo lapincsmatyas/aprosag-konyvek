@@ -1,5 +1,6 @@
 <div class="item-page-container" *ngIf="item">
   <div class="item-container">
+    <!--
     <div class="mobile-title-container">
       <div class="title">
         <span class="title-text">{{item.title}}</span>
@@ -9,6 +10,7 @@
         {{item.subtitle}}
       </div>
     </div>
+    -->
     <div class="images">
       <div class="main-image-container" *ngIf="item.image_urls">
         <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg" (click)="previousImage()"/>
@@ -27,13 +29,20 @@
       <span class="title-container">
           <div class="title">
             <span class="title-text">{{item.title}}</span>
-            <aprosag-favorite [item]="item"></aprosag-favorite>
+            <aprosag-favorite class="favorite-icon" [item]="item"></aprosag-favorite>
       </div>
       <div class="subtitle">
         {{item.subtitle}}
       </div>
-
       </span>
+
+      <div class="price-container mobile" >
+        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
+        <span *ngIf="item.discount_percentage"
+              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+        <span class="original_price"
+              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+      </div>
 
       <div class="description">
         {{item.description}}

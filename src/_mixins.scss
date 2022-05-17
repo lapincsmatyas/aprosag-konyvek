@@ -15,6 +15,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   height: $button-height;
 
   border: none;
+  outline: none;
   cursor: pointer;
   color: $color;
   text-align: center;
@@ -23,17 +24,16 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   text-transform: uppercase;
   box-shadow: 0 0 13px -5px #000000;
 
+
   &:disabled{
     background-color: $disabled-button;
     cursor: default;
   }
 
   &:active {
-    border: none;
     box-shadow: 0 0 13px -8px #000000;
   }
 }
-
 @mixin input-field {
   width: 100%;
   margin-top: 5px;
@@ -44,14 +44,19 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   background-color: white;
   border-radius: 30px;
 }
-
-@mixin title{
+@mixin title {
   line-height: 1;
   font-size: $title-size;
   font-weight: 900;
   color: $font-color;
-}
+  text-align: center;
+  padding: 36px 0;
 
+  @media (max-width: $breakpoint-sm) {
+    font-size: $title-size-mobile;
+    padding: 60px 0;
+  }
+}
 @mixin subtitle{
   line-height: 1;
   font-size: $subtitle-size;
@@ -61,7 +66,6 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   color: $font-color;
 
 }
-
 @mixin background($background-image){
   background-color: white;
   background-image: url($background-image),
@@ -73,3 +77,11 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   background-position: top left, left -20px top 10px, right 20px top 400px, left -20px top 2000px, right -20px top 3000px;
   background-repeat: no-repeat;
 }
+
+ @mixin pagesize{
+   width: $content-percentage-width;
+   max-width: $content-max-width;
+   @media (max-width: $breakpoint-sm) {
+     width: $content-percentage-width-mobile;
+   }
+ }

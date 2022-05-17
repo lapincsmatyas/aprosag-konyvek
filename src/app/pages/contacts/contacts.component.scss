@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 35px;
 
   @include background('/assets/Backgrounds/Contact_BG.svg');
 
@@ -17,11 +16,14 @@
     width: $content-percentage-width;
     max-width: $content-max-width;
 
+    padding: 0 15px 15px;
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+    }
+
     .title {
-      font-size: 2.5em;
-      line-height: 1;
-      text-align: center;
-      margin: 48px;
+      @include title;
     }
 
     .content-container{
@@ -70,11 +72,8 @@
           }
         }
 
-        input[type='button'] {
+        .button {
           @include button;
-          width: 50%;
-          margin-right: 0;
-          margin-left: auto;
         }
       }
 
@@ -86,8 +85,7 @@
         }
 
         .subtitle{
-          font-weight: 900;
-          margin: 18px 0;
+          @include subtitle
         }
 
         .email{

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {Item} from "../../model/item.model";
 import * as itemsJson from "./items.json"
-import {collection, Firestore, getDocs} from "@angular/fire/firestore";
+import {addDoc, collection, Firestore, getDocs} from "@angular/fire/firestore";
 import {ItemDto} from "../../model/dto/item.dto";
 import {LoadingService} from "../loading/loading.service";
 
@@ -16,6 +16,8 @@ export class ItemsService {
   public items: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
 
   constructor(private firestore: Firestore, private loadingService: LoadingService) {
+    this.initializeItems();
+
     loadingService.addProcess('get-items');
     getDocs<ItemDto>(collection(firestore, `items`)).then((items) => {
       loadingService.removeProcess('get-items');
@@ -30,7 +32,18 @@ export class ItemsService {
   }
 
   getItemById(id: string): Item | undefined {
+
     return this.items.value.find((item) => item.id === id);
+  }
+
+  initializeItems() {
+    getDocs<ItemDto>(collection(this.firestore, `items`)).then((items) => {
+      if (items.docs.length == 0) {
+        this.itemsData.forEach((itemData: any) => {
+          addDoc(collection(this.firestore, 'items'), itemData);
+        });
+      }
+    });
   }
 
   getItemsByIds(ids: string[]): Item[] {

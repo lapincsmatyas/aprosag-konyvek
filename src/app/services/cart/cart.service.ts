@@ -18,6 +18,8 @@ const shippingTypes: ShippingType[] = [
   providedIn: 'root'
 })
 export class CartService {
+
+
   private cart: Map<string, CartItem>;
 
   public shippingTypes: ShippingType[] = [];
@@ -43,15 +45,14 @@ export class CartService {
   }
 
   get value(): number {
-    let sum = 0;
-    Array.from(this.cart.values()).forEach((item) => {
-      if (item?.item?.price)
-        sum += item.amount * item.item.price;
-    })
-    return sum;
+    return Array.from(this.cart.values()).reduce((previousPrice, item) => {
+      let actualPrice = item?.item?.price ? (item.amount * item.item.price) : 0;
+      return actualPrice  + previousPrice;
+    }, 0)
   }
 
   constructor(private userService: UserService, private authService: AuthService) {
+
     if (localStorage.getItem(CART_KEY))
       this.cart = new Map(JSON.parse(localStorage.getItem(CART_KEY) || ""));
     else
@@ -61,8 +62,6 @@ export class CartService {
     this.selectedShippingType = null;
 
     this.userService.user.subscribe((user) => {
-      console.log("wtf");
-
       if(user){
         if(this.cart.size > 0){
           this.initCart(Array.from(this.cart.values()))
@@ -72,6 +71,7 @@ export class CartService {
         }
       }
     })
+
   }
 
   initCart(cartItems: CartItem[] = []){
@@ -81,20 +81,18 @@ export class CartService {
   }
 
   addItemToCart(item: Item, amount: number): CartItem {
-    let cartItem = this.cart.get(item.id);
+    const cartItem = this.cart.get(item.id);
 
-    if(cartItem === undefined){
-      cartItem = {item, amount}
-    } else {
-      cartItem = {item, amount: cartItem.amount + amount};
-    }
-    this.cart.set(item.id, cartItem);
+    let updatedCartItem = cartItem === undefined ?
+      {item, amount} :
+      {item, amount: cartItem.amount + amount};
+
+    this.cart.set(item.id, updatedCartItem);
 
     this.updateStorage();
     this.updateUserCart();
 
-
-    return cartItem;
+    return updatedCartItem
   }
 
   removeAllOfTypeFromCart(item: CartItem) {
@@ -143,8 +141,7 @@ export class CartService {
   updateUserCart(){
     if(this.userService.user.value) {
       const cartItems: CartItem[] = Array.from(this.cart.values());
-      this.userService.updateCart(cartItems).then(() => {
-      })
+      this.userService.updateCart(cartItems);
     }
   }
 }

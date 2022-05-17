@@ -1,10 +1,11 @@
 import {Component, ElementRef, NgModule} from '@angular/core';
 import {CartService} from "../../../../services/cart/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
 import {CartItem} from "../../../../model/cart-item.model";
+import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.component";
 
 @Component({
   selector: 'aprosag-cart-modal',
@@ -17,18 +18,24 @@ export class CartModalComponent  {
   constructor(public cartService: CartService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
+              private activatedModal: NgbActiveModal,
               private modalService: NgbModal) { }
 
   openCart() {
-    //TODO: solve with self reference modal
-    this.modalService.dismissAll();
+    this.activatedModal.close();
     this.router.navigateByUrl('cart');
   }
 
   deleteItemFromCart(item: CartItem) {
-    this.cartService.removeAllOfTypeFromCart(item);
-    if(this.cartService.count == 0){
-      this.router.navigateByUrl('items');
-    }
+    let modalRef = this.modalService.open(ConfirmationComponent, {
+      backdropClass: 'modal-dialog-backdrop',
+      modalDialogClass: 'modal-dialog-centered'
+    });
+    modalRef.componentInstance.text = "Biztos törlöd a terméket a kosárból?";
+
+    modalRef.closed.subscribe(result => {
+      if(!result) return;
+      this.cartService.removeAllOfTypeFromCart(item);
+    })
   }
 }

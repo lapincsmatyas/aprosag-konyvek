@@ -5,11 +5,10 @@
       <div class="side-menu">
         <div *ngFor="let menu of menus" class="nav-item" routerLinkActive="selected"
              [routerLink]="menu.url">{{menu.text}}</div>
-        <div class="nav-item" (click)="authService.logout()">Kijelentkezés</div>
+        <div class="nav-item" (click)="logout()">Kijelentkezés</div>
       </div>
       <div class="content">
         <router-outlet></router-outlet>
-
       </div>
     </div>
   </div>

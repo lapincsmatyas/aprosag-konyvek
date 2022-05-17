@@ -73,7 +73,6 @@ export class UserService {
   }
 
   updateUserData(data: User) {
-    debugger;
     if (this.user.value) {
       return updateDoc(doc(this.firestore, `users/${this.user.value.uid}`), {...data}).then(result => {
         this.user.next({...data, uid: this.user.value?.uid || ""});

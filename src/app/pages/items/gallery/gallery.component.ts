@@ -3,6 +3,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@a
 // import Swiper core and required modules
 import SwiperCore, {Pagination, Navigation, SwiperOptions, Autoplay} from 'swiper';
 import Swiper from "swiper";
+import {Router} from "@angular/router";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
@@ -15,26 +16,31 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 export class GalleryComponent {
   config: SwiperOptions = {
     navigation: true,
+    spaceBetween: 30,
+    pagination: {clickable: true},
     autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+      delay: 5000,
       pauseOnMouseEnter: true
     },
   };
 
-  sliderImages: string[] = [
-    'Product_1/4.jpg',
-    'Product_2/4.jpg',
-    'Product_3/4.jpg',
-    'Product_4/4.jpg',
+  sliderImages: { image: string, url?: string, site?: string }[] = [
+    {image: 'Slider/Slider_1.jpg', url: '/items/JTr5jLNLKU4n14BWyjtG'},
+    {image: 'Slider/Slider_2.jpg', url: '/items/6D55n8mtvHT2EKDzQTkn'},
+    {image: 'Slider/Slider_3.jpg', site: 'https://www.udvarbongeszo.aprosagkonyvek.hu/'},
+    {image: 'Slider/Slider_4.jpg', site: 'https://www.udvarbongeszo.aprosagkonyvek.hu/'}
   ];
 
-  actImage: number = 0;
+  constructor(private router: Router) {
+  }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
-
-  imageChanged([swiper]: Swiper[]) {
-    this.actImage = swiper.activeIndex;
-    this.changeDetectorRef.detectChanges();
+  openUrl(sliderImage: { image: string, url?: string, site?: string }) {
+    if(sliderImage.site) {
+      window.open(sliderImage.site);
+      return;
+    } else if(sliderImage.url) {
+      this.router.navigateByUrl(sliderImage.url);
+      return;
+    }
   }
 }

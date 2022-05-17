@@ -5,6 +5,10 @@ import {CartItem} from "../../model/cart-item.model";
 import {Router} from "@angular/router";
 
 import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
+import firebase from "firebase/compat";
+import Item = firebase.analytics.Item;
 
 @Component({
   selector: 'aprosag-cart',
@@ -14,10 +18,22 @@ import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 export class CartComponent  {
   faTimesCircle = faTimesCircle;
 
-  constructor(public cartService: CartService, public imageCache: ImageCacheService, private router: Router) { }
+  constructor(public cartService: CartService,
+              public imageCache: ImageCacheService,
+              private router: Router,
+              private modalService: NgbModal) { }
 
   removeItemFromCart(item: CartItem) {
-    this.cartService.removeAllOfTypeFromCart(item);
+    let modalRef = this.modalService.open(ConfirmationComponent, {
+      backdropClass: 'modal-dialog-backdrop',
+      modalDialogClass: 'modal-dialog-centered'
+    });
+    modalRef.componentInstance.text = "Biztos törölni szeretnéd a terméket a kosárból?";
+    modalRef.closed.subscribe(result => {
+      if(!result) return;
+
+      this.cartService.removeAllOfTypeFromCart(item);
+    })
   }
 
   goToDesk() {
@@ -29,13 +45,17 @@ export class CartComponent  {
       return;
 
     if(item.amount > newValue){
-      item = this.cartService.removeItemCart(item);
-    } else {
-      item = this.cartService.addItemToCart(item.item, 1);
+      this.cartService.removeItemCart(item);
+    } else if(item.amount < newValue) {
+      this.cartService.addItemToCart(item.item, 1);
     }
   }
 
   continueShopping() {
     this.router.navigateByUrl("items");
+  }
+
+  openItemPage(item: Item) {
+    this.router.navigateByUrl(`items/${item.id}`)
   }
 }

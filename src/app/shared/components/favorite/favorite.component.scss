@@ -1,0 +1,20 @@
+.favorite-container{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: block;
+
+  .favourite{
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    opacity: 1;
+
+    transition: opacity 200ms;
+
+    &.hidden{
+      opacity: 0;
+    }
+  }
+}

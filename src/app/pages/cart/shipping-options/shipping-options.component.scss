@@ -6,7 +6,10 @@
 
   .input-field{
     display: flex;
-    align-items: center;
+
+    .radio-button{
+      margin-top: 5px;
+    }
   }
 
   .option-label{

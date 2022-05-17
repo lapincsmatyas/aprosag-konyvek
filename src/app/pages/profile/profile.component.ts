@@ -12,6 +12,9 @@ import {UserService} from "../../services/user/user.service";
 import {ItemsService} from "../../services/item/items.service";
 import {Item} from "../../model/item.model";
 import {CartService} from "../../services/cart/cart.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
+import {EmailSentComponent} from "../contacts/email-sent/email-sent.component";
 
 @Component({
   selector: 'aprosag-profile',
@@ -28,12 +31,24 @@ export class ProfileComponent {
               public userService: UserService,
               private toastr: ToastrService,
               public authService: AuthService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private modalService: NgbModal) {
   }
 
   logout() {
-    this.authService.logout().then(() => {
-      this.cartService.emptyCart();
+    console.log("lol");
+    let modalRef = this.modalService.open(ConfirmationComponent, {
+      backdropClass: 'modal-dialog-backdrop',
+      modalDialogClass: 'modal-dialog-centered'
     });
+    modalRef.componentInstance.title = "Biztos?";
+    modalRef.componentInstance.text = "Biztos ki szeretnél jelentkezni?";
+    modalRef.closed.subscribe((result: boolean) => {
+      if(!result) return;
+
+      this.authService.logout().then(() => {
+        this.cartService.emptyCart();
+      });
+    })
   }
 }

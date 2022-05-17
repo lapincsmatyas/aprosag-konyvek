@@ -41,9 +41,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password).then((credential) => {
-        sendEmailVerification(credential.user).then((result) => {
-          console.log("user verification email sent");
-        })
+        sendEmailVerification(credential.user)
       }
     );
   }

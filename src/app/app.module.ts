@@ -50,6 +50,8 @@ import { OrdersComponent } from './pages/profile/orders/orders.component';
 import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data.component";
 import { GalleryComponent } from './pages/items/gallery/gallery.component';
 import {SwiperModule} from "swiper/angular";
+import {EmailSentComponent} from "./pages/contacts/email-sent/email-sent.component";
+import { ConfirmationComponent } from './shared/popups/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import {SwiperModule} from "swiper/angular";
     FavoritesComponent,
     OrdersComponent,
     PersonalDataComponent,
-    GalleryComponent
+    EmailSentComponent,
+    GalleryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

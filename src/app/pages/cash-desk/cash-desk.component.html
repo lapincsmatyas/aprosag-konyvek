@@ -1,7 +1,7 @@
 <div class="cash-desk-page-container">
   <div class="cash-desk-page">
-
-    <mat-stepper linear #stepper>
+    <div class="title">Pénztár</div>
+    <mat-stepper [orientation]="(stepperOrientation | async)!" linear #stepper>
       <mat-step *ngIf="(authService.user$ | async) === null" class="step">
         <ng-template matStepLabel>Azonosítás</ng-template>
         <div class="auth-container">
@@ -84,8 +84,10 @@
             </form>
           </div>
           <div class="button-container">
-            <button mat-button class="button" matStepperNext>Tovább a fizetési módokhoz</button>
-            <button *ngIf="(authService.user$ | async) === null" mat-button class="button back" matStepperPrevious>Vissza az azonosításhoz</button>
+            <button mat-button class="button" matStepperNext>Tovább</button>
+            <button *ngIf="(authService.user$ | async) === null" mat-button class="button back" matStepperPrevious>
+              Vissza
+            </button>
           </div>
         </form>
       </mat-step>
@@ -95,11 +97,14 @@
         <aprosag-payment-options></aprosag-payment-options>
         <div class="button-container">
           <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
-          <button mat-button class="button back" matStepperPrevious>Vissza a számlázási adatokhoz</button>
+          <button mat-button class="button back" matStepperPrevious>Vissza</button>
         </div>
       </mat-step>
 
     </mat-stepper>
+    <div class="back-button-container">
+      <button class="button back" routerLink="/cart">Vissza</button>
+    </div>
     <div class="summary-container">
       <div class="header">
         <span class="text">Kosár összesen</span>
@@ -109,19 +114,21 @@
           <span class="amount">{{item.amount}}x</span>
           <span class="cart-item-image-container" *ngIf="item.item.image_urls">
               <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
-        </span>
+          </span>
           <span class="right">
-          <span class="cart-item-text-container">
-              <div>{{item.item.title}}</div>
-              <div class="price">{{item.item.price}} Ft</div>
+            <span class="cart-item-text-container">
+              <div class="summary-title">{{item.item.title}}</div>
+              <div class="price-container">
+                <div class="item-price">{{item.item.price}} Ft</div>
+                <div class="sum-price">
+                  {{(item.item.price || 0) * item.amount}} Ft
+                </div>
+              </div>
             </span>
-        <span class="price">
-              {{(item.item.price || 0) * item.amount}} Ft
-            </span>
-        </span>
 
+        </span>
         </div>
-        <div class="table-row"  *ngIf="cartService.selectedShippingType">
+        <div class="table-row" *ngIf="cartService.selectedShippingType">
           <span class="table-title">Szállítás</span>
           <span class="right">
           <span>{{cartService.selectedShippingType.name}}</span>
@@ -129,7 +136,7 @@
         </span>
 
         </div>
-        <div class="table-row"  *ngIf="cartService.selectedShippingType">
+        <div class="table-row" *ngIf="cartService.selectedShippingType">
           <span class="table-title">Összeg</span>
           <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
         </div>
