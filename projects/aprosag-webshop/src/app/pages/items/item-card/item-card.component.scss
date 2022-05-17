@@ -1,0 +1,124 @@
+@import "projects/aprosag-webshop/src/variables";
+@import "projects/aprosag-webshop/src/mixins";
+
+.item-card-container {
+  color: $font-color;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  height: 100%;
+
+
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 25px;
+
+    .image-container {
+      position: relative;
+
+      &:hover{
+        .view-overlay {
+          opacity: 1;
+        }
+      }
+
+      .view-overlay {
+        font-family: lato, Helvetica, sans-serif;
+
+        opacity: 0;
+        transition: opacity 0.2s;
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(black, 0.4);
+
+        .view-text {
+          font-weight: 400;
+          color: white;
+        }
+      }
+    }
+
+    .title-container {
+      margin-top: 25px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  .subtitle {
+    margin-top: 20px;
+    font-family: lato, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .item-card-image {
+    background-color: white;
+    width: 100%;
+  }
+
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 15px;
+
+    .prices-container {
+      .prices {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        width: 100%;
+        gap: 35px;
+        font-size: 20px;
+        font-family: lato, Helvetica, sans-serif;
+        font-weight: 600;
+
+        @media (max-width: $breakpoint-lg){
+          font-size: 18px;
+        }
+
+        @media (max-width: $breakpoint-md){
+          font-size: 16px;
+        }
+
+        .original_price.invalid {
+          text-decoration: line-through;
+        }
+
+        .discount {
+          color: $red-text;
+        }
+      }
+    }
+
+    .button-container {
+      width: 100%;
+
+      .button {
+        width: 100%;
+        @include button;
+        margin: 0 auto;
+      }
+    }
+  }
+
+}

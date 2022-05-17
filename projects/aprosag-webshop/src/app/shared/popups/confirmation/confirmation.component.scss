@@ -1,0 +1,40 @@
+@import "projects/aprosag-webshop/src/mixins";
+@import "projects/aprosag-webshop/src/variables";
+
+.confirmation-dialog{
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: $font-color;
+  gap: 20px;
+
+  .title{
+    @include title;
+    text-align: center;
+    padding: 10px;
+  }
+
+
+  .button-container{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    gap: 40px;
+
+    .button{
+      width: 100%;
+
+      &.primary{
+        @include button;
+      }
+
+      &.secondary{
+        @include button($font-color);
+      }
+    }
+  }
+}
