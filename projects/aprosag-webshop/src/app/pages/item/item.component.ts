@@ -30,6 +30,7 @@ export class ItemComponent {
               private cartService: CartService,
               private modalService: NgbModal,
               private cdRef: ChangeDetectorRef,
+              public userService: UserService,
               private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {

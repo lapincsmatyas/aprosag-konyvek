@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart/cart.service";
 import {AddedToCartComponent} from "../../../shared/popups/added-to-cart/added-to-cart.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'aprosag-item-card',
@@ -17,6 +18,7 @@ export class ItemCardComponent {
   isFavourite = false;
 
   constructor(private router: Router,
+              public userService: UserService,
               private cartService: CartService,
               private modalService: NgbModal) {
     this.item = new Item();

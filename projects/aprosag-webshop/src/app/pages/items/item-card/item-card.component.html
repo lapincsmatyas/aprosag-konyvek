@@ -11,7 +11,7 @@
         <div>
           {{item.title}}
         </div>
-        <aprosag-favorite [item]="item"></aprosag-favorite>
+        <aprosag-favorite *ngIf="userService.user | async" [item]="item"></aprosag-favorite>
       </div>
       <div class="subtitle">{{item.subtitle}}</div>
     </div>
