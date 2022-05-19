@@ -8,13 +8,8 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword
 } from "@angular/fire/auth";
-import {arrayUnion, collection, doc, docData, Firestore, setDoc, updateDoc} from "@angular/fire/firestore";
-import {CollectionReference} from "@firebase/firestore";
-import {DocumentData, DocumentReference} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
-import {Item} from "../../model/item.model";
 import {UserDto} from "../../model/dto/user.dto";
-import {UserService} from "../user/user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +47,7 @@ export class AuthService {
 
   logout() {
     return this.auth.signOut().then(() => {
-      this.router.navigateByUrl('login');
+      this.router.navigateByUrl('auth/login');
     });
   }
 }

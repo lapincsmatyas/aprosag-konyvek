@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
+import {UserService} from "../user/user.service";
+import {AuthService} from "../auth/auth.service";
 import {CartItem, ShippingType} from "../../model/cart-item.model";
 import {Item} from "../../model/item.model";
-import {UserService} from "../user/user.service";
-import {CartItemDto} from "../../model/dto/cart.dto";
-import {ItemsService} from "../item/items.service";
-import {AuthService} from "../auth/auth.service";
 
 const CART_KEY = 'aprosag_cart';
 

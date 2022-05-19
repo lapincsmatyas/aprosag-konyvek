@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {of} from "rxjs";
 import {CollectionReference} from "@firebase/firestore";
 import {addDoc, collection, Firestore} from "@angular/fire/firestore";
 import {Newsletter} from "../../model/newsletter.model";

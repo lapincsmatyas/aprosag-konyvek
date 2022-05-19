@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Order, OrderState, PaymentType} from "../../model/order.model";
 import {addDoc, collection, collectionData, Firestore, query, where} from "@angular/fire/firestore";
 import {CollectionReference, Timestamp} from "@firebase/firestore";
-import {User} from "../../model/user.model";
 import {CartService} from "../cart/cart.service";
-import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../user/user.service";
 import {throwError} from "rxjs";
 import {LoadingService} from "../loading/loading.service";
+import {Order, OrderState, PaymentType} from "../../model/order.model";
+import {User} from "../../model/user.model";
 
 @Injectable({
   providedIn: 'root'

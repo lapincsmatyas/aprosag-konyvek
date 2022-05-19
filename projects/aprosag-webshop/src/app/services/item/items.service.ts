@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
-import {Item} from "../../model/item.model";
+import {BehaviorSubject} from "rxjs";
 import * as itemsJson from "./items.json"
 import {addDoc, collection, Firestore, getDocs} from "@angular/fire/firestore";
-import {ItemDto} from "../../model/dto/item.dto";
 import {LoadingService} from "../loading/loading.service";
+import {Item} from "../../model/item.model";
+import {ItemDto} from "../../model/dto/item.dto";
 
 
 @Injectable({

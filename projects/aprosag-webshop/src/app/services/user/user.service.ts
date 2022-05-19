@@ -1,12 +1,12 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from "../auth/auth.service";
-import {User} from "../../model/user.model";
 import {arrayRemove, arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc} from "@angular/fire/firestore";
+import {BehaviorSubject, throwError} from "rxjs";
+import {ToastrService} from "ngx-toastr";
+import {User} from "../../model/user.model";
 import {UserDto} from "../../model/dto/user.dto";
-import {BehaviorSubject, Observable, throwError} from "rxjs";
 import {Item} from "../../model/item.model";
 import {CartItem} from "../../model/cart-item.model";
-import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
