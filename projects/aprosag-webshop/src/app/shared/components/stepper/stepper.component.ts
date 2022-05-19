@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {debug} from "util";
 
@@ -7,12 +7,12 @@ import {debug} from "util";
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent  {
+export class StepperComponent implements OnInit {
   @Input()
-  value: number;
+  value: number = 0;
 
   @Input()
-  allowZero: boolean;
+  allowZero: boolean = false;
 
   @Input()
   maxValue: number | undefined;
@@ -21,13 +21,13 @@ export class StepperComponent  {
   valueChange = new EventEmitter<number>();
 
   constructor() {
-    this.allowZero = false;
+  }
+
+  ngOnInit(): void {
     this.value = this.allowZero ? 0 : 1;
   }
 
   changeValue(amount: number){
-    console.log(this.maxValue);
-
     this.value += amount;
     if(this.maxValue && this.value > this.maxValue){
       this.value = this.maxValue;
@@ -41,5 +41,4 @@ export class StepperComponent  {
 
     this.valueChange.emit(this.value);
   }
-
 }
