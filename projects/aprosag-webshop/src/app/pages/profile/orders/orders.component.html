@@ -16,7 +16,7 @@
       <tr>
         <td>
                   <span class="order-number" *ngIf="order.order.orderNumber">
-                    <a (click)="order.open = !order.open"> #{{order.order.orderNumber.toString()?.slice(order.order.orderNumber.toString().length - 5)}}</a>
+                    <a (click)="order.open = !order.open"> #{{order.order.orderNumber.toString().slice(order.order.orderNumber.toString().length - 5)}}</a>
                   </span>
         </td>
         <td>{{order.order.date?.toDate() | date}}</td>

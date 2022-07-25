@@ -14,6 +14,8 @@ import {LoadingService} from "../../services/loading/loading.service";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {Order} from "../../model/order.model";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -102,7 +104,7 @@ export class CashDeskComponent implements AfterViewInit {
   sendOrder() {
     this.loadingService.addProcess('send-order', {transparent: true});
 
-    this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)
+    this.orderService.placeOrder(this.profileForm.value as User, this.profileForm.get('comment')?.value || "")
       ?.then((result) => {
         this.loadingService.removeProcess('send-order');
         const modalRef = this.modalService.open(SuccessfulOrderComponent, {
@@ -124,7 +126,11 @@ export class CashDeskComponent implements AfterViewInit {
   }
 
   login() {
-    this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
+    const email = this.loginForm.get('password')?.value;
+    const password = this.loginForm.get('password')?.value;
+    if(!email || !password) return;
+
+    this.authService.login(email, password).then((result) => {
     }, (error) => {
       this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
     })

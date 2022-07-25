@@ -26,20 +26,23 @@ export class RegisterComponent {
   }
 
   signup() {
+    const email = this.registerForm.get('email')?.value || "";
+    const password = this.registerForm.get('password')?.value || "";
+
     if (!this.registerForm.get('email')?.valid) {
       this.toastr.error('Hibás email cím!');
       return;
-    } else if (this.registerForm.get('password')?.value !== this.registerForm.get('confirmPassword')?.value) {
+    } else if (password !== this.registerForm.get('confirmPassword')?.value) {
       this.toastr.error('A két jelszó nem egyezik meg!');
       return;
-    } else if(this.registerForm.get('password')?.value.length < 6){
+    } else if (password.length < 6) {
       this.toastr.error('A jelszónak legalább 6 karakter hosszúnak kell lennie!');
       return;
     }
 
-
     this.loadingService.addProcess('register');
-    this.authService.signup(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value).then((result) => {
+
+    this.authService.signup(email, password).then((result) => {
       this.loadingService.removeProcess('register');
       this.toastr.success('Sikeres regisztráció!');
       this.router.navigateByUrl('items');

@@ -59,7 +59,7 @@ export class PersonalDataComponent implements OnInit {
 
 
   saveData() {
-    this.userService.updateUserData(this.profileForm.value).then(() => {
+    this.userService.updateUserData(this.profileForm.value as User).then(() => {
       this.toastr.success('Profil sikeresen elmentve!');
     }).catch(() => {
       this.toastr.error('Sajnáljuk, valami hiba történt :(');

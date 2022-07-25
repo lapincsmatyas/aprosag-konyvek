@@ -3,7 +3,7 @@
   <div class="dialog-title">Sikeresen hozzáadtad a kosaradhoz!</div>
   <div class="content">
     <div class="image-container" >
-      <img class="image" [src]="'assets/' + item.image_urls?.[0]"/>
+      <img class="image" [src]="'assets/' + item.image_urls[0]"/>
     </div>
     <div class="details">
       <div class="title-container">
@@ -29,7 +29,7 @@
       </div>
       <div class="split sum-container">
         <div class="sum-text">Összesen</div>
-        <div class="sum-amount">{{(item?.price || 1) * amount}} Ft</div>
+        <div class="sum-amount">{{(item.price || 1) * amount}} Ft</div>
       </div>
     </div>
   </div>
