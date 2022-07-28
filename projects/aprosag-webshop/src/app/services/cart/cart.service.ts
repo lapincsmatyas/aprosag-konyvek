@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
-import {CartItem, ShippingType} from "../../model/cart-item.model";
-import {Item} from "../../model/item.model";
+import {DeprecatedCartItem, ShippingType} from "../../model/cart-item.model";
+import {DeprecatedItem} from "../../model/item.model";
 import {UserService} from "../user/user.service";
 import {CartItemDto} from "../../model/dto/cart.dto";
 import {ItemsService} from "../item/items.service";
 import {AuthService} from "../auth/auth.service";
+import {Item} from "../../store/item/item.model";
+import {Store} from "@ngrx/store";
+import {addCart, upsertCart} from "../../store/cart/cart.actions";
+import {CartItem} from "../../store/cart/cart.model";
+import {of} from "rxjs";
 
 const CART_KEY = 'aprosag_cart';
 
@@ -18,15 +23,13 @@ const shippingTypes: ShippingType[] = [
   providedIn: 'root'
 })
 export class CartService {
-
-
-  private cart: Map<string, CartItem>;
+  private cart: Map<string, DeprecatedCartItem>;
 
   public shippingTypes: ShippingType[] = [];
 
   public selectedShippingType: ShippingType | null;
 
-  get items(): CartItem[] {
+  get items(): DeprecatedCartItem[] {
     return Array.from(this.cart.values());
   }
 
@@ -51,12 +54,15 @@ export class CartService {
     }, 0)
   }
 
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private userService: UserService,
+              private authService: AuthService,
+              private store: Store<any>
+              ) {
 
     if (localStorage.getItem(CART_KEY))
       this.cart = new Map(JSON.parse(localStorage.getItem(CART_KEY) || ""));
     else
-      this.cart = new Map<string, CartItem>();
+      this.cart = new Map<string, DeprecatedCartItem>();
 
     this.shippingTypes = shippingTypes;
     this.selectedShippingType = null;
@@ -74,13 +80,26 @@ export class CartService {
 
   }
 
-  initCart(cartItems: CartItem[] = []){
+  initCart(cartItems: DeprecatedCartItem[] = []){
     cartItems.forEach((cartItem) => {
       this.cart.set(cartItem.item.id, cartItem);
     })
   }
 
-  addItemToCart(item: Item, amount: number): CartItem {
+  addItemToCart(item: Item, amount: number){
+    let cartItem: CartItem = {
+      id: item.id,
+      item: item,
+      amount,
+    }
+    this.store.dispatch(upsertCart({cartItem}));
+  }
+
+  deprecatedAddItemToCart(item: DeprecatedItem, amount: number): DeprecatedCartItem | null {
+    debugger;
+    this.addItemToCart(item, amount);
+    return null;
+    /*
     const cartItem = this.cart.get(item.id);
 
     let updatedCartItem = cartItem === undefined ?
@@ -93,9 +112,11 @@ export class CartService {
     this.updateUserCart();
 
     return updatedCartItem
+
+     */
   }
 
-  removeAllOfTypeFromCart(item: CartItem) {
+  removeAllOfTypeFromCart(item: DeprecatedCartItem) {
     const id = item.item.id;
     if (!id)
       return;
@@ -111,7 +132,7 @@ export class CartService {
     this.updateUserCart();
   }
 
-  removeItemCart(item: CartItem): CartItem | null {
+  removeItemCart(item: DeprecatedCartItem): DeprecatedCartItem | null {
     let cartItem = this.cart.get(item.item.id);
     if (cartItem === undefined)
       return null;
@@ -140,7 +161,7 @@ export class CartService {
 
   updateUserCart(){
     if(this.userService.user.value) {
-      const cartItems: CartItem[] = Array.from(this.cart.values());
+      const cartItems: DeprecatedCartItem[] = Array.from(this.cart.values());
       this.userService.updateCart(cartItems);
     }
   }

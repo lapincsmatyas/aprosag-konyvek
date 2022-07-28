@@ -1,5 +1,5 @@
 import {Roles} from "./roles.model";
-import {CartItem} from "./cart-item.model";
+import {DeprecatedCartItem} from "./cart-item.model";
 
 export class User {
   uid: string = "";
@@ -18,5 +18,5 @@ export class User {
   phoneNumber: string = "";
   emailVerified: boolean = false;
   favorites: string[] = [];
-  cart: CartItem[] = [];
+  cart: DeprecatedCartItem[] = [];
 }

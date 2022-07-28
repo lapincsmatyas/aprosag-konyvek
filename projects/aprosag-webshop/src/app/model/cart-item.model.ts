@@ -1,12 +1,12 @@
-import {Item} from "./item.model";
+import {DeprecatedItem} from "./item.model";
 
 export interface ShippingType {
   name: string,
   value: number
 }
 
-  export interface CartItem {
-    item: Item;
+  export interface DeprecatedCartItem {
+    item: DeprecatedItem;
     amount: number;
   }
 

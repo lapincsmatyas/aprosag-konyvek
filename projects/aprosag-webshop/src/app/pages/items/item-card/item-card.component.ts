@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from "../../../model/item.model";
+import {DeprecatedItem} from "../../../model/item.model";
 import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart/cart.service";
 import {AddedToCartComponent} from "../../../shared/popups/added-to-cart/added-to-cart.component";
@@ -12,14 +12,14 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class ItemCardComponent {
   @Input()
-  public item: Item;
+  public item: DeprecatedItem;
 
   isFavourite = false;
 
   constructor(private router: Router,
               private cartService: CartService,
               private modalService: NgbModal) {
-    this.item = new Item();
+    this.item = new DeprecatedItem();
   }
 
   openItem() {
@@ -27,7 +27,7 @@ export class ItemCardComponent {
   }
 
   addItemToCart() {
-    this.cartService.addItemToCart(this.item, 1);
+    this.cartService.deprecatedAddItemToCart(this.item, 1);
 
     const modalRef = this.modalService.open(AddedToCartComponent, {
       backdrop: true,

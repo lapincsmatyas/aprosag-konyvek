@@ -1,4 +1,4 @@
-<div class="item-page-container" *ngIf="item">
+<div class="item-page-container" *ngIf="(item$ | async) as item">
   <div class="item-container">
     <!--
     <div class="mobile-title-container">
@@ -13,8 +13,8 @@
     -->
     <div class="images">
       <div class="main-image-container" *ngIf="item.image_urls">
-        <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg" (click)="previousImage()"/>
-        <img class="arrow right" src="assets/Icons/Arrow_Line_Item.svg" (click)="nextImage()"/>
+        <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg"/>
+        <img class="arrow right" src="assets/Icons/Arrow_Line_Item.svg"/>
         <img class="main-image" [src]="'assets/' + item.image_urls[selectedImageIndex]"/>
       </div>
 
@@ -67,8 +67,7 @@
 
       <div class="cart-container">
         <aprosag-stepper [allowZero]="false" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
-        <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba
-        </button>
+        <button class="button add-to-cart" type="button" (click)="addItemToCart(item)" [disabled]="amount === 0">Kosárba</button>
       </div>
     </div>
   </div>

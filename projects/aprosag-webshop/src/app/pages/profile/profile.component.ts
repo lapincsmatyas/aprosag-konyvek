@@ -10,7 +10,7 @@ import {Order} from "../../model/order.model";
 import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../../services/user/user.service";
 import {ItemsService} from "../../services/item/items.service";
-import {Item} from "../../model/item.model";
+import {DeprecatedItem} from "../../model/item.model";
 import {CartService} from "../../services/cart/cart.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";

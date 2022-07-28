@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
-import {Item} from "../../model/item.model";
+import {Observable} from "rxjs";
 import * as itemsJson from "./items.json"
-import {addDoc, collection, Firestore, getDocs} from "@angular/fire/firestore";
+import {addDoc, collection, collectionData, docData, doc, Firestore, getDocs} from "@angular/fire/firestore";
 import {ItemDto} from "../../model/dto/item.dto";
-import {LoadingService} from "../loading/loading.service";
-
+import {Item} from "../../store/item/item.model";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -13,27 +12,24 @@ import {LoadingService} from "../loading/loading.service";
 export class ItemsService {
   itemsData: any = (itemsJson as any).default;
 
-  public items: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
-
-  constructor(private firestore: Firestore, private loadingService: LoadingService) {
-    this.initializeItems();
-
-    loadingService.addProcess('get-items');
-    getDocs<ItemDto>(collection(firestore, `items`)).then((items) => {
-      loadingService.removeProcess('get-items');
-      this.items.next(items.docs.map((reference) => {
-        let item = JSON.parse(JSON.stringify(reference.data()));
-        return {
-          ...item,
-          id: reference.id
-        };
-      }));
-    })
+  constructor(private firestore: Firestore) {
+    //this.initializeItems();
   }
 
-  getItemById(id: string): Item | undefined {
+  getAllItems(): Observable<Item[]> {
+    return collectionData(collection(this.firestore, 'items'), {idField: 'id'}).pipe(
+      map((items) =>
+        items.map((item) => {
+            return item as Item;
+          }
+        )
+      ))
+  }
 
-    return this.items.value.find((item) => item.id === id);
+  getItemById(id: string): Observable<Item | undefined> {
+    return docData(doc(this.firestore, `items/${id}`), {idField: 'id'}).pipe(
+      map((item) => item as Item)
+    )
   }
 
   initializeItems() {
@@ -44,12 +40,5 @@ export class ItemsService {
         });
       }
     });
-  }
-
-  getItemsByIds(ids: string[]): Item[] {
-    if (ids?.length === 0)
-      return [];
-
-    return this.items.value.filter((item) => ids?.includes(item.id || ""));
   }
 }

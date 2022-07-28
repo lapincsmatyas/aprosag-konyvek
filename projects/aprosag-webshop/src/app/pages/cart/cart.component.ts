@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {CartService} from "../../services/cart/cart.service";
 import {ImageCacheService} from "../../services/image-cache/image-cache.service";
-import {CartItem} from "../../model/cart-item.model";
+import {DeprecatedCartItem} from "../../model/cart-item.model";
 import {Router} from "@angular/router";
 
 import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +23,7 @@ export class CartComponent  {
               private router: Router,
               private modalService: NgbModal) { }
 
-  removeItemFromCart(item: CartItem) {
+  removeItemFromCart(item: DeprecatedCartItem) {
     let modalRef = this.modalService.open(ConfirmationComponent, {
       backdropClass: 'modal-dialog-backdrop',
       modalDialogClass: 'modal-dialog-centered'
@@ -40,14 +40,14 @@ export class CartComponent  {
     this.router.navigateByUrl("cash-desk");
   }
 
-  amountChanged(newValue: number, item: CartItem | null) {
+  amountChanged(newValue: number, item: DeprecatedCartItem | null) {
     if(!item)
       return;
 
     if(item.amount > newValue){
       this.cartService.removeItemCart(item);
     } else if(item.amount < newValue) {
-      this.cartService.addItemToCart(item.item, 1);
+      this.cartService.deprecatedAddItemToCart(item.item, 1);
     }
   }
 

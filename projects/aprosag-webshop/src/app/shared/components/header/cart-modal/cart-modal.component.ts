@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
-import {CartItem} from "../../../../model/cart-item.model";
+import {DeprecatedCartItem} from "../../../../model/cart-item.model";
 import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.component";
 
 @Component({
@@ -26,7 +26,7 @@ export class CartModalComponent  {
     this.router.navigateByUrl('cart');
   }
 
-  deleteItemFromCart(item: CartItem) {
+  deleteItemFromCart(item: DeprecatedCartItem) {
     let modalRef = this.modalService.open(ConfirmationComponent, {
       backdropClass: 'modal-dialog-backdrop',
       modalDialogClass: 'modal-dialog-centered'

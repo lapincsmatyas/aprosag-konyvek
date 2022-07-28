@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
-import {Item} from "../../../model/item.model";
+import {DeprecatedItem} from "../../../model/item.model";
 
 @Component({
   selector: 'aprosag-favorite',
@@ -9,7 +9,7 @@ import {Item} from "../../../model/item.model";
 })
 export class FavoriteComponent implements OnInit{
   @Input()
-  item: Item | null = null;
+  item: DeprecatedItem | null = null;
 
   isFavorite: boolean = false;
 

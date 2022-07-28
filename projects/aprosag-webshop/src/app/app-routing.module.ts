@@ -11,19 +11,28 @@ import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from "@angular/
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import {CashDeskComponent} from "./pages/cash-desk/cash-desk.component";
-import {ItemsResolverResolver} from './shared/resolvers/items-resolver.resolver';
+import {ItemsResolver} from './shared/resolvers/items-resolver.service';
 import {CashDeskGuardGuard} from "./shared/guards/cash-desk-guard.guard";
 import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data.component";
 import {OrdersComponent} from "./pages/profile/orders/orders.component";
 import {FavoritesComponent} from "./pages/profile/favorites/favorites.component";
+import {ItemResolver} from "./resolvers/item.resolver";
 
 const redirectLoggedInToProfile = () => redirectLoggedInTo(['profile']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
   {path: '', redirectTo: 'items', pathMatch: 'full'},
-  {path: 'items', component: ItemsComponent},
-  {path: 'items/:id', component: ItemComponent},
+  {
+    path: 'items',
+    component: ItemsComponent,
+    resolve: { items: ItemsResolver }
+  },
+  {
+    path: 'items/:id',
+    resolve: { item: ItemResolver },
+    component: ItemComponent
+  },
   {path: 'cart', component: CartComponent},
   {path: 'cash-desk', component: CashDeskComponent, canActivate: [CashDeskGuardGuard]},
   {path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToProfile)},

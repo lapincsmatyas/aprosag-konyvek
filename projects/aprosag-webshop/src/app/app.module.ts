@@ -52,6 +52,10 @@ import { GalleryComponent } from './pages/items/gallery/gallery.component';
 import {SwiperModule} from "swiper/angular";
 import {EmailSentComponent} from "./pages/contacts/email-sent/email-sent.component";
 import { ConfirmationComponent } from './shared/popups/confirmation/confirmation.component';
+import { StoreModule } from '@ngrx/store';
+import {CoreStoreModule} from "./store/core-store.module";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -112,7 +116,12 @@ import { ConfirmationComponent } from './shared/popups/confirmation/confirmation
     MatIconModule,
     FlexLayoutModule,
     MatSidenavModule,
-    SidebarModule
+    SidebarModule,
+
+    StoreModule.forRoot({}),
+    !environment.production ? StoreDevtoolsModule.instrument(): [],
+    EffectsModule.forRoot([]),
+    CoreStoreModule
   ],
   providers: [  ],
   bootstrap: [AppComponent]
