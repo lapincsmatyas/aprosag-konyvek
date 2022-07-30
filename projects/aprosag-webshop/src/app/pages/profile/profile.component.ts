@@ -36,7 +36,6 @@ export class ProfileComponent {
   }
 
   logout() {
-    console.log("lol");
     let modalRef = this.modalService.open(ConfirmationComponent, {
       backdropClass: 'modal-dialog-backdrop',
       modalDialogClass: 'modal-dialog-centered'
@@ -47,7 +46,7 @@ export class ProfileComponent {
       if(!result) return;
 
       this.authService.logout().then(() => {
-        this.cartService.emptyCart();
+        this.cartService.clearCart();
       });
     })
   }

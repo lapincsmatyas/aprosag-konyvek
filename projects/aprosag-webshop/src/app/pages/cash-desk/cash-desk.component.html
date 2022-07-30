@@ -2,40 +2,6 @@
   <div class="cash-desk-page">
     <div class="title">Pénztár</div>
     <mat-stepper [orientation]="(stepperOrientation | async)!" linear #stepper>
-      <mat-step *ngIf="(authService.user$ | async) === null" class="step">
-        <ng-template matStepLabel>Azonosítás</ng-template>
-        <div class="auth-container">
-          <div class="login-form-container">
-            <div class="title">Bejelentkezés</div>
-            <form class="login-form" [formGroup]="loginForm">
-              <div>
-                <input type="email" formControlName="email" placeholder="Email cím"/>
-              </div>
-              <div>
-                <input type="password" formControlName="password" placeholder="Jelszó"/>
-              </div>
-              <div class="forgotten-password-container">
-                <a class="forgotten-password" href="#">Elfelejtett jelszó?</a>
-              </div>
-              <div class="login-button-container">
-                <button class="button login-button" type="submit" (click)="login()">Bejelentkezés</button>
-                <button class="button back" type="submit" (click)="goToSignup()">Regisztáció</button>
-
-              </div>
-            </form>
-          </div>
-          <div class="guest-container">
-            <div class="title">Folytatás vendégként</div>
-            <div class="text">
-              <p>Semmi gond, ha még nincs nálunk felhasználói fiókja, tovább mehet a pénztárhoz vendégként.</p>
-              <p>A későbbi könnyebb és gyorsabb vásárláshoz javasoljuk a regisztrációt.</p>
-            </div>
-            <div class="button-container">
-              <button mat-button class="button back" matStepperNext>Folytatás vendégként</button>
-            </div>
-          </div>
-        </div>
-      </mat-step>
       <mat-step class="step">
         <form>
           <ng-template matStepLabel>Számlázási adatok</ng-template>
@@ -110,7 +76,7 @@
         <span class="text">Kosár összesen</span>
       </div>
       <div class="content">
-        <div class="table-row" *ngFor="let item of cartService.items">
+        <div class="table-row" *ngFor="let item of cartService.items$ | async">
           <span class="amount">{{item.amount}}x</span>
           <span class="cart-item-image-container" *ngIf="item.item.image_urls">
               <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
@@ -128,6 +94,7 @@
 
         </span>
         </div>
+        <!--
         <div class="table-row" *ngIf="cartService.selectedShippingType">
           <span class="table-title">Szállítás</span>
           <span class="right">
@@ -140,6 +107,7 @@
           <span class="table-title">Összeg</span>
           <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
         </div>
+        -->
       </div>
     </div>
   </div>

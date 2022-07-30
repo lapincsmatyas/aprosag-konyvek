@@ -1,30 +1,30 @@
 <div class="cart-modal-container">
   <div class="cart-modal-header">
     <span>Kosarad tartalma</span>
-    <span>{{this.cartService.count}} termék</span>
+    <span>{{this.cartService.count$ | async}} termék</span>
   </div>
-  <div *ngIf="this.cartService.count > 0">
+  <div *ngIf="(this.cartService.count$ | async)! > 0">
     <div class="cart-modal-item-list">
-      <ng-container *ngFor="let item of cartService.items">
+      <ng-container *ngFor="let cartItem of cartService.items$ | async">
         <div class="cart-item-container">
           <div class="cart-item">
-            <div class="cart-item-image-container" *ngIf="item.item.image_urls">
-              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
+            <div class="cart-item-image-container" *ngIf="cartItem.item.image_urls">
+              <img class="cart-item-image" [src]="'assets/' + cartItem.item.image_urls[0]"/>
             </div>
             <div class="cart-text-container">
               <div class="title-container">
                 <div class="titles">
-                  <div class="title">{{item.item.title}}</div>
-                  <div class="subtitle">{{item.item.subtitle}}</div>
+                  <div class="title">{{cartItem.item.title}}</div>
+                  <div class="subtitle">{{cartItem.item.subtitle}}</div>
                 </div>
-                <img class="delete-item" src="../../../../../assets/Icons/Delete_Cart.svg" height="30px" (click)="deleteItemFromCart(item)"/>
+                <img class="delete-item" src="../../../../../assets/Icons/Delete_Cart.svg" height="30px" (click)="deleteItemFromCart(cartItem.item)"/>
               </div>
               <div class="price-container">
                 <div class="amount">
-                  <span class="times">{{item.amount}}x</span>
-                  <span> {{item.item.price}} Ft</span>
+                  <span class="times">{{cartItem.amount}}x</span>
+                  <span> {{cartItem.item.price}} Ft</span>
                 </div>
-                <div class="sum-price">{{item.item.price ? item.amount * item.item.price : "0"}} Ft</div>
+                <div class="sum-price">{{cartItem.item.price ? cartItem.amount * cartItem.item.price : "0"}} Ft</div>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
       <div class="footer-content">
         <div class="price-container">
           <span>Részösszeg</span>
-          <span class="price">{{this.cartService.value}} Ft</span>
+          <span class="price">{{cartService.sumPrice$ | async}} Ft</span>
         </div>
         <button class="button" mat-button mat-raised-button color="primary" (click)="openCart()">Tovább a kosárhoz
         </button>

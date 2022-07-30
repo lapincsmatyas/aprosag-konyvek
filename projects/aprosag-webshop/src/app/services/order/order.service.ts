@@ -40,9 +40,7 @@ export class OrderService {
   }
 
   placeOrder(user: User, comment: string) {
-    if (this.cartService.count == 0 || !this.cartService.selectedShippingType)
-      return;
-
+    /*
     const date = new Date();
     const randomId = Math.floor(Math.random() * 100) + 100;
     const orderNumber =
@@ -73,6 +71,8 @@ export class OrderService {
         this.cartService.selectedShippingType = null;
         return orderNumber;
       });
+
+     */
   }
 
   getOrders() {

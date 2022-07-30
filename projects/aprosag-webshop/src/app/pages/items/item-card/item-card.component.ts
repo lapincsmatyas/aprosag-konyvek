@@ -27,7 +27,7 @@ export class ItemCardComponent {
   }
 
   addItemToCart() {
-    this.cartService.deprecatedAddItemToCart(this.item, 1);
+    this.cartService.addItemToCart(this.item, 1);
 
     const modalRef = this.modalService.open(AddedToCartComponent, {
       backdrop: true,

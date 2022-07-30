@@ -1,8 +1,8 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ItemsService} from "../../services/item/items.service";
 import {ActivatedRoute} from "@angular/router";
-import {map, switchMap} from "rxjs/operators";
-import {Observable, of} from "rxjs";
+import {map, switchMap, take, takeUntil} from "rxjs/operators";
+import {Observable, of, Subject} from "rxjs";
 import firebase from "firebase/compat";
 import {DeprecatedItem} from "../../model/item.model";
 import {ImageCacheService} from "../../services/image-cache/image-cache.service";
@@ -20,8 +20,10 @@ import {Item} from "../../store/item/item.model";
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent {
-  public item$: Observable<Item | undefined>;
+export class ItemComponent implements OnDestroy{
+  notifier = new Subject()
+
+  public item: Item | undefined;
   public selectedImageIndex = 0;
   amount = 1;
 
@@ -32,33 +34,33 @@ export class ItemComponent {
               private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.item$ = id ? this.itemRepository.getItemById$(id) : of(undefined);
+    if(id){
+      this.itemRepository.getItemById$(id).pipe(takeUntil(this.notifier)).subscribe(item => {
+        this.item = item;
+      });
+    }
   }
 
   selectImage(i: number) {
     this.selectedImageIndex = i;
   }
 
-  /*
   nextImage() {
     this.selectedImageIndex++;
-    console.log(this.selectedImageIndex)
     if (this.selectedImageIndex >= (this.item?.image_urls ? this.item?.image_urls.length : 0))
       this.selectedImageIndex = 0;
   }
-   */
 
-  /*
+
   previousImage() {
     this.selectedImageIndex--;
     if (this.selectedImageIndex < 0)
       this.selectedImageIndex = (this.item?.image_urls ? this.item?.image_urls.length - 1 : 0);
   }
-   */
 
   addItemToCart(item: Item) {
     if (item) {
-      this.cartService.deprecatedAddItemToCart(item, this.amount);
+      this.cartService.addItemToCart(item, this.amount);
 
       const modalRef = this.modalService.open(AddedToCartComponent, {
         backdrop: true,
@@ -74,5 +76,10 @@ export class ItemComponent {
 
   amountChanged(amount: number) {
     this.amount = amount;
+  }
+
+  ngOnDestroy() {
+    this.notifier.next(true);
+    this.notifier.complete();
   }
 }

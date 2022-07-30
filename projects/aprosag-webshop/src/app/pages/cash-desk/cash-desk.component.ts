@@ -102,8 +102,7 @@ export class CashDeskComponent implements AfterViewInit {
   }
 
   sendOrder() {
-    this.loadingService.addProcess('send-order', {transparent: true});
-
+    /*
     this.orderService.placeOrder(this.profileForm.value as User, this.profileForm.get('comment')?.value || "")
       ?.then((result) => {
         this.loadingService.removeProcess('send-order');
@@ -119,6 +118,8 @@ export class CashDeskComponent implements AfterViewInit {
         this.loadingService.removeProcess('send-order');
         this.toastr.error("Valami hiba történt a rendelés leadásakor!")
       });
+
+     */
   }
 
   goToSignup() {
