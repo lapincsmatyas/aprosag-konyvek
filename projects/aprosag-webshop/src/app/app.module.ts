@@ -56,6 +56,7 @@ import { StoreModule } from '@ngrx/store';
 import {CoreStoreModule} from "./store/core-store.module";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
+import { CartSummaryComponent } from './pages/cash-desk/cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import {EffectsModule} from "@ngrx/effects";
     PersonalDataComponent,
     EmailSentComponent,
     GalleryComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,

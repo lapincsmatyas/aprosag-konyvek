@@ -22,6 +22,6 @@ export const selectCount = createSelector(
 export const selectSumPrice = createSelector(
   selectCartState,
   state => {
-    return selectAll(state).reduce((acc, item) => acc + (item.item.price * item.amount), 0);
+    return selectAll(state).reduce((acc, item) => acc + ((item.item.price.discount_price || item.item.price.price) * item.amount), 0);
   }
 );

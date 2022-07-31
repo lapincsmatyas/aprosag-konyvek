@@ -45,16 +45,6 @@ export class PersonalDataComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.userService.user.subscribe((user) => {
-      this.profileForm.patchValue(user || new User());
-      if (user) {
-        this.orderService.getOrders().subscribe((orders) => {
-          this.orders = orders.map((order) => {
-            return {order, open: false}
-          });
-        });
-      }
-    })
   }
 
 

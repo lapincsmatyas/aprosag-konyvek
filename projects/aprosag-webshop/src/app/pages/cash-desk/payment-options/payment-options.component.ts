@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {OrderService} from "../../../services/order/order.service";
-import {CartService} from "../../../services/cart/cart.service";
-import {PaymentType} from "../../../model/order.model";
+import {PaymentType} from "../../../model/cart-item.model";
 
 @Component({
   selector: 'aprosag-payment-options',
@@ -9,15 +8,8 @@ import {PaymentType} from "../../../model/order.model";
   styleUrls: ['./payment-options.component.scss']
 })
 export class PaymentOptionsComponent  {
-  selectedPaymentType: PaymentType;
+  PaymentType = PaymentType;
 
-  constructor(public cartService: CartService,
-              public orderService: OrderService) {
-    this.selectedPaymentType = orderService.paymentTypes[0];
-
-    console.log(this.selectedPaymentType);
+  constructor(public orderService: OrderService) {
   }
-
-
-
 }

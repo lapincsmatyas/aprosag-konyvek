@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
-import {DeprecatedCartItem} from "../../../../model/cart-item.model";
 import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.component";
 import {Item} from "../../../../store/item/item.model";
 
@@ -14,8 +13,6 @@ import {Item} from "../../../../store/item/item.model";
   styleUrls: ['./cart-modal.component.scss']
 })
 export class CartModalComponent  {
-  faTimesCircle = faTimesCircle;
-
   constructor(public cartService: CartService,
               private activatedRoute: ActivatedRoute,
               private router: Router,

@@ -1,4 +1,4 @@
-<div class="item-card-container">
+<div class="item-card-container" *ngIf="item">
   <div class="item-card">
     <div class="item" (click)="openItem()">
       <div class="image-container">
@@ -18,11 +18,9 @@
     <div class="bottom-container">
       <div class="prices-container">
         <div class="prices" *ngIf="item.price">
-          <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-          <span *ngIf="item.discount_percentage"
-                class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+          <span *ngIf="item.price.discount_price" class="discount price">{{item.price.discount_price + " Ft"}}</span>
           <span class="original_price"
-                [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+                [ngClass]="{'invalid': item.price.discount_price}">{{(item.price.price) + " Ft"}}</span>
         </div>
       </div>
       <div class="button-container">

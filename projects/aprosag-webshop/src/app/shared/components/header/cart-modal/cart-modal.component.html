@@ -17,14 +17,15 @@
                   <div class="title">{{cartItem.item.title}}</div>
                   <div class="subtitle">{{cartItem.item.subtitle}}</div>
                 </div>
-                <img class="delete-item" src="../../../../../assets/Icons/Delete_Cart.svg" height="30px" (click)="deleteItemFromCart(cartItem.item)"/>
+                <img class="delete-item" src="../../../../../assets/Icons/Delete_Cart.svg" height="30px"
+                     (click)="deleteItemFromCart(cartItem.item)"/>
               </div>
               <div class="price-container">
                 <div class="amount">
                   <span class="times">{{cartItem.amount}}x</span>
-                  <span> {{cartItem.item.price}} Ft</span>
+                  <span>{{cartItem.item.price.discount_price || cartItem.item.price.price}} Ft</span>
                 </div>
-                <div class="sum-price">{{cartItem.item.price ? cartItem.amount * cartItem.item.price : "0"}} Ft</div>
+                <div class="sum-price">{{(cartItem.item.price.discount_price || cartItem.item.price.price) * cartItem.amount}} Ft</div>
               </div>
             </div>
           </div>

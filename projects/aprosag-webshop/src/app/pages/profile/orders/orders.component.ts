@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Order} from "../../../model/order.model";
 import {User} from "../../../model/user.model";
 import {UserService} from "../../../services/user/user.service";
@@ -10,12 +10,14 @@ import {OrderService} from "../../../services/order/order.service";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  public orders: {order: Order, open: boolean}[] = [];
+  public orders: { order: Order, open: boolean }[] = [];
 
   constructor(private userService: UserService,
-              private orderService: OrderService) { }
+              private orderService: OrderService) {
+  }
 
   ngOnInit(): void {
+    /*
     this.userService.user.subscribe((user) => {
       if (user) {
         this.orderService.getOrders().subscribe((orders) => {
@@ -25,6 +27,7 @@ export class OrdersComponent implements OnInit {
         });
       }
     })
+  */
   }
 
 }

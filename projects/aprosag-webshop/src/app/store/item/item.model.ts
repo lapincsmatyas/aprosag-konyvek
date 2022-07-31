@@ -11,8 +11,11 @@ export interface Item {
   weight: number;
   publication_date: number;
   storage_amount: number;
-  price: number;
-  discount_price: number;
-  discount_percentage?: number;
+  price: ItemPrice;
   image_urls: string[];
+}
+
+export interface ItemPrice{
+  price: number;
+  discount_price?: number;
 }

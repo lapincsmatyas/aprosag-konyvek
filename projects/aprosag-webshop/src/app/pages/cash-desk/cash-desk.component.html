@@ -51,9 +51,6 @@
           </div>
           <div class="button-container">
             <button mat-button class="button" matStepperNext>Tovább</button>
-            <button *ngIf="(authService.user$ | async) === null" mat-button class="button back" matStepperPrevious>
-              Vissza
-            </button>
           </div>
         </form>
       </mat-step>
@@ -62,39 +59,19 @@
         <div class="title">Fizetési módok</div>
         <aprosag-payment-options></aprosag-payment-options>
         <div class="button-container">
+          <button mat-button class="button" matStepperNext>Összesítés</button>
+          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+        </div>
+      </mat-step>
+      <mat-step class="step">
+        <ng-template matStepLabel>Összesítés</ng-template>
+        <div class="button-container">
           <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
           <button mat-button class="button back" matStepperPrevious>Vissza</button>
         </div>
       </mat-step>
 
-    </mat-stepper>
-    <div class="back-button-container">
-      <button class="button back" routerLink="/cart">Vissza</button>
-    </div>
-    <div class="summary-container">
-      <div class="header">
-        <span class="text">Kosár összesen</span>
-      </div>
-      <div class="content">
-        <div class="table-row" *ngFor="let item of cartService.items$ | async">
-          <span class="amount">{{item.amount}}x</span>
-          <span class="cart-item-image-container" *ngIf="item.item.image_urls">
-              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
-          </span>
-          <span class="right">
-            <span class="cart-item-text-container">
-              <div class="summary-title">{{item.item.title}}</div>
-              <div class="price-container">
-                <div class="item-price">{{item.item.price}} Ft</div>
-                <div class="sum-price">
-                  {{(item.item.price || 0) * item.amount}} Ft
-                </div>
-              </div>
-            </span>
-
-        </span>
-        </div>
-        <!--
+    </mat-stepper>  <!--
         <div class="table-row" *ngIf="cartService.selectedShippingType">
           <span class="table-title">Szállítás</span>
           <span class="right">
@@ -108,7 +85,9 @@
           <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
         </div>
         -->
-      </div>
+    <div class="back-button-container">
+      <button class="button back" routerLink="/cart">Vissza</button>
     </div>
+        <app-cart-summary></app-cart-summary>
   </div>
 </div>

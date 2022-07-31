@@ -167,7 +167,7 @@
       .mat-vertical-content-container {
         margin: 0;
 
-        &::before{
+        &::before {
           display: none;
         }
       }
@@ -267,7 +267,7 @@
     }
   }
 
-  .back-button-container{
+  .back-button-container {
     width: 100%;
     padding: 25px 0 25px 40px;
 
@@ -275,126 +275,12 @@
       padding-left: 16px;
     }
 
-    .button{
+    .button {
       width: 25%;
       @include button($font-color);
 
       @media (max-width: $breakpoint-md) {
         width: 50%;
-      }
-    }
-  }
-
-  .summary-container {
-    font-family: lato, Helvetica, sans-serif;
-
-    background-color: white;
-    max-width: 80%;
-    width: 700px;
-    margin: 25px auto;
-    font-weight: bold;
-
-    @media (max-width: $breakpoint-md) {
-      width: auto;
-      max-width: 100%;
-    }
-
-    .header {
-      padding: 15px 25px;
-      color: white;
-      background-color: $base-green;
-
-      .text {
-        font-size: 16px;
-      }
-    }
-
-    .content {
-      padding: 0 25px;
-
-      .table-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 700;
-        gap: 25px;
-
-
-        border-bottom: 1px solid black;
-        padding: 20px 0;
-
-        overflow: hidden;
-
-        .right {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 60%;
-
-          .cart-item-text-container{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 25px;
-          }
-
-          .summary-title{
-            font-weight: 800;
-          }
-
-          .price-container{
-            display: flex;
-            gap: 25px;
-          }
-        }
-
-        .cart-item-image-container {
-          height: 100px;
-
-          .cart-item-image {
-            height: 100%;
-          }
-
-          .cart-text-container {
-            flex-direction: column;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-left: 40px;
-            font-size: 18px;
-
-            .title-container {
-              display: flex;
-              justify-content: space-between;
-
-              .title {
-                font-weight: bold;
-              }
-
-              .delete-button {
-                font-size: 25px;
-              }
-            }
-
-            .price-container {
-              display: flex;
-              justify-content: space-between;
-
-              .times {
-                color: rgb(180, 180, 180);
-                margin-right: 10px;
-              }
-            }
-          }
-        }
-
-        &:last-of-type {
-          border-bottom: none;
-        }
-
-        .table-title {
-          font-weight: 700;
-        }
       }
     }
   }

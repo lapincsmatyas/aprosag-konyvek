@@ -1,12 +1,12 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {User} from "../../model/user.model";
 import {arrayRemove, arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc} from "@angular/fire/firestore";
 import {UserDto} from "../../model/dto/user.dto";
-import {BehaviorSubject, Observable, throwError} from "rxjs";
-import {DeprecatedItem} from "../../model/item.model";
-import {DeprecatedCartItem} from "../../model/cart-item.model";
+import {BehaviorSubject, throwError} from "rxjs";
 import {ToastrService} from "ngx-toastr";
+import {Item} from "../../store/item/item.model";
+import {CartItem} from "../../store/cart/cart.model";
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +83,7 @@ export class UserService {
     }
   }
 
-  addOrRemoveItemAsFavorite(item: DeprecatedItem) {
+  addOrRemoveItemAsFavorite(item: Item) {
     if (this.user.value === null) {
       throw throwError('User not found');
     }
@@ -98,7 +98,7 @@ export class UserService {
     })
   }
 
-  updateCart(cartItem: DeprecatedCartItem[]) {
+  updateCart(cartItem: CartItem[]) {
     if (this.user.value === null) {
       throw throwError('User not found');
     }

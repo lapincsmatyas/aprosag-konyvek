@@ -20,7 +20,8 @@
              <img src="assets/Icons/Delete_Cart.svg" height="30px"/>
           </span>
           <td>
-            <div class="cart-item-image-container" (click)="openItemPage(cartItem.item)" *ngIf="cartItem.item.image_urls">
+            <div class="cart-item-image-container" (click)="openItemPage(cartItem.item)"
+                 *ngIf="cartItem.item.image_urls">
               <img class="cart-item-image" [src]="'assets/' + cartItem.item.image_urls[0]"/>
             </div>
           </td>
@@ -28,12 +29,12 @@
             <div class="item-title">{{cartItem.item.title}}</div>
             <div>{{cartItem.item.subtitle}}</div>
           </td>
-          <td>{{cartItem.item.price}} Ft</td>
+          <td>{{cartItem.item.price.discount_price || cartItem.item.price.price}} Ft</td>
           <td class="amount">
             <aprosag-stepper [allowZero]="false" [value]="cartItem.amount"
                              (valueChange)="amountChanged(cartItem.item, $event)"></aprosag-stepper>
           </td>
-          <td>{{cartItem.item.price ? cartItem.item.price * cartItem.amount : 0}} Ft</td>
+          <td>{{(cartItem.item.price.discount_price || cartItem.item.price.price) * cartItem.amount}} Ft</td>
         </tr>
         <tr *ngIf="(cartService.count$ | async)! == 0">
           <td colspan="6">A kosarad üres</td>
@@ -54,7 +55,6 @@
           <div class="item-details-container">
             <div class="item-title">{{cartItem.item.title}}</div>
             <div>{{cartItem.item.subtitle}}</div>
-
             <div class="stepper-container">
               <aprosag-stepper [allowZero]="false" [value]="cartItem.amount"
                                (valueChange)="amountChanged(cartItem.item, $event)"></aprosag-stepper>
@@ -62,7 +62,7 @@
             <div class="price-container">
               <span>{{cartItem.amount}}x {{cartItem.item.price}} Ft</span>
               <span class="sum-price">
-              {{cartItem.item.price ? cartItem.item.price * cartItem.amount : 0}} Ft
+              {{(cartItem.item.price.discount_price || cartItem.item.price.price) * cartItem.amount}} Ft
               </span>
             </div>
           </div>
@@ -83,7 +83,7 @@
         <div class="content">
           <div class="table-row">
             <span class="table-title">Részösszeg</span>
-            <span>TODO Ft</span>
+            <span>{{cartService.sumPrice$ |async}} Ft</span>
           </div>
           <!--
           <div class="table-row shipping">

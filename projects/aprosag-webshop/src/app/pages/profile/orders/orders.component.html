@@ -1,3 +1,4 @@
+<!--
 <div class="orders-container">
   <div class="no-orders" *ngIf="orders.length === 0">
     Még nincs leadott rendelésed.
@@ -45,7 +46,7 @@
                               <div class="price">{{item.item.price}} Ft</div>
                           </span>
                         <span class="price">
-                              {{(item.item.price || 0) * item.amount}} Ft
+                              {{(item.item.price.discount_price || item.item.price.price) * item.amount}} Ft
                             </span>
                         </span>
               </div>
@@ -69,3 +70,5 @@
     </tbody>
   </table>
 </div>
+
+-->

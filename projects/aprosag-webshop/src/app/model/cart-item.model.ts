@@ -1,12 +1,10 @@
-import {DeprecatedItem} from "./item.model";
-
-export interface ShippingType {
-  name: string,
-  value: number
+export enum ShippingType {
+  GLS= "GLS",
+  FOXPOST = "FOXPOST",
+  PICKUP = "PICKUP"
 }
 
-  export interface DeprecatedCartItem {
-    item: DeprecatedItem;
-    amount: number;
-  }
-
+export enum PaymentType {
+  BANK_TRANSFER = "BANK_TRANSFER",
+  ON_DELIVERY = "ON_DELIVERY"
+}
