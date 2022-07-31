@@ -15,3 +15,8 @@ export const getSelectedPaymentType = createSelector(
   selectOrderState,
   state => state.selectedPaymentType
 );
+
+export const getBillingAddress = createSelector(
+  selectOrderState,
+  state => state.billingAddress
+);

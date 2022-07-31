@@ -5,53 +5,7 @@
       <mat-step class="step">
         <form>
           <ng-template matStepLabel>Számlázási adatok</ng-template>
-          <div class="form-container">
-            <form class="personal-data" [formGroup]="profileForm">
-              <div class="profile-container" formGroupName="profile">
-                <div class="form-field-container">
-                  <span class="label">Vezetéknév</span>
-                  <input class="input-field" formControlName="lastName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Keresztnév</span>
-                  <input class="input-field" formControlName="firstName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Cégnév (nem kötelező)</span>
-                  <input class="input-field" formControlName="companyName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
-                  <input class="input-field" formControlName="taxNumber"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Ország</span>
-                  <input class="input-field" formControlName="country"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Város</span>
-                  <input class="input-field" formControlName="city"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Utca, házszám</span>
-                  <input class="input-field" formControlName="address"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Irányítószám</span>
-                  <input class="input-field" formControlName="zipCode"/>
-                </div>
-              </div>
-              <div class="span-2">
-                <div class="form-field-container">
-                  <span class="label">Megjegyzés</span>
-                  <input class="input-field" formControlName="comment"/>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="button-container">
-            <button mat-button class="button" matStepperNext>Tovább</button>
-          </div>
+          <app-billing-data (nextButtonClicked)="stepper.next()"></app-billing-data>
         </form>
       </mat-step>
       <mat-step class="step">
@@ -65,6 +19,7 @@
       </mat-step>
       <mat-step class="step">
         <ng-template matStepLabel>Összesítés</ng-template>
+        <app-order-summary></app-order-summary>
         <div class="button-container">
           <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
           <button mat-button class="button back" matStepperPrevious>Vissza</button>
@@ -88,6 +43,6 @@
     <div class="back-button-container">
       <button class="button back" routerLink="/cart">Vissza</button>
     </div>
-        <app-cart-summary></app-cart-summary>
+    <app-cart-summary></app-cart-summary>
   </div>
 </div>

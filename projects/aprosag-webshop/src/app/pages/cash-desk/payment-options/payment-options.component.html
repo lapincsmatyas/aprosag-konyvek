@@ -1,41 +1,18 @@
 <div class="shipping-options-container">
   <div class="shipping-options">
-    <div class="option" *ngFor="let paymentType of PaymentType | keyvalue">
-      <ng-container [ngSwitch]="paymentType.key">
-        <div *ngSwitchCase="PaymentType.BANK_TRANSFER">
-          <div class="input-container">
-            <input class="radio-button" type="radio" id="{{paymentType.key}}" name="option" (click)="orderService.changeSelectedPaymentType(PaymentType.BANK_TRANSFER)"
-                   [checked]="(orderService.selectedPaymentType$ | async) === PaymentType.BANK_TRANSFER">
-            <label class="label" for="{{paymentType.key}}">
-              <span class="name">Banki átutalás</span>
-            </label>
-          </div>
-          <div class="description-container">
-            <span class="description">
-              OTP Bank (SWIFT/BIC köd: OTPVHUHB)<br/>
-              Horváth Áron Ferenc<br/>
-              11773377-00530167 (Nemzetközi utalásnál IBAN kód: HU11 11773377 00530167 00000000)<br/>
-              Közlemény rovatba kérjük tüntesd fel a rendelésszámot.<br/>
-              Ezeket az adatokat elküldjük neked emailben is!
-            </span>
-          </div>
-        </div>
-        <div *ngSwitchCase="PaymentType.ON_DELIVERY">
-          <div class="input-container">
-            <input class="radio-button" type="radio" id="{{paymentType.key}}" name="option" (click)="orderService.changeSelectedPaymentType(PaymentType.ON_DELIVERY)"
-                   [checked]="(orderService.selectedPaymentType$ | async) === PaymentType.ON_DELIVERY">
-            <label class="label" for="{{paymentType.key}}">
-              <span class="name">Utánvét</span>
-            </label>
-          </div>
-          <div class="description-container">
-            <span class="description">Jelenleg csak személyes átvételnél választható!</span>
-          </div>
-        </div>
-      </ng-container>
-      <!--
+    <div class="option" *ngFor="let paymentType of settingsService.paymentTypes$ | async">
 
-      -->
+      <div class="input-container">
+        <input class="radio-button" type="radio" id="{{paymentType.name}}" name="option"
+               (click)="orderService.changeSelectedPaymentType(paymentType)" [checked]="(orderService.selectedPaymentType$ | async)?.name === paymentType.name">
+        <label class="label" for="{{paymentType.name}}">
+          <span class="name">{{paymentType.name}}</span>
+        </label>
+      </div>
+      <div class="description-container">
+            <span class="description" [innerHTML]="paymentType.description">
+            </span>
+      </div>
     </div>
   </div>
 </div>

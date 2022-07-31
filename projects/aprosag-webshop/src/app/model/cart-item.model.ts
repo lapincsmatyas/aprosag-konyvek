@@ -1,10 +1,11 @@
-export enum ShippingType {
-  GLS= "GLS",
-  FOXPOST = "FOXPOST",
-  PICKUP = "PICKUP"
+export interface ShippingType {
+  id: string,
+  name: string,
+  price: number,
+  description?: string,
 }
 
-export enum PaymentType {
-  BANK_TRANSFER = "BANK_TRANSFER",
-  ON_DELIVERY = "ON_DELIVERY"
+export interface PaymentType {
+  name: string;
+  description: string;
 }

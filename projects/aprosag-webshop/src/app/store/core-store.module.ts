@@ -5,6 +5,7 @@ import * as fromCore from "./index";
 import {EffectsModule} from "@ngrx/effects";
 import {ItemEffects} from './item/item.effects';
 import {cartMetaReducer} from "./cart/cart.meta-reducer";
+import {SettingsEffects} from "./settings/settings.effects";
 
 @NgModule({
   declarations: [],
@@ -15,7 +16,8 @@ import {cartMetaReducer} from "./cart/cart.meta-reducer";
         metaReducers: [cartMetaReducer]
       }),
     EffectsModule.forFeature([
-      ItemEffects
+      ItemEffects,
+      SettingsEffects
     ]),
   ],
 })

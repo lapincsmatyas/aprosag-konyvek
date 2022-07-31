@@ -57,6 +57,8 @@ import {CoreStoreModule} from "./store/core-store.module";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
 import { CartSummaryComponent } from './pages/cash-desk/cart-summary/cart-summary.component';
+import {BillingDataComponent} from "./pages/cash-desk/billing-data/billing-data.component";
+import { OrderSummaryComponent } from './pages/cash-desk/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { CartSummaryComponent } from './pages/cash-desk/cart-summary/cart-summar
     EmailSentComponent,
     GalleryComponent,
     ConfirmationComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    BillingDataComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

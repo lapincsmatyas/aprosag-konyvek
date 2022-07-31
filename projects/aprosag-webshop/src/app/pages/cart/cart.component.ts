@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
 import {Item} from "../../store/item/item.model";
+import {OrderService} from "../../services/order/order.service";
 
 @Component({
   selector: 'aprosag-cart',
@@ -13,6 +14,7 @@ import {Item} from "../../store/item/item.model";
 })
 export class CartComponent {
   constructor(public cartService: CartService,
+              public orderService: OrderService,
               private router: Router,
               private modalService: NgbModal) {
   }

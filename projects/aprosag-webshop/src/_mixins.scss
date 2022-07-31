@@ -25,7 +25,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   box-shadow: 0 0 13px -5px #000000;
 
 
-  &:disabled{
+  &:disabled {
     background-color: $disabled-button;
     cursor: default;
   }
@@ -34,6 +34,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
     box-shadow: 0 0 13px -8px #000000;
   }
 }
+
 @mixin input-field {
   width: 100%;
   margin-top: 5px;
@@ -44,6 +45,7 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   background-color: white;
   border-radius: 30px;
 }
+
 @mixin title {
   line-height: 1;
   font-size: $title-size;
@@ -57,7 +59,8 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
     padding: 60px 0;
   }
 }
-@mixin subtitle{
+
+@mixin subtitle {
   line-height: 1;
   font-size: $subtitle-size;
   font-weight: bold;
@@ -66,7 +69,8 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   color: $font-color;
 
 }
-@mixin background($background-image){
+
+@mixin background($background-image) {
   background-color: white;
   background-image: url($background-image),
   list.nth($background-images, random(4)),
@@ -78,10 +82,10 @@ $background-images: [url('/assets/Backgrounds/leaf_2.svg'), url('/assets/Backgro
   background-repeat: no-repeat;
 }
 
- @mixin pagesize{
-   width: $content-percentage-width;
-   max-width: $content-max-width;
-   @media (max-width: $breakpoint-sm) {
-     width: $content-percentage-width-mobile;
-   }
- }
+@mixin pagesize {
+  width: $content-percentage-width;
+  max-width: $content-max-width;
+  @media (max-width: $breakpoint-sm) {
+    width: $content-percentage-width-mobile;
+  }
+}

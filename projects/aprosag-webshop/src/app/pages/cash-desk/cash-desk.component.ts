@@ -30,23 +30,7 @@ export class CashDeskComponent implements AfterViewInit {
     this.stepper._getIndicatorType = () => 'number';
   }
 
-  profileForm = this.fb.group({
-      profile: this.fb.group({
-        uid: [''],
-        email: [''],
-        lastName: [''],
-        firstName: [''],
-        companyName: [''],
-        taxNumber: [''],
-        country: [''],
-        city: [''],
-        address: [''],
-        zipCode: [''],
-        phoneNumber: ['']
-      }),
-      comment: ['']
-    }
-  )
+
 
   stepperOrientation: Observable<StepperOrientation>;
 

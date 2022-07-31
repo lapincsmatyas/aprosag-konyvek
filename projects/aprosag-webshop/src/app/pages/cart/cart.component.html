@@ -85,16 +85,14 @@
             <span class="table-title">Részösszeg</span>
             <span>{{cartService.sumPrice$ |async}} Ft</span>
           </div>
-          <!--
           <div class="table-row shipping">
             <div class="table-title shipment">Szállítás</div>
             <aprosag-shipping-options></aprosag-shipping-options>
           </div>
-          <div class="table-row" *ngIf="cartService.selectedShippingType">
+          <div class="table-row" *ngIf="orderService.selectedShippingType$ | async as selectedShippingType">
             <span class="table-title">Összeg</span>
-            <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
+            <span>{{(cartService.sumPrice$ |async)! + selectedShippingType.price}} Ft</span>
           </div>
-          -->
         </div>
       </div>
     </div>
