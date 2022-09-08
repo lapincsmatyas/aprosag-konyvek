@@ -1,12 +1,11 @@
-import {Item} from "./item.model";
-
 export interface ShippingType {
+  id: string,
   name: string,
-  value: number
+  price: number,
+  description?: string,
 }
 
-  export interface CartItem {
-    item: Item;
-    amount: number;
-  }
-
+export interface PaymentType {
+  name: string;
+  description: string;
+}

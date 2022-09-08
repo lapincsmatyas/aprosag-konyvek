@@ -2,93 +2,10 @@
   <div class="cash-desk-page">
     <div class="title">Pénztár</div>
     <mat-stepper [orientation]="(stepperOrientation | async)!" linear #stepper>
-      <mat-step *ngIf="(authService.user$ | async) === null" class="step">
-        <ng-template matStepLabel>Azonosítás</ng-template>
-        <div class="auth-container">
-          <div class="login-form-container">
-            <div class="title">Bejelentkezés</div>
-            <form class="login-form" [formGroup]="loginForm">
-              <div>
-                <input type="email" formControlName="email" placeholder="Email cím"/>
-              </div>
-              <div>
-                <input type="password" formControlName="password" placeholder="Jelszó"/>
-              </div>
-              <div class="forgotten-password-container">
-                <a class="forgotten-password" href="#">Elfelejtett jelszó?</a>
-              </div>
-              <div class="login-button-container">
-                <button class="button login-button" type="submit" (click)="login()">Bejelentkezés</button>
-                <button class="button back" type="submit" (click)="goToSignup()">Regisztáció</button>
-
-              </div>
-            </form>
-          </div>
-          <div class="guest-container">
-            <div class="title">Folytatás vendégként</div>
-            <div class="text">
-              <p>Semmi gond, ha még nincs nálunk felhasználói fiókja, tovább mehet a pénztárhoz vendégként.</p>
-              <p>A későbbi könnyebb és gyorsabb vásárláshoz javasoljuk a regisztrációt.</p>
-            </div>
-            <div class="button-container">
-              <button mat-button class="button back" matStepperNext>Folytatás vendégként</button>
-            </div>
-          </div>
-        </div>
-      </mat-step>
       <mat-step class="step">
         <form>
           <ng-template matStepLabel>Számlázási adatok</ng-template>
-          <div class="form-container">
-            <form class="personal-data" [formGroup]="profileForm">
-              <div class="profile-container" formGroupName="profile">
-                <div class="form-field-container">
-                  <span class="label">Vezetéknév</span>
-                  <input class="input-field" formControlName="lastName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Keresztnév</span>
-                  <input class="input-field" formControlName="firstName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Cégnév (nem kötelező)</span>
-                  <input class="input-field" formControlName="companyName"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
-                  <input class="input-field" formControlName="taxNumber"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Ország</span>
-                  <input class="input-field" formControlName="country"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Város</span>
-                  <input class="input-field" formControlName="city"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Utca, házszám</span>
-                  <input class="input-field" formControlName="address"/>
-                </div>
-                <div class="form-field-container">
-                  <span class="label">Irányítószám</span>
-                  <input class="input-field" formControlName="zipCode"/>
-                </div>
-              </div>
-              <div class="span-2">
-                <div class="form-field-container">
-                  <span class="label">Megjegyzés</span>
-                  <input class="input-field" formControlName="comment"/>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="button-container">
-            <button mat-button class="button" matStepperNext>Tovább</button>
-            <button *ngIf="(authService.user$ | async) === null" mat-button class="button back" matStepperPrevious>
-              Vissza
-            </button>
-          </div>
+          <app-billing-data (nextButtonClicked)="stepper.next()"></app-billing-data>
         </form>
       </mat-step>
       <mat-step class="step">
@@ -96,38 +13,20 @@
         <div class="title">Fizetési módok</div>
         <aprosag-payment-options></aprosag-payment-options>
         <div class="button-container">
+          <button mat-button class="button" matStepperNext>Összesítés</button>
+          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+        </div>
+      </mat-step>
+      <mat-step class="step">
+        <ng-template matStepLabel>Összesítés</ng-template>
+        <app-order-summary></app-order-summary>
+        <div class="button-container">
           <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
           <button mat-button class="button back" matStepperPrevious>Vissza</button>
         </div>
       </mat-step>
 
-    </mat-stepper>
-    <div class="back-button-container">
-      <button class="button back" routerLink="/cart">Vissza</button>
-    </div>
-    <div class="summary-container">
-      <div class="header">
-        <span class="text">Kosár összesen</span>
-      </div>
-      <div class="content">
-        <div class="table-row" *ngFor="let item of cartService.items">
-          <span class="amount">{{item.amount}}x</span>
-          <span class="cart-item-image-container" *ngIf="item.item.image_urls">
-              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
-          </span>
-          <span class="right">
-            <span class="cart-item-text-container">
-              <div class="summary-title">{{item.item.title}}</div>
-              <div class="price-container">
-                <div class="item-price">{{item.item.price}} Ft</div>
-                <div class="sum-price">
-                  {{(item.item.price || 0) * item.amount}} Ft
-                </div>
-              </div>
-            </span>
-
-        </span>
-        </div>
+    </mat-stepper>  <!--
         <div class="table-row" *ngIf="cartService.selectedShippingType">
           <span class="table-title">Szállítás</span>
           <span class="right">
@@ -140,7 +39,10 @@
           <span class="table-title">Összeg</span>
           <span>{{cartService.value + cartService.selectedShippingType.value}} Ft</span>
         </div>
-      </div>
+        -->
+    <div class="back-button-container">
+      <button class="button back" routerLink="/cart">Vissza</button>
     </div>
+    <app-cart-summary></app-cart-summary>
   </div>
 </div>

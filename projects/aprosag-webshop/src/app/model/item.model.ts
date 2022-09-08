@@ -3,7 +3,7 @@ export enum COVER_TYPE {
   SOFT_COVER
 }
 
-export class Item {
+export class DeprecatedItem {
   id: string = "";
   title: string = "";
   subtitle: string = "";
@@ -16,6 +16,6 @@ export class Item {
   storage_amount: number = -1;
   price: number = -1;
   discount_price: number = -1;
-  discount_percentage: number = -1;
+  discount_percentage?: number = -1;
   image_urls: any[] = [];
 }

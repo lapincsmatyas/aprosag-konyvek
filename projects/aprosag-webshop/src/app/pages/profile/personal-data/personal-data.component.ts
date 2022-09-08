@@ -45,21 +45,11 @@ export class PersonalDataComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.userService.user.subscribe((user) => {
-      this.profileForm.patchValue(user || new User());
-      if (user) {
-        this.orderService.getOrders().subscribe((orders) => {
-          this.orders = orders.map((order) => {
-            return {order, open: false}
-          });
-        });
-      }
-    })
   }
 
 
   saveData() {
-    this.userService.updateUserData(this.profileForm.value).then(() => {
+    this.userService.updateUserData(this.profileForm.value as User).then(() => {
       this.toastr.success('Profil sikeresen elmentve!');
     }).catch(() => {
       this.toastr.error('Sajnáljuk, valami hiba történt :(');

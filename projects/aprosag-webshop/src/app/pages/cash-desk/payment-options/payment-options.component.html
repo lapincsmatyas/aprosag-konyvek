@@ -1,17 +1,17 @@
 <div class="shipping-options-container">
   <div class="shipping-options">
-    <div class="option" *ngFor="let option of orderService.paymentTypes">
+    <div class="option" *ngFor="let paymentType of settingsService.paymentTypes$ | async">
+
       <div class="input-container">
-        <input class="radio-button" type="radio" id="{{option.name}}" name="option" [value]="option" [(ngModel)]="selectedPaymentType"
-               checked>
-        <label class="label" for="{{option.name}}">
-          <span class="name">{{option.name}}</span>
+        <input class="radio-button" type="radio" id="{{paymentType.name}}" name="option"
+               (click)="orderService.changeSelectedPaymentType(paymentType)" [checked]="(orderService.selectedPaymentType$ | async)?.name === paymentType.name">
+        <label class="label" for="{{paymentType.name}}">
+          <span class="name">{{paymentType.name}}</span>
         </label>
       </div>
       <div class="description-container">
-        <span class="placeholder"></span>
-        <span class="description">{{option.description}}</span>
-
+            <span class="description" [innerHTML]="paymentType.description">
+            </span>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import {Order} from "../../model/order.model";
 import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../../services/user/user.service";
 import {ItemsService} from "../../services/item/items.service";
-import {Item} from "../../model/item.model";
+import {DeprecatedItem} from "../../model/item.model";
 import {CartService} from "../../services/cart/cart.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
@@ -36,7 +36,6 @@ export class ProfileComponent {
   }
 
   logout() {
-    console.log("lol");
     let modalRef = this.modalService.open(ConfirmationComponent, {
       backdropClass: 'modal-dialog-backdrop',
       modalDialogClass: 'modal-dialog-centered'
@@ -47,7 +46,7 @@ export class ProfileComponent {
       if(!result) return;
 
       this.authService.logout().then(() => {
-        this.cartService.emptyCart();
+        this.cartService.clearCart();
       });
     })
   }

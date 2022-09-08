@@ -1,3 +1,3 @@
 <div class="favorites-container">
-  <aprosag-item-card *ngFor="let item of favorites" [item]="item"></aprosag-item-card>
+  <aprosag-item-card *ngFor="let item of favorites$ | async" [item]="item"></aprosag-item-card>
 </div>

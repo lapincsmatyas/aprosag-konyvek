@@ -1,16 +1,5 @@
 <div class="item-page-container" *ngIf="item">
   <div class="item-container">
-    <!--
-    <div class="mobile-title-container">
-      <div class="title">
-        <span class="title-text">{{item.title}}</span>
-        <aprosag-favorite [item]="item"></aprosag-favorite>
-      </div>
-      <div class="subtitle">
-        {{item.subtitle}}
-      </div>
-    </div>
-    -->
     <div class="images">
       <div class="main-image-container" *ngIf="item.image_urls">
         <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg" (click)="previousImage()"/>
@@ -37,11 +26,9 @@
       </span>
 
       <div class="price-container mobile" >
-        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-        <span *ngIf="item.discount_percentage"
-              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+        <span *ngIf="item.price.discount_price" class="discount price">{{item.price.discount_price + " Ft"}}</span>
         <span class="original_price"
-              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+              [ngClass]="{'invalid': item.price.discount_price}">{{item.price.price + " Ft"}}</span>
       </div>
 
       <div class="description">
@@ -58,17 +45,14 @@
         Raktáron: {{item.storage_amount}} db
       </div>
       <div class="price-container" *ngIf="item.price">
-        <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-        <span *ngIf="item.discount_percentage"
-              class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
+        <span *ngIf="item.price.discount_price" class="discount price">{{item.price.discount_price + " Ft"}}</span>
         <span class="original_price"
-              [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
+              [ngClass]="{'invalid': item.price.discount_price}">{{item.price.price + " Ft"}}</span>
       </div>
 
       <div class="cart-container">
         <aprosag-stepper [allowZero]="false" [value]="amount" (valueChange)="amountChanged($event)"></aprosag-stepper>
-        <button class="button add-to-cart" type="button" (click)="addItemToCart()" [disabled]="amount === 0">Kosárba
-        </button>
+        <button class="button add-to-cart" type="button" (click)="addItemToCart(item)" [disabled]="amount === 0">Kosárba</button>
       </div>
     </div>
   </div>

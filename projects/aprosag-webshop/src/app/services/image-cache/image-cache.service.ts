@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map, mergeMap, take, tap, toArray} from "rxjs/operators";
 import {getDownloadURL, ref, Storage} from "@angular/fire/storage";
 import {from, Observable} from "rxjs";
-import {Item} from "../../model/item.model";
+import {DeprecatedItem} from "../../model/item.model";
 import {collectionData} from "@angular/fire/firestore";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 

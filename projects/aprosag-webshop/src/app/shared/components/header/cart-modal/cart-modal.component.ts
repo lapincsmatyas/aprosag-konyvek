@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
-import {CartItem} from "../../../../model/cart-item.model";
 import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.component";
+import {Item} from "../../../../store/item/item.model";
 
 @Component({
   selector: 'aprosag-cart-modal',
@@ -13,8 +13,6 @@ import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.c
   styleUrls: ['./cart-modal.component.scss']
 })
 export class CartModalComponent  {
-  faTimesCircle = faTimesCircle;
-
   constructor(public cartService: CartService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -26,7 +24,7 @@ export class CartModalComponent  {
     this.router.navigateByUrl('cart');
   }
 
-  deleteItemFromCart(item: CartItem) {
+  deleteItemFromCart(item: Item) {
     let modalRef = this.modalService.open(ConfirmationComponent, {
       backdropClass: 'modal-dialog-backdrop',
       modalDialogClass: 'modal-dialog-centered'
@@ -35,7 +33,7 @@ export class CartModalComponent  {
 
     modalRef.closed.subscribe(result => {
       if(!result) return;
-      this.cartService.removeAllOfTypeFromCart(item);
+      this.cartService.removeItemFromCart(item);
     })
   }
 }

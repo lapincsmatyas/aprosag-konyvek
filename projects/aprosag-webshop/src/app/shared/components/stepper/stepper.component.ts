@@ -7,7 +7,7 @@ import {debug} from "util";
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent  {
+export class StepperComponent {
   @Input()
   value: number;
 
@@ -25,17 +25,31 @@ export class StepperComponent  {
     this.value = this.allowZero ? 0 : 1;
   }
 
-  changeValue(amount: number){
-    console.log(this.maxValue);
+  increaseValue(amount: number = 1) {
+    if (this.maxValue && this.value >= this.maxValue)
+      return;
 
     this.value += amount;
-    if(this.maxValue && this.value > this.maxValue){
+    this.valueChange.emit(this.value);
+  }
+
+  decreaseValue(amount: number = 1) {
+    if (this.value <= (this.allowZero ? 0 : 1))
+      return;
+
+    this.value -= amount;
+    this.valueChange.emit(this.value);
+  }
+
+  changeValue(amount: number) {
+    this.value += amount;
+    if (this.maxValue && this.value > this.maxValue) {
       this.value = this.maxValue;
     }
 
-    if(this.allowZero && this.value < 0){
+    if (this.allowZero && this.value < 0) {
       this.value = 0;
-    } else if(!this.allowZero && this.value < 1){
+    } else if (!this.allowZero && this.value < 1) {
       this.value = 1;
     }
 

@@ -16,7 +16,7 @@ export class NewsletterComponent {
   }
 
   subscribe() {
-    if(this.email.valid) {
+    if(this.email.valid && this.email.value) {
       this.newsLetterService.subscribe(this.email.value).then((result) => {
         alert("Sikeres feliratkozás!");
       })

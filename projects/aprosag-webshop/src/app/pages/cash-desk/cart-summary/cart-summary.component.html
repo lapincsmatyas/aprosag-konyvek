@@ -1,0 +1,24 @@
+<div class="summary-container">
+  <div class="header">
+    <span class="text">Kosár összesen</span>
+  </div>
+  <div class="content">
+    <div class="table-row" *ngFor="let item of cartService.items$ | async">
+      <span class="amount">{{item.amount}}x</span>
+      <span class="cart-item-image-container" *ngIf="item.item.image_urls">
+              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
+          </span>
+      <span class="right">
+            <span class="cart-item-text-container">
+              <div class="summary-title">{{item.item.title}}</div>
+              <div class="price-container">
+                <div class="item-price">{{item.item.price.price}} Ft</div>
+                <div class="sum-price">
+                  {{(item.item.price.discount_price || item.item.price.price) * item.amount}} Ft
+                </div>
+              </div>
+            </span>
+        </span>
+    </div>
+  </div>
+</div>

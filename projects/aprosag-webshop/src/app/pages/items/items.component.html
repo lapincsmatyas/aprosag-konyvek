@@ -8,7 +8,7 @@
   <div class="items-container">
 
     <div class="items">
-    <span class="item" *ngFor="let item of items">
+    <span class="item" *ngFor="let item of items$ | async">
       <aprosag-item-card [item]="item"></aprosag-item-card>
     </span>
     </div>

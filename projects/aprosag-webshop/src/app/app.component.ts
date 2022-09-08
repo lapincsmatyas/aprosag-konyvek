@@ -8,6 +8,7 @@ import {AuthService} from "./services/auth/auth.service";
 import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {animate, style, transition, trigger} from '@angular/animations';
+import {SettingsService} from "./services/settings.service";
 
 @Component({
   selector: 'aprosag-root',
@@ -45,9 +46,12 @@ export class AppComponent {
               public userService: UserService,
               public authService: AuthService,
               public appService: AppService,
+              private settingService: SettingsService,
               public loadingService: LoadingService,
               public breakpointObserver: BreakpointObserver
   ) {
+    this.settingService.loadSettingsByHttp();
+
     this.breakpointObserver.observe('(min-width: 588px)')
       .subscribe((result) => {
         this.mobile = !result.matches;
