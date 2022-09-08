@@ -1,12 +1,16 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-
-// import Swiper core and required modules
-import SwiperCore, {Pagination, Navigation, SwiperOptions, Autoplay} from 'swiper';
-import Swiper from "swiper";
+import {ChangeDetectorRef, Component, Input, ViewChild} from '@angular/core';
+import SwiperCore, {Autoplay, Navigation, Pagination, SwiperOptions} from 'swiper';
 import {Router} from "@angular/router";
+import Swiper from "swiper";
+import {SwiperComponent} from "swiper/angular";
 
-// install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
+
+export interface SliderImage {
+  src: string;
+  url?: string;
+  site?: string;
+}
 
 @Component({
   selector: 'aprosag-gallery',
@@ -14,6 +18,12 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent {
+  @Input() images: SliderImage[] = [];
+  @Input() showSmallImages = false;
+  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
+
+  activeIndex = 0;
+
   config: SwiperOptions = {
     navigation: true,
     spaceBetween: 30,
@@ -24,17 +34,10 @@ export class GalleryComponent {
     },
   };
 
-  sliderImages: { image: string, url?: string, site?: string }[] = [
-    {image: 'Slider/Slider_1.jpg', url: '/items/JTr5jLNLKU4n14BWyjtG'},
-    {image: 'Slider/Slider_2.jpg', url: '/items/6D55n8mtvHT2EKDzQTkn'},
-    {image: 'Slider/Slider_3.jpg', site: 'https://www.udvarbongeszo.aprosagkonyvek.hu/'},
-    {image: 'Slider/Slider_4.jpg', site: 'https://www.udvarbongeszo.aprosagkonyvek.hu/'}
-  ];
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef) {
   }
 
-  openUrl(sliderImage: { image: string, url?: string, site?: string }) {
+  openUrl(sliderImage: SliderImage) {
     if(sliderImage.site) {
       window.open(sliderImage.site);
       return;
@@ -42,5 +45,15 @@ export class GalleryComponent {
       this.router.navigateByUrl(sliderImage.url);
       return;
     }
+  }
+
+  slideChanged($event: [swiper: Swiper]) {
+    this.activeIndex = $event[0].realIndex;
+    console.log(this.activeIndex);
+    this.changeDetectorRef.detectChanges();
+  }
+
+  smallImageClicked(i: number) {
+    this.swiper?.swiperRef.slideTo(i);
   }
 }

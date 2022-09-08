@@ -14,6 +14,7 @@ import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-c
 import {UserService} from "../../services/user/user.service";
 import {ItemRepository} from "../../services/item/item.repository";
 import {Item} from "../../store/item/item.model";
+import {SliderImage} from "../items/gallery/gallery.component";
 
 @Component({
   selector: 'aprosag-item',
@@ -27,6 +28,8 @@ export class ItemComponent implements OnDestroy{
   public selectedImageIndex = 0;
   amount = 1;
 
+  itemImages: SliderImage[] = [];
+
   constructor(private itemRepository: ItemRepository,
               private cartService: CartService,
               private modalService: NgbModal,
@@ -37,25 +40,15 @@ export class ItemComponent implements OnDestroy{
     if(id){
       this.itemRepository.getItemById$(id).pipe(takeUntil(this.notifier)).subscribe(item => {
         this.item = item;
+        this.itemImages = item?.image_urls.map(image => {
+          return {src: `assets/${image}`};
+        }) || [];
       });
     }
   }
 
   selectImage(i: number) {
     this.selectedImageIndex = i;
-  }
-
-  nextImage() {
-    this.selectedImageIndex++;
-    if (this.selectedImageIndex >= (this.item?.image_urls ? this.item?.image_urls.length : 0))
-      this.selectedImageIndex = 0;
-  }
-
-
-  previousImage() {
-    this.selectedImageIndex--;
-    if (this.selectedImageIndex < 0)
-      this.selectedImageIndex = (this.item?.image_urls ? this.item?.image_urls.length - 1 : 0);
   }
 
   addItemToCart(item: Item) {

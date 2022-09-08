@@ -69,6 +69,30 @@
     }
   }
 
+  .small-images {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+
+
+    .small-image {
+      width: 100%;
+      cursor: pointer;
+      max-height: 94px;
+      transition: opacity 0.3s;
+
+
+      &.inactive {
+        opacity: 0.5;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
 
   .image-container {
     overflow-y: hidden;

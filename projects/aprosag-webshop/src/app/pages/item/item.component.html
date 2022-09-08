@@ -1,18 +1,8 @@
 <div class="item-page-container" *ngIf="item">
   <div class="item-container">
     <div class="images">
-      <div class="main-image-container" *ngIf="item.image_urls">
-        <img class="arrow left" src="assets/Icons/Arrow_Line_Item.svg" (click)="previousImage()"/>
-        <img class="arrow right" src="assets/Icons/Arrow_Line_Item.svg" (click)="nextImage()"/>
-        <img class="main-image" [src]="'assets/' + item.image_urls[selectedImageIndex]"/>
-      </div>
+      <aprosag-gallery [images]="itemImages" [showSmallImages]="true"></aprosag-gallery>
 
-      <div class="small-images">
-        <span *ngFor="let image of item.image_urls, let i = index">
-          <img class="small-image" [ngClass]="{inactive: selectedImageIndex !== i}" [src]="'assets/' + image"
-               (click)="selectImage(i)"/>
-        </span>
-      </div>
     </div>
     <div class="details">
       <span class="title-container">
