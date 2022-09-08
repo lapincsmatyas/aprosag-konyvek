@@ -1,15 +1,18 @@
-import {Component} from '@angular/core';
-import {OrderService} from "../../../services/order/order.service";
+import {Component, OnInit} from '@angular/core';
 import {CartService} from "../../../services/cart/cart.service";
+import {OrderService} from "../../../services/order/order.service";
+import {ShippingType} from "../../../model/cart-item.model";
+import {SettingsService} from "../../../services/settings.service";
 
 @Component({
   selector: 'aprosag-shipping-options',
   templateUrl: './shipping-options.component.html',
   styleUrls: ['./shipping-options.component.scss']
 })
-export class ShippingOptionsComponent  {
+export class ShippingOptionsComponent {
 
-  constructor(public cartService: CartService) {
-
+  constructor(
+    public settingsService: SettingsService,
+    public orderService: OrderService) {
   }
 }

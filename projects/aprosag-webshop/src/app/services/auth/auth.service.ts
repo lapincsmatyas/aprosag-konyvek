@@ -12,7 +12,7 @@ import {arrayUnion, collection, doc, docData, Firestore, setDoc, updateDoc} from
 import {CollectionReference} from "@firebase/firestore";
 import {DocumentData, DocumentReference} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
-import {Item} from "../../model/item.model";
+import {DeprecatedItem} from "../../model/item.model";
 import {UserDto} from "../../model/dto/user.dto";
 import {UserService} from "../user/user.service";
 

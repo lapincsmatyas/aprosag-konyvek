@@ -1,0 +1,31 @@
+<div class="order-summary-container">
+  <div class="billing-address">
+    Számlázási adatok
+    <ng-container *ngIf="orderService.billingAddress$ |async as billingAddress">
+      {{billingAddress.firstName}}
+      {{billingAddress.lastName}}
+      {{billingAddress.companyName}}
+      {{billingAddress.taxNumber}}
+      {{billingAddress.country}}
+      {{billingAddress.city}}
+      {{billingAddress.address}}
+      {{billingAddress.zipCode}}
+      {{billingAddress.emailAddress}}
+      {{billingAddress.phoneNumber}}
+      {{billingAddress.comment}}
+    </ng-container>
+  </div>
+  <div class="shipping-type">
+    Szállítási mód
+    <ng-container *ngIf="orderService.selectedShippingType$ |async as shippingType">
+      {{shippingType.name}}
+      {{shippingType.price}} Ft
+    </ng-container>
+  </div>
+  <div class="payment-type">
+    Fizetési mód
+    <ng-container *ngIf="orderService.selectedPaymentType$ |async as paymentType">
+      {{paymentType.name}}
+    </ng-container>
+  </div>
+</div>

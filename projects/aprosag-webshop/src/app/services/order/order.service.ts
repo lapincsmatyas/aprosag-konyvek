@@ -1,86 +1,32 @@
 import {Injectable} from '@angular/core';
-import {Order, OrderState, PaymentType} from "../../model/order.model";
-import {addDoc, collection, collectionData, Firestore, query, where} from "@angular/fire/firestore";
-import {CollectionReference, Timestamp} from "@firebase/firestore";
-import {User} from "../../model/user.model";
-import {CartService} from "../cart/cart.service";
-import {UserDto} from "../../model/dto/user.dto";
-import {UserService} from "../user/user.service";
-import {throwError} from "rxjs";
-import {LoadingService} from "../loading/loading.service";
+import {Store} from "@ngrx/store";
+import {getBillingAddress, getSelectedPaymentType, getSelectedShippingType} from "../../store/order/order.selector";
+import {Observable} from "rxjs";
+import {PaymentType, ShippingType} from "../../model/cart-item.model";
+import {changePaymentType, changeShippingType, setBillingAddress} from "../../store/order/order.action";
+import {BillingAddress} from "../../model/billing-address.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private collection: CollectionReference<Order>;
+  selectedShippingType$: Observable<ShippingType | null> = this.store.select(getSelectedShippingType);
+  selectedPaymentType$: Observable<PaymentType | null> = this.store.select(getSelectedPaymentType);
+  billingAddress$: Observable<BillingAddress | null> = this.store.select(getBillingAddress);
 
-  paymentTypes: PaymentType[];
-
-  selectedPaymentType: PaymentType;
-
-  constructor(private fireStore: Firestore,
-              private cartService: CartService,
-              private loadingService: LoadingService,
-              private userService: UserService) {
-    this.paymentTypes = [{
-      name: "Banki átutalás",
-      description: "OTP Bank (SWIFT/BIC köd: OTPVHUHB)\n" +
-        "Horváth Áron Ferenc\n" +
-        "11773377-00530167 (Nemzetközi utalásnál IBAN kód: HU11 11773377 00530167 00000000)\n" +
-        "Közlemény rovatba kérjük tüntesd fel a rendelésszámot.\n" +
-        "Ezeket az adatokat elküldjük neked emailben is!"
-    }, {
-      name: "Utánvét",
-      description: "Jelenleg csak személyes átvételnél választható!\n"
-    }];
-    this.selectedPaymentType = this.paymentTypes[0];
-
-    this.collection = collection(this.fireStore, 'orders');
+  constructor(private store: Store<any>) {
   }
 
-  placeOrder(user: User, comment: string) {
-    if (this.cartService.count == 0 || !this.cartService.selectedShippingType)
-      return;
-
-    const date = new Date();
-    const randomId = Math.floor(Math.random() * 100) + 100;
-    const orderNumber =
-      date.getFullYear().toString().slice(-2) + '' +
-      ('00' + date.getMonth().toString()).slice(-2) + '' +
-      ('00' + date.getDate().toString()).slice(-2) + '' +
-      ('00' + date.getHours().toString()).slice(-2) + '' +
-      ('00' + date.getMinutes().toString()).slice(-2) + '' +
-      date.getMilliseconds().toString().slice(-2) + '' +
-      randomId;
-
-    return addDoc(this.collection, {
-      user,
-      orderNumber: +orderNumber,
-      date: Timestamp.fromDate(new Date()),
-      state: OrderState.SENT,
-      price: this.cartService.value + this.cartService.selectedShippingType.value,
-      cart: this.cartService.items,
-      shippingType: this.cartService.selectedShippingType,
-      paymentType: this.selectedPaymentType
-    }).catch((error) => {
-      this.loadingService.removeProcess('send-order');
-    }).then((result) => {
-      return new Promise((resolve) => setTimeout(resolve, 2000))
-    })
-      .then((result) => {
-        this.cartService.emptyCart();
-        this.cartService.selectedShippingType = null;
-        return orderNumber;
-      });
+  changeSelectedShippingType(shippingType: ShippingType) {
+    this.store.dispatch(changeShippingType({newShippingType: shippingType}));
   }
 
-  getOrders() {
-    if (this.userService.user.value) {
-      const q = query(this.collection, where("user.profile.uid", "==", this.userService.user.value.uid));
-      return collectionData(q, {idField: "orderId"});
-    } else {
-      throw throwError('User not found');
-    }
+  changeSelectedPaymentType(paymentType: PaymentType) {
+    this.store.dispatch(changePaymentType({newPaymentType: paymentType}));
+  }
+
+  setBillingAddress(billingAddress: BillingAddress){
+    this.store.dispatch(setBillingAddress({newBillingAddress: billingAddress}));
+
   }
 }

@@ -1,3 +1,4 @@
+<!--
 <div class="orders-container">
   <div class="no-orders" *ngIf="orders.length === 0">
     Még nincs leadott rendelésed.
@@ -16,7 +17,7 @@
       <tr>
         <td>
                   <span class="order-number" *ngIf="order.order.orderNumber">
-                    <a (click)="order.open = !order.open"> #{{order.order.orderNumber.toString()?.slice(order.order.orderNumber.toString().length - 5)}}</a>
+                    <a (click)="order.open = !order.open"> #{{order.order.orderNumber.toString().slice(order.order.orderNumber.toString().length - 5)}}</a>
                   </span>
         </td>
         <td>{{order.order.date?.toDate() | date}}</td>
@@ -45,7 +46,7 @@
                               <div class="price">{{item.item.price}} Ft</div>
                           </span>
                         <span class="price">
-                              {{(item.item.price || 0) * item.amount}} Ft
+                              {{(item.item.price.discount_price || item.item.price.price) * item.amount}} Ft
                             </span>
                         </span>
               </div>
@@ -69,3 +70,5 @@
     </tbody>
   </table>
 </div>
+
+-->

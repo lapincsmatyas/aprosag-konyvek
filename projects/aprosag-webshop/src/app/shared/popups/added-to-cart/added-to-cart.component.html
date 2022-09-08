@@ -3,7 +3,7 @@
   <div class="dialog-title">Sikeresen hozzáadtad a kosaradhoz!</div>
   <div class="content">
     <div class="image-container" >
-      <img class="image" [src]="'assets/' + item.image_urls?.[0]"/>
+      <img class="image" [src]="'assets/' + item.image_urls[0]"/>
     </div>
     <div class="details">
       <div class="title-container">
@@ -15,11 +15,8 @@
           <div class="price-text">Ár</div>
           <div class="price-amount">
               <span class="original_price"
-                    [ngClass]="{'invalid': item.discount_price || item.discount_percentage}">{{item.price + " Ft"}}</span>
-            <span *ngIf="item.discount_price" class="discount price">{{item.discount_price + " Ft"}}</span>
-            <span *ngIf="item.discount_percentage"
-                  class="discount percentage">{{(item.price * item.discount_percentage) + " Ft"}}</span>
-
+                    [ngClass]="{'invalid': item.price.discount_price}">{{item.price.price + " Ft"}}</span>
+            <span *ngIf="item.price.discount_price" class="discount price">{{item.price.discount_price + " Ft"}}</span>
           </div>
         </div>
         <div class="split count">
@@ -29,7 +26,7 @@
       </div>
       <div class="split sum-container">
         <div class="sum-text">Összesen</div>
-        <div class="sum-amount">{{(item?.price || 1) * amount}} Ft</div>
+        <div class="sum-amount">{{(item.price.discount_price || item.price.price) * amount}} Ft</div>
       </div>
     </div>
   </div>

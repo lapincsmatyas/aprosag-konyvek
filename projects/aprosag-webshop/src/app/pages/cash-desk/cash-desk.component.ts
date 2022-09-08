@@ -14,6 +14,8 @@ import {LoadingService} from "../../services/loading/loading.service";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {Order} from "../../model/order.model";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -28,106 +30,21 @@ export class CashDeskComponent implements AfterViewInit {
     this.stepper._getIndicatorType = () => 'number';
   }
 
-  loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
-  })
 
-  profileForm = this.fb.group({
-      profile: this.fb.group({
-        uid: [''],
-        email: [''],
-        lastName: [''],
-        firstName: [''],
-        companyName: [''],
-        taxNumber: [''],
-        country: [''],
-        city: [''],
-        address: [''],
-        zipCode: [''],
-        phoneNumber: ['']
-      }),
-      comment: ['']
-    }
-  )
-
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  isEditable = false;
 
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(private fb: FormBuilder,
-              private orderService: OrderService,
               public userService: UserService,
-              private loadingService: LoadingService,
-              private toastr: ToastrService,
-              private router: Router,
               public authService: AuthService,
-              private modalService: NgbModal,
               public breakpointObserver: BreakpointObserver,
               public cartService: CartService) {
 
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
-
-
-    userService.user.subscribe((user) => {
-      if (user) {
-        this.profileForm.get('profile')?.patchValue({
-          uid: user.uid,
-          email: user.email,
-          lastName: user.lastName,
-          firstName: user.firstName,
-          companyName: user.companyName,
-          taxNumber: user.taxNumber,
-          country: user.country,
-          city: user.city,
-          address: user.address,
-          zipCode: user.zipCode,
-          phoneNumber: user.phoneNumber,
-        })
-      }
-    })
-
-    this.firstFormGroup = this.fb.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required],
-    });
   }
 
   sendOrder() {
-    this.loadingService.addProcess('send-order', {transparent: true});
-
-    this.orderService.placeOrder(this.profileForm.value, this.profileForm.get('comment')?.value)
-      ?.then((result) => {
-        this.loadingService.removeProcess('send-order');
-        const modalRef = this.modalService.open(SuccessfulOrderComponent, {
-          backdrop: 'static',
-          keyboard: false,
-          backdropClass: 'modal-dialog-backdrop',
-          modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
-        });
-
-        modalRef.componentInstance.orderNumber = result;
-      }, (error) => {
-        this.loadingService.removeProcess('send-order');
-        this.toastr.error("Valami hiba történt a rendelés leadásakor!")
-      });
   }
-
-  goToSignup() {
-    this.router.navigateByUrl('signup');
-  }
-
-  login() {
-    this.authService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value).then((result) => {
-    }, (error) => {
-      this.toastr.error('Sikertelen bejelentkezés!', 'Hiba');
-    })
-  }
-
 }

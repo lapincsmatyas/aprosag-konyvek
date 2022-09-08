@@ -1,13 +1,13 @@
 <div class="stepper-container">
-  <span class="arrow left" [ngClass]="{disabled: !allowZero && value === 1}" (click)="changeValue(-1)" >
+  <button class="arrow left" [disabled]="value <= (allowZero ? 0 : 1)" (click)="decreaseValue()" >
     <img class="left-arrow" src="../../../../assets/Icons/Arrow_Grey.svg" style="transform: rotate(180deg)" height="50px">
-  </span>
+  </button>
 
   <span class="content-container">
     {{value}}
   </span>
 
-  <span class="arrow right" [ngClass]="{disabled: maxValue && value >= maxValue }" (click)="changeValue(1)">
+  <button class="arrow right" [disabled]="maxValue && value >= maxValue" (click)="increaseValue()">
     <img class="right-arrow" src="../../../../assets/Icons/Arrow_Grey.svg" height="50px">
-  </span>
+  </button>
 </div>

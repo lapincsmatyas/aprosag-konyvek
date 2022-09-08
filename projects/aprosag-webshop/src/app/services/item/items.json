@@ -9,7 +9,9 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
+    "price": {
+      "price": 3490
+    },
     "image_urls": [
         "Products/Product_1a.jpg",
         "Products/Product_1b.jpg",
@@ -28,8 +30,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_percentage": 0.5,
+    "price": {
+      "price": 3490,
+      "discount_percentage": 0.5
+    },
     "image_urls": [
       "Products/Product_2a.jpg",
       "Products/Product_2b.jpg",
@@ -48,8 +52,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_price": 2990,
+    "price": {
+      "price": 3490,
+      "discount_price": 2990
+    },
     "image_urls": [
       "Products/Product_3a.jpg",
       "Products/Product_3b.jpg",
@@ -68,8 +74,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_price": 2990,
+    "price": {
+      "price": 3490,
+      "discount_price": 2990
+    },
     "image_urls": [
       "Products/Product_4a.jpg",
       "Products/Product_4b.jpg",
@@ -88,8 +96,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_price": 2990,
+    "price": {
+      "price": 3490,
+      "discount_price": 2990
+    },
     "image_urls": [
       "Products/Product_5a.jpg",
       "Products/Product_5b.jpg",
@@ -108,8 +118,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_price": 2990,
+    "price": {
+      "price": 3490,
+      "discount_price": 2990
+    },
     "image_urls": [
       "Products/Product_6a.jpg",
       "Products/Product_6b.jpg",
@@ -128,8 +140,10 @@
     "weight": 450,
     "publication_date": 2020,
     "storage_amount": 71,
-    "price": 3490,
-    "discount_price": 2990,
+    "price": {
+      "price": 3490,
+      "discount_price": 2990
+    },
     "image_urls": [
       "Products/Product_7a.jpg",
       "Products/Product_7b.jpg",

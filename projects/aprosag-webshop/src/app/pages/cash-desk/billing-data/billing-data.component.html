@@ -1,0 +1,82 @@
+<div class="form-container">
+  <form class="personal-data" [formGroup]="profileForm">
+    <div class="profile-container">
+      <div class="form-field-container">
+        <span class="label required">Vezetéknév</span>
+        <input class="input-field" formControlName="lastName"/>
+        <div class="error-message" *ngIf="profileForm.controls['lastName'].touched && profileForm.controls['lastName'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">Keresztnév</span>
+        <input class="input-field" formControlName="firstName"/>
+        <div class="error-message" *ngIf="profileForm.controls['firstName'].touched && profileForm.controls['firstName'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label">Cégnév (nem kötelező)</span>
+        <input class="input-field" formControlName="companyName"/>
+      </div>
+      <div class="form-field-container">
+        <span class="label">Adószám (Vállalkozásoknak kötelező)</span>
+        <input class="input-field" formControlName="taxNumber"/>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">Ország</span>
+        <input class="input-field" formControlName="country"/>
+        <div class="error-message" *ngIf="profileForm.controls['country'].touched && profileForm.controls['country'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">Város</span>
+        <input class="input-field" formControlName="city"/>
+        <div class="error-message" *ngIf="profileForm.controls['city'].touched && profileForm.controls['city'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">Utca, házszám</span>
+        <input class="input-field" formControlName="address"/>
+        <div class="error-message" *ngIf="profileForm.controls['address'].touched && profileForm.controls['address'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">Irányítószám</span>
+        <input class="input-field" formControlName="zipCode"/>
+        <div class="error-message" *ngIf="profileForm.controls['zipCode'].touched && profileForm.controls['zipCode'].invalid">
+          A mező megadása kötelező!
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label required">E-mail cím</span>
+        <input class="input-field" formControlName="emailAddress"/>
+        <div class="error-message" *ngIf="profileForm.controls['emailAddress'].touched && profileForm.controls['emailAddress'].invalid">
+          <div *ngIf="profileForm.controls['emailAddress'].errors?.required">
+            A mező megadása kötelező!
+          </div>
+          <div *ngIf="profileForm.controls['emailAddress'].errors?.email">
+            Az email cím nem megfelelő!
+          </div>
+        </div>
+      </div>
+      <div class="form-field-container">
+        <span class="label">Telefonszám</span>
+        <input class="input-field" formControlName="phoneNumber"/>
+      </div>
+    </div>
+    <div class="span-2">
+      <div class="form-field-container">
+        <span class="label">Megjegyzés</span>
+        <input class="input-field" formControlName="comment"/>
+      </div>
+    </div>
+    <div class="mt-4 ml-2 error-message">A *-gal jelölt mezők kitöltése kötelező!</div>
+  </form>
+</div>
+<div class="button-container">
+  <button mat-button class="button" (click)="next()">Tovább</button>
+</div>

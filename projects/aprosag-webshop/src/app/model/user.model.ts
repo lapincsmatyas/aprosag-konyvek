@@ -1,5 +1,5 @@
 import {Roles} from "./roles.model";
-import {CartItem} from "./cart-item.model";
+import {CartItem} from "../store/cart/cart.model";
 
 export class User {
   uid: string = "";
