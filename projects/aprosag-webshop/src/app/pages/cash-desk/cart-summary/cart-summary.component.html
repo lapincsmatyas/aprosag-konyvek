@@ -3,22 +3,47 @@
     <span class="text">Kosár összesen</span>
   </div>
   <div class="content">
-    <div class="table-row" *ngFor="let item of cartService.items$ | async">
-      <span class="amount">{{item.amount}}x</span>
-      <span class="cart-item-image-container" *ngIf="item.item.image_urls">
-              <img class="cart-item-image" [src]="'assets/' + item.item.image_urls[0]"/>
+    <div class="table-row" *ngFor="let cartItem of cartService.items$ | async">
+      <span class="amount">{{cartItem.amount}}x</span>
+      <span class="cart-item-image-container" *ngIf="cartItem.item.image_urls">
+              <img class="cart-item-image" [src]="'assets/' + cartItem.item.image_urls[0]"/>
           </span>
+      <span class="center">
+        <span class="name">{{cartItem.item.title}}</span>
+         <div class="prices" *ngIf="cartItem.item.price">
+                <span class="original_price"
+                      [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price) + " Ft"}}</span>
+                <span *ngIf="cartItem.item.price.discount_price"
+                      class="discount price">{{cartItem.item.price.discount_price + " Ft"}}</span>
+               </div>
+      </span>
       <span class="right">
             <span class="cart-item-text-container">
-              <div class="summary-title">{{item.item.title}}</div>
               <div class="price-container">
-                <div class="item-price">{{item.item.price.price}} Ft</div>
                 <div class="sum-price">
-                  {{(item.item.price.discount_price || item.item.price.price) * item.amount}} Ft
+                <span class="original_price"
+                      [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price * cartItem.amount) + " Ft"}}</span>
+                <span *ngIf="cartItem.item.price.discount_price"
+                      class="discount price">{{cartItem.item.price.discount_price * cartItem.amount + " Ft"}}</span>
                 </div>
               </div>
             </span>
         </span>
     </div>
+    <ng-container  *ngIf="orderService.selectedShippingType$ | async as shippingType">
+      <div class="table-row" >
+        <div class="shipping-type">
+          <span>Szállítás</span>
+          <span>{{shippingType.name}}</span>
+          <span>{{shippingType.price}} Ft</span>
+        </div>
+      </div>
+      <div class="table-row">
+        <div class="summary">
+          <span>Összeg</span>
+          <span *ngIf="cartService.sumPrice$ | async as sumPrice">{{sumPrice + shippingType.price}} Ft</span>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>

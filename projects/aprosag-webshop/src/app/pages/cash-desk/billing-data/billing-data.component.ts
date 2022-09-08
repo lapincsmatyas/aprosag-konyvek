@@ -16,16 +16,16 @@ export class BillingDataComponent {
 
   constructor(private formBuilder: FormBuilder, private toastr: ToastrService, private orderService: OrderService) {
     this.profileForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['Elek', Validators.required],
+      lastName: ['Teszt', Validators.required],
       companyName: [''],
       taxNumber: [''],
-      country: ['', Validators.required],
-      city: ['', Validators.required],
-      address: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      emailAddress: ['', [Validators.required, Validators.email]],
-      phoneNumber: [''],
+      country: ['Hungary', Validators.required],
+      city: ['Mosonmagyaróvár', Validators.required],
+      address: ['Alma utca 7', Validators.required],
+      zipCode: ['9200', Validators.required],
+      emailAddress: ['piros@alma.hu', [Validators.required, Validators.email]],
+      phoneNumber: ['+36201231234'],
       comment: ['']
     })
   }
