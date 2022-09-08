@@ -1,0 +1,18 @@
+<div
+  class="gallery-container">
+  <swiper
+    #swiper
+    class="image-container"
+    [config]="config"
+    (activeIndexChange)="slideChanged($event)"
+  >
+    <ng-template swiperSlide *ngFor="let image of images">
+      <img (click)="openUrl(image)" class="image" [src]="image.src"/>
+    </ng-template>
+  </swiper>
+  <div class="small-images" *ngIf="showSmallImages">
+        <span *ngFor="let image of images; let i = index">
+          <img class="small-image" [ngClass]="{inactive: activeIndex !== i}" [src]="image.src" (click)="smallImageClicked(i)"/>
+        </span>
+  </div>
+</div>

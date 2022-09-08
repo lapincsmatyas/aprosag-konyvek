@@ -18,7 +18,7 @@
 
   .logo-container {
     width: 100%;
-
+    margin-bottom: 20px;
     .logo {
       display: block;
       margin: 0 auto;
@@ -29,7 +29,6 @@
 
     }
   }
-
 
   .items-container {
     width: $content-percentage-width;

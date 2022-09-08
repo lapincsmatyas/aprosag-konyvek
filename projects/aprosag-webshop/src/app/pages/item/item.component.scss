@@ -20,7 +20,7 @@
     display: flex;
     gap: 20px;
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: $breakpoint-md) {
       width: 100%;
       flex-direction: column;
       margin-top: 0;
@@ -35,57 +35,6 @@
         width: 100%;
         margin: 0 auto;
         max-width: 500px;
-      }
-
-      .main-image-container {
-        position: relative;
-
-        .arrow {
-          position: absolute;
-          top: calc(50% - 20px);
-          cursor: pointer;
-          height: 40px;
-
-
-          &.left {
-            left: 15px;
-            transform: rotate(180deg);
-          }
-
-          &.right {
-            right: 15px;
-          }
-        }
-
-        .main-image {
-          user-select: none;
-          width: 100%;
-        }
-      }
-
-
-      .small-images {
-        width: 100%;
-        margin-top: 10px;
-        display: flex;
-        gap: 5px;
-
-
-        .small-image {
-          width: 100%;
-          cursor: pointer;
-          max-height: 94px;
-          transition: opacity 0.3s;
-
-
-          &.inactive {
-            opacity: 0.5;
-          }
-
-          &:hover {
-            opacity: 1;
-          }
-        }
       }
     }
 
@@ -104,13 +53,14 @@
           margin-top: 35px;
         }
 
-        .title {
+        .item-title {
           display: flex;
           justify-content: space-between;
           gap: 15px;
 
           .title-text {
             @include title;
+            text-align: left;
             padding: 0 !important;
 
           }

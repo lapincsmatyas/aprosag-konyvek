@@ -2,13 +2,10 @@
 @import "projects/aprosag-webshop/src/mixins";
 
 .gallery-container {
-  margin: 30px auto;
   width: 100%;
   max-width: 1500px;
+  margin: 0 auto;
 
-  @media (max-width: $breakpoint-sm) {
-    margin: 0 auto;
-  }
 
   ::ng-deep {
     swiper {
@@ -69,6 +66,30 @@
     }
   }
 
+  .small-images {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+
+
+    .small-image {
+      width: 100%;
+      cursor: pointer;
+      max-height: 94px;
+      transition: opacity 0.3s;
+
+
+      &.inactive {
+        opacity: 0.5;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
 
   .image-container {
     overflow-y: hidden;
@@ -81,10 +102,6 @@
 
     @media (max-width: $breakpoint-sm) {
       padding-top: 0;
-    }
-
-    @media (max-width: $breakpoint-md) {
-      max-height: 250px;
     }
 
     .image {

@@ -48,7 +48,7 @@ import { FavoriteComponent } from './shared/components/favorite/favorite.compone
 import { FavoritesComponent } from './pages/profile/favorites/favorites.component';
 import { OrdersComponent } from './pages/profile/orders/orders.component';
 import {PersonalDataComponent} from "./pages/profile/personal-data/personal-data.component";
-import { GalleryComponent } from './pages/items/gallery/gallery.component';
+import { GalleryComponent } from './shared/components/gallery/gallery.component';
 import {SwiperModule} from "swiper/angular";
 import {EmailSentComponent} from "./pages/contacts/email-sent/email-sent.component";
 import { ConfirmationComponent } from './shared/popups/confirmation/confirmation.component';
@@ -59,6 +59,7 @@ import {EffectsModule} from "@ngrx/effects";
 import { CartSummaryComponent } from './pages/cash-desk/cart-summary/cart-summary.component';
 import {BillingDataComponent} from "./pages/cash-desk/billing-data/billing-data.component";
 import { OrderSummaryComponent } from './pages/cash-desk/order-summary/order-summary.component';
+import { FullscreenImageComponent } from './shared/components/gallery/fullscreen-image/fullscreen-image.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { OrderSummaryComponent } from './pages/cash-desk/order-summary/order-sum
     ConfirmationComponent,
     CartSummaryComponent,
     BillingDataComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    FullscreenImageComponent
   ],
   imports: [
     BrowserModule,
