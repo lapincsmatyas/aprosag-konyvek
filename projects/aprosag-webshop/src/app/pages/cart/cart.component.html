@@ -29,12 +29,22 @@
             <div class="item-title">{{cartItem.item.title}}</div>
             <div>{{cartItem.item.subtitle}}</div>
           </td>
-          <td>{{cartItem.item.price.discount_price || cartItem.item.price.price}} Ft</td>
+          <td>
+            <div class="prices" *ngIf="cartItem.item.price">
+              <span class="original_price" [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price) + " Ft"}}</span>
+              <span *ngIf="cartItem.item.price.discount_price" class="discount price">{{cartItem.item.price.discount_price + " Ft"}}</span>
+            </div>
+          </td>
           <td class="amount">
             <aprosag-stepper [allowZero]="false" [value]="cartItem.amount"
                              (valueChange)="amountChanged(cartItem.item, $event)"></aprosag-stepper>
           </td>
-          <td>{{(cartItem.item.price.discount_price || cartItem.item.price.price) * cartItem.amount}} Ft</td>
+          <td>
+              <div class="prices" *ngIf="cartItem.item.price">
+                <span class="original_price" [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price * cartItem.amount) + " Ft"}}</span>
+                <span *ngIf="cartItem.item.price.discount_price" class="discount price">{{cartItem.item.price.discount_price * cartItem.amount + " Ft"}}</span>
+              </div>
+          </td>
         </tr>
         <tr *ngIf="(cartService.count$ | async)! == 0">
           <td colspan="6">A kosarad üres</td>
@@ -76,6 +86,9 @@
       <button class="button back-to-shop" (click)="continueShopping()">Vásárlás folytatása</button>
     </div>
     <div class="newsletter-and-shipping">
+      <div class="newsletter-container">
+
+      </div>
       <div class="shipping-options-container">
         <div class="header">
           <span class="text">Kosár összesen</span>

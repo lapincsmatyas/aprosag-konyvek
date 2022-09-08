@@ -108,6 +108,30 @@
           cursor: pointer;
         }
 
+        .prices {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 10px;
+          width: 100%;
+
+          @media (max-width: $breakpoint-lg){
+            font-size: 18px;
+          }
+
+          @media (max-width: $breakpoint-md){
+            font-size: 16px;
+          }
+
+          .original_price.invalid {
+            text-decoration: line-through;
+          }
+
+          .discount {
+            color: $red-text;
+          }
+        }
+
         .table-header {
           color: white;
           background-color: $green-line;
@@ -237,6 +261,9 @@
             }
           }
         }
+      }
+
+      .newsletter-container{
       }
     }
   }
