@@ -1,26 +1,22 @@
-import {Action, ActionReducer} from "@ngrx/store";
-
-function setSavedState(state: any, localStorageKey: string) {
-  localStorage.setItem(localStorageKey, JSON.stringify(state));
-}
-function getSavedState(localStorageKey: string): any {
-  return JSON.parse(localStorage.getItem(localStorageKey) || '{}');
-}
+import {Action, ActionReducer, INIT, UPDATE} from "@ngrx/store";
+import * as fromCart from "./cart.reducer";
 
 const localStorageKey = 'CART_STATE';
 
 export function cartMetaReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  let onInit = true;
-  return function(state: any, action: Action) {
-    const nextState = reducer(state, action);
-
-    if(onInit){
-      onInit = false;
-      const savedState = getSavedState(localStorageKey);
-      nextState.cart = savedState;
+  return (state: any, action: Action) => {
+    if(action.type === INIT || action.type === UPDATE){
+      const storageState = localStorage.getItem(localStorageKey);
+      if(storageState){
+        try {
+          return JSON.parse(storageState) as fromCart.State;
+        } catch {
+          localStorage.removeItem(localStorageKey);
+        }
+      }
     }
-
-    setSavedState(nextState['cart'], localStorageKey);
+    const nextState = reducer(state, action);
+    localStorage.setItem(localStorageKey, JSON.stringify(nextState));
     return nextState;
   }
 }

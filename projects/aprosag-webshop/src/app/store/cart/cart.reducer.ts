@@ -8,7 +8,8 @@ export interface State extends EntityState<CartItem> {
 
 export const adapter: EntityAdapter<CartItem> = createEntityAdapter<CartItem>();
 
-export const initialState: State = adapter.getInitialState({});
+export const initialState: State = adapter.getInitialState({
+});
 
 export const reducer = createReducer(
   initialState,

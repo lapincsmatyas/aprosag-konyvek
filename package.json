@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start-webshop": "ng serve aprosag-webshop",
+    "start-admin": "ng serve aprosag-administrator --port 4201",
+    "build-webshop": "ng build aprosag-webshop --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "host": "ng build aprosag-webshop && firebase deploy --only hosting"
+    "host": "npm run build-webshop && firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {

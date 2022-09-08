@@ -37,16 +37,17 @@
           },
           "configurations": {
             "production": {
+              "optimization": false,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "10kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ],
               "fileReplacements": [
@@ -158,13 +159,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ],
               "fileReplacements": [
@@ -234,11 +235,9 @@
       }
     }
   },
+  "defaultProject": "aprosag-webshop",
   "cli": {
-    "analytics": false,
-    "schematicCollections": [
-      "@angular-eslint/schematics",
-      "@ngrx/schematics"
-    ]
+    "defaultCollection": "@angular-eslint/schematics",
+    "analytics": "2d849835-cd9a-45a1-a56f-88add3bea5ac"
   }
 }

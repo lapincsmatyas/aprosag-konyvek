@@ -125,7 +125,7 @@ import { OrderSummaryComponent } from './pages/cash-desk/order-summary/order-sum
     SidebarModule,
 
     StoreModule.forRoot({}),
-    !environment.production ? StoreDevtoolsModule.instrument(): [],
+    StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
     CoreStoreModule
   ],

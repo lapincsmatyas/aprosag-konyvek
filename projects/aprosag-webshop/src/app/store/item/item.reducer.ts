@@ -1,9 +1,7 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Item } from './item.model';
 import * as ItemActions from './item.actions';
-
-export const itemsFeatureKey = 'items';
 
 export interface State extends EntityState<Item> {
   itemsLoaded: boolean;
@@ -12,7 +10,6 @@ export interface State extends EntityState<Item> {
 export const adapter: EntityAdapter<Item> = createEntityAdapter<Item>();
 
 export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
   itemsLoaded: false
 });
 
@@ -56,8 +53,5 @@ export const reducer = createReducer(
 );
 
 export const {
-  selectIds,
-  selectEntities,
   selectAll,
-  selectTotal,
 } = adapter.getSelectors();
