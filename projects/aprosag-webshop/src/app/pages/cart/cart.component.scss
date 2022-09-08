@@ -76,11 +76,28 @@
             }
 
             .price-container{
-              display: flex;
-              justify-content: space-between;
-              .sum-price{
-                font-weight: 800;
+              .prices {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+
+                @media (max-width: $breakpoint-lg){
+                  font-size: 18px;
+                }
+
+                @media (max-width: $breakpoint-md){
+                  font-size: 16px;
+                }
+
+                .original_price.invalid {
+                  text-decoration: line-through;
+                }
+
+                .discount {
+                  color: $red-text;
+                }
               }
+
             }
           }
         }
@@ -201,6 +218,7 @@
 
         &.to-the-cashdesk {
           @include button();
+          margin-bottom: 100px;
         }
       }
     }

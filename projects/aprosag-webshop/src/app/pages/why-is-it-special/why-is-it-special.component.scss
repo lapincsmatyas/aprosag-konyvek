@@ -2,44 +2,37 @@
 @import "projects/aprosag-webshop/src/mixins";
 
 
-.special-page-container{
+.special-page-container {
   font-family: lato, Helvetica, sans-serif;
   color: $font-color;
 
 
   @include background('/assets/Backgrounds/Special_BG.svg');
 
-  .special-container{
+  .special-container {
     width: $content-percentage-width;
     max-width: $content-max-width;
 
     margin: 0 auto;
     margin-bottom: 35px;
 
-    @media (max-width: $breakpoint-md) {
-      text-align: center;
-    }
-
-      @media (max-width: $breakpoint-sm) {
+    @media (max-width: $breakpoint-sm) {
       width: 100%;
       padding: 0 15px;
-
-      text-align: center;
     }
 
     padding-bottom: 100px;
 
-
-    .title{
+    .title {
       @include title;
     }
 
-    .paragraphs{
+    .paragraphs {
       display: flex;
       flex-direction: column;
       gap: 50px;
 
-      .paragraph{
+      .paragraph {
         width: 100%;
         display: flex;
         gap: 25px;
@@ -50,12 +43,13 @@
           flex-direction: column-reverse;
         }
 
-        img{
+        img {
           width: 100%;
         }
 
-        .subtitle{
+        .subtitle {
           @include subtitle;
+          text-align: center;
         }
 
         .image-container {
@@ -70,22 +64,23 @@
           @media (max-width: $breakpoint-md) {
             width: 100%;
           }
-          .button{
+
+          .button {
             margin-top: 35px;
           }
 
-          &.standalone{
+          &.standalone {
             width: 100%;
           }
         }
       }
 
-      .button-container{
+      .button-container {
         display: flex;
-        justify-content:  center;
+        justify-content: center;
         margin-bottom: 25px;
 
-        .button{
+        .button {
           @include button;
           width: 35%;
           min-width: 325px;
@@ -96,14 +91,14 @@
         }
       }
 
-      .standalone-image-container{
+      .standalone-image-container {
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 300px;
 
-        .image{
+        .image {
           width: 100%;
 
           @media (max-width: $breakpoint-md) {

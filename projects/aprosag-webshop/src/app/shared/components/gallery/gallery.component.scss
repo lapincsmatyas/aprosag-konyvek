@@ -2,13 +2,10 @@
 @import "projects/aprosag-webshop/src/mixins";
 
 .gallery-container {
-  margin: 30px auto;
   width: 100%;
   max-width: 1500px;
+  margin: 0 auto;
 
-  @media (max-width: $breakpoint-sm) {
-    margin: 0 auto;
-  }
 
   ::ng-deep {
     swiper {
@@ -105,10 +102,6 @@
 
     @media (max-width: $breakpoint-sm) {
       padding-top: 0;
-    }
-
-    @media (max-width: $breakpoint-md) {
-      max-height: 250px;
     }
 
     .image {

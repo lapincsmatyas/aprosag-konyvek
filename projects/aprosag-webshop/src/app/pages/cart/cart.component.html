@@ -31,8 +31,10 @@
           </td>
           <td>
             <div class="prices" *ngIf="cartItem.item.price">
-              <span class="original_price" [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price) + " Ft"}}</span>
-              <span *ngIf="cartItem.item.price.discount_price" class="discount price">{{cartItem.item.price.discount_price + " Ft"}}</span>
+              <span class="original_price"
+                    [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price) + " Ft"}}</span>
+              <span *ngIf="cartItem.item.price.discount_price"
+                    class="discount price">{{cartItem.item.price.discount_price + " Ft"}}</span>
             </div>
           </td>
           <td class="amount">
@@ -40,10 +42,12 @@
                              (valueChange)="amountChanged(cartItem.item, $event)"></aprosag-stepper>
           </td>
           <td>
-              <div class="prices" *ngIf="cartItem.item.price">
-                <span class="original_price" [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price * cartItem.amount) + " Ft"}}</span>
-                <span *ngIf="cartItem.item.price.discount_price" class="discount price">{{cartItem.item.price.discount_price * cartItem.amount + " Ft"}}</span>
-              </div>
+            <div class="prices" *ngIf="cartItem.item.price">
+              <span class="original_price"
+                    [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price * cartItem.amount) + " Ft"}}</span>
+              <span *ngIf="cartItem.item.price.discount_price"
+                    class="discount price">{{cartItem.item.price.discount_price * cartItem.amount + " Ft"}}</span>
+            </div>
           </td>
         </tr>
         <tr *ngIf="(cartService.count$ | async)! == 0">
@@ -70,11 +74,22 @@
                                (valueChange)="amountChanged(cartItem.item, $event)"></aprosag-stepper>
             </div>
             <div class="price-container">
-              <span>{{cartItem.amount}}x {{cartItem.item.price}} Ft</span>
-              <span class="sum-price">
-              {{(cartItem.item.price.discount_price || cartItem.item.price.price) * cartItem.amount}} Ft
-              </span>
+              <div class="prices" *ngIf="cartItem.item.price">
+                {{cartItem.amount}}x
+                <span class="original_price"
+                      [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price) + " Ft"}}</span>
+                <span *ngIf="cartItem.item.price.discount_price"
+                      class="discount price">{{cartItem.item.price.discount_price + " Ft"}}</span>
+              </div>
             </div>
+          </div>
+          <div>
+             <span class="sum-price">
+              <span class="original_price" *ngIf="!cartItem.item.price.discount_price"
+                    [ngClass]="{'invalid': cartItem.item.price.discount_price}">{{(cartItem.item.price.price * cartItem.amount) + " Ft"}}</span>
+              <span *ngIf="cartItem.item.price.discount_price"
+                    class="discount price">{{cartItem.item.price.discount_price*cartItem.amount + " Ft"}}</span>
+              </span>
           </div>
         </div>
         <div *ngIf="(cartService.count$ | async)! === 0">

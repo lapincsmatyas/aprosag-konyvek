@@ -20,7 +20,7 @@
     display: flex;
     gap: 20px;
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: $breakpoint-md) {
       width: 100%;
       flex-direction: column;
       margin-top: 0;
@@ -36,34 +36,6 @@
         margin: 0 auto;
         max-width: 500px;
       }
-
-      .main-image-container {
-        position: relative;
-
-        .arrow {
-          position: absolute;
-          top: calc(50% - 20px);
-          cursor: pointer;
-          height: 40px;
-
-
-          &.left {
-            left: 15px;
-            transform: rotate(180deg);
-          }
-
-          &.right {
-            right: 15px;
-          }
-        }
-
-        .main-image {
-          user-select: none;
-          width: 100%;
-        }
-      }
-
-
     }
 
     .details {
@@ -81,13 +53,14 @@
           margin-top: 35px;
         }
 
-        .title {
+        .item-title {
           display: flex;
           justify-content: space-between;
           gap: 15px;
 
           .title-text {
             @include title;
+            text-align: left;
             padding: 0 !important;
 
           }

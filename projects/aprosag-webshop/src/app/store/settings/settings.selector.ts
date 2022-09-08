@@ -15,3 +15,8 @@ export const getPaymentTypes = createSelector(
   selectSettingsState,
   state => state.paymentTypes
 )
+
+export const getSliderImages = createSelector(
+  selectSettingsState,
+  state => state.sliderImages
+)

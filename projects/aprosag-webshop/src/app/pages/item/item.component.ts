@@ -14,7 +14,7 @@ import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-c
 import {UserService} from "../../services/user/user.service";
 import {ItemRepository} from "../../services/item/item.repository";
 import {Item} from "../../store/item/item.model";
-import {SliderImage} from "../items/gallery/gallery.component";
+import {SliderImage} from "../../shared/components/gallery/gallery.component";
 
 @Component({
   selector: 'aprosag-item',
@@ -41,7 +41,7 @@ export class ItemComponent implements OnDestroy{
       this.itemRepository.getItemById$(id).pipe(takeUntil(this.notifier)).subscribe(item => {
         this.item = item;
         this.itemImages = item?.image_urls.map(image => {
-          return {src: `assets/${image}`};
+          return {src: `assets/${image}`, fullscreen: true};
         }) || [];
       });
     }

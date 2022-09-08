@@ -5,7 +5,8 @@ import {DeprecatedItem} from "../../model/item.model";
 import {ActivatedRoute} from "@angular/router";
 import {ItemRepository} from "../../services/item/item.repository";
 import {Item} from "../../store/item/item.model";
-import {SliderImage} from "./gallery/gallery.component";
+import {SliderImage} from "../../shared/components/gallery/gallery.component";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
   selector: 'aprosag-items',
@@ -22,7 +23,7 @@ export class ItemsComponent implements OnInit{
 
   public items$: Observable<Item[]> = this.itemRepository.getItems$();
 
-  constructor(private itemRepository: ItemRepository) {
+  constructor(private itemRepository: ItemRepository, public settingsService: SettingsService) {
   }
 
   ngOnInit() {

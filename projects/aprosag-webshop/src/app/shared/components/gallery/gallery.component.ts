@@ -3,6 +3,9 @@ import SwiperCore, {Autoplay, Navigation, Pagination, SwiperOptions} from 'swipe
 import {Router} from "@angular/router";
 import Swiper from "swiper";
 import {SwiperComponent} from "swiper/angular";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AddedToCartComponent} from "../../popups/added-to-cart/added-to-cart.component";
+import {FullscreenImageComponent} from "./fullscreen-image/fullscreen-image.component";
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
@@ -10,6 +13,7 @@ export interface SliderImage {
   src: string;
   url?: string;
   site?: string;
+  fullscreen?: boolean;
 }
 
 @Component({
@@ -18,7 +22,7 @@ export interface SliderImage {
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent {
-  @Input() images: SliderImage[] = [];
+  @Input() images: SliderImage[] | null = [];
   @Input() showSmallImages = false;
   @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
 
@@ -34,11 +38,19 @@ export class GalleryComponent {
     },
   };
 
-  constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef, private readonly modalService: NgbModal) {
   }
 
   openUrl(sliderImage: SliderImage) {
-    if(sliderImage.site) {
+    console.log(sliderImage);
+    if(sliderImage.fullscreen){
+      const modalRef = this.modalService.open(FullscreenImageComponent, {
+        backdrop: true,
+        backdropClass: 'modal-dialog-backdrop',
+        modalDialogClass: 'modal-dialog-centered added-to-cart-dialog'
+      });
+      modalRef.componentInstance.imageSrc = sliderImage.src;
+    } else if(sliderImage.site) {
       window.open(sliderImage.site);
       return;
     } else if(sliderImage.url) {
@@ -49,7 +61,6 @@ export class GalleryComponent {
 
   slideChanged($event: [swiper: Swiper]) {
     this.activeIndex = $event[0].realIndex;
-    console.log(this.activeIndex);
     this.changeDetectorRef.detectChanges();
   }
 
