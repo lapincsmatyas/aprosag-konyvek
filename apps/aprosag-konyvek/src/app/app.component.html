@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="app.component.scss">
+<div class="app-container">
+  <div class="header-container">
+    <aprosag-header class="header"></aprosag-header>
+  </div>
+  <div class="page">
+    <div class="content-container" [ngClass]="{'open': appService.menuOpen}">
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <div class="footer">
+        <aprosag-footer class="footer"></aprosag-footer>
+      </div>
+    </div>
+    <div class="loading-screen" [ngClass]="{transparent: loadingService.transparent}"
+         *ngIf="(loadingService.loading | async)">
+      <img class="animation" src="../assets/Loading_anim.gif">
+    </div>
+  </div>
+
+
+  <div class="navigation" [@navigationBarAnimation] *ngIf="appService.menuOpen">
+    <div class="page-scrim"  (click)="appService.openMenu()"></div>
+    <div class="side-navigation" >
+      <div class="header-container">
+        <img (click)="appService.openMenu()" height="25px" src="../assets/Icons/Delete_Cart.svg">
+      </div>
+      <div class="buttons-container">
+        <span class="menu-item-container" >
+          <a class="menu-item" routerLink="items" routerLinkActive="active"
+             (click)="appService.openMenu()">Termékeink</a>
+        </span>
+        <span class="menu-item-container">
+        <a class="menu-item" routerLink="why-is-it-special" routerLinkActive="active" (click)="appService.openMenu()">Mitől
+          különleges</a>
+        </span>
+        <span class="menu-item-container">
+        <a class="menu-item" routerLink="about-us" routerLinkActive="active" (click)="appService.openMenu()">Rólunk</a>
+        </span>
+        <span class="menu-item-container">
+        <a class="menu-item" routerLink="contacts" routerLinkActive="active"
+           (click)="appService.openMenu()">Kapcsolat</a>
+        </span>
+        <div class="divider"></div>
+        <div class="user-container">
+          <ng-container *ngIf="(authService.user$ | async)">
+            <a class="menu-item" routerLink="profile" routerLinkActive="active"
+               (click)="appService.openMenu()">Profil</a>
+            <a class="menu-item" (click)="authService.logout()">Kijelentkezés</a>
+          </ng-container>
+          <ng-container *ngIf="(authService.user$ | async) === false">
+            <a class="menu-item" routerLink="login" routerLinkActive="active" (click)="appService.openMenu()">Bejelentkezés</a>
+            <a class="menu-item" routerLink="signup" routerLinkActive="active" (click)="appService.openMenu()">Regisztráció</a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

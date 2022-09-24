@@ -1,0 +1,142 @@
+@import "apps/aprosag-konyvek/src/variables";
+@import "apps/aprosag-konyvek/src/mixins";
+
+:host {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(251, 240, 241) 0%, rgba(255, 255, 255) 60%);;
+}
+
+.item-page-container {
+  font-family: lato, Helvetica, sans-serif;
+  font-weight: 800;
+  color: $font-color;
+
+  .item-container {
+    width: $content-percentage-width;
+    max-width: $content-max-width;
+
+    margin: 50px auto;
+
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      flex-direction: column;
+      margin-top: 0;
+      padding: $base-padding;
+    }
+
+
+    .images {
+      width: 50%;
+
+      @media (max-width: $breakpoint-md) {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 500px;
+      }
+    }
+
+    .details {
+      width: 50%;
+      color: $font-color;
+      font-size: 16px;
+      font-weight: 600;
+
+      @media (max-width: $breakpoint-md) {
+        width: 100%;
+      }
+
+      .title-container {
+        @media (max-width: $breakpoint-md) {
+          margin-top: 35px;
+        }
+
+        .item-title {
+          display: flex;
+          justify-content: space-between;
+          gap: 15px;
+
+          .title-text {
+            @include title;
+            text-align: left;
+            padding: 0 !important;
+
+          }
+        }
+
+        .subtitle {
+          @include subtitle;
+        }
+
+        .favorite-icon{
+          cursor: pointer;
+        }
+      }
+
+
+      .description {
+        width: 70%;
+        margin-bottom: 25px;
+
+        @media (max-width: $breakpoint-lg) {
+          width: 100%;
+        }
+      }
+
+      .details-container {
+        margin-bottom: 25px;
+      }
+
+      .stock-container {
+        font-weight: bold;
+        margin-bottom: 25px;
+      }
+
+      .price-container {
+        margin-bottom: 25px;
+
+        &.mobile{
+          display: none;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+          display: none;
+
+          &.mobile{
+            display: block;
+            font-size: 1.2em;
+          }
+        }
+
+        .discount {
+          font-weight: bold;
+          color: $red-text;
+        }
+
+        .original_price {
+          font-weight: bold;
+
+          &.invalid {
+            opacity: 0.6;
+            margin-left: 50px;
+            text-decoration: line-through;
+          }
+        }
+      }
+
+      .cart-container {
+        display: flex;
+        gap: 50px;
+
+        .button {
+          width: 100%;
+          @include button;
+        }
+      }
+    }
+  }
+
+
+}

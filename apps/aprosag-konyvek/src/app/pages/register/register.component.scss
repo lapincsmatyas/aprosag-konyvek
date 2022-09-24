@@ -1,0 +1,78 @@
+@import "apps/aprosag-konyvek/src/variables";
+@import "apps/aprosag-konyvek/src/mixins";
+
+.signup-page-container {
+  color: $font-color !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 35px;
+
+  @include background('/assets/Backgrounds/Special_BG.svg');
+
+  font-family: lato, Helvetica, sans-serif;
+
+  .signup-page {
+    width: $content-percentage-width;
+    max-width: $content-max-width;
+
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      max-width: auto;
+      padding: 0 10px;
+    }
+
+    .title {
+      @include title;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+      max-width: 500px;
+      width: 100%;
+
+      form {
+        width: 100%;
+
+        input {
+          @include input-field;
+          margin-bottom: 20px;
+        }
+
+        .signup-text {
+          text-align: center;
+          font-size: 16px;
+          font-weight: 700;
+          margin-top: 50px;
+        }
+
+        .button {
+          margin: 20px auto;
+
+          &.signup-button {
+            @include button;
+
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+          &.login-button {
+            @include button($font-color);
+
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="items-page-container">
+  <div class="logo-container">
+    <img class="logo" style="fill: red" height="89px" src="../../../assets/Logo/logo_dense_black.svg"/>
+  </div>
+
+  <aprosag-gallery class="slider" [images]="settingsService.sliderImages$ | async"></aprosag-gallery>
+
+  <div class="items-container">
+
+    <div class="items">
+    <span class="item" *ngFor="let item of items$ | async">
+      <aprosag-item-card [item]="item" (addItemToCartClicked)="addItemToCart($event)" (itemClicked)="itemClicked($event)"></aprosag-item-card>
+    </span>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal class="added-to-card-modal">
+  <aprosag-added-to-cart></aprosag-added-to-cart>
+</ng-template>
