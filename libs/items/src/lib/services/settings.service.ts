@@ -6,9 +6,9 @@ import {
   getPaymentTypes,
   getShippingTypes,
   getSliderImages
-} from "../../../../../libs/items/src/lib/+state/settings/settings.selector";
-import {loadSettingsByHttp} from "../../../../../libs/items/src/lib/+state/settings/settings.action";
-import {Settings} from "../../../../../libs/items/src/lib/+state/settings/settings.model";
+} from "../+state/settings/settings.selector";
+import {loadSettingsByHttp} from "../+state/settings/settings.action";
+import {Settings} from "../+state/settings/settings.model";
 
 @Injectable({
   providedIn: 'root'

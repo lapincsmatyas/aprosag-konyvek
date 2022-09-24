@@ -1,29 +1,34 @@
 import {createSelector} from "@ngrx/store";
 import {itemsAdapter, ItemsState} from "./items.reducer";
-import {getCoreState} from "items";
+import {State} from "items";
 
-const getItemsState = createSelector(
+const getCoreState = createSelector(
+  (state: State) => state,
+  (state: State) => state
+)
+
+const selectItemsState = createSelector(
   getCoreState,
   state => state.item
 );
 
 const { selectAll, selectEntities } = itemsAdapter.getSelectors();
 
-export const getAllItems = createSelector(getItemsState, (state: ItemsState) =>
+export const selectAllItems = createSelector(selectItemsState, (state: ItemsState) =>
   selectAll(state)
 );
 
-export const getItemsEntities = createSelector(
-  getItemsState,
+export const selectItemsEntites = createSelector(
+  selectItemsState,
   (state: ItemsState) => selectEntities(state)
 );
 
-export const getItemsLoaded = createSelector(
-  getItemsState,
+export const selectItemsLoaded = createSelector(
+  selectItemsState,
   state => state.itemsLoaded
 )
 
-export const getItemById = (id: string) => createSelector(
-  getItemsEntities,
+export const selectItemById = (id: string) => createSelector(
+  selectItemsEntites,
   (items) => (id ? items[id] : undefined)
 );

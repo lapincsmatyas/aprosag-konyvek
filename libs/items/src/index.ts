@@ -1,4 +1,4 @@
-import {ActionReducerMap, createFeatureSelector, createSelector} from "@ngrx/store";
+import {ActionReducerMap, createSelector} from "@ngrx/store";
 import * as fromItem from "libs/items/src/lib/+state/items/items.reducer";
 import * as fromCart from "./lib/+state/cart/cart.reducer";
 import * as fromOrder from "./lib/+state/order/order.reducer";
@@ -18,7 +18,6 @@ export const reducers: ActionReducerMap<State> = {
   settings: fromSettings.reducer
 }
 
-export const getCoreState = createSelector(
-  (state: State) => state,
-  (state: State) => state
-)
+
+export * from './lib/+state/items/items.models';
+export * from './lib/+state/items/items.facade'

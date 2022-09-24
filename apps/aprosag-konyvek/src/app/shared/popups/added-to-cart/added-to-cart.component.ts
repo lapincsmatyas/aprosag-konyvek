@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {Item} from "data";
+import {Item} from "items";
 
 @Component({
   selector: 'aprosag-added-to-cart',
@@ -9,7 +9,7 @@ import {Item} from "data";
   styleUrls: ['./added-to-cart.component.scss']
 })
 export class AddedToCartComponent {
-  @Input() public item: Item | undefined;
+  @Input() public item: Item;
   @Input() public amount: number = 0;
 
   constructor(private router: Router, private modal: NgbActiveModal) { }

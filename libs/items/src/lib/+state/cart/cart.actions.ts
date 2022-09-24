@@ -1,7 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {Item} from "data";
-import {Update} from "@ngrx/entity";
-import {CartItem} from "./cart.model";
+import {Item} from "../items/items.models";
 
 export const addItemToCart = createAction(
   '[Cart/API] Change Cart Item Amount',

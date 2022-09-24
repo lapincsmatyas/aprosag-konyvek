@@ -7,7 +7,7 @@ import {AuthService} from "./services/auth/auth.service";
 import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {animate, style, transition, trigger} from '@angular/animations';
-import {SettingsService} from "./services/settings.service";
+import {SettingsService} from "../../../../libs/items/src/lib/services/settings.service";
 
 @Component({
   selector: 'aprosag-root',

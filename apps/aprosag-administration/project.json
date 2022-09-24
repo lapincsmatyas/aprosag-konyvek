@@ -17,7 +17,12 @@
           "apps/aprosag-administration/src/favicon.ico",
           "apps/aprosag-administration/src/assets"
         ],
-        "styles": ["apps/aprosag-administration/src/styles.css"],
+        "styles": [
+          "apps/aprosag-administration/src/styles.css",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css"
+        ],
         "scripts": []
       },
       "configurations": {

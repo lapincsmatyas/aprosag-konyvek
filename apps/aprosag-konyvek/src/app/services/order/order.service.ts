@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {PaymentType, ShippingType} from "../../model/cart-item.model";
-import {BillingAddress} from "../../model/billing-address.model";
+
 import {
   getBillingAddress,
   getSelectedPaymentType,
@@ -13,6 +12,7 @@ import {
   changeShippingType,
   setBillingAddress
 } from "../../../../../../libs/items/src/lib/+state/order/order.action";
+import {BillingAddress, PaymentType, ShippingType} from 'data';
 
 @Injectable({
   providedIn: 'root'

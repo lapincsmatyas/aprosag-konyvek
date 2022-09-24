@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {Item} from "data";
-import {SettingsService} from "../../services/settings.service";
+import {Item} from "items";
+import {SettingsService} from "../../../../../../libs/items/src/lib/services/settings.service";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {CartService} from "../../services/cart/cart.service";
@@ -14,7 +14,7 @@ import {ItemsFacade} from "../../../../../../libs/items/src/lib/+state/items/ite
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit{
-  public items$: Observable<Item[]> = this.itemsFacade.getItems$();
+  public items$: Observable<Item[]> = this.itemsFacade.getItems$;
 
   constructor(private itemsFacade: ItemsFacade,
               public settingsService: SettingsService,

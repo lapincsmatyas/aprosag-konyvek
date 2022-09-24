@@ -4,17 +4,10 @@ import {Router} from "@angular/router";
 import Swiper from "swiper";
 import {SwiperComponent} from "swiper/angular";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {AddedToCartComponent} from "../../popups/added-to-cart/added-to-cart.component";
 import {FullscreenImageComponent} from "./fullscreen-image/fullscreen-image.component";
+import {SliderImage} from "data";
 
 SwiperCore.use([Pagination, Navigation, Autoplay]);
-
-export interface SliderImage {
-  src: string;
-  url?: string;
-  site?: string;
-  fullscreen?: boolean;
-}
 
 @Component({
   selector: 'aprosag-gallery',

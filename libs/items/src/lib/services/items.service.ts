@@ -3,8 +3,8 @@ import {Observable} from "rxjs";
 import * as itemsJson from "./items.json"
 import {addDoc, collection, collectionData, doc, docData, Firestore, getDocs} from "@angular/fire/firestore";
 import {ItemDto} from "../model/item.dto";
-import {Item} from "../+state/items/items.models";
 import {map} from "rxjs/operators";
+import {Item} from "items";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,6 @@ export class ItemsService {
   itemsData: any = (itemsJson as any).default;
 
   constructor(private firestore: Firestore) {
-    this.initializeItems();
   }
 
   getAllItems(): Observable<Item[]> {

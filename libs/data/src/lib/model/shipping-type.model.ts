@@ -4,8 +4,3 @@ export interface ShippingType {
   price: number,
   description?: string,
 }
-
-export interface PaymentType {
-  name: string;
-  description: string;
-}

@@ -12,7 +12,7 @@
   </swiper>
   <div class="small-images" *ngIf="showSmallImages">
         <span *ngFor="let image of images; let i = index">
-          <img class="small-image" [ngClass]="{inactive: activeIndex !== i}" [src]="image.src" (click)="smallImageClicked(i)"/>
+          <img class="small-image" [class.inactive]="activeIndex !== i" [src]="image.src" (click)="smallImageClicked(i)"/>
         </span>
   </div>
 </div>

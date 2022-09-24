@@ -1,7 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import {changePaymentType, changeShippingType, setBillingAddress} from "./order.action";
-import {PaymentType, ShippingType} from "../../../../../../apps/aprosag-konyvek/src/app/model/cart-item.model";
-import {BillingAddress} from "../../../../../../apps/aprosag-konyvek/src/app/model/billing-address.model";
+import {BillingAddress, PaymentType, ShippingType} from 'data';
 
 export interface State {
   selectedShippingType: ShippingType | null,

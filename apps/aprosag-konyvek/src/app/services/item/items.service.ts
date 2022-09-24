@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import * as itemsJson from "./items.json"
 import {addDoc, collection, collectionData, doc, docData, Firestore, getDocs} from "@angular/fire/firestore";
 import {ItemDto} from "../../model/dto/item.dto";
-import {Item} from "data";
+import {Item} from "items";
 import {map} from "rxjs/operators";
 
 @Injectable({

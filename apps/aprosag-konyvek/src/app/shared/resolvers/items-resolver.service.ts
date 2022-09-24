@@ -14,7 +14,7 @@ export class ItemsResolver implements Resolve<any> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    this.itemsFacade.getItemsLoaded$()
+    this.itemsFacade.getItemsLoaded$
       .pipe(take(1))
       .subscribe(loaded => {
           if(!loaded) this.itemsFacade.loadItems();

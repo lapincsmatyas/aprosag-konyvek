@@ -4,8 +4,8 @@ import {Router} from "@angular/router";
 
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
-import {Item} from "data";
 import {OrderService} from "../../services/order/order.service";
+import {Item} from "items";
 
 @Component({
   selector: 'aprosag-cart',

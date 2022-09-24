@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {Item} from "data";
 import {CommonModule} from "@angular/common";
+import {Item} from "items";
 
 @Component({
   selector: 'aprosag-item-card',

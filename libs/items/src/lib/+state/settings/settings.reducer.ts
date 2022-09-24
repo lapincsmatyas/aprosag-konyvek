@@ -1,7 +1,6 @@
 import {createReducer, on} from "@ngrx/store";
 import {loadSettings} from "./settings.action";
-import {SliderImage} from "../../../../../../apps/aprosag-konyvek/src/app/shared/components/gallery/gallery.component";
-import {PaymentType, ShippingType} from "../../../../../../apps/aprosag-konyvek/src/app/model/cart-item.model";
+import {PaymentType, ShippingType, SliderImage} from "data";
 
 export interface State {
   shippingTypes: ShippingType[],

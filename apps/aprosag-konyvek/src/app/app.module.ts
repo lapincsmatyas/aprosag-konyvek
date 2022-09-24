@@ -59,9 +59,10 @@ import { CartSummaryComponent } from './pages/cash-desk/cart-summary/cart-summar
 import {BillingDataComponent} from "./pages/cash-desk/billing-data/billing-data.component";
 import { OrderSummaryComponent } from './pages/cash-desk/order-summary/order-summary.component';
 import { FullscreenImageComponent } from './shared/components/gallery/fullscreen-image/fullscreen-image.component';
-import * as fromCore from "libs/items/src/index"
 import {SettingsEffects} from "../../../../libs/items/src/lib/+state/settings/settings.effects";
 import {ItemsEffects} from "../../../../libs/items/src/lib/+state/items/items.effects";
+
+import * as fromCore from "items"
 
 @NgModule({
   declarations: [

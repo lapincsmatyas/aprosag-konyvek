@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, switchMap} from "rxjs/operators";
 import {loadSettings, loadSettingsByHttp} from "./settings.action";
-import {EMPTY, of} from "rxjs";
-import {SettingsService} from "../../../../../../apps/aprosag-konyvek/src/app/services/settings.service";
+import {EMPTY} from "rxjs";
+import {SettingsService} from "../../services/settings.service";
 
 @Injectable()
 export class SettingsEffects {

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {OrderService} from "../../../services/order/order.service";
-import {SettingsService} from "../../../services/settings.service";
+import {SettingsService} from "../../../../../../../libs/items/src/lib/services/settings.service";
 
 @Component({
   selector: 'aprosag-payment-options',

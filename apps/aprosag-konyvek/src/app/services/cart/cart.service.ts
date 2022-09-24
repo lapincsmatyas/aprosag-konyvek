@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ShippingType} from "../../model/cart-item.model";
 import {UserService} from "../user/user.service";
 import {AuthService} from "../auth/auth.service";
-import {Item} from "data";
+import {Item} from "items";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {

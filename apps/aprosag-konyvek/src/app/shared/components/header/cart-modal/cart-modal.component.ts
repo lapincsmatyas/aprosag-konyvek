@@ -5,7 +5,7 @@ import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import { faTimesCircle} from "@fortawesome/free-regular-svg-icons";
 import {ConfirmationComponent} from "../../../popups/confirmation/confirmation.component";
-import {Item} from "data";
+import {Item} from "items";
 
 @Component({
   selector: 'aprosag-cart-modal',

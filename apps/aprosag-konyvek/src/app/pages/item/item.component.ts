@@ -6,9 +6,9 @@ import {CartService} from "../../services/cart/cart.service";
 import {ToastrService} from "ngx-toastr";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
-import {Item} from "data";
-import {SliderImage} from "../../shared/components/gallery/gallery.component";
+import {Item} from "items";
 import {ItemsFacade} from "../../../../../../libs/items/src/lib/+state/items/items.facade";
+import {SliderImage} from "data";
 
 @Component({
   selector: 'aprosag-item',
@@ -39,10 +39,6 @@ export class ItemComponent implements OnDestroy{
         }) || [];
       });
     }
-  }
-
-  selectImage(i: number) {
-    this.selectedImageIndex = i;
   }
 
   addItemToCart(item: Item) {

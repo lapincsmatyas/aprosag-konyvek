@@ -1,7 +1,7 @@
 import {User} from "./user.model";
 import {Timestamp} from "@firebase/firestore";
-import {PaymentType, ShippingType} from "./cart-item.model";
-import {CartItem} from "../../../../../libs/items/src/lib/+state/cart/cart.model";
+import {PaymentType, ShippingType} from "data";
+import { CartItem } from "libs/items/src/lib/+state/cart/cart.model";
 
 export enum OrderState {
   SENT= "SENT"

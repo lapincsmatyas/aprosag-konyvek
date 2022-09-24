@@ -1,6 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {PaymentType, ShippingType} from "../../../../../../apps/aprosag-konyvek/src/app/model/cart-item.model";
-import {BillingAddress} from "../../../../../../apps/aprosag-konyvek/src/app/model/billing-address.model";
+import {BillingAddress, PaymentType, ShippingType} from "data";
 
 export const changeShippingType = createAction(
   '[Order] Change Shipping Type',

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
-import {Item} from "data";
+import {Item} from "items";
 
 @Component({
   selector: 'aprosag-favorite',

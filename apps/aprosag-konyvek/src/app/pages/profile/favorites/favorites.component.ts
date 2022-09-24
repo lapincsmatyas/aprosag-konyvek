@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
 import {Observable, of} from "rxjs";
-import {Item} from "data";
+import {Item} from "items";
 import {ItemsFacade} from "../../../../../../../libs/items/src/lib/+state/items/items.facade";
 
 @Component({

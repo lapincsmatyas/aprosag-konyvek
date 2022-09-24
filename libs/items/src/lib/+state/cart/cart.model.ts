@@ -1,4 +1,4 @@
-import {Item} from "data";
+import {Item} from "../items/items.models";
 
 export interface CartItem {
   id: string;

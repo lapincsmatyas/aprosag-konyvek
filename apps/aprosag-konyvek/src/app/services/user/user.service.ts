@@ -5,7 +5,7 @@ import {arrayRemove, arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc} from
 import {UserDto} from "../../model/dto/user.dto";
 import {BehaviorSubject, throwError} from "rxjs";
 import {ToastrService} from "ngx-toastr";
-import {Item} from "data";
+import {Item} from "items";
 import {CartItem} from "../../../../../../libs/items/src/lib/+state/cart/cart.model";
 
 @Injectable({
