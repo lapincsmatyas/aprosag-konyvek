@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="added-to-cart.component.scss">
+<div *ngIf="item" class="added-to-cart-modal-container">
+  <div class="dialog-title">Sikeresen hozzáadtad a kosaradhoz!</div>
+  <div class="content">
+    <div class="image-container" >
+      <img class="image" [src]="'assets/' + item.image_urls[0]"/>
+    </div>
+    <div class="details">
+      <div class="title-container">
+        <div class="title">{{item.title}}</div>
+        <div class="subtitle">{{item.subtitle}}</div>
+      </div>
+      <div class="price-container">
+        <div class="split price" *ngIf="item.price">
+          <div class="price-text">Ár</div>
+          <div class="price-amount">
+              <span class="original_price"
+                    [class.invalid]="item.price.discount_price">{{item.price.price + " Ft"}}</span>
+            <span *ngIf="item.price.discount_price" class="discount price">{{item.price.discount_price + " Ft"}}</span>
+          </div>
+        </div>
+        <div class="split count">
+          <div class="count-text">Darab</div>
+          <div class="count-amount">{{amount}} db</div>
+        </div>
+      </div>
+      <div class="split sum-container">
+        <div class="sum-text">Összesen</div>
+        <div class="sum-amount">{{(item.price.discount_price || item.price.price) * amount}} Ft</div>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="button continue-shopping" (click)="backToShopping()">Vásárlás folytatása</button>
+    <button class="button" (click)="goToCart()">Tovább a kosárhoz</button>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+@import "apps/aprosag-konyvek/src/mixins";
+@import "apps/aprosag-konyvek/src/variables";
+
+.added-to-cart-modal-container {
+  padding: 25px;
+
+  .dialog-title {
+    @include title;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $font-color;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 18px;
+    }
+  }
+
+  .content {
+    border-radius: 20px;
+    margin-top: 25px;
+    display: flex;
+    gap: 25px;
+
+    @media (max-width: 550px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-container {
+      width: 80%;
+
+      @media (max-width: $breakpoint-sm) {
+        width: 50%;
+      }
+
+      .image {
+        width: 100%;
+      }
+    }
+
+    .details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      .title-container {
+        border-bottom: 1px solid $font-color;
+        width: 100%;
+
+        .title {
+          @include subtitle;
+
+          margin-top: 0;
+          @media (max-width: $breakpoint-sm) {
+            margin: 0;
+            text-align: center;
+
+          }
+        }
+
+        .subtitle {
+          @include subtitle;
+          font-weight: 400;
+
+          @media (max-width: $breakpoint-sm) {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+
+          }
+        }
+      }
+
+      .split {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      font-size: 16px;
+
+      .price-container {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 25px;
+        gap: 25px;
+        width: 100%;
+        border-bottom: 1px solid $font-color;
+
+        @media (max-width: $breakpoint-sm) {
+          gap: 10px;
+        }
+      }
+
+      .discount {
+        font-weight: bold;
+        margin-left: 30px;
+
+        color: $red-text;
+      }
+
+      .original_price {
+        font-weight: bold;
+
+        &.invalid {
+          opacity: 0.6;
+          text-decoration: line-through;
+        }
+      }
+
+      .sum-container {
+        @include subtitle;
+        margin-top: 20px;
+      }
+
+
+    }
+  }
+
+  .button-container {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+
+    .button {
+      @include button;
+      width: 50%;
+
+      &.continue-shopping {
+        @include button($font-color)
+      }
+    }
+  }
+}

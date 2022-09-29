@@ -1,0 +1,28 @@
+@import "apps/aprosag-konyvek/src/mixins";
+@import "apps/aprosag-konyvek/src/variables";
+
+.successful-order-container{
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  font-size: 16px;
+  color: $font-color;
+
+  .title{
+    @include title;
+    text-align: center;
+  }
+
+  .order-number{
+    font-weight: 600;
+  }
+
+  .button-container{
+    .button{
+      @include button;
+      padding: 0 20px;
+    }
+  }
+}

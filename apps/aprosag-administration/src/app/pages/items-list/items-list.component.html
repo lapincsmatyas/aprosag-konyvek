@@ -1,0 +1,36 @@
+<ng-container *ngIf="items$ | async as items">
+  <p-table [value]="items">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>subtitle</th>
+        <th>description</th>
+        <th>page_count</th>
+        <th>cover_type</th>
+        <th>ISBN</th>
+        <th>weight</th>
+        <th>publication_date</th>
+        <th>storage_amount</th>
+        <th>price</th>
+        <th>image_urls</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.subtitle}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.page_count}}</td>
+        <td>{{item.cover_type}}</td>
+        <td>{{item.ISBN}}</td>
+        <td>{{item.weight}}</td>
+        <td>{{item.publication_date}}</td>
+        <td>{{item.storage_amount}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.image_urls}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>
