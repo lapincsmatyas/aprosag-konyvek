@@ -9,8 +9,8 @@ import {OrderService} from "../../../services/order/order.service";
   styleUrls: ['./billing-data.component.scss']
 })
 export class BillingDataComponent {
-  @Output()
-  nextButtonClicked = new EventEmitter<boolean>();
+  @Output() nextButtonClicked = new EventEmitter<boolean>();
+  @Output() prevButtonClicked = new EventEmitter<boolean>();
 
   profileForm: FormGroup;
 

@@ -1,5 +1,5 @@
-@import "apps/aprosag-konyvek/src/variables";
-@import "apps/aprosag-konyvek/src/mixins";
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
 
 .item-card-container {
   color: $font-color;
@@ -67,7 +67,7 @@
     margin-top: 20px;
     font-family: lato, Helvetica, sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: $text-size;
   }
 
   .item-card-image {

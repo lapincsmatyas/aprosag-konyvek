@@ -1,8 +1,15 @@
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
+
 .option{
   display: flex;
   justify-content: space-between;
 
   margin-bottom: 15px;
+
+  .text{
+    font-size: $text-size;
+  }
 
   .input-field{
     display: flex;
@@ -20,13 +27,15 @@
     display: flex;
     justify-content: space-between;
 
-    .label-name{
+    .label-name {
       max-width: 180px;
+      font-size: $text-size;
     }
 
     .label-value{
       width: 80px;
       text-align: right;
+        font-size: $text-size;
     }
   }
 }

@@ -1,3 +1,6 @@
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
+
 .option {
   margin-bottom: 24px;
   .input-container {
@@ -17,6 +20,7 @@
 
       .name {
         font-weight: bold;
+        font-size: $text-size;
       }
     }
   }

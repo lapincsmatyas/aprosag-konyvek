@@ -18,6 +18,10 @@ export const reducers: ActionReducerMap<State> = {
   settings: fromSettings.reducer
 }
 
+export const getCoreState = createSelector(
+  (state: State) => state,
+  (state: State) => state
+)
 
 export * from './lib/+state/items/items.models';
 export * from './lib/+state/items/items.facade'

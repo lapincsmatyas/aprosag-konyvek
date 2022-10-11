@@ -1,11 +1,12 @@
-import {Component} from '@angular/core';
-import {CartService} from "../../services/cart/cart.service";
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import { CartService } from "../../services/cart/cart.service";
+import { Router } from "@angular/router";
 
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ConfirmationComponent} from "../../shared/popups/confirmation/confirmation.component";
-import {OrderService} from "../../services/order/order.service";
-import {Item} from "items";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ConfirmationComponent } from "../../shared/popups/confirmation/confirmation.component";
+import { OrderService } from "../../services/order/order.service";
+import { Item } from "items";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'aprosag-cart',
@@ -26,7 +27,7 @@ export class CartComponent {
     });
     modalRef.componentInstance.text = "Biztos törölni szeretnéd a terméket a kosárból?";
     modalRef.closed.subscribe(result => {
-      if(!result) return;
+      if (!result) return;
       this.cartService.removeItemFromCart(item);
     })
   }
