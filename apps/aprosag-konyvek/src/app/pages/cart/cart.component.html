@@ -110,24 +110,23 @@
         </div>
         <div class="content">
           <div class="table-row">
-            <span class="table-title">Részösszeg</span>
-            <span>{{cartService.sumPrice$ |async}} Ft</span>
+            <span class="table-title text">Részösszeg</span>
+            <span class="text">{{cartService.sumPrice$ |async}} Ft</span>
           </div>
           <div class="table-row shipping">
-            <div class="table-title shipment">Szállítás</div>
+            <div class="table-title shipment text">Szállítás</div>
             <aprosag-shipping-options></aprosag-shipping-options>
           </div>
           <div class="table-row" *ngIf="orderService.selectedShippingType$ | async as selectedShippingType">
-            <span class="table-title">Összeg</span>
-            <span>{{(cartService.sumPrice$ |async)! + selectedShippingType.price}} Ft</span>
+            <span class="table-title text">Összeg</span>
+            <span class="text">{{(cartService.sumPrice$ |async)! + selectedShippingType.price}} Ft</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="button-container" *ngIf="(cartService.count$ | async)! > 0">
-      <button class="button to-the-cashdesk" (click)="goToDesk()">Tovább a pénztárhoz
-      </button>
+    <div class="button-container">
+      <button class="button to-the-cashdesk" [disabled]="(orderService.selectedShippingType$ | async) === null"  (click)="goToDesk()">Tovább a pénztárhoz</button>
     </div>
   </div>
 </div>

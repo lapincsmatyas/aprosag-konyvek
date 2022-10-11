@@ -1,5 +1,5 @@
-@import "apps/aprosag-konyvek/src/variables";
-@import "apps/aprosag-konyvek/src/mixins";
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
 
 .about-us-page-container {
   font-family: lato, Helvetica, sans-serif;
@@ -22,9 +22,9 @@
       @include title;
     }
 
-    .about-us-text {
+    .text {
+      font-size: $text-size;
       font-weight: normal;
-      font-size: 18px;
       text-align: center;
 
       margin-bottom: 48px;
@@ -45,7 +45,7 @@
         flex-direction: column;
         align-items: center;
         margin: 0 15px;
-        flex: 1 1 0px;
+        flex: 1 1 0;
         min-width: calc(33% - 3* 15px);
 
         .subtitle {
@@ -54,10 +54,6 @@
 
         .image {
           width: 100%;
-
-        }
-
-        .text{
         }
       }
     }

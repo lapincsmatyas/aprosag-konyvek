@@ -2,7 +2,7 @@
   <div class="header">
     <span class="text">Kosár összesen</span>
   </div>
-  <div class="content">
+  <div class="content text">
     <div class="table-row" *ngFor="let cartItem of cartService.items$ | async">
       <span class="amount">{{cartItem.amount}}x</span>
       <span class="cart-item-image-container" *ngIf="cartItem.item.image_urls">
@@ -43,7 +43,7 @@
           <span>Összeg</span>
           <span *ngIf="cartService.sumPrice$ | async as sumPrice">{{sumPrice + shippingType.price}} Ft</span>
         </div>
-      </div>
+      </div> 
     </ng-container>
   </div>
 </div>

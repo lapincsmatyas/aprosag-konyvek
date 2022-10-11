@@ -1,5 +1,5 @@
-@import "apps/aprosag-konyvek/src/variables";
-@import "apps/aprosag-konyvek/src/mixins";
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
 
 .summary-container {
   font-family: lato, Helvetica, sans-serif;
@@ -15,14 +15,16 @@
     max-width: 100%;
   }
 
+  .text {
+    font-size: $text-size;
+  }
+
   .header {
     padding: 15px 25px;
     color: white;
     background-color: $base-green;
 
-    .text {
-      font-size: 16px;
-    }
+
   }
 
   .content {

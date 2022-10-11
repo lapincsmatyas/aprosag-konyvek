@@ -24,6 +24,7 @@ export class GalleryComponent {
   config: SwiperOptions = {
     navigation: true,
     spaceBetween: 30,
+    rewind: true,
     pagination: {clickable: true},
     autoplay: {
       delay: 5000,

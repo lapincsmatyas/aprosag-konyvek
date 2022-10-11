@@ -1,11 +1,10 @@
-@import "apps/aprosag-konyvek/src/variables";
-@import "apps/aprosag-konyvek/src/mixins";
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
 
 
 .special-page-container {
   font-family: lato, Helvetica, sans-serif;
   color: $font-color;
-
 
   @include background('/assets/Backgrounds/Special_BG.svg');
 
@@ -50,6 +49,10 @@
         .subtitle {
           @include subtitle;
           text-align: center;
+        }
+
+        .text {
+          font-size: $text-size;
         }
 
         .image-container {

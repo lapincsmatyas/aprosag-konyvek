@@ -7,6 +7,8 @@ import {UserService} from "../../services/user/user.service";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import { Router } from '@angular/router';
+import { OrderService } from '../../services/order/order.service';
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -21,14 +23,14 @@ export class CashDeskComponent implements AfterViewInit {
     this.stepper._getIndicatorType = () => 'number';
   }
 
-
-
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(private fb: FormBuilder,
               public userService: UserService,
               public authService: AuthService,
               public breakpointObserver: BreakpointObserver,
+              private router: Router,
+              public orderService: OrderService,
               public cartService: CartService) {
 
     this.stepperOrientation = breakpointObserver
@@ -37,5 +39,9 @@ export class CashDeskComponent implements AfterViewInit {
   }
 
   sendOrder() {
+  }
+
+  gotToCart() {
+    this.router.navigateByUrl('/cart')
   }
 }

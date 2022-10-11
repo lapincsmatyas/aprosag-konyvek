@@ -7,21 +7,19 @@
           <input id="name" type="text" formControlName="name" placeholder="Név"/>
           <input id="email" type="text" formControlName="email" placeholder="Email cím"/>
           <textarea id="text" placeholder="Szöveg" formControlName="text"  rows="10"></textarea>
-
           <span class="data-protection-container">
           <input id="data-protection" type="checkbox" formControlName="dataProtection"/>
-          <label for="data-protection"> Elfogadom az Adatvédelmi tájékoztatót</label>
+          <label class="text" for="data-protection">Elfogadom az Adatvédelmi tájékoztatót</label>
         </span>
         </form>
-
         <button class="button" (click)="sendEmail()">Küldés</button>
       </div>
       <div class="right">
-        <div>Ha rendeléssel kapcsolatos kérdésed van, vagy csak szeretnéd velünk felvenni a kapcsolatot, keress minket
+        <div class="text">Ha rendeléssel kapcsolatos kérdésed van, vagy csak szeretnéd velünk felvenni a kapcsolatot, keress minket
           bátran az alábbi elérhetőségeken, vagy küldj üzenetet közvetlenül itt, a honlapon!</div>
         <div class="subtitle">Ügyfélszolgálat</div>
         <div class="email"><a href="mailto:info@aprosagkonyvek.hu">info@aprosagkonyvek.hu</a></div>
-        <div>Molnár Nikoletta: +36 30 907 9536<br/>(hétköznap 9-16 óráig)</div>
+        <div class="text">Molnár Nikoletta: +36 30 907 9536<br/>(hétköznap 9-16 óráig)</div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 @use "sass:list";
-@import "variables";
+@import "libs/ui/src/lib/variables";
 
 $background-images: [url('/src/assets/Backgrounds/leaf_2.svg'), url('/src/assets/Backgrounds/leaf_1.svg'), url('/src/assets/Backgrounds/leaf_3.svg'), url('/src/assets/Backgrounds/leaf_4.svg')];
 
@@ -14,6 +14,7 @@ $background-images: [url('/src/assets/Backgrounds/leaf_2.svg'), url('/src/assets
   justify-content: center;
   height: $button-height;
 
+
   border: none;
   outline: none;
   cursor: pointer;
@@ -25,7 +26,7 @@ $background-images: [url('/src/assets/Backgrounds/leaf_2.svg'), url('/src/assets
   box-shadow: 0 0 13px -5px #000000;
 
 
-  &:disabled {
+  &:disabled, &.disabled {
     background-color: $disabled-button;
     cursor: default;
   }

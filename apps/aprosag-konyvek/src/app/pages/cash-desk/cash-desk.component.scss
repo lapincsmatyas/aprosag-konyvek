@@ -1,5 +1,5 @@
-@import "apps/aprosag-konyvek/src/variables";
-@import "apps/aprosag-konyvek/src/mixins";
+@import "libs/ui/src/lib/variables";
+@import "libs/ui/src/lib/mixins";
 
 .cash-desk-page-container {
   color: $font-color !important;
@@ -125,7 +125,7 @@
       .button {
         @include button;
 
-        width: auto;
+        width: 30%;
         padding-left: 24px;
         padding-right: 24px;
 
