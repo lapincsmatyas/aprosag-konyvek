@@ -27,9 +27,9 @@
       <div class="details-container">
         <div class="page-number">Oldalak száma: {{item.page_count}} </div>
         <div class="cover-type">Borító: {{item.cover_type}} </div>
-        <div class="isbn">ISBN: {{item.ISBN}} </div>
+        <div class="isbn">ISBN: {{item.isbn}} </div>
         <div class="weight">Súly: {{item.weight}} </div>
-        <div class="publication-date">Kiadás éve: {{item.publication_date}} </div>
+        <div class="publication-date">Kiadás éve: {{item.publication_date | date:'yyyy'}} </div>
       </div>
       <div class="stock-container">
         Raktáron: {{item.storage_amount}} db

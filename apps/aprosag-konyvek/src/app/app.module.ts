@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -63,7 +63,9 @@ import { SettingsEffects } from "../../../../libs/items/src/lib/+state/settings/
 import { ItemsEffects } from "../../../../libs/items/src/lib/+state/items/items.effects";
 
 import * as fromCore from "items"
+import { ItemsFacade } from "items"
 import { cartMetaReducer } from '../../../../libs/items/src/lib/+state/cart/cart.meta-reducer';
+import { SettingsService } from '../../../../libs/items/src/lib/services/settings.service';
 
 @NgModule({
   declarations: [
@@ -140,8 +142,22 @@ import { cartMetaReducer } from '../../../../libs/items/src/lib/+state/cart/cart
 
     ItemCardComponent
   ],
-  providers: [  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [SettingsService, ItemsFacade],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+function appInitializerFactory(settingsService: SettingsService, itemsFacade: ItemsFacade): () => void {
+  return () => {
+    settingsService.loadSettings();
+    itemsFacade.loadItems();
+  };
 }

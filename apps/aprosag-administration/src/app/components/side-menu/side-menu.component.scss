@@ -1,0 +1,32 @@
+.side-menu-container {
+    height: 100%;
+    border-right: 1px solid #B9B9B9;
+    padding:10px;
+
+    .nav-item {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        border-radius: 10px;
+
+        text-decoration: none;
+        background-color: rgba(240, 240, 240, 0.41);
+
+        &:hover {
+            background-color: #F5F5F5;
+        }
+
+        &.active {
+            background-color: #F5F5F5;
+            color: #000;
+        }
+
+        .nav-icon {
+            margin-right: 0.5rem;
+        }
+    }
+}

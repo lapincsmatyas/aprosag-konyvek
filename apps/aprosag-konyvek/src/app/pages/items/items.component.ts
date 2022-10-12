@@ -1,29 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Item} from "items";
-import {SettingsService} from "../../../../../../libs/items/src/lib/services/settings.service";
-import {Router} from "@angular/router";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {CartService} from "../../services/cart/cart.service";
-import {AddedToCartComponent} from "../../shared/popups/added-to-cart/added-to-cart.component";
-import {ItemsFacade} from "../../../../../../libs/items/src/lib/+state/items/items.facade";
+import { Component } from '@angular/core';
+import { Item } from "items";
+import { SettingsService } from "../../../../../../libs/items/src/lib/services/settings.service";
+import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { CartService } from "../../services/cart/cart.service";
+import { AddedToCartComponent } from "../../shared/popups/added-to-cart/added-to-cart.component";
+import { ItemsFacade } from "items";
 
 @Component({
   selector: 'aprosag-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss']
 })
-export class ItemsComponent implements OnInit{
-  public items$: Observable<Item[]> = this.itemsFacade.getItems$;
-
-  constructor(private itemsFacade: ItemsFacade,
+export class ItemsComponent{
+  constructor(public itemsFacade: ItemsFacade,
               public settingsService: SettingsService,
               private router: Router,
               private cartService: CartService,
               private modalService: NgbModal) {
-  }
-
-  ngOnInit() {
   }
 
   itemClicked(item: Item){

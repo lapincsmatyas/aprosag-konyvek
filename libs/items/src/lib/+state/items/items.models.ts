@@ -1,13 +1,13 @@
 export interface Item {
-  id: string ;
-  title: string ;
-  subtitle: string ;
-  description: string ;
+  id?: string;
+  title: string;
+  subtitle: string;
+  description: string;
   page_count: number;
   cover_type: COVER_TYPE;
-  ISBN: string ;
+  isbn: string;
   weight: number;
-  publication_date: number;
+  publication_date: Date;
   storage_amount: number;
   price: ItemPrice;
   image_urls: string[];

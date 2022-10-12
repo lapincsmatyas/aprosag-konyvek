@@ -1,0 +1,57 @@
+<form *ngIf="itemForm" [formGroup]="itemForm" class="flex flex-col gap-2 w-100">
+    <div>
+        Cim:
+        <input pInputText type="text" formControlName="title"/>
+    </div>
+    <div>
+        Alcim:
+        <input pInputText type="text" formControlName="subtitle"/>
+    </div>
+    <div>
+        Leiras:
+        <textarea pInputTextarea type="text" formControlName="description"></textarea>
+    </div>
+    <pre>{{itemForm.controls.description.value }}</pre>
+    <div>
+        Oldalszam:
+        <p-inputNumber type="text" formControlName="page_count"></p-inputNumber>
+    </div>
+    <div>
+        Borito:
+        <input pInputText type="text" formControlName="cover_type"/>
+    </div>
+    <div>
+        Suly:
+        <p-inputNumber type="text" formControlName="weight"></p-inputNumber>
+    </div>
+    <div>
+        ISBN:
+        <input pInputText type="text" formControlName="isbn"/>
+    </div>
+    <ng-container formGroupName="price">
+        <div>
+            Eredeti ar:
+            <p-inputNumber type="text" formControlName="price"></p-inputNumber>
+        </div>
+        <div>
+            Akcios ar:
+            <p-inputNumber type="text" formControlName="discount_price"></p-inputNumber>
+        </div>
+    </ng-container>
+    <div>
+        Kiadas eve:
+        <p-calendar formControlName="publication_date"></p-calendar>
+    </div>
+    <div>
+        Raktaron:
+        <p-inputNumber type="text" formControlName="storage_amount"></p-inputNumber>
+    </div>
+    <div>
+        Kepek:
+        <input pInputText type="text" formControlName="image_urls"/>
+    </div>
+    <div class="flex gap-4">
+        <button pButton *ngIf="itemForm.controls.id" class="p-button-danger" (click)="deleteItem()">Torles</button>
+        <button pButton [disabled]="itemForm.invalid" (click)="createItem()" >Letrehozas</button>
+    </div>
+</form>

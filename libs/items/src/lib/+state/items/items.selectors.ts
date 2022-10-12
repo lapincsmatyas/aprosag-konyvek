@@ -1,6 +1,6 @@
-import {createSelector} from "@ngrx/store";
-import {itemsAdapter, ItemsState} from "./items.reducer";
-import {State} from "items";
+import { createSelector } from "@ngrx/store";
+import { itemsAdapter, ItemsState } from "./items.reducer";
+import { State } from "items";
 
 const getCoreState = createSelector(
   (state: State) => state,
@@ -26,6 +26,11 @@ export const selectItemsEntites = createSelector(
 export const selectItemsLoaded = createSelector(
   selectItemsState,
   state => state.itemsLoaded
+)
+
+export const selectItemDeleted = createSelector(
+  selectItemsState,
+  state => state.itemDeleted
 )
 
 export const selectItemById = (id: string) => createSelector(

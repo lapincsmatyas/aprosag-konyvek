@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {UserService} from "../user/user.service";
-import {AuthService} from "../auth/auth.service";
-import {Item} from "items";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { UserService } from "../user/user.service";
+import { AuthService } from "../auth/auth.service";
+import { Item } from "items";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 import {
   selectAllCartItems,
   selectCount,
   selectSumPrice
 } from "../../../../../../libs/items/src/lib/+state/cart/cart.selector";
-import {CartItem} from "../../../../../../libs/items/src/lib/+state/cart/cart.model";
+import { CartItem } from "../../../../../../libs/items/src/lib/+state/cart/cart.model";
 import {
   addItemToCart,
   changeItemAmount,
@@ -37,6 +37,7 @@ export class CartService {
   }
 
   removeItemFromCart(item: Item): void {
+    if(!item.id) return;
     this.store.dispatch(deleteItemFromCart({id: item.id}));
   }
 

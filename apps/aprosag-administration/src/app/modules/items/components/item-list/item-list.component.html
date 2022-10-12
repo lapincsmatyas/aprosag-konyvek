@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-4">
+    <div class="self-end">
+        <p-button routerLink="new">Letrehozas</p-button>
+    </div>
+    <div *ngIf="itemsFacade.getItems$ | async as items">
+        <p-table [value]="items">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>id</th>
+                    <th>Cim</th>
+                    <th>Alcim</th>
+                    <th>Leiras</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr [routerLink]="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.subtitle}}</td>
+                    <td>{{item.description}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>

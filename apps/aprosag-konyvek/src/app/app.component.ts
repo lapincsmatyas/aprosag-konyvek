@@ -1,13 +1,11 @@
-import {Component} from '@angular/core';
-import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
-import {LoadingService} from "./services/loading/loading.service";
-import {AppService} from "./services/app/app.service";
-import {UserService} from "./services/user/user.service";
-import {AuthService} from "./services/auth/auth.service";
-import {faAddressCard} from "@fortawesome/free-solid-svg-icons";
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {animate, style, transition, trigger} from '@angular/animations';
-import {SettingsService} from "../../../../libs/items/src/lib/services/settings.service";
+import { Component } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from "@angular/router";
+import { LoadingService } from "./services/loading/loading.service";
+import { AppService } from "./services/app/app.service";
+import { UserService } from "./services/user/user.service";
+import { AuthService } from "./services/auth/auth.service";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'aprosag-root',
@@ -44,12 +42,9 @@ export class AppComponent {
               public userService: UserService,
               public authService: AuthService,
               public appService: AppService,
-              private settingService: SettingsService,
               public loadingService: LoadingService,
               public breakpointObserver: BreakpointObserver
   ) {
-    this.settingService.loadSettingsByHttp();
-
     this.breakpointObserver.observe('(min-width: 588px)')
       .subscribe((result) => {
         this.mobile = !result.matches;
