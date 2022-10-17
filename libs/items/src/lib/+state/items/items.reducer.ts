@@ -6,6 +6,8 @@ import * as ItemActions from './items.actions';
 export interface ItemsState extends EntityState<Item> {
   itemsLoaded: boolean;
   itemDeleted: boolean;
+  itemCreated: boolean;
+  itemEdited: boolean;
 }
 
 export const itemsAdapter: EntityAdapter<Item> =
@@ -13,7 +15,9 @@ export const itemsAdapter: EntityAdapter<Item> =
 
 export const initialItemsState: ItemsState = itemsAdapter.getInitialState({
   itemsLoaded: false,
-  itemDeleted: false
+  itemDeleted: false,
+  itemCreated: false,
+  itemEdited: false
 });
 
 const reducer = createReducer(
@@ -60,6 +64,22 @@ const reducer = createReducer(
         itemDeleted: true
       }
     }
+  ),
+  on(ItemActions.itemEdited,
+     state => {
+       return {
+         ...state,
+         itemEdited: true
+       }
+     }
+  ),
+  on(ItemActions.itemCreated,
+     state => {
+       return {
+         ...state,
+         itemCreated: true
+       }
+     }
   ),
 );
 

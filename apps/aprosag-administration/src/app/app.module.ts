@@ -15,31 +15,36 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, SideMenuComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideStorage(() => getStorage()),
-    provideFirestore(() => getFirestore()),
-    RouterModule.forRoot(
-      [
-        {
-          path: 'items',
-          loadChildren: () =>
-            import('./modules/items/items.module').then((m) => m.ItemsModule),
-        },
-      ],
-      { initialNavigation: 'enabledBlocking' }
-    ),
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ItemsEffects]),
-    StoreDevtoolsModule.instrument(),
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+            declarations: [AppComponent, SideMenuComponent],
+            imports: [
+              BrowserModule,
+              BrowserAnimationsModule,
+              provideFirebaseApp(() => initializeApp(environment.firebase)),
+              provideAuth(() => getAuth()),
+              provideStorage(() => getStorage()),
+              provideFirestore(() => getFirestore()),
+              RouterModule.forRoot(
+                [
+                  {
+                    path: 'items',
+                    loadChildren: () =>
+                      import('./modules/items/items.module').then((m) => m.ItemsModule),
+                  },
+                ],
+                { initialNavigation: 'enabledBlocking' }
+              ),
+              StoreModule.forRoot(reducers),
+              EffectsModule.forRoot([ItemsEffects]),
+              StoreDevtoolsModule.instrument(),
+              ToastrModule.forRoot({
+                                     positionClass: 'toast-top-right'
+                                   }),
+            ],
+            providers: [],
+            bootstrap: [AppComponent],
+          })
+export class AppModule {
+}

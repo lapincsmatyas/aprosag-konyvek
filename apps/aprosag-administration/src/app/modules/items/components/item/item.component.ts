@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemsFacade, Item, COVER_TYPE } from 'items';
-import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css'],
 })
-export class ItemComponent {
+export class ItemComponent implements OnInit {
   itemForm = this.formBuilder.group({
       id: new FormControl<string | undefined>(undefined),
       title: ['', Validators.required],
@@ -24,21 +25,30 @@ export class ItemComponent {
       publication_date: [new Date(), Validators.required],
       storage_amount: [0, Validators.required],
       isbn: ['', Validators.required],
-      image_urls: ['']
+      image_urls: this.formBuilder.array<string>([])
     }
   )
+
+  get imageUrls() {
+    return this.itemForm.get('image_urls') as FormArray;
+  }
 
   constructor(public itemsFacade: ItemsFacade,
               private formBuilder: NonNullableFormBuilder,
               private router: Router,
+              private toastr: ToastrService,
               private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
     if (this.activatedRoute.snapshot.params['id']) {
       this.itemsFacade.getItemById$(this.activatedRoute.snapshot.params['id']).subscribe(item => {
         if (item) {
-          this.itemForm.patchValue({
-            ...item,
-            image_urls: item.image_urls.join(',')
-          });
+          this.itemForm.patchValue(item);
+          this.imageUrls.clear();
+          item.image_urls.forEach(image => {
+            this.addImage(image)
+          })
         }
       })
     }
@@ -77,7 +87,6 @@ export class ItemComponent {
     ) return;
 
     let item: Item = {
-      id: id || undefined,
       title,
       subtitle,
       description,
@@ -91,15 +100,23 @@ export class ItemComponent {
       publication_date,
       storage_amount,
       isbn,
-      image_urls: image_urls.split(',').map(url => url.trim())
+      image_urls
     }
 
-    console.log(item.description);
-
-    if(id) {
-      this.itemsFacade.editItem(item);
-    } else {
+    if(id == undefined) {
       this.itemsFacade.createItem(item);
+      this.itemsFacade.itemCreated$.subscribe((deleted) => {
+        if (deleted) {
+          this.router.navigate(['..'], { relativeTo: this.activatedRoute })
+        }
+      })
+
+
+    } else {
+      this.itemsFacade.editItem({
+        id,
+        ...item
+      });
     }
   }
 
@@ -112,5 +129,14 @@ export class ItemComponent {
         }
       })
     }
+  }
+
+  addImage(url?: string) {
+    const imageForm = this.formBuilder.control(url || '', Validators.required);
+    this.imageUrls.push(imageForm);
+  }
+
+  removeImage(i: number) {
+    this.imageUrls.removeAt(i);
   }
 }

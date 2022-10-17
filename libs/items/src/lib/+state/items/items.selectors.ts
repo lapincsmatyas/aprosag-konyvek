@@ -33,6 +33,17 @@ export const selectItemDeleted = createSelector(
   state => state.itemDeleted
 )
 
+export const selectItemCreated = createSelector(
+  selectItemsState,
+  state => state.itemCreated
+)
+
+export const selectItemEdited = createSelector(
+  selectItemsState,
+  state => state.itemEdited
+)
+
+
 export const selectItemById = (id: string) => createSelector(
   selectItemsEntites,
   (items) => (id ? items[id] : undefined)

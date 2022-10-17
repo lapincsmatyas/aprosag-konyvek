@@ -130,7 +130,6 @@ import { SettingsService } from '../../../../libs/items/src/lib/services/setting
     FlexLayoutModule,
     MatSidenavModule,
     SidebarModule,
-
     StoreModule.forRoot(fromCore.reducers, {
       metaReducers: [cartMetaReducer],
     }),

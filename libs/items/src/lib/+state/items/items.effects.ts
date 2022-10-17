@@ -14,11 +14,14 @@ import {
   itemEdited
 } from "./items.actions";
 import { ItemsService } from "../../services/items.service";
-import { map, switchMap } from "rxjs/operators";
+import { catchError, map, switchMap } from "rxjs/operators";
+import { ToastrService } from 'ngx-toastr';
+import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class ItemsEffects {
   constructor(private actions$: Actions,
+              private toastr: ToastrService,
               private itemService: ItemsService) {
   }
 
@@ -46,6 +49,10 @@ export class ItemsEffects {
                 if (item) {
                   return addItem({item})
                 } else return itemNotFound()
+              }),
+              catchError(error => {
+                this.toastr.error("Hiba tortent a termek betoltesekor");
+                return EMPTY;
               })
             )
         })
@@ -58,9 +65,13 @@ export class ItemsEffects {
       ofType(createItem),
       switchMap((action => {
         return this.itemService.createItem(action.item).pipe(
-          map((item) => {
-            console.log(item);
+          map(() => {
+            this.toastr.success("Termek sikeresen letrehozva!");
             return itemCreated()
+          }),
+          catchError(error => {
+            this.toastr.error("Hiba tortent a termek letrehozasakor");
+            return EMPTY;
           })
         )
       }))
@@ -72,9 +83,13 @@ export class ItemsEffects {
       ofType(editItem),
       switchMap((action => {
         return this.itemService.editItem(action.item).pipe(
-          map((item) => {
-            console.log(item);
+          map(() => {
+            this.toastr.success("Termek sikeresen szerkesztve!");
             return itemEdited()
+          }),
+          catchError(error => {
+            this.toastr.error("Hiba tortent a termek szerkesztesekor");
+            return EMPTY;
           })
         )
       }))
@@ -87,7 +102,12 @@ export class ItemsEffects {
       switchMap((action => {
         return this.itemService.deleteItem(action.id).pipe(
           map(() => {
+            this.toastr.success("Termek sikeresen torolve!");
             return itemDeleted()
+          }),
+          catchError(error => {
+            this.toastr.error("Hiba tortent a termek torlesekor");
+            return EMPTY;
           })
         )
       }))
