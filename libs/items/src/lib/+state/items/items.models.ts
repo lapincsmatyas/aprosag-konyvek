@@ -4,7 +4,7 @@ export interface Item {
   subtitle: string;
   description: string;
   page_count: number;
-  cover_type: COVER_TYPE;
+  cover_type: string;
   isbn: string;
   weight: number;
   publication_date: Date;
@@ -16,9 +16,4 @@ export interface Item {
 export interface ItemPrice{
   price: number;
   discount_price?: number;
-}
-
-export enum COVER_TYPE {
-  HARD_COVER,
-  SOFT_COVER
 }

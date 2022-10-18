@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsFacade, Item, COVER_TYPE } from 'items';
+import { ItemsFacade, Item } from 'items';
 import { FormControl, NonNullableFormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,7 @@ export class ItemComponent implements OnInit {
       subtitle: ['', Validators.required],
       description: ['', Validators.required],
       page_count: [0, Validators.required],
-      cover_type: [COVER_TYPE.HARD_COVER, Validators.required],
+      cover_type: ['', Validators.required],
       weight: [0, Validators.required],
       price: this.formBuilder.group({
         price: [0, Validators.required],
