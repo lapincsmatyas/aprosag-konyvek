@@ -9,6 +9,8 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import { Router } from '@angular/router';
 import { OrderService } from '../../services/order/order.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SuccessfulOrderComponent } from '../../shared/popups/successful-order/successful-order.component';
 
 @Component({
   selector: 'aprosag-cash-desk',
@@ -31,6 +33,7 @@ export class CashDeskComponent implements AfterViewInit {
               public breakpointObserver: BreakpointObserver,
               private router: Router,
               public orderService: OrderService,
+              private modalService: NgbModal,
               public cartService: CartService) {
 
     this.stepperOrientation = breakpointObserver
@@ -39,6 +42,18 @@ export class CashDeskComponent implements AfterViewInit {
   }
 
   sendOrder() {
+    const modalRef = this.modalService.open(SuccessfulOrderComponent, {
+      backdrop: true,
+      backdropClass: 'modal-dialog-backdrop',
+      modalDialogClass: 'modal-dialog-centered succesful-order-dialog'
+    });
+    modalRef.componentInstance.orderNumber = '123456789';
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (error) => {
+      //console.error(error.message);
+    })
   }
 
   gotToCart() {

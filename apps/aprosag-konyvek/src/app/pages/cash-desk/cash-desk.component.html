@@ -14,7 +14,7 @@
         <aprosag-payment-options></aprosag-payment-options>
         <div class="button-container">
           <button mat-button class="button" [disabled]="(orderService.selectedPaymentType$  | async) == null" matStepperNext>Összesítés</button>
-          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+          <button mat-button class="button back" matStepperPrevious>Számlázási adatok</button>
         </div>
       </mat-step>
       <mat-step class="step">
@@ -22,7 +22,7 @@
         <app-order-summary></app-order-summary>
         <div class="button-container">
           <button mat-button class="button" (click)="sendOrder()">Rendelés megerősítése</button>
-          <button mat-button class="button back" matStepperPrevious>Vissza</button>
+          <button mat-button class="button back" matStepperPrevious>Fizetési módok</button>
         </div>
       </mat-step>
     </mat-stepper>

@@ -156,7 +156,7 @@ export class AppModule {
 
 function appInitializerFactory(settingsService: SettingsService, itemsFacade: ItemsFacade): () => void {
   return () => {
-    settingsService.loadSettings();
+    settingsService.loadSettingsByHttp();
     itemsFacade.loadItems();
   };
 }

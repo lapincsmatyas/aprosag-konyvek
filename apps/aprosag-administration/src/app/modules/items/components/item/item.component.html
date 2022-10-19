@@ -1,5 +1,9 @@
 <form *ngIf="itemForm" [formGroup]="itemForm" class="flex flex-col gap-2 w-100">
     <div>
+        Azonosito:
+        {{itemForm.controls.id.value}}
+    </div>
+    <div>
         Cim:
         <input pInputText type="text" formControlName="title"/>
     </div>
